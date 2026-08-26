@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown, Globe, TrendingUp, Sparkles } from 'lucide-react';
-import { Container } from '../ui/Container';
-import { Button } from '../ui/Button';
-import { LANGUAGE_COURSES, SMM_COURSES } from '../../data/mockData';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
 export const Navigation: React.FC = () => {
-  const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleScrollTo = (id: string) => {
     setMobileMenuOpen(false);
@@ -26,191 +35,118 @@ export const Navigation: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[rgba(0,0,0,0.08)] shadow-xs">
-      <Container className="flex items-center justify-between h-20">
-        {/* Brand Logo */}
-        <button onClick={() => handleScrollTo('hero')} className="flex items-center space-x-3 group text-left">
-          <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center font-bold text-xl tracking-tight shadow-md group-hover:bg-[#FFD700] group-hover:text-black transition-colors">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-white/90 backdrop-blur-md shadow-sm py-3.5 border-b border-[#4aabb8]/10'
+          : 'bg-transparent py-5'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
+        {/* Logo / Brand */}
+        <button
+          onClick={() => handleScrollTo('top')}
+          className="flex items-center space-x-3 group text-left focus:outline-none"
+        >
+          <div className="w-10 h-10 rounded-full bg-[#4aabb8] text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
             C
           </div>
           <div>
-            <span className="font-extrabold text-lg tracking-tight text-[rgb(38,38,38)] block leading-tight">
-              CELAVIE
+            <span className="font-heading text-xl font-bold tracking-tight text-[#222222] block leading-tight">
+              CELAVIE Academy
             </span>
-            <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500 block">
-              Educational Academy
+            <span className="text-[10px] uppercase font-semibold tracking-widest text-[#4aabb8] block">
+              @CELAVIE_ACADEMY
             </span>
           </div>
         </button>
 
-        {/* Desktop Nav Items */}
-        <nav className="hidden lg:flex items-center space-x-6">
-          <button
-            onClick={() => handleScrollTo('hero')}
-            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
-          >
-            Home
-          </button>
-
+        {/* Desktop Nav Links */}
+        <nav className="hidden lg:flex items-center space-x-8">
           <button
             onClick={() => handleScrollTo('courses')}
-            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
+            className="text-sm font-medium text-[#222222]/80 hover:text-[#4aabb8] transition-colors focus:outline-none cursor-pointer"
           >
             Courses
           </button>
-
-          {/* Courses Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setCoursesDropdownOpen(true)}
-            onMouseLeave={() => setCoursesDropdownOpen(false)}
-          >
-            <button
-              onClick={() => handleScrollTo('courses')}
-              className="flex items-center space-x-1 text-sm font-semibold py-2 text-gray-600 hover:text-black transition-colors"
-            >
-              <span>Explore</span>
-              <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-black" />
-            </button>
-
-            {coursesDropdownOpen && (
-              <div className="absolute top-full left-0 w-80 bg-white rounded-[8px] shadow-xl border border-[rgba(0,0,0,0.1)] py-3 px-4 z-50 animate-fade-in grid gap-4">
-                <div>
-                  <div className="flex items-center space-x-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-                    <Globe className="w-3.5 h-3.5 text-black" />
-                    <span>Language Courses</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {LANGUAGE_COURSES.map((course) => (
-                      <Link
-                        key={course.id}
-                        to={`/courses/${course.slug}`}
-                        className="text-xs font-medium text-gray-700 hover:text-black hover:bg-[rgba(0,0,0,0.04)] px-2 py-1.5 rounded transition flex items-center space-x-1.5"
-                      >
-                        <span>{course.flagEmoji}</span>
-                        <span>{course.language}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="border-t border-[rgba(0,0,0,0.06)] pt-3">
-                  <div className="flex items-center space-x-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-                    <TrendingUp className="w-3.5 h-3.5 text-black" />
-                    <span>SMM Academy</span>
-                  </div>
-                  <div className="space-y-1">
-                    {SMM_COURSES.map((smm) => (
-                      <Link
-                        key={smm.id}
-                        to={`/courses/smm/${smm.tier}`}
-                        className="text-xs font-medium text-gray-700 hover:text-black hover:bg-[rgba(0,0,0,0.04)] px-2 py-1 rounded transition flex items-center justify-between"
-                      >
-                        <span>{smm.title}</span>
-                        <span className="text-[10px] text-gray-400 capitalize">{smm.tier}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
           <button
-            onClick={() => handleScrollTo('gallery')}
-            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
+            onClick={() => handleScrollTo('nice')}
+            className="text-sm font-medium text-[#222222]/80 hover:text-[#4aabb8] transition-colors focus:outline-none cursor-pointer"
           >
-            Gallery
+            Nice Program
           </button>
-
           <button
-            onClick={() => handleScrollTo('nice-exchange')}
-            className="text-sm font-semibold flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-[rgba(255,215,0,0.2)] text-black hover:bg-[#FFD700] transition-colors"
+            onClick={() => handleScrollTo('why')}
+            className="text-sm font-medium text-[#222222]/80 hover:text-[#4aabb8] transition-colors focus:outline-none cursor-pointer"
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Nice Exchange</span>
+            Why Us
           </button>
-
           <button
-            onClick={() => handleScrollTo('about')}
-            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
+            onClick={() => handleScrollTo('contact')}
+            className="text-sm font-medium text-[#222222]/80 hover:text-[#4aabb8] transition-colors focus:outline-none cursor-pointer"
           >
-            About
-          </button>
-
-          <button
-            onClick={() => handleScrollTo('faq')}
-            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
-          >
-            FAQ
+            Contact
           </button>
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center space-x-3">
-          <Button variant="primary" size="md" onClick={() => handleScrollTo('register')}>
+        {/* Desktop CTA Button */}
+        <div className="hidden lg:flex items-center space-x-4">
+          <button
+            onClick={() => handleScrollTo('register')}
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#4aabb8] text-white font-medium text-sm hover:bg-[#2b7a85] transition-all shadow-md hover:shadow-lg focus:outline-none cursor-pointer"
+          >
             Register Now
-          </Button>
+          </button>
         </div>
 
-        {/* Mobile menu button */}
-        <div className="flex lg:hidden items-center space-x-2">
+        {/* Mobile Menu Toggle Button */}
+        <div className="flex lg:hidden items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-gray-700 hover:text-black focus:outline-none"
+            className="p-2 text-[#222222] hover:text-[#4aabb8] focus:outline-none"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </Container>
+      </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[rgba(0,0,0,0.08)] bg-white px-4 pt-4 pb-6 space-y-4">
+        <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-[#4aabb8]/10 px-6 pt-4 pb-6 space-y-4 shadow-xl">
           <nav className="flex flex-col space-y-3">
             <button
-              onClick={() => handleScrollTo('hero')}
-              className="text-left text-base font-semibold text-gray-800 hover:text-black"
-            >
-              Home
-            </button>
-            <button
               onClick={() => handleScrollTo('courses')}
-              className="text-left text-base font-semibold text-gray-800 hover:text-black"
+              className="text-left text-base font-medium text-[#222222] hover:text-[#4aabb8] py-1"
             >
               Courses
             </button>
             <button
-              onClick={() => handleScrollTo('gallery')}
-              className="text-left text-base font-semibold text-gray-800 hover:text-black"
+              onClick={() => handleScrollTo('nice')}
+              className="text-left text-base font-medium text-[#222222] hover:text-[#4aabb8] py-1"
             >
-              Gallery
+              Nice Program
             </button>
             <button
-              onClick={() => handleScrollTo('nice-exchange')}
-              className="text-left text-base font-bold text-black bg-[#FFD700] px-3 py-2 rounded-md inline-block mt-1"
+              onClick={() => handleScrollTo('why')}
+              className="text-left text-base font-medium text-[#222222] hover:text-[#4aabb8] py-1"
             >
-              Nice Exchange Program
+              Why Us
             </button>
             <button
-              onClick={() => handleScrollTo('about')}
-              className="text-left text-base font-semibold text-gray-800 hover:text-black"
+              onClick={() => handleScrollTo('contact')}
+              className="text-left text-base font-medium text-[#222222] hover:text-[#4aabb8] py-1"
             >
-              About Us
-            </button>
-            <button
-              onClick={() => handleScrollTo('faq')}
-              className="text-left text-base font-semibold text-gray-800 hover:text-black"
-            >
-              FAQ
+              Contact
             </button>
           </nav>
-
-          <div className="pt-4 border-t border-gray-100 flex flex-col space-y-2">
-            <Button variant="primary" className="w-full" onClick={() => handleScrollTo('register')}>
-              Register for Course
-            </Button>
+          <div className="pt-2 border-t border-[#4aabb8]/10">
+            <button
+              onClick={() => handleScrollTo('register')}
+              className="w-full py-3 rounded-full bg-[#4aabb8] text-white font-medium text-sm hover:bg-[#2b7a85] transition-colors text-center shadow-md"
+            >
+              Register Now
+            </button>
           </div>
         </div>
       )}
