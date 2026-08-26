@@ -1,140 +1,139 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container } from '../ui/Container';
 import { siteConfig } from '../../config/site';
-import { Mail, Phone, MapPin, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="bg-[rgb(38,38,38)] text-white pt-16 pb-12 border-t border-gray-800">
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
-          {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg bg-white text-black flex items-center justify-center font-bold text-xl tracking-tight">
+    <footer id="contact" className="bg-[#222222] text-white">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+        <div className="grid lg:grid-cols-12 gap-10">
+          {/* Brand Col */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="flex items-center space-x-3">
+              <span className="grid place-items-center w-10 h-10 rounded-full bg-[#4aabb8] text-white font-bold text-lg shadow-md">
                 C
-              </div>
-              <span className="font-extrabold text-xl tracking-tight text-white">
-                CELAVIE ACADEMY
               </span>
-            </Link>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+              <div>
+                <span className="font-heading text-xl font-bold tracking-tight text-white block">
+                  CELAVIE Academy
+                </span>
+                <span className="text-[10px] uppercase font-semibold tracking-widest text-[#4aabb8] block">
+                  @CELAVIE_ACADEMY
+                </span>
+              </div>
+            </div>
+
+            <p className="text-sm text-white/70 max-w-md font-sans leading-relaxed">
               {siteConfig.description}
             </p>
-            <div className="flex items-center space-x-3 text-sm text-gray-300 pt-2">
-              <MapPin className="w-4 h-4 text-[#FFD700] shrink-0" />
-              <span>{siteConfig.contact.address}</span>
-            </div>
-            <div className="flex items-center space-x-3 text-sm text-gray-300">
-              <Mail className="w-4 h-4 text-[#FFD700] shrink-0" />
-              <span>{siteConfig.contact.email}</span>
-            </div>
-            <div className="flex items-center space-x-3 text-sm text-gray-300">
-              <Phone className="w-4 h-4 text-[#FFD700] shrink-0" />
-              <span>{siteConfig.contact.phone}</span>
+
+            <div className="space-y-3 pt-2 text-sm text-white/80">
+              <div className="flex items-center space-x-3">
+                <MapPin className="w-4 h-4 text-[#4aabb8] shrink-0" />
+                <span>{siteConfig.contact.address}</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="w-4 h-4 text-[#4aabb8] shrink-0" />
+                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-[#4aabb8] transition-colors">
+                  {siteConfig.contact.email}
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-4 h-4 text-[#4aabb8] shrink-0" />
+                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-[#4aabb8] transition-colors">
+                  {siteConfig.contact.phone}
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">
-              Academy
+          {/* Quick Nav Col */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="font-heading text-lg font-bold text-white uppercase tracking-wider">
+              Quick Navigation
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2.5 text-sm font-medium text-white/70">
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors">
-                  About Us
-                </Link>
+                <button
+                  onClick={() => scrollToSection('courses')}
+                  className="hover:text-[#4aabb8] transition-colors cursor-pointer"
+                >
+                  Courses & Programs
+                </button>
               </li>
               <li>
-                <Link to="/services" className="text-gray-400 hover:text-white transition-colors">
-                  Our Services
-                </Link>
+                <button
+                  onClick={() => scrollToSection('nice')}
+                  className="hover:text-[#4aabb8] transition-colors cursor-pointer"
+                >
+                  Nice Exchange Program
+                </button>
               </li>
               <li>
-                <Link to="/nice-exchange" className="text-gray-400 hover:text-[#FFD700] transition-colors flex items-center space-x-1">
-                  <Sparkles className="w-3.5 h-3.5 text-[#FFD700]" />
-                  <span>Nice Exchange</span>
-                </Link>
+                <button
+                  onClick={() => scrollToSection('why')}
+                  className="hover:text-[#4aabb8] transition-colors cursor-pointer"
+                >
+                  Why CELAVIE
+                </button>
               </li>
               <li>
-                <Link to="/register" className="text-gray-400 hover:text-white transition-colors">
-                  Registration
-                </Link>
+                <button
+                  onClick={() => scrollToSection('register')}
+                  className="hover:text-[#4aabb8] transition-colors cursor-pointer"
+                >
+                  Course Registration
+                </button>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
-                  Contact Support
-                </Link>
+                <button
+                  onClick={() => scrollToSection('faq')}
+                  className="hover:text-[#4aabb8] transition-colors cursor-pointer"
+                >
+                  FAQ & Support
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* Languages */}
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">
-              Languages
+          {/* Academic Directions */}
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className="font-heading text-lg font-bold text-white uppercase tracking-wider">
+              Academic Focus
             </h4>
-            <ul className="space-y-2 text-sm text-gray-400 grid grid-cols-2 gap-x-2">
-              <li><Link to="/courses/french" className="hover:text-white">French</Link></li>
-              <li><Link to="/courses/english" className="hover:text-white">English</Link></li>
-              <li><Link to="/courses/italian" className="hover:text-white">Italian</Link></li>
-              <li><Link to="/courses/spanish" className="hover:text-white">Spanish</Link></li>
-              <li><Link to="/courses/german" className="hover:text-white">German</Link></li>
-              <li><Link to="/courses/russian" className="hover:text-white">Russian</Link></li>
-              <li><Link to="/courses/armenian" className="hover:text-white">Armenian</Link></li>
-              <li><Link to="/courses/korean" className="hover:text-white">Korean</Link></li>
-              <li><Link to="/courses/chinese" className="hover:text-white">Chinese</Link></li>
-              <li><Link to="/courses/japanese" className="hover:text-white">Japanese</Link></li>
-            </ul>
-          </div>
-
-          {/* SMM & Legal */}
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">
-              SMM & Legal
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link to="/courses/smm/starter" className="text-gray-400 hover:text-white transition-colors">
-                  SMM Starter
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses/smm/pro" className="text-gray-400 hover:text-white transition-colors">
-                  SMM Pro
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses/smm/expert" className="text-gray-400 hover:text-white transition-colors">
-                  SMM Expert
-                </Link>
-              </li>
-              <li className="pt-3 border-t border-gray-700">
-                <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
+            <p className="text-sm text-white/70 leading-relaxed font-sans">
+              Specialized conversational training in 10+ foreign languages (French, English, German, Spanish, Italian, Russian, Armenian, Korean, Chinese, Japanese) and 3 tiers of Social Media Marketing.
+            </p>
+            <div className="pt-2">
+              <button
+                onClick={() => scrollToSection('register')}
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#4aabb8] text-white font-semibold text-xs hover:bg-[#2b7a85] transition-all shadow-md cursor-pointer"
+              >
+                Register For a Batch Now
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 space-y-4 md:space-y-0">
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 space-y-4 sm:space-y-0">
           <p>© {new Date().getFullYear()} CELAVIE Educational Academy. All rights reserved.</p>
-          <div className="flex items-center space-x-6">
-            <Link to="/privacy" className="hover:text-gray-300">Privacy</Link>
-            <Link to="/terms" className="hover:text-gray-300">Terms</Link>
-            <Link to="/contact" className="hover:text-gray-300">Support</Link>
-          </div>
+          <button
+            onClick={() => scrollToSection('top')}
+            className="inline-flex items-center space-x-1.5 hover:text-[#4aabb8] transition-colors cursor-pointer"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 };
