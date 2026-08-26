@@ -1,5 +1,38 @@
 import type { LanguageCourse, SMMCourse, Testimonial, FAQItem, ServiceItem } from '../types';
 
+export const GALLERY_IMAGES = [
+  {
+    url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800',
+    alt: 'CELAVIE Academy Interactive Classroom',
+    caption: 'Interactive language learning session',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=800',
+    alt: 'Nice Exchange French Riviera Excursion',
+    caption: 'Summer immersion trip on the French Riviera',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800',
+    alt: 'SMM Marketing Strategy Workshop',
+    caption: 'SMM Academy team strategy workshop',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=800',
+    alt: 'Vieux Nice Cultural Exploration',
+    caption: 'Exploring historical sites in Old Town Nice',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800',
+    alt: 'Student Conversation Practice',
+    caption: 'Native tutor speaking club meeting',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800',
+    alt: 'Certification & Graduation Event',
+    caption: 'Graduation celebration for language tracks',
+  },
+];
+
 export const LANGUAGE_COURSES: LanguageCourse[] = [
   {
     id: 'lang-french',
