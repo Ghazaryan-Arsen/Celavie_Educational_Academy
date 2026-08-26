@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary-black: rgb(0, 0, 0);
+    --white: rgb(255, 255, 255);
+    --charcoal: rgb(38, 38, 38);
+    --light-gray: rgba(0, 0, 0, 0.1);
+    --subtle-gray: rgba(0, 0, 0, 0.05);
+    --accent: #FFD700;
+    --link-blue: rgb(59, 130, 246);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(38, 38, 38);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 700;
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 700;
+  }
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 36px;
+      line-height: 44px;
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+  @media (min-width: 1024px) {
+    h3 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  h4 {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+  @media (min-width: 1024px) {
+    h4 {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+
+  p, body, button, input, select, textarea {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  @media (min-width: 1024px) {
+    p, body, button, input, select, textarea {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  .caption {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@theme {
+  --color-primary-black: rgb(0, 0, 0);
+  --color-charcoal: rgb(38, 38, 38);
+  --color-light-gray: rgba(0, 0, 0, 0.1);
+  --color-subtle-gray: rgba(0, 0, 0, 0.05);
+  --color-accent: #FFD700;
+  --color-link-blue: rgb(59, 130, 246);
+  --radius-input: 6px;
+  --radius-card: 8px;
+  --radius-pill: 9999px;
+}
