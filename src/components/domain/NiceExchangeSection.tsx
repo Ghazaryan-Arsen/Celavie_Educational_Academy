@@ -5,16 +5,15 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
 import { Textarea } from '../ui/Textarea';
-import { Sparkles, CheckCircle2, Home, Calendar, Award, HeartHandshake, Globe } from 'lucide-react';
-import { type Language, niceTranslations } from '../../translations/niceExchange';
+import { Sparkles, CheckCircle2, Home, Calendar, Award, HeartHandshake } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface NiceExchangeSectionProps {
   id?: string;
 }
 
 export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = 'nice-exchange' }) => {
-  const [lang, setLang] = useState<Language>('en');
-  const t = niceTranslations[lang];
+  const { t } = useLanguage();
 
   const [niceForm, setNiceForm] = useState({
     firstName: '',
@@ -72,12 +71,12 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
     if (!niceForm.englishLevel) errs.englishLevel = t.errors.englishLevelRequired;
     if (!niceForm.parentName.trim()) errs.parentName = t.errors.parentNameRequired;
     if (!niceForm.parentPhone.trim() || niceForm.parentPhone.length < 7) {
-      errs.parentPhone = t.errors.parentPhoneRequired;
+      errs.parentPhone = t.errors.parentPhoneInvalid;
     }
 
     const wordCount = niceForm.essay.trim().split(/\s+/).filter(Boolean).length;
     if (wordCount < 300 || wordCount > 500) {
-      errs.essay = t.errors.essayWords(wordCount);
+      errs.essay = `${t.errors.essayWordCount} (${wordCount} words)`;
     }
 
     if (!niceForm.acceptedTerms) {
@@ -125,33 +124,33 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
         <div className="lg:col-span-7 space-y-6 text-left">
           <Badge variant="accent" className="px-3 py-1 font-bold tracking-wider">
             <Sparkles className="w-3.5 h-3.5 mr-1 text-black inline" />
-            {t.badge}
+            {t.niceExchange.badge}
           </Badge>
 
           <h2 className="text-3xl md:text-5xl font-serif text-black leading-tight">
-            {t.sectionTitle}
+            {t.niceExchange.title}
           </h2>
 
           <p className="text-base md:text-lg text-gray-700 leading-relaxed font-sans">
-            {t.sectionSubtitle}
+            {t.niceExchange.subtitle}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             <div className="flex items-center space-x-3 p-3 rounded-[8px] bg-gray-50 border border-[rgba(0,0,0,0.06)]">
               <Home className="w-5 h-5 text-black shrink-0" />
-              <span className="text-xs md:text-sm font-semibold text-gray-800">Verified Host Families & Housing</span>
+              <span className="text-xs md:text-sm font-semibold text-gray-800">{t.niceExchange.featureHousing}</span>
             </div>
             <div className="flex items-center space-x-3 p-3 rounded-[8px] bg-gray-50 border border-[rgba(0,0,0,0.06)]">
               <Calendar className="w-5 h-5 text-black shrink-0" />
-              <span className="text-xs md:text-sm font-semibold text-gray-800">2 to 8 Weeks Flexible Durations</span>
+              <span className="text-xs md:text-sm font-semibold text-gray-800">{t.niceExchange.featureDuration}</span>
             </div>
             <div className="flex items-center space-x-3 p-3 rounded-[8px] bg-gray-50 border border-[rgba(0,0,0,0.06)]">
               <Award className="w-5 h-5 text-black shrink-0" />
-              <span className="text-xs md:text-sm font-semibold text-gray-800">20 Hours/Week Intensive French</span>
+              <span className="text-xs md:text-sm font-semibold text-gray-800">{t.niceExchange.featureHours}</span>
             </div>
             <div className="flex items-center space-x-3 p-3 rounded-[8px] bg-gray-50 border border-[rgba(0,0,0,0.06)]">
               <HeartHandshake className="w-5 h-5 text-black shrink-0" />
-              <span className="text-xs md:text-sm font-semibold text-gray-800">24/7 On-Site Support Staff</span>
+              <span className="text-xs md:text-sm font-semibold text-gray-800">{t.niceExchange.featureStaff}</span>
             </div>
           </div>
         </div>
@@ -169,46 +168,15 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
 
       {/* Embedded Compact Application Form */}
       <div className="max-w-4xl mx-auto bg-white p-6 sm:p-8 md:p-10 rounded-[16px] border border-gray-200 shadow-lg text-left relative">
-        {/* Language Switcher */}
-        <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-6">
-          <div className="flex items-center space-x-2 text-xs font-bold text-gray-500 uppercase tracking-wider">
-            <Globe className="w-4 h-4 text-black" />
-            <span>Language / Լեզու / Язык / Langue</span>
-          </div>
-          <div className="flex items-center space-x-1.5 bg-gray-100 p-1 rounded-lg">
-            {(
-              [
-                { code: 'hy', label: 'Հայերեն' },
-                { code: 'en', label: 'English' },
-                { code: 'ru', label: 'Русский' },
-                { code: 'fr', label: 'Français' },
-              ] as const
-            ).map((item) => (
-              <button
-                key={item.code}
-                type="button"
-                onClick={() => setLang(item.code)}
-                className={`px-2.5 py-1 text-xs font-semibold rounded-md transition ${
-                  lang === item.code
-                    ? 'bg-black text-white shadow-xs'
-                    : 'text-gray-600 hover:text-black hover:bg-white/60'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
         <div className="text-center mb-8 space-y-1.5">
           <span className="text-xs font-bold uppercase tracking-widest text-[#38B6FF]">
             REGISTRATION FOR NICE APPLICANTS
           </span>
           <h3 className="text-2xl md:text-3xl font-serif text-black">
-            {t.formTitle}
+            {t.niceExchange.formTitle}
           </h3>
           <p className="text-xs md:text-sm text-gray-600">
-            {t.formSubtitle}
+            {t.niceExchange.formSubtitle}
           </p>
         </div>
 
@@ -217,12 +185,12 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
             <div className="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h4 className="text-2xl font-bold text-black">{t.successTitle}</h4>
+            <h4 className="text-2xl font-bold text-black">{t.niceExchange.successTitle}</h4>
             <p className="text-sm text-gray-700 max-w-lg mx-auto">
-              {t.successMessage}
+              {t.niceExchange.successDesc}
             </p>
             <Button variant="outline" onClick={() => setNiceSubmitted(false)}>
-              {t.submitAnotherButton}
+              {t.niceExchange.submitAnother}
             </Button>
           </div>
         ) : (
@@ -230,14 +198,14 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
             {/* 2-Column Grid Pairings */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
               <Input
-                label={t.firstNameLabel}
+                label={t.niceExchange.firstName}
                 required
                 value={niceForm.firstName}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNiceForm({ ...niceForm, firstName: e.target.value })}
                 error={niceErrors.firstName}
               />
               <Input
-                label={t.lastNameLabel}
+                label={t.niceExchange.lastName}
                 required
                 value={niceForm.lastName}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNiceForm({ ...niceForm, lastName: e.target.value })}
@@ -247,7 +215,7 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
               <Input
-                label={t.ageLabel}
+                label={t.niceExchange.age}
                 type="number"
                 required
                 value={niceForm.age}
@@ -255,7 +223,7 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
                 error={niceErrors.age}
               />
               <Input
-                label={t.schoolLabel}
+                label={t.niceExchange.school}
                 required
                 value={niceForm.school}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNiceForm({ ...niceForm, school: e.target.value })}
@@ -265,7 +233,7 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
               <Input
-                label={t.emailLabel}
+                label={t.niceExchange.email}
                 type="email"
                 required
                 value={niceForm.email}
@@ -273,7 +241,7 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
                 error={niceErrors.email}
               />
               <Input
-                label={t.phoneLabel}
+                label={t.niceExchange.phone}
                 type="tel"
                 required
                 value={niceForm.phone}
@@ -284,14 +252,14 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
               <Input
-                label={t.countryLabel}
+                label={t.niceExchange.country}
                 required
                 value={niceForm.country}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNiceForm({ ...niceForm, country: e.target.value })}
                 error={niceErrors.country}
               />
               <Select
-                label={t.frenchLevelLabel}
+                label={t.niceExchange.frenchLevel}
                 value={niceForm.frenchLevel}
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setNiceForm({ ...niceForm, frenchLevel: e.target.value })}
                 options={levelOptions}
@@ -301,14 +269,14 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
               <Select
-                label={t.englishLevelLabel}
+                label={t.niceExchange.englishLevel}
                 value={niceForm.englishLevel}
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setNiceForm({ ...niceForm, englishLevel: e.target.value })}
                 options={levelOptions}
                 error={niceErrors.englishLevel}
               />
               <Input
-                label={t.parentNameLabel}
+                label={t.niceExchange.parentName}
                 required
                 value={niceForm.parentName}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNiceForm({ ...niceForm, parentName: e.target.value })}
@@ -318,7 +286,7 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
               <Input
-                label={t.parentPhoneLabel}
+                label={t.niceExchange.parentPhone}
                 type="tel"
                 required
                 value={niceForm.parentPhone}
@@ -331,13 +299,13 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
             {/* Motivation Essay - Full Width */}
             <div className="pt-2">
               <Textarea
-                label={t.essayLabel}
+                label={t.niceExchange.essay}
                 required
                 rows={5}
                 value={niceForm.essay}
                 onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setNiceForm({ ...niceForm, essay: e.target.value })}
                 error={niceErrors.essay}
-                helperText={t.essayHelperText}
+                helperText={t.niceExchange.essayHelper}
               />
             </div>
 
@@ -351,9 +319,9 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
                   className="mt-1 w-4 h-4 rounded text-black focus:ring-black"
                 />
                 <span className="text-xs text-gray-700">
-                  {t.termsText}{' '}
+                  {t.niceExchange.terms}{' '}
                   <a href="/terms" target="_blank" className="font-bold underline text-black">
-                    {t.termsLink}
+                    {t.niceExchange.termsLink}
                   </a>.
                 </span>
               </label>
@@ -371,7 +339,7 @@ export const NiceExchangeSection: React.FC<NiceExchangeSectionProps> = ({ id = '
                 className="w-full font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none py-3"
                 disabled={niceLoading}
               >
-                {niceLoading ? t.submittingButton : t.submitButton}
+                {niceLoading ? t.niceExchange.submitting : t.niceExchange.submit}
               </Button>
             </div>
           </form>

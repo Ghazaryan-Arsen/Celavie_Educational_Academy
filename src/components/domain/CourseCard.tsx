@@ -3,23 +3,32 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Award, Sparkles } from 'lucide-react';
 import { Badge } from '../ui/Badge';
 import type { Course } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
+import { COURSE_TRANSLATIONS } from '../../translations/courseTranslations';
 
 interface CourseCardProps {
   course: Course;
 }
 
 export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
+  const { language, t } = useLanguage();
   const isLanguage = course.category === 'language';
   const targetLink = isLanguage
     ? `/courses/${course.slug}`
     : `/courses/smm/${course.slug}`;
+
+  const localizedText = COURSE_TRANSLATIONS[language]?.[course.id];
+  const title = localizedText?.title || course.title;
+  const description = localizedText?.description || course.description;
+  const level = localizedText?.level || course.level;
+  const duration = localizedText?.duration || course.duration;
 
   return (
     <div className="bg-white rounded-[8px] border border-[rgba(0,0,0,0.1)] overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col h-full group">
       <div className="relative h-48 overflow-hidden bg-gray-100">
         <img
           src={course.image}
-          alt={course.title}
+          alt={title}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
@@ -50,21 +59,21 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           <div className="flex items-center space-x-3 text-xs text-gray-500 mb-2">
             <span className="flex items-center">
               <Clock className="w-3.5 h-3.5 mr-1" />
-              {course.duration}
+              {duration}
             </span>
             <span>•</span>
             <span className="flex items-center">
               <Award className="w-3.5 h-3.5 mr-1" />
-              {course.level}
+              {level}
             </span>
           </div>
 
           <h3 className="text-lg font-bold text-[rgb(38,38,38)] group-hover:text-black transition-colors mb-2 line-clamp-1">
-            {course.title}
+            {title}
           </h3>
 
           <p className="text-xs md:text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4">
-            {course.description}
+            {description}
           </p>
         </div>
 
@@ -76,7 +85,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             </div>
             <Link to={targetLink}>
               <span className="inline-flex items-center text-xs md:text-sm font-bold text-black hover:underline group-hover:translate-x-1 transition-transform">
-                View Details <ArrowRight className="w-4 h-4 ml-1" />
+                {t.courses.viewDetails} <ArrowRight className="w-4 h-4 ml-1" />
               </span>
             </Link>
           </div>

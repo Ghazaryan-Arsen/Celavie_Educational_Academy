@@ -4,12 +4,15 @@ import { Menu, X, ChevronDown, Globe, TrendingUp, Sparkles } from 'lucide-react'
 import { Container } from '../ui/Container';
 import { Button } from '../ui/Button';
 import { LANGUAGE_COURSES, SMM_COURSES } from '../../data/mockData';
+import { useLanguage } from '../../context/LanguageContext';
+import { type Language } from '../../translations/siteTranslations';
 
 export const Navigation: React.FC = () => {
   const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { language, setLanguage, t } = useLanguage();
 
   const handleScrollTo = (id: string) => {
     setMobileMenuOpen(false);
@@ -24,6 +27,13 @@ export const Navigation: React.FC = () => {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const languagesList: { code: Language; label: string }[] = [
+    { code: 'hy', label: 'Հայերեն' },
+    { code: 'en', label: 'English' },
+    { code: 'ru', label: 'Русский' },
+    { code: 'fr', label: 'Français' },
+  ];
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[rgba(0,0,0,0.08)] shadow-xs">
@@ -49,14 +59,14 @@ export const Navigation: React.FC = () => {
             onClick={() => handleScrollTo('hero')}
             className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
           >
-            Home
+            {t.nav.home}
           </button>
 
           <button
             onClick={() => handleScrollTo('courses')}
             className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
           >
-            Courses
+            {t.nav.courses}
           </button>
 
           {/* Courses Dropdown */}
@@ -69,7 +79,7 @@ export const Navigation: React.FC = () => {
               onClick={() => handleScrollTo('courses')}
               className="flex items-center space-x-1 text-sm font-semibold py-2 text-gray-600 hover:text-black transition-colors"
             >
-              <span>Explore</span>
+              <span>{t.nav.explore}</span>
               <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-black" />
             </button>
 
@@ -78,7 +88,7 @@ export const Navigation: React.FC = () => {
                 <div>
                   <div className="flex items-center space-x-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
                     <Globe className="w-3.5 h-3.5 text-black" />
-                    <span>Language Courses</span>
+                    <span>{t.nav.languageCourses}</span>
                   </div>
                   <div className="grid grid-cols-2 gap-1.5">
                     {LANGUAGE_COURSES.map((course) => (
@@ -97,7 +107,7 @@ export const Navigation: React.FC = () => {
                 <div className="border-t border-[rgba(0,0,0,0.06)] pt-3">
                   <div className="flex items-center space-x-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
                     <TrendingUp className="w-3.5 h-3.5 text-black" />
-                    <span>SMM Academy</span>
+                    <span>{t.nav.smmAcademy}</span>
                   </div>
                   <div className="space-y-1">
                     {SMM_COURSES.map((smm) => (
@@ -120,7 +130,7 @@ export const Navigation: React.FC = () => {
             onClick={() => handleScrollTo('gallery')}
             className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
           >
-            Gallery
+            {t.nav.gallery}
           </button>
 
           <button
@@ -128,33 +138,63 @@ export const Navigation: React.FC = () => {
             className="text-sm font-semibold flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-[rgba(255,215,0,0.2)] text-black hover:bg-[#FFD700] transition-colors"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Nice Exchange</span>
+            <span>{t.nav.niceExchange}</span>
           </button>
 
           <button
             onClick={() => handleScrollTo('about')}
             className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
           >
-            About
+            {t.nav.about}
           </button>
 
           <button
             onClick={() => handleScrollTo('faq')}
             className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
           >
-            FAQ
+            {t.nav.faq}
           </button>
         </nav>
 
-        {/* Desktop CTA */}
+        {/* Global Language Switcher & Register CTA */}
         <div className="hidden lg:flex items-center space-x-3">
+          {/* Global Language Pill Bar */}
+          <div className="flex items-center space-x-1 bg-gray-100 p-1 rounded-full border border-gray-200">
+            {languagesList.map((item) => (
+              <button
+                key={item.code}
+                onClick={() => setLanguage(item.code)}
+                className={`px-2.5 py-1 text-xs font-bold rounded-full transition ${
+                  language === item.code
+                    ? 'bg-black text-white shadow-xs'
+                    : 'text-gray-600 hover:text-black hover:bg-white/60'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
           <Button variant="primary" size="md" onClick={() => handleScrollTo('register')}>
-            Register Now
+            {t.nav.registerNow}
           </Button>
         </div>
 
         {/* Mobile menu button */}
         <div className="flex lg:hidden items-center space-x-2">
+          {/* Mobile Language Switcher Dropdown */}
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value as Language)}
+            className="text-xs font-bold bg-gray-100 text-black border border-gray-300 rounded-full px-2 py-1 mr-1 focus:outline-none"
+          >
+            {languagesList.map((item) => (
+              <option key={item.code} value={item.code}>
+                {item.label}
+              </option>
+            ))}
+          </select>
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-gray-700 hover:text-black focus:outline-none"
@@ -173,43 +213,43 @@ export const Navigation: React.FC = () => {
               onClick={() => handleScrollTo('hero')}
               className="text-left text-base font-semibold text-gray-800 hover:text-black"
             >
-              Home
+              {t.nav.home}
             </button>
             <button
               onClick={() => handleScrollTo('courses')}
               className="text-left text-base font-semibold text-gray-800 hover:text-black"
             >
-              Courses
+              {t.nav.courses}
             </button>
             <button
               onClick={() => handleScrollTo('gallery')}
               className="text-left text-base font-semibold text-gray-800 hover:text-black"
             >
-              Gallery
+              {t.nav.gallery}
             </button>
             <button
               onClick={() => handleScrollTo('nice-exchange')}
               className="text-left text-base font-bold text-black bg-[#FFD700] px-3 py-2 rounded-md inline-block mt-1"
             >
-              Nice Exchange Program
+              {t.nav.niceExchange}
             </button>
             <button
               onClick={() => handleScrollTo('about')}
               className="text-left text-base font-semibold text-gray-800 hover:text-black"
             >
-              About Us
+              {t.nav.about}
             </button>
             <button
               onClick={() => handleScrollTo('faq')}
               className="text-left text-base font-semibold text-gray-800 hover:text-black"
             >
-              FAQ
+              {t.nav.faq}
             </button>
           </nav>
 
           <div className="pt-4 border-t border-gray-100 flex flex-col space-y-2">
             <Button variant="primary" className="w-full" onClick={() => handleScrollTo('register')}>
-              Register for Course
+              {t.nav.registerNow}
             </Button>
           </div>
         </div>

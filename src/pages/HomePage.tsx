@@ -12,8 +12,10 @@ import { NiceExchangeSection } from '../components/domain/NiceExchangeSection';
 import { LANGUAGE_COURSES, SMM_COURSES, TESTIMONIALS, FAQS, GALLERY_IMAGES } from '../data/mockData';
 import { siteConfig } from '../config/site';
 import { Globe, TrendingUp, CheckCircle2, CreditCard, Landmark, PhoneCall } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const HomePage: React.FC = () => {
+  const { t } = useLanguage();
   const [courseTab, setCourseTab] = useState<'languages' | 'smm'>('languages');
 
   // Inline Course Registration State
@@ -41,23 +43,23 @@ export const HomePage: React.FC = () => {
 
   const handleRegNextStep2 = () => {
     const errs: Record<string, string> = {};
-    if (!regForm.firstName.trim()) errs.firstName = 'First name is required';
-    if (!regForm.lastName.trim()) errs.lastName = 'Last name is required';
+    if (!regForm.firstName.trim()) errs.firstName = t.errors.firstNameRequired;
+    if (!regForm.lastName.trim()) errs.lastName = t.errors.lastNameRequired;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regForm.email.trim() || !emailRegex.test(regForm.email)) {
-      errs.email = 'Valid email is required';
+      errs.email = t.errors.emailInvalid;
     }
     if (!regForm.phone.trim() || regForm.phone.length < 7) {
-      errs.phone = 'Valid phone number is required';
+      errs.phone = t.errors.phoneInvalid;
     }
 
     const ageNum = parseInt(regForm.age, 10);
     if (!regForm.age || isNaN(ageNum) || ageNum < 11 || ageNum > 99) {
-      errs.age = 'Age must be between 11 and 99';
+      errs.age = t.errors.ageMin;
     }
     if (ageNum < 18 && !regForm.parentGuardianName.trim()) {
-      errs.parentGuardianName = 'Parent/guardian name is required for under-18 students';
+      errs.parentGuardianName = t.errors.parentNameRequired;
     }
 
     setRegErrors(errs);
@@ -70,14 +72,14 @@ export const HomePage: React.FC = () => {
     e.preventDefault();
     const errs: Record<string, string> = {};
     if (!regForm.acceptedTerms) {
-      errs.acceptedTerms = 'You must accept the enrollment terms and conditions';
+      errs.acceptedTerms = t.errors.termsRequired;
     }
     if (regForm.paymentMethod === 'card') {
       if (!regForm.cardNumber.trim() || regForm.cardNumber.replaceAll(' ', '').length < 15) {
-        errs.cardNumber = 'Valid 16-digit card number required';
+        errs.cardNumber = t.errors.cardNumberInvalid;
       }
-      if (!regForm.cardExpiry.trim()) errs.cardExpiry = 'Expiry date required (MM/YY)';
-      if (!regForm.cardCvc.trim() || regForm.cardCvc.length < 3) errs.cardCvc = 'Valid CVC required';
+      if (!regForm.cardExpiry.trim()) errs.cardExpiry = t.errors.cardExpiryRequired;
+      if (!regForm.cardCvc.trim() || regForm.cardCvc.length < 3) errs.cardCvc = t.errors.cardCvcInvalid;
     }
 
     setRegErrors(errs);
@@ -107,15 +109,15 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6 text-left">
               <span className="text-xs uppercase tracking-widest text-[#FFD700] font-bold">
-                FOREIGN LANGUAGE CENTER & SMM ACADEMY
+                {t.hero.badge}
               </span>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight leading-tight text-white">
-                CELAVIE Educational Academy
+                {t.hero.title}
               </h1>
 
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl font-sans">
-                Master global foreign languages and high-impact social media marketing with expert native tutors. Take part in our exclusive Nice Exchange program in France.
+                {t.hero.subtitle}
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
@@ -125,7 +127,7 @@ export const HomePage: React.FC = () => {
                   className="w-full sm:w-auto font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none rounded-full px-8 py-3"
                   onClick={() => scrollToSection('register')}
                 >
-                  Select Course
+                  {t.hero.selectCourse}
                 </Button>
                 <Button
                   variant="outline"
@@ -133,7 +135,7 @@ export const HomePage: React.FC = () => {
                   className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-3"
                   onClick={() => scrollToSection('nice-exchange')}
                 >
-                  Nice Exchange Program
+                  {t.hero.niceExchangeBtn}
                 </Button>
               </div>
 
@@ -141,15 +143,15 @@ export const HomePage: React.FC = () => {
               <div className="pt-8 border-t border-white/10 grid grid-cols-3 gap-6 text-left">
                 <div>
                   <span className="text-2xl lg:text-3xl font-bold text-white block">10+</span>
-                  <span className="text-xs text-gray-400 uppercase font-medium">Foreign Languages</span>
+                  <span className="text-xs text-gray-400 uppercase font-medium">{t.hero.metricsLanguages}</span>
                 </div>
                 <div>
                   <span className="text-2xl lg:text-3xl font-bold text-[#FFD700] block">100%</span>
-                  <span className="text-xs text-gray-400 uppercase font-medium">Native Speakers</span>
+                  <span className="text-xs text-gray-400 uppercase font-medium">{t.hero.metricsSpeakers}</span>
                 </div>
                 <div>
                   <span className="text-2xl lg:text-3xl font-bold text-white block">Nice, FR</span>
-                  <span className="text-xs text-gray-400 uppercase font-medium">Summer Exchange</span>
+                  <span className="text-xs text-gray-400 uppercase font-medium">{t.hero.metricsExchange}</span>
                 </div>
               </div>
             </div>
@@ -171,10 +173,10 @@ export const HomePage: React.FC = () => {
       <SectionWrapper id="courses" bg="white" className="py-20">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
           <span className="text-xs font-bold uppercase tracking-widest text-[#38B6FF]">
-            OUR ACADEMIC DIRECTIONS
+            {t.courses.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-serif text-[rgb(38,38,38)]">
-            Explore Foreign Languages & SMM Tiers
+            {t.courses.title}
           </h2>
 
           {/* Toggle Tabs */}
@@ -187,7 +189,7 @@ export const HomePage: React.FC = () => {
                   : 'text-gray-600 hover:text-black'
               }`}
             >
-              Foreign Languages (10+)
+              {t.courses.tabLanguages}
             </button>
             <button
               onClick={() => setCourseTab('smm')}
@@ -197,7 +199,7 @@ export const HomePage: React.FC = () => {
                   : 'text-gray-600 hover:text-black'
               }`}
             >
-              SMM Training (3 Tiers)
+              {t.courses.tabSMM}
             </button>
           </div>
         </div>
@@ -221,13 +223,13 @@ export const HomePage: React.FC = () => {
       <SectionWrapper id="gallery" bg="gray" className="py-20">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-            ATMOSPHERE & MOMENTS
+            {t.gallery.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-serif text-black">
-            Life at CELAVIE Educational Academy
+            {t.gallery.title}
           </h2>
           <p className="text-sm md:text-base text-gray-600">
-            Take a glance into our vibrant learning spaces, speaking clubs, and exchange trips.
+            {t.gallery.subtitle}
           </p>
         </div>
 
@@ -252,24 +254,24 @@ export const HomePage: React.FC = () => {
 
           <div className="lg:col-span-7 space-y-6 text-left">
             <span className="text-xs font-bold uppercase tracking-widest text-[#38B6FF]">
-              ABOUT US
+              {t.about.badge}
             </span>
             <h2 className="text-3xl md:text-5xl font-serif text-black leading-tight">
-              CELAVIE Educational Academy
+              {t.about.title}
             </h2>
 
             <p className="text-base text-gray-700 leading-relaxed font-sans">
-              Our academy brings together a passionate community of foreign language educators and digital marketing pioneers. We believe language learning is not just about grammar—it's about opening new life paths and cultural connections.
+              {t.about.description}
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="p-4 bg-white rounded-[8px] border border-gray-200">
                 <span className="text-2xl font-bold text-black block">{siteConfig.metrics.studentsEnrolled}</span>
-                <span className="text-xs text-gray-500 uppercase">Graduates Worldwide</span>
+                <span className="text-xs text-gray-500 uppercase">{t.about.graduates}</span>
               </div>
               <div className="p-4 bg-white rounded-[8px] border border-gray-200">
                 <span className="text-2xl font-bold text-[#38B6FF] block">{siteConfig.metrics.successRate}</span>
-                <span className="text-xs text-gray-500 uppercase">Fluency & Career Rate</span>
+                <span className="text-xs text-gray-500 uppercase">{t.about.successRate}</span>
               </div>
             </div>
           </div>
@@ -279,16 +281,16 @@ export const HomePage: React.FC = () => {
         <div id="testimonials" className="pt-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-              STUDENT STORIES
+              {t.about.storiesBadge}
             </span>
             <h3 className="text-2xl md:text-3xl font-serif text-black">
-              What Our Graduates Say
+              {t.about.storiesTitle}
             </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <TestimonialCard key={t.id} testimonial={t} />
+            {TESTIMONIALS.map((testimonial) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
             ))}
           </div>
         </div>
@@ -298,20 +300,20 @@ export const HomePage: React.FC = () => {
       <SectionWrapper id="register" bg="white" className="py-20">
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-10">
           <span className="text-xs font-bold uppercase tracking-widest text-[#38B6FF]">
-            REGISTER NOW
+            {t.register.badge}
           </span>
           <h2 className="text-3xl md:text-5xl font-serif text-black">
-            Register for a course
+            {t.register.title}
           </h2>
           <p className="text-sm md:text-base text-gray-600">
-            Three simple steps to start your learning journey.
+            {t.register.subtitle}
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto bg-white p-6 md:p-10 rounded-[16px] border border-gray-200 shadow-xl text-left">
           {!regSubmitted && (
             <RegistrationStepper
-              steps={['Choose a direction', 'Personal Info', 'Payment']}
+              steps={[t.register.step1, t.register.step2, t.register.step3]}
               currentStep={regStep}
             />
           )}
@@ -321,19 +323,19 @@ export const HomePage: React.FC = () => {
               <div className="w-16 h-16 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-bold text-black">Registration Successful!</h3>
+              <h3 className="text-3xl font-bold text-black">{t.register.successTitle}</h3>
               <p className="text-sm text-gray-600 max-w-md mx-auto">
-                A confirmation email with enrollment details has been sent to <strong>{regForm.email}</strong>.
+                {t.register.successDesc}
               </p>
               <Button variant="primary" onClick={() => setRegSubmitted(false)}>
-                Register for Another Course
+                {t.register.registerAnother}
               </Button>
             </div>
           ) : (
             <div>
               {regStep === 1 && (
                 <div className="space-y-6 pt-4">
-                  <h3 className="text-lg font-bold text-black">Choose a direction</h3>
+                  <h3 className="text-lg font-bold text-black">{t.register.step1}</h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <button
@@ -349,7 +351,7 @@ export const HomePage: React.FC = () => {
                       }`}
                     >
                       <Globe className="w-6 h-6 text-[#38B6FF] mb-3" />
-                      <h4 className="font-bold text-black text-base">Foreign language</h4>
+                      <h4 className="font-bold text-black text-base">{t.register.directionLanguage}</h4>
                       <span className="text-xs text-[#38B6FF] font-semibold mt-1 block">10+ →</span>
                     </button>
 
@@ -366,13 +368,13 @@ export const HomePage: React.FC = () => {
                       }`}
                     >
                       <TrendingUp className="w-6 h-6 text-[#38B6FF] mb-3" />
-                      <h4 className="font-bold text-black text-base">SMM training</h4>
+                      <h4 className="font-bold text-black text-base">{t.register.directionSMM}</h4>
                       <span className="text-xs text-[#38B6FF] font-semibold mt-1 block">Pro →</span>
                     </button>
                   </div>
 
                   <Select
-                    label="Select Specific Course Batch"
+                    label={t.register.selectSpecific}
                     value={regCourseId}
                     onChange={(e) => setRegCourseId(e.target.value)}
                     options={allCourses.map((c) => ({
@@ -382,32 +384,32 @@ export const HomePage: React.FC = () => {
                   />
 
                   <Button variant="primary" size="lg" className="w-full font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none" onClick={() => setRegStep(2)}>
-                    Continue to Personal Info
+                    {t.register.continuePersonalInfo}
                   </Button>
                 </div>
               )}
 
               {regStep === 2 && (
                 <div className="space-y-6 pt-4">
-                  <h3 className="text-lg font-bold text-black">Step 2: Student Information</h3>
+                  <h3 className="text-lg font-bold text-black">{t.register.step2}</h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Input
-                      label="First Name"
+                      label={t.niceExchange.firstName}
                       required
                       value={regForm.firstName}
                       onChange={(e) => setRegForm({ ...regForm, firstName: e.target.value })}
                       error={regErrors.firstName}
                     />
                     <Input
-                      label="Last Name"
+                      label={t.niceExchange.lastName}
                       required
                       value={regForm.lastName}
                       onChange={(e) => setRegForm({ ...regForm, lastName: e.target.value })}
                       error={regErrors.lastName}
                     />
                     <Input
-                      label="Email Address"
+                      label={t.niceExchange.email}
                       type="email"
                       required
                       value={regForm.email}
@@ -415,7 +417,7 @@ export const HomePage: React.FC = () => {
                       error={regErrors.email}
                     />
                     <Input
-                      label="Phone Number"
+                      label={t.niceExchange.phone}
                       type="tel"
                       required
                       value={regForm.phone}
@@ -423,7 +425,7 @@ export const HomePage: React.FC = () => {
                       error={regErrors.phone}
                     />
                     <Input
-                      label="Age"
+                      label={t.niceExchange.age}
                       type="number"
                       required
                       value={regForm.age}
@@ -432,7 +434,7 @@ export const HomePage: React.FC = () => {
                     />
                     {parseInt(regForm.age, 10) < 18 && (
                       <Input
-                        label="Parent / Guardian Full Name"
+                        label={t.niceExchange.parentName}
                         required
                         value={regForm.parentGuardianName}
                         onChange={(e) => setRegForm({ ...regForm, parentGuardianName: e.target.value })}
@@ -443,10 +445,10 @@ export const HomePage: React.FC = () => {
 
                   <div className="flex justify-between space-x-4 pt-4 border-t border-gray-100">
                     <Button variant="outline" onClick={() => setRegStep(1)}>
-                      Back
+                      {t.register.back}
                     </Button>
                     <Button variant="primary" size="lg" className="font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none" onClick={handleRegNextStep2}>
-                      Continue to Payment
+                      {t.register.continuePayment}
                     </Button>
                   </div>
                 </div>
@@ -454,7 +456,7 @@ export const HomePage: React.FC = () => {
 
               {regStep === 3 && (
                 <form onSubmit={handleRegSubmit} className="space-y-6 pt-4">
-                  <h3 className="text-lg font-bold text-black">Step 3: Payment & Summary</h3>
+                  <h3 className="text-lg font-bold text-black">{t.register.step3}</h3>
 
                   <div className="p-4 bg-gray-50 rounded-[8px] border border-gray-200 flex justify-between items-center">
                     <div>
@@ -475,7 +477,7 @@ export const HomePage: React.FC = () => {
                       }`}
                     >
                       <CreditCard className="w-4 h-4 text-black" />
-                      <span className="text-xs">Credit Card</span>
+                      <span className="text-xs">{t.register.paymentCard}</span>
                     </button>
 
                     <button
@@ -488,7 +490,7 @@ export const HomePage: React.FC = () => {
                       }`}
                     >
                       <Landmark className="w-4 h-4 text-black" />
-                      <span className="text-xs">Bank Transfer</span>
+                      <span className="text-xs">{t.register.paymentBank}</span>
                     </button>
 
                     <button
@@ -501,14 +503,14 @@ export const HomePage: React.FC = () => {
                       }`}
                     >
                       <PhoneCall className="w-4 h-4 text-black" />
-                      <span className="text-xs">Payment Plan</span>
+                      <span className="text-xs">{t.register.paymentPlan}</span>
                     </button>
                   </div>
 
                   {regForm.paymentMethod === 'card' && (
                     <div className="p-4 rounded-[6px] border border-gray-200 bg-gray-50 space-y-4">
                       <Input
-                        label="Card Number"
+                        label={t.register.cardNumber}
                         placeholder="4000 0000 0000 0000"
                         value={regForm.cardNumber}
                         onChange={(e) => setRegForm({ ...regForm, cardNumber: e.target.value })}
@@ -516,14 +518,14 @@ export const HomePage: React.FC = () => {
                       />
                       <div className="grid grid-cols-2 gap-4">
                         <Input
-                          label="Expiry Date"
+                          label={t.register.cardExpiry}
                           placeholder="MM/YY"
                           value={regForm.cardExpiry}
                           onChange={(e) => setRegForm({ ...regForm, cardExpiry: e.target.value })}
                           error={regErrors.cardExpiry}
                         />
                         <Input
-                          label="CVC"
+                          label={t.register.cardCvc}
                           placeholder="123"
                           type="password"
                           maxLength={4}
@@ -544,7 +546,7 @@ export const HomePage: React.FC = () => {
                         className="mt-1 w-4 h-4 text-black focus:ring-black rounded"
                       />
                       <span className="text-xs text-gray-700">
-                        I agree to the enrollment terms and conditions.
+                        {t.register.acceptTerms}
                       </span>
                     </label>
                     {regErrors.acceptedTerms && (
@@ -554,10 +556,10 @@ export const HomePage: React.FC = () => {
 
                   <div className="flex justify-between space-x-4 pt-4 border-t border-gray-100">
                     <Button type="button" variant="outline" onClick={() => setRegStep(2)}>
-                      Back
+                      {t.register.back}
                     </Button>
                     <Button type="submit" variant="accent" size="lg" className="font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none" disabled={regLoading}>
-                      {regLoading ? 'Processing Enrollment...' : 'Complete Registration'}
+                      {regLoading ? t.register.processing : t.register.completeRegistration}
                     </Button>
                   </div>
                 </form>
@@ -571,13 +573,13 @@ export const HomePage: React.FC = () => {
       <SectionWrapper id="faq" bg="gray" className="py-20">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-            QUESTIONS & ANSWERS
+            {t.faq.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-serif text-black">
-            Frequently Asked Questions
+            {t.faq.title}
           </h2>
           <p className="text-sm md:text-base text-gray-600">
-            Have questions regarding enrollment, schedules, or payment methods?
+            {t.faq.subtitle}
           </p>
         </div>
 
