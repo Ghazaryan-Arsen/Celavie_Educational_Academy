@@ -1,23 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown, Check } from 'lucide-react';
-
-export interface LanguageOption {
-  code: string;
-  name: string;
-  flag: string;
-  label: string;
-}
-
-export const LANGUAGES: LanguageOption[] = [
-  { code: 'HY', name: 'Հայերեն', flag: '🇦🇲', label: 'HY 🇦🇲' },
-  { code: 'EN', name: 'English', flag: '🇬🇧', label: 'EN 🇬🇧' },
-  { code: 'RU', name: 'Русский', flag: '🇷🇺', label: 'RU 🇷🇺' },
-  { code: 'FR', name: 'Français', flag: '🇫🇷', label: 'FR 🇫🇷' },
-];
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, ChevronDown, Globe, TrendingUp, Sparkles } from 'lucide-react';
+import { Container } from '../ui/Container';
+import { Button } from '../ui/Button';
+import { LANGUAGE_COURSES, SMM_COURSES } from '../../data/mockData';
+import { useLanguage } from '../../context/LanguageContext';
+import { type Language } from '../../translations/siteTranslations';
 
 export const Navigation: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<LanguageOption>(LANGUAGES[0]);
@@ -25,18 +16,7 @@ export const Navigation: React.FC = () => {
   const langRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { language, setLanguage, t } = useLanguage();
 
   // Click outside to close language switcher dropdown
   useEffect(() => {
@@ -63,198 +43,229 @@ export const Navigation: React.FC = () => {
     }
   };
 
+  const languagesList: { code: Language; label: string }[] = [
+    { code: 'hy', label: 'Հայերեն' },
+    { code: 'en', label: 'English' },
+    { code: 'ru', label: 'Русский' },
+    { code: 'fr', label: 'Français' },
+  ];
+
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-sm py-3.5 border-b border-[#4aabb8]/10'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
-        {/* Logo / Brand */}
-        <button
-          onClick={() => handleScrollTo('top')}
-          className="flex items-center space-x-3 group text-left focus:outline-none cursor-pointer"
-        >
-          <div className="w-10 h-10 rounded-full bg-[#4aabb8] text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[rgba(0,0,0,0.08)] shadow-xs">
+      <Container className="flex items-center justify-between h-20">
+        {/* Brand Logo */}
+        <button onClick={() => handleScrollTo('hero')} className="flex items-center space-x-3 group text-left">
+          <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center font-bold text-xl tracking-tight shadow-md group-hover:bg-[#FFD700] group-hover:text-black transition-colors">
             C
           </div>
           <div>
-            <span className="font-heading text-xl font-bold tracking-tight text-[#222222] block leading-tight">
-              CELAVIE Academy
+            <span className="font-extrabold text-lg tracking-tight text-[rgb(38,38,38)] block leading-tight">
+              CELAVIE
             </span>
-            <span className="text-[10px] uppercase font-semibold tracking-widest text-[#4aabb8] block">
-              @CELAVIE_ACADEMY
+            <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500 block">
+              Educational Academy
             </span>
           </div>
         </button>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        {/* Desktop Nav Items */}
+        <nav className="hidden lg:flex items-center space-x-6">
+          <button
+            onClick={() => handleScrollTo('hero')}
+            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
+          >
+            {t.nav.home}
+          </button>
+
           <button
             onClick={() => handleScrollTo('courses')}
-            className="text-sm font-medium text-[#222222]/80 hover:text-[#4aabb8] transition-colors focus:outline-none cursor-pointer"
+            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
           >
-            Courses
+            {t.nav.courses}
           </button>
-          <button
-            onClick={() => handleScrollTo('nice')}
-            className="text-sm font-medium text-[#222222]/80 hover:text-[#4aabb8] transition-colors focus:outline-none cursor-pointer"
+
+          {/* Courses Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setCoursesDropdownOpen(true)}
+            onMouseLeave={() => setCoursesDropdownOpen(false)}
           >
-            Nice Program
+            <button
+              onClick={() => handleScrollTo('courses')}
+              className="flex items-center space-x-1 text-sm font-semibold py-2 text-gray-600 hover:text-black transition-colors"
+            >
+              <span>{t.nav.explore}</span>
+              <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-black" />
+            </button>
+
+            {coursesDropdownOpen && (
+              <div className="absolute top-full left-0 w-80 bg-white rounded-[8px] shadow-xl border border-[rgba(0,0,0,0.1)] py-3 px-4 z-50 animate-fade-in grid gap-4">
+                <div>
+                  <div className="flex items-center space-x-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                    <Globe className="w-3.5 h-3.5 text-black" />
+                    <span>{t.nav.languageCourses}</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {LANGUAGE_COURSES.map((course) => (
+                      <Link
+                        key={course.id}
+                        to={`/courses/${course.slug}`}
+                        className="text-xs font-medium text-gray-700 hover:text-black hover:bg-[rgba(0,0,0,0.04)] px-2 py-1.5 rounded transition flex items-center space-x-1.5"
+                      >
+                        <span>{course.flagEmoji}</span>
+                        <span>{course.language}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-[rgba(0,0,0,0.06)] pt-3">
+                  <div className="flex items-center space-x-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                    <TrendingUp className="w-3.5 h-3.5 text-black" />
+                    <span>{t.nav.smmAcademy}</span>
+                  </div>
+                  <div className="space-y-1">
+                    {SMM_COURSES.map((smm) => (
+                      <Link
+                        key={smm.id}
+                        to={`/courses/smm/${smm.tier}`}
+                        className="text-xs font-medium text-gray-700 hover:text-black hover:bg-[rgba(0,0,0,0.04)] px-2 py-1 rounded transition flex items-center justify-between"
+                      >
+                        <span>{smm.title}</span>
+                        <span className="text-[10px] text-gray-400 capitalize">{smm.tier}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <button
+            onClick={() => handleScrollTo('gallery')}
+            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
+          >
+            {t.nav.gallery}
           </button>
+
           <button
-            onClick={() => handleScrollTo('why')}
-            className="text-sm font-medium text-[#222222]/80 hover:text-[#4aabb8] transition-colors focus:outline-none cursor-pointer"
+            onClick={() => handleScrollTo('nice-exchange')}
+            className="text-sm font-semibold flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-[rgba(255,215,0,0.2)] text-black hover:bg-[#FFD700] transition-colors"
           >
-            Why Us
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{t.nav.niceExchange}</span>
           </button>
+
           <button
-            onClick={() => handleScrollTo('contact')}
-            className="text-sm font-medium text-[#222222]/80 hover:text-[#4aabb8] transition-colors focus:outline-none cursor-pointer"
+            onClick={() => handleScrollTo('about')}
+            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
           >
-            Contact
+            {t.nav.about}
+          </button>
+
+          <button
+            onClick={() => handleScrollTo('faq')}
+            className="text-sm font-semibold text-gray-600 hover:text-black transition-colors"
+          >
+            {t.nav.faq}
           </button>
         </nav>
 
-        {/* Desktop Controls (Language Switcher + CTA Button) */}
-        <div className="hidden lg:flex items-center space-x-4">
-          {/* Language Switcher Dropdown */}
-          <div className="relative" ref={langRef}>
-            <button
-              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-full border border-[#4aabb8]/20 bg-white/80 hover:bg-white text-xs font-semibold text-[#222222] hover:border-[#4aabb8]/40 transition-all shadow-xs cursor-pointer focus:outline-none"
-              aria-label="Select Language Desktop"
-            >
-              <span className="text-base leading-none">{currentLang.flag}</span>
-              <span>{currentLang.code}</span>
-              <ChevronDown className={`w-3.5 h-3.5 text-[#222222]/60 transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            {langDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-44 rounded-2xl bg-white border border-[#4aabb8]/20 shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#4aabb8]">
-                  Language / Լեզու
-                </div>
-                {LANGUAGES.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      setCurrentLang(lang);
-                      setLangDropdownOpen(false);
-                    }}
-                    className={`w-full text-left px-3.5 py-2 text-xs font-medium flex items-center justify-between hover:bg-[#4aabb8]/10 transition-colors cursor-pointer ${
-                      currentLang.code === lang.code ? 'text-[#2b7a85] font-bold bg-[#4aabb8]/5' : 'text-[#222222]/80'
-                    }`}
-                  >
-                    <div className="flex items-center space-x-2.5">
-                      <span className="text-base leading-none">{lang.flag}</span>
-                      <span>{lang.name}</span>
-                    </div>
-                    {currentLang.code === lang.code && <Check className="w-3.5 h-3.5 text-[#4aabb8]" />}
-                  </button>
-                ))}
-              </div>
-            )}
+        {/* Global Language Switcher & Register CTA */}
+        <div className="hidden lg:flex items-center space-x-3">
+          {/* Global Language Pill Bar */}
+          <div className="flex items-center space-x-1 bg-gray-100 p-1 rounded-full border border-gray-200">
+            {languagesList.map((item) => (
+              <button
+                key={item.code}
+                onClick={() => setLanguage(item.code)}
+                className={`px-2.5 py-1 text-xs font-bold rounded-full transition ${
+                  language === item.code
+                    ? 'bg-black text-white shadow-xs'
+                    : 'text-gray-600 hover:text-black hover:bg-white/60'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
 
-          <button
-            onClick={() => handleScrollTo('register')}
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#4aabb8] text-white font-medium text-sm hover:bg-[#2b7a85] transition-all shadow-md hover:shadow-lg focus:outline-none cursor-pointer"
-          >
-            Register Now
-          </button>
+          <Button variant="primary" size="md" onClick={() => handleScrollTo('register')}>
+            {t.nav.registerNow}
+          </Button>
         </div>
 
-        {/* Mobile Controls (Lang button + Menu toggle) */}
+        {/* Mobile menu button */}
         <div className="flex lg:hidden items-center space-x-2">
-          {/* Mobile Language Switcher Trigger */}
-          <div className="relative" ref={langRef}>
-            <button
-              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-[#4aabb8]/20 bg-white/90 text-xs font-semibold text-[#222222] shadow-xs cursor-pointer focus:outline-none"
-              aria-label="Select Language Mobile"
-            >
-              <span className="text-sm leading-none">{currentLang.flag}</span>
-              <span>{currentLang.code}</span>
-              <ChevronDown className={`w-3 h-3 text-[#222222]/60 transition-transform ${langDropdownOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            {langDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-44 rounded-2xl bg-white border border-[#4aabb8]/20 shadow-xl py-2 z-50">
-                <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#4aabb8]">
-                  Language
-                </div>
-                {LANGUAGES.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      setCurrentLang(lang);
-                      setLangDropdownOpen(false);
-                    }}
-                    className={`w-full text-left px-3.5 py-2 text-xs font-medium flex items-center justify-between hover:bg-[#4aabb8]/10 transition-colors cursor-pointer ${
-                      currentLang.code === lang.code ? 'text-[#2b7a85] font-bold bg-[#4aabb8]/5' : 'text-[#222222]/80'
-                    }`}
-                  >
-                    <div className="flex items-center space-x-2.5">
-                      <span className="text-base leading-none">{lang.flag}</span>
-                      <span>{lang.name}</span>
-                    </div>
-                    {currentLang.code === lang.code && <Check className="w-3.5 h-3.5 text-[#4aabb8]" />}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Mobile Language Switcher Dropdown */}
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value as Language)}
+            className="text-xs font-bold bg-gray-100 text-black border border-gray-300 rounded-full px-2 py-1 mr-1 focus:outline-none"
+          >
+            {languagesList.map((item) => (
+              <option key={item.code} value={item.code}>
+                {item.label}
+              </option>
+            ))}
+          </select>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-[#222222] hover:text-[#4aabb8] focus:outline-none"
+            className="p-2 text-gray-700 hover:text-black focus:outline-none"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </div>
+      </Container>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-[#4aabb8]/10 px-6 pt-4 pb-6 space-y-4 shadow-xl">
+        <div className="lg:hidden border-t border-[rgba(0,0,0,0.08)] bg-white px-4 pt-4 pb-6 space-y-4">
           <nav className="flex flex-col space-y-3">
             <button
+              onClick={() => handleScrollTo('hero')}
+              className="text-left text-base font-semibold text-gray-800 hover:text-black"
+            >
+              {t.nav.home}
+            </button>
+            <button
               onClick={() => handleScrollTo('courses')}
-              className="text-left text-base font-medium text-[#222222] hover:text-[#4aabb8] py-1"
+              className="text-left text-base font-semibold text-gray-800 hover:text-black"
             >
-              Courses
+              {t.nav.courses}
             </button>
             <button
-              onClick={() => handleScrollTo('nice')}
-              className="text-left text-base font-medium text-[#222222] hover:text-[#4aabb8] py-1"
+              onClick={() => handleScrollTo('gallery')}
+              className="text-left text-base font-semibold text-gray-800 hover:text-black"
             >
-              Nice Program
+              {t.nav.gallery}
             </button>
             <button
-              onClick={() => handleScrollTo('why')}
-              className="text-left text-base font-medium text-[#222222] hover:text-[#4aabb8] py-1"
+              onClick={() => handleScrollTo('nice-exchange')}
+              className="text-left text-base font-bold text-black bg-[#FFD700] px-3 py-2 rounded-md inline-block mt-1"
             >
-              Why Us
+              {t.nav.niceExchange}
             </button>
             <button
-              onClick={() => handleScrollTo('contact')}
-              className="text-left text-base font-medium text-[#222222] hover:text-[#4aabb8] py-1"
+              onClick={() => handleScrollTo('about')}
+              className="text-left text-base font-semibold text-gray-800 hover:text-black"
             >
-              Contact
+              {t.nav.about}
+            </button>
+            <button
+              onClick={() => handleScrollTo('faq')}
+              className="text-left text-base font-semibold text-gray-800 hover:text-black"
+            >
+              {t.nav.faq}
             </button>
           </nav>
 
-          <div className="pt-2 border-t border-[#4aabb8]/10 flex flex-col space-y-3">
-            <button
-              onClick={() => handleScrollTo('register')}
-              className="w-full py-3 rounded-full bg-[#4aabb8] text-white font-medium text-sm hover:bg-[#2b7a85] transition-colors text-center shadow-md"
-            >
-              Register Now
-            </button>
+          <div className="pt-4 border-t border-gray-100 flex flex-col space-y-2">
+            <Button variant="primary" className="w-full" onClick={() => handleScrollTo('register')}>
+              {t.nav.registerNow}
+            </Button>
           </div>
         </div>
       )}
