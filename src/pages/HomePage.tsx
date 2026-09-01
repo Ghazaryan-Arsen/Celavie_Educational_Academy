@@ -214,7 +214,7 @@ export const HomePage: React.FC = () => {
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6 text-left">
               <Badge variant="primary" className="px-4 py-1.5 text-xs font-semibold tracking-wider uppercase">
-                CELAVIE Educational Academy • @CELAVIE_ACADEMY
+                CELAVIE EDUCATIONAL ACADEMY » @CELAVIE_ACADEMY
               </Badge>
 
               <h1
