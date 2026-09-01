@@ -1,24 +1,113 @@
 import React, { useState } from 'react';
-import { SectionWrapper } from '../components/ui/SectionWrapper';
 import { Button } from '../components/ui/Button';
+import { Badge } from '../components/ui/Badge';
 import { FAQAccordion } from '../components/ui/FAQAccordion';
 import { CourseCard } from '../components/domain/CourseCard';
 import { TestimonialCard } from '../components/domain/TestimonialCard';
-import { ImageGallery } from '../components/ui/ImageGallery';
 import { Input } from '../components/ui/Input';
 import { Select } from '../components/ui/Select';
+import { Textarea } from '../components/ui/Textarea';
 import { RegistrationStepper } from '../components/ui/RegistrationStepper';
-import { NiceExchangeSection } from '../components/domain/NiceExchangeSection';
-import { LANGUAGE_COURSES, SMM_COURSES, TESTIMONIALS, FAQS, GALLERY_IMAGES } from '../data/mockData';
-import { siteConfig } from '../config/site';
-import { Globe, TrendingUp, CheckCircle2, CreditCard, Landmark, PhoneCall } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
+import { LANGUAGE_COURSES, SMM_COURSES, TESTIMONIALS, FAQS } from '../data/mockData';
+import {
+  Globe,
+  TrendingUp,
+  CheckCircle2,
+  CreditCard,
+  Landmark,
+  PhoneCall,
+  ArrowRight,
+  Users,
+  Target,
+  MapPin,
+  Star,
+} from 'lucide-react';
 
 export const HomePage: React.FC = () => {
-  const { t } = useLanguage();
-  const [courseTab, setCourseTab] = useState<'languages' | 'smm'>('languages');
+  // Course filter tabs: 'all' | 'language' | 'smm'
+  const [courseFilter, setCourseFilter] = useState<'all' | 'language' | 'smm'>('all');
 
-  // Inline Course Registration State
+  // Nice Exchange Embedded Application state
+  const [niceForm, setNiceForm] = useState({
+    firstName: '',
+    lastName: '',
+    parentGuardianName: '',
+    age: '',
+    school: '',
+    email: '',
+    phone: '',
+    country: '',
+    frenchLevel: 'A1',
+    preferredDate: '',
+    duration: '2_weeks',
+    accommodation: 'host_family',
+    essay: '',
+    dietaryRestrictions: '',
+    emergencyContact: '',
+    acceptedTerms: false,
+  });
+  const [niceErrors, setNiceErrors] = useState<Record<string, string>>({});
+  const [niceSubmitted, setNiceSubmitted] = useState(false);
+  const [niceLoading, setNiceLoading] = useState(false);
+
+  const handleNiceSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const errs: Record<string, string> = {};
+    if (!niceForm.firstName.trim()) errs.firstName = 'First name is required';
+    if (!niceForm.lastName.trim()) errs.lastName = 'Last name is required';
+
+    const ageNum = parseInt(niceForm.age, 10);
+    if (!niceForm.age || isNaN(ageNum) || ageNum < 14 || ageNum > 99) {
+      errs.age = 'Age must be between 14 and 99';
+    }
+    if (ageNum < 18 && !niceForm.parentGuardianName.trim()) {
+      errs.parentGuardianName = 'Parent or guardian full name is required for applicants under 18';
+    }
+    if (!niceForm.school.trim()) errs.school = 'School or university name is required';
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!niceForm.email.trim() || !emailRegex.test(niceForm.email)) {
+      errs.email = 'Valid email address is required';
+    }
+    if (!niceForm.phone.trim() || niceForm.phone.length < 7) {
+      errs.phone = 'Valid phone number is required';
+    }
+    if (!niceForm.country.trim()) errs.country = 'Country of residence is required';
+
+    if (!niceForm.preferredDate) {
+      errs.preferredDate = 'Preferred start date is required';
+    } else {
+      const selected = new Date(niceForm.preferredDate);
+      const minDate = new Date();
+      minDate.setDate(minDate.getDate() + 14);
+      if (selected < minDate) {
+        errs.preferredDate = 'Start date must be at least 2 weeks in the future';
+      }
+    }
+
+    const wordCount = niceForm.essay.trim().split(/\s+/).filter(Boolean).length;
+    if (wordCount < 300 || wordCount > 500) {
+      errs.essay = `Essay must be between 300 and 500 words (Current word count: ${wordCount})`;
+    }
+
+    if (!niceForm.emergencyContact.trim()) {
+      errs.emergencyContact = 'Emergency contact details are required';
+    }
+    if (!niceForm.acceptedTerms) {
+      errs.acceptedTerms = 'You must accept the terms and conditions';
+    }
+
+    setNiceErrors(errs);
+    if (Object.keys(errs).length === 0) {
+      setNiceLoading(true);
+      setTimeout(() => {
+        setNiceLoading(false);
+        setNiceSubmitted(true);
+      }, 1000);
+    }
+  };
+
+  // Inline Registration State
   const allCourses = [...LANGUAGE_COURSES, ...SMM_COURSES];
   const [regStep, setRegStep] = useState<number>(1);
   const [regCourseId, setRegCourseId] = useState<string>(allCourses[0].id);
@@ -43,23 +132,23 @@ export const HomePage: React.FC = () => {
 
   const handleRegNextStep2 = () => {
     const errs: Record<string, string> = {};
-    if (!regForm.firstName.trim()) errs.firstName = t.errors.firstNameRequired;
-    if (!regForm.lastName.trim()) errs.lastName = t.errors.lastNameRequired;
+    if (!regForm.firstName.trim()) errs.firstName = 'First name is required';
+    if (!regForm.lastName.trim()) errs.lastName = 'Last name is required';
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regForm.email.trim() || !emailRegex.test(regForm.email)) {
-      errs.email = t.errors.emailInvalid;
+      errs.email = 'Valid email is required';
     }
     if (!regForm.phone.trim() || regForm.phone.length < 7) {
-      errs.phone = t.errors.phoneInvalid;
+      errs.phone = 'Valid phone number is required';
     }
 
     const ageNum = parseInt(regForm.age, 10);
-    if (!regForm.age || isNaN(ageNum) || ageNum < 11 || ageNum > 99) {
-      errs.age = t.errors.ageMin;
+    if (!regForm.age || isNaN(ageNum) || ageNum < 12 || ageNum > 99) {
+      errs.age = 'Age must be between 12 and 99';
     }
     if (ageNum < 18 && !regForm.parentGuardianName.trim()) {
-      errs.parentGuardianName = t.errors.parentNameRequired;
+      errs.parentGuardianName = 'Parent/guardian name is required for under-18 students';
     }
 
     setRegErrors(errs);
@@ -72,14 +161,14 @@ export const HomePage: React.FC = () => {
     e.preventDefault();
     const errs: Record<string, string> = {};
     if (!regForm.acceptedTerms) {
-      errs.acceptedTerms = t.errors.termsRequired;
+      errs.acceptedTerms = 'You must accept the enrollment terms and conditions';
     }
     if (regForm.paymentMethod === 'card') {
       if (!regForm.cardNumber.trim() || regForm.cardNumber.replaceAll(' ', '').length < 15) {
-        errs.cardNumber = t.errors.cardNumberInvalid;
+        errs.cardNumber = 'Valid 16-digit card number required';
       }
-      if (!regForm.cardExpiry.trim()) errs.cardExpiry = t.errors.cardExpiryRequired;
-      if (!regForm.cardCvc.trim() || regForm.cardCvc.length < 3) errs.cardCvc = t.errors.cardCvcInvalid;
+      if (!regForm.cardExpiry.trim()) errs.cardExpiry = 'Expiry date required (MM/YY)';
+      if (!regForm.cardCvc.trim() || regForm.cardCvc.length < 3) errs.cardCvc = 'Valid CVC required';
     }
 
     setRegErrors(errs);
@@ -92,7 +181,9 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  const generalFaqs = FAQS.filter((f) => f.category === 'general' || f.category === 'registration' || f.category === 'nice-exchange');
+  const generalFaqs = FAQS.filter(
+    (f) => f.category === 'general' || f.category === 'registration' || f.category === 'nice-exchange'
+  );
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -101,492 +192,862 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  return (
-    <div className="bg-white text-gray-900">
-      {/* 1. HERO SECTION */}
-      <section id="hero" className="relative bg-[#1A1A1A] text-white py-20 lg:py-28 overflow-hidden">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <span className="text-xs uppercase tracking-widest text-[#FFD700] font-bold">
-                {t.hero.badge}
-              </span>
+  const filteredCourses =
+    courseFilter === 'all'
+      ? allCourses
+      : courseFilter === 'language'
+      ? LANGUAGE_COURSES
+      : SMM_COURSES;
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight leading-tight text-white">
-                {t.hero.title}
+  return (
+    <div className="bg-white text-[#222222]">
+      {/* 1. HERO SECTION (#top) */}
+      <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden">
+        {/* Background Ambient Glows */}
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[40rem] h-[40rem] rounded-full bg-[#4aabb8]/10 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] rounded-full bg-[#4aabb8]/5 blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <Badge variant="primary" className="px-4 py-1.5 text-xs font-semibold tracking-wider uppercase">
+                CELAVIE EDUCATIONAL ACADEMY » @CELAVIE_ACADEMY
+              </Badge>
+
+              <h1
+                className="font-heading font-medium text-[#222222] text-balance"
+                style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.1 }}
+              >
+                International Standard Education with CELAVIE
               </h1>
 
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl font-sans">
-                {t.hero.subtitle}
+              <p className="text-base sm:text-lg text-[#222222]/70 leading-relaxed max-w-2xl font-sans">
+                Master 10+ foreign languages and high-converting SMM marketing strategies. Join our exclusive exchange programs in Nice, France and elevate your career.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+              <div className="flex flex-wrap items-center gap-4 pt-4">
                 <Button
-                  variant="accent"
+                  variant="primary"
                   size="lg"
-                  className="w-full sm:w-auto font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none rounded-full px-8 py-3"
+                  className="rounded-full px-8 py-3.5 shadow-md hover:shadow-lg font-semibold cursor-pointer"
                   onClick={() => scrollToSection('register')}
                 >
-                  {t.hero.selectCourse}
+                  Start Learning Now
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-3"
-                  onClick={() => scrollToSection('nice-exchange')}
+                  className="rounded-full px-8 py-3.5 font-semibold cursor-pointer"
+                  onClick={() => scrollToSection('courses')}
                 >
-                  {t.hero.niceExchangeBtn}
+                  Explore Programs
                 </Button>
               </div>
 
-              {/* Metrics */}
-              <div className="pt-8 border-t border-white/10 grid grid-cols-3 gap-6 text-left">
+              {/* Key Metrics Grid */}
+              <div className="pt-8 border-t border-[#4aabb8]/15 grid grid-cols-3 gap-6">
                 <div>
-                  <span className="text-2xl lg:text-3xl font-bold text-white block">10+</span>
-                  <span className="text-xs text-gray-400 uppercase font-medium">{t.hero.metricsLanguages}</span>
+                  <span className="font-heading text-3xl sm:text-4xl font-bold text-[#4aabb8] block">10+</span>
+                  <span className="text-xs text-[#222222]/60 uppercase font-semibold tracking-wider">Foreign Languages</span>
                 </div>
                 <div>
-                  <span className="text-2xl lg:text-3xl font-bold text-[#FFD700] block">100%</span>
-                  <span className="text-xs text-gray-400 uppercase font-medium">{t.hero.metricsSpeakers}</span>
+                  <span className="font-heading text-3xl sm:text-4xl font-bold text-[#222222] block">100%</span>
+                  <span className="text-xs text-[#222222]/60 uppercase font-semibold tracking-wider">Native Tutors</span>
                 </div>
                 <div>
-                  <span className="text-2xl lg:text-3xl font-bold text-white block">Nice, FR</span>
-                  <span className="text-xs text-gray-400 uppercase font-medium">{t.hero.metricsExchange}</span>
+                  <span className="font-heading text-3xl sm:text-4xl font-bold text-[#4aabb8] block">Nice, FR</span>
+                  <span className="text-xs text-[#222222]/60 uppercase font-semibold tracking-wider">Summer Exchange</span>
                 </div>
               </div>
             </div>
 
+            {/* Right Hero Image */}
             <div className="lg:col-span-5 relative">
-              <div className="relative rounded-[16px] overflow-hidden border border-white/10 shadow-2xl">
+              <div className="relative rounded-[2rem] overflow-hidden border border-[#4aabb8]/20 shadow-card group">
                 <img
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
                   alt="CELAVIE Educational Academy Students"
-                  className="w-full h-[420px] object-cover"
+                  className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/90 backdrop-blur-md border border-white/20 shadow-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 rounded-full bg-[#4aabb8] text-white flex items-center justify-center font-bold text-lg">
+                      C
+                    </div>
+                    <div>
+                      <h4 className="font-heading font-bold text-[#222222] text-sm">CELAVIE Language & SMM Center</h4>
+                      <p className="text-xs text-[#222222]/70">Enrollments open for upcoming trimester</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. COURSES SECTION */}
-      <SectionWrapper id="courses" bg="white" className="py-20">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#38B6FF]">
-            {t.courses.badge}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-serif text-[rgb(38,38,38)]">
-            {t.courses.title}
-          </h2>
-
-          {/* Toggle Tabs */}
-          <div className="inline-flex p-1.5 bg-gray-100 rounded-full border border-gray-200 mt-4">
-            <button
-              onClick={() => setCourseTab('languages')}
-              className={`px-6 py-2 text-sm font-semibold rounded-full transition ${
-                courseTab === 'languages'
-                  ? 'bg-black text-white shadow-sm'
-                  : 'text-gray-600 hover:text-black'
-              }`}
-            >
-              {t.courses.tabLanguages}
-            </button>
-            <button
-              onClick={() => setCourseTab('smm')}
-              className={`px-6 py-2 text-sm font-semibold rounded-full transition ${
-                courseTab === 'smm'
-                  ? 'bg-black text-white shadow-sm'
-                  : 'text-gray-600 hover:text-black'
-              }`}
-            >
-              {t.courses.tabSMM}
-            </button>
-          </div>
-        </div>
-
-        {courseTab === 'languages' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {LANGUAGE_COURSES.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {SMM_COURSES.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
-        )}
-      </SectionWrapper>
-
-      {/* 3. GALLERY SECTION */}
-      <SectionWrapper id="gallery" bg="gray" className="py-20">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-            {t.gallery.badge}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-serif text-black">
-            {t.gallery.title}
-          </h2>
-          <p className="text-sm md:text-base text-gray-600">
-            {t.gallery.subtitle}
-          </p>
-        </div>
-
-        <ImageGallery images={GALLERY_IMAGES} columns={3} />
-      </SectionWrapper>
-
-      {/* 4. NICE EXCHANGE PROGRAM APPLICATION SECTION */}
-      <NiceExchangeSection id="nice-exchange" />
-
-      {/* 5. ABOUT ACADEMY & STUDENT STORIES */}
-      <SectionWrapper id="about" bg="gray" className="py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-          <div className="lg:col-span-5 relative">
-            <div className="rounded-[16px] overflow-hidden border-2 border-gray-200 shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-                alt="CELAVIE Educational Academy Leadership"
-                className="w-full h-[400px] object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 space-y-6 text-left">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#38B6FF]">
-              {t.about.badge}
+      {/* 2. MARQUEE TICKER BAR */}
+      <section className="py-6 border-y border-[#4aabb8]/10 bg-white overflow-hidden">
+        <div className="relative flex">
+          <div className="flex shrink-0 animate-marquee items-center gap-12 pr-12">
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • 10+ Foreign Languages
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-black leading-tight">
-              {t.about.title}
-            </h2>
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • SMM Professional Academy
+            </span>
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • Summer Exchange in Nice, France
+            </span>
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • Certified Tutors & Native Speakers
+            </span>
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • Interactive Speaking Clubs
+            </span>
+          </div>
+          <div className="flex shrink-0 animate-marquee items-center gap-12 pr-12" aria-hidden="true">
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • 10+ Foreign Languages
+            </span>
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • SMM Professional Academy
+            </span>
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • Summer Exchange in Nice, France
+            </span>
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • Certified Tutors & Native Speakers
+            </span>
+            <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
+              • Interactive Speaking Clubs
+            </span>
+          </div>
+        </div>
+      </section>
 
-            <p className="text-base text-gray-700 leading-relaxed font-sans">
-              {t.about.description}
+      {/* 3. COURSES SECTION (#courses) */}
+      <section id="courses" className="py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">
+              OUR COURSES
+            </span>
+            <h2
+              className="mt-3 font-heading font-medium text-[#222222] text-balance"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)' }}
+            >
+              Choose Your Academic Path
+            </h2>
+            <p className="mt-3 text-base text-[#222222]/70 font-sans">
+              From beginner conversational foreign languages to advanced digital social media strategies, choose a program tailored to your personal goals.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-4 bg-white rounded-[8px] border border-gray-200">
-                <span className="text-2xl font-bold text-black block">{siteConfig.metrics.studentsEnrolled}</span>
-                <span className="text-xs text-gray-500 uppercase">{t.about.graduates}</span>
-              </div>
-              <div className="p-4 bg-white rounded-[8px] border border-gray-200">
-                <span className="text-2xl font-bold text-[#38B6FF] block">{siteConfig.metrics.successRate}</span>
-                <span className="text-xs text-gray-500 uppercase">{t.about.successRate}</span>
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap gap-2 mt-8">
+              <button
+                onClick={() => setCourseFilter('all')}
+                className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                  courseFilter === 'all'
+                    ? 'bg-[#4aabb8] text-white shadow-sm'
+                    : 'bg-[#f3f6f7] text-[#222222] hover:bg-[#4aabb8]/10'
+                }`}
+              >
+                All Courses ({allCourses.length})
+              </button>
+              <button
+                onClick={() => setCourseFilter('language')}
+                className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                  courseFilter === 'language'
+                    ? 'bg-[#4aabb8] text-white shadow-sm'
+                    : 'bg-[#f3f6f7] text-[#222222] hover:bg-[#4aabb8]/10'
+                }`}
+              >
+                Foreign Languages ({LANGUAGE_COURSES.length})
+              </button>
+              <button
+                onClick={() => setCourseFilter('smm')}
+                className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                  courseFilter === 'smm'
+                    ? 'bg-[#4aabb8] text-white shadow-sm'
+                    : 'bg-[#f3f6f7] text-[#222222] hover:bg-[#4aabb8]/10'
+                }`}
+              >
+                SMM Academy ({SMM_COURSES.length})
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredCourses.map((course) => (
+              <CourseCard
+                key={course.id}
+                course={course}
+                onSelect={(id) => setRegCourseId(id)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. NICE EXCHANGE PROGRAM SHOWCASE (#nice) */}
+      <section id="nice" className="py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="relative overflow-hidden rounded-[2rem] shadow-card group">
+            <span className="inline-block relative w-full aspect-[16/9] sm:aspect-[21/9] transition-transform duration-700 group-hover:scale-105">
+              <img
+                src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1400"
+                alt="Nice Promenade des Anglais"
+                className="w-full h-full object-cover"
+              />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-8 sm:p-12">
+              <div className="max-w-2xl text-white space-y-4">
+                <Badge variant="accent" className="bg-[#4aabb8] text-white border-none px-3 py-1 font-bold">
+                  Exclusive Program 🇫🇷
+                </Badge>
+                <h2 className="font-heading text-3xl sm:text-5xl font-medium">Discover Nice, France</h2>
+                <p className="text-sm sm:text-base text-white/80 font-sans leading-relaxed">
+                  Immerse yourself in authentic French culture along the Côte d'Azur. Practice French daily with welcoming host families while exploring Nice.
+                </p>
+                <div className="pt-2">
+                  <button
+                    onClick={() => scrollToSection('nice-register')}
+                    className="inline-flex items-center px-6 py-3 rounded-full bg-white text-[#222222] font-semibold text-sm hover:bg-[#4aabb8] hover:text-white transition-all shadow-md cursor-pointer"
+                  >
+                    Apply for Nice Program <ArrowRight className="w-4 h-4 ml-2" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Testimonials */}
-        <div id="testimonials" className="pt-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-              {t.about.storiesBadge}
+      {/* 5. NICE PROGRAM APPLICATION FORM (#nice-register) */}
+      <section id="nice-register" className="py-20 sm:py-28 bg-[#f3f6f7]/50">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[#4aabb8]/20 bg-white p-8 sm:p-12 shadow-card">
+            <div className="text-center max-w-xl mx-auto mb-10">
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">
+                NICE EXCHANGE PROGRAM
+              </span>
+              <h2 className="mt-2 font-heading text-3xl sm:text-4xl font-medium text-[#222222]">
+                Apply for the French Riviera Cultural Immersion
+              </h2>
+              <p className="mt-2 text-sm text-[#222222]/70 font-sans">
+                Submit your application. Start dates must be scheduled at least 2 weeks in advance.
+              </p>
+            </div>
+
+            {niceSubmitted ? (
+              <div className="py-12 text-center space-y-6">
+                <div className="w-16 h-16 bg-[#4aabb8]/10 text-[#2b7a85] rounded-full flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <h3 className="font-heading text-3xl font-bold text-[#222222]">
+                  Application Submitted Successfully!
+                </h3>
+                <p className="text-sm text-[#222222]/70 max-w-lg mx-auto">
+                  Thank you for applying to the CELAVIE Nice Exchange Program. Our exchange coordination committee will review your application and contact you via email within 48 hours.
+                </p>
+                <Button variant="outline" onClick={() => setNiceSubmitted(false)} className="rounded-full">
+                  Submit Another Application
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleNiceSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <Input
+                    label="First Name"
+                    required
+                    value={niceForm.firstName}
+                    onChange={(e) => setNiceForm({ ...niceForm, firstName: e.target.value })}
+                    error={niceErrors.firstName}
+                  />
+                  <Input
+                    label="Last Name"
+                    required
+                    value={niceForm.lastName}
+                    onChange={(e) => setNiceForm({ ...niceForm, lastName: e.target.value })}
+                    error={niceErrors.lastName}
+                  />
+                  <Input
+                    label="Age"
+                    type="number"
+                    required
+                    value={niceForm.age}
+                    onChange={(e) => setNiceForm({ ...niceForm, age: e.target.value })}
+                    error={niceErrors.age}
+                    helperText="Must be 14 or older"
+                  />
+                  {parseInt(niceForm.age, 10) < 18 && (
+                    <Input
+                      label="Parent / Guardian Full Name"
+                      required
+                      value={niceForm.parentGuardianName}
+                      onChange={(e) => setNiceForm({ ...niceForm, parentGuardianName: e.target.value })}
+                      error={niceErrors.parentGuardianName}
+                      helperText="Required for under-18 applicants"
+                    />
+                  )}
+                  <Input
+                    label="School / University / Organization"
+                    required
+                    value={niceForm.school}
+                    onChange={(e) => setNiceForm({ ...niceForm, school: e.target.value })}
+                    error={niceErrors.school}
+                  />
+                  <Input
+                    label="Email Address"
+                    type="email"
+                    required
+                    value={niceForm.email}
+                    onChange={(e) => setNiceForm({ ...niceForm, email: e.target.value })}
+                    error={niceErrors.email}
+                  />
+                  <Input
+                    label="Phone Number"
+                    type="tel"
+                    required
+                    value={niceForm.phone}
+                    onChange={(e) => setNiceForm({ ...niceForm, phone: e.target.value })}
+                    error={niceErrors.phone}
+                  />
+                  <Input
+                    label="Country of Residence"
+                    required
+                    value={niceForm.country}
+                    onChange={(e) => setNiceForm({ ...niceForm, country: e.target.value })}
+                    error={niceErrors.country}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <Select
+                    label="Current French Level"
+                    value={niceForm.frenchLevel}
+                    onChange={(e) => setNiceForm({ ...niceForm, frenchLevel: e.target.value })}
+                    options={[
+                      { value: 'A1', label: 'A1 Beginner' },
+                      { value: 'A2', label: 'A2 Elementary' },
+                      { value: 'B1', label: 'B1 Intermediate' },
+                      { value: 'B2', label: 'B2 Upper Intermediate' },
+                      { value: 'C1', label: 'C1 Advanced' },
+                    ]}
+                  />
+
+                  <Input
+                    label="Preferred Start Date"
+                    type="date"
+                    required
+                    value={niceForm.preferredDate}
+                    onChange={(e) => setNiceForm({ ...niceForm, preferredDate: e.target.value })}
+                    error={niceErrors.preferredDate}
+                    helperText="Must be at least 2 weeks in advance"
+                  />
+
+                  <Select
+                    label="Duration"
+                    value={niceForm.duration}
+                    onChange={(e) => setNiceForm({ ...niceForm, duration: e.target.value })}
+                    options={[
+                      { value: '2_weeks', label: '2 Weeks Immersion' },
+                      { value: '4_weeks', label: '4 Weeks Immersion' },
+                      { value: '8_weeks', label: '8 Weeks Full Season' },
+                    ]}
+                  />
+
+                  <Select
+                    label="Accommodation Preference"
+                    value={niceForm.accommodation}
+                    onChange={(e) => setNiceForm({ ...niceForm, accommodation: e.target.value })}
+                    options={[
+                      { value: 'host_family', label: 'French Host Family (Meals Included)' },
+                      { value: 'student_residence', label: 'Student Residence Apartment' },
+                      { value: 'self_arranged', label: 'Self-Arranged Housing' },
+                    ]}
+                  />
+                </div>
+
+                <Textarea
+                  label="Motivation Essay (300 - 500 words)"
+                  required
+                  rows={5}
+                  value={niceForm.essay}
+                  onChange={(e) => setNiceForm({ ...niceForm, essay: e.target.value })}
+                  error={niceErrors.essay}
+                  helperText="Describe why you want to participate in the Nice Exchange program."
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <Input
+                    label="Dietary Restrictions / Allergies (Optional)"
+                    value={niceForm.dietaryRestrictions}
+                    onChange={(e) => setNiceForm({ ...niceForm, dietaryRestrictions: e.target.value })}
+                  />
+                  <Input
+                    label="Emergency Contact (Name & Phone)"
+                    required
+                    value={niceForm.emergencyContact}
+                    onChange={(e) => setNiceForm({ ...niceForm, emergencyContact: e.target.value })}
+                    error={niceErrors.emergencyContact}
+                  />
+                </div>
+
+                <div className="pt-2">
+                  <label className="flex items-start space-x-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={niceForm.acceptedTerms}
+                      onChange={(e) => setNiceForm({ ...niceForm, acceptedTerms: e.target.checked })}
+                      className="mt-1 w-4 h-4 rounded text-[#4aabb8] focus:ring-[#4aabb8]"
+                    />
+                    <span className="text-xs text-[#222222]/80">
+                      I agree to the Exchange Terms of Service & Code of Conduct.
+                    </span>
+                  </label>
+                  {niceErrors.acceptedTerms && (
+                    <p className="mt-1 text-xs text-red-600 font-medium">{niceErrors.acceptedTerms}</p>
+                  )}
+                </div>
+
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-full rounded-full py-3.5 font-semibold cursor-pointer"
+                  disabled={niceLoading}
+                >
+                  {niceLoading ? 'Submitting Application...' : 'Submit Nice Application'}
+                </Button>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. WHY CHOOSE US BENEFITS SECTION (#why) */}
+      <section id="why" className="py-20 sm:py-28 bg-[#f3f6f7]/40">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">
+              WHY CELAVIE
             </span>
-            <h3 className="text-2xl md:text-3xl font-serif text-black">
-              {t.about.storiesTitle}
-            </h3>
+            <h2
+              className="mt-3 font-heading font-medium text-[#222222] text-balance"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)' }}
+            >
+              Why Study With Us
+            </h2>
+            <p className="mt-3 text-base text-[#222222]/70 font-sans">
+              We provide immersive learning methodologies, certified native instructors, and guaranteed career advancement.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="p-8 rounded-[1.5rem] bg-white border border-[#4aabb8]/15 shadow-card hover:shadow-card-hover transition-all">
+              <div className="w-12 h-12 rounded-full bg-[#4aabb8]/10 text-[#4aabb8] flex items-center justify-center mb-6">
+                <Globe className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading text-2xl font-bold text-[#222222] mb-3">International Standards</h3>
+              <p className="text-sm text-[#222222]/70 leading-relaxed font-sans">
+                Curriculum mapped to CEFR European frameworks and international social media standards.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-[1.5rem] bg-white border border-[#4aabb8]/15 shadow-card hover:shadow-card-hover transition-all">
+              <div className="w-12 h-12 rounded-full bg-[#4aabb8]/10 text-[#4aabb8] flex items-center justify-center mb-6">
+                <Users className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading text-2xl font-bold text-[#222222] mb-3">Certified Native Team</h3>
+              <p className="text-sm text-[#222222]/70 leading-relaxed font-sans">
+                Learn directly from experienced native linguists and active digital marketing managers.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-[1.5rem] bg-white border border-[#4aabb8]/15 shadow-card hover:shadow-card-hover transition-all">
+              <div className="w-12 h-12 rounded-full bg-[#4aabb8]/10 text-[#4aabb8] flex items-center justify-center mb-6">
+                <Target className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading text-2xl font-bold text-[#222222] mb-3">Practical Focus</h3>
+              <p className="text-sm text-[#222222]/70 leading-relaxed font-sans">
+                Over 80% practical speaking exercises, real brand campaigns, and interactive speaking clubs.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-[1.5rem] bg-white border border-[#4aabb8]/15 shadow-card hover:shadow-card-hover transition-all">
+              <div className="w-12 h-12 rounded-full bg-[#4aabb8]/10 text-[#4aabb8] flex items-center justify-center mb-6">
+                <MapPin className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading text-2xl font-bold text-[#222222] mb-3">Nice Exchange Program</h3>
+              <p className="text-sm text-[#222222]/70 leading-relaxed font-sans">
+                Direct summer immersion programs on the French Riviera with host family accommodations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. TESTIMONIALS SECTION */}
+      <section className="py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85] flex items-center space-x-1">
+              <Star className="w-3.5 h-3.5 fill-[#4aabb8] text-[#4aabb8]" />
+              <Star className="w-3.5 h-3.5 fill-[#4aabb8] text-[#4aabb8]" />
+              <Star className="w-3.5 h-3.5 fill-[#4aabb8] text-[#4aabb8]" />
+              <Star className="w-3.5 h-3.5 fill-[#4aabb8] text-[#4aabb8]" />
+              <Star className="w-3.5 h-3.5 fill-[#4aabb8] text-[#4aabb8]" />
+            </span>
+            <h2
+              className="mt-3 font-heading font-medium text-[#222222] text-balance"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)' }}
+            >
+              Stories from Our Graduates
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {TESTIMONIALS.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            {TESTIMONIALS.map((t) => (
+              <TestimonialCard key={t.id} testimonial={t} />
             ))}
           </div>
         </div>
-      </SectionWrapper>
+      </section>
 
-      {/* 6. REGISTER NOW INLINE STEPPER */}
-      <SectionWrapper id="register" bg="white" className="py-20">
-        <div className="max-w-3xl mx-auto text-center space-y-4 mb-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#38B6FF]">
-            {t.register.badge}
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-black">
-            {t.register.title}
-          </h2>
-          <p className="text-sm md:text-base text-gray-600">
-            {t.register.subtitle}
-          </p>
-        </div>
+      {/* 8. COURSE REGISTRATION SECTION (#register) */}
+      <section id="register" className="py-20 sm:py-28 bg-white">
+        <div className="max-w-3xl mx-auto px-5 sm:px-8">
+          <div className="text-center max-w-xl mx-auto mb-10">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">
+              COURSE ENROLLMENT
+            </span>
+            <h2
+              className="mt-3 font-heading font-medium text-[#222222] text-balance"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+            >
+              Register For a Course
+            </h2>
+            <p className="mt-2 text-sm text-[#222222]/70 font-sans">
+              Select your course and complete registration in 3 simple steps.
+            </p>
+          </div>
 
-        <div className="max-w-3xl mx-auto bg-white p-6 md:p-10 rounded-[16px] border border-gray-200 shadow-xl text-left">
-          {!regSubmitted && (
-            <RegistrationStepper
-              steps={[t.register.step1, t.register.step2, t.register.step3]}
-              currentStep={regStep}
-            />
-          )}
+          <div className="p-8 sm:p-12 rounded-[2rem] border border-[#4aabb8]/20 bg-white shadow-card">
+            {!regSubmitted && (
+              <RegistrationStepper
+                steps={['Select Program', 'Student Info', 'Payment & Complete']}
+                currentStep={regStep}
+              />
+            )}
 
-          {regSubmitted ? (
-            <div className="py-10 text-center space-y-6">
-              <div className="w-16 h-16 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-8 h-8" />
+            {regSubmitted ? (
+              <div className="py-12 text-center space-y-6">
+                <div className="w-16 h-16 bg-[#4aabb8]/10 text-[#2b7a85] rounded-full flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <h3 className="font-heading text-3xl font-bold text-[#222222]">
+                  Registration Completed!
+                </h3>
+                <p className="text-sm text-[#222222]/70 max-w-md mx-auto">
+                  Your enrollment confirmation and schedule details have been sent to <strong>{regForm.email}</strong>.
+                </p>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    setRegSubmitted(false);
+                    setRegStep(1);
+                  }}
+                  className="rounded-full px-8 py-3"
+                >
+                  Register Another Student
+                </Button>
               </div>
-              <h3 className="text-3xl font-bold text-black">{t.register.successTitle}</h3>
-              <p className="text-sm text-gray-600 max-w-md mx-auto">
-                {t.register.successDesc}
-              </p>
-              <Button variant="primary" onClick={() => setRegSubmitted(false)}>
-                {t.register.registerAnother}
-              </Button>
-            </div>
-          ) : (
-            <div>
-              {regStep === 1 && (
-                <div className="space-y-6 pt-4">
-                  <h3 className="text-lg font-bold text-black">{t.register.step1}</h3>
+            ) : (
+              <div>
+                {regStep === 1 && (
+                  <div className="space-y-6 pt-6">
+                    <h3 className="font-heading text-xl font-bold text-[#222222]">
+                      Step 1: Choose Your Course Category
+                    </h3>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const langCourse = LANGUAGE_COURSES[0];
-                        setRegCourseId(langCourse.id);
-                      }}
-                      className={`p-6 rounded-[12px] border text-left transition ${
-                        LANGUAGE_COURSES.some((c) => c.id === regCourseId)
-                          ? 'border-[#38B6FF] bg-blue-50/50 ring-2 ring-[#38B6FF]'
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                    >
-                      <Globe className="w-6 h-6 text-[#38B6FF] mb-3" />
-                      <h4 className="font-bold text-black text-base">{t.register.directionLanguage}</h4>
-                      <span className="text-xs text-[#38B6FF] font-semibold mt-1 block">10+ →</span>
-                    </button>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const langCourse = LANGUAGE_COURSES[0];
+                          setRegCourseId(langCourse.id);
+                        }}
+                        className={`p-6 rounded-[1.25rem] border text-left transition-all cursor-pointer ${
+                          LANGUAGE_COURSES.some((c) => c.id === regCourseId)
+                            ? 'border-[#4aabb8] bg-[#4aabb8]/5 ring-2 ring-[#4aabb8]'
+                            : 'border-[#4aabb8]/15 hover:border-[#4aabb8]/40'
+                        }`}
+                      >
+                        <Globe className="w-6 h-6 text-[#4aabb8] mb-3" />
+                        <h4 className="font-heading font-bold text-[#222222] text-lg">Foreign Languages</h4>
+                        <span className="text-xs text-[#2b7a85] font-semibold mt-1 block">10+ Available →</span>
+                      </button>
 
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const smmCourse = SMM_COURSES[0];
-                        setRegCourseId(smmCourse.id);
-                      }}
-                      className={`p-6 rounded-[12px] border text-left transition ${
-                        SMM_COURSES.some((c) => c.id === regCourseId)
-                          ? 'border-[#38B6FF] bg-blue-50/50 ring-2 ring-[#38B6FF]'
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const smmCourse = SMM_COURSES[0];
+                          setRegCourseId(smmCourse.id);
+                        }}
+                        className={`p-6 rounded-[1.25rem] border text-left transition-all cursor-pointer ${
+                          SMM_COURSES.some((c) => c.id === regCourseId)
+                            ? 'border-[#4aabb8] bg-[#4aabb8]/5 ring-2 ring-[#4aabb8]'
+                            : 'border-[#4aabb8]/15 hover:border-[#4aabb8]/40'
+                        }`}
+                      >
+                        <TrendingUp className="w-6 h-6 text-[#4aabb8] mb-3" />
+                        <h4 className="font-heading font-bold text-[#222222] text-lg">SMM Academy</h4>
+                        <span className="text-xs text-[#2b7a85] font-semibold mt-1 block">3 Professional Tiers →</span>
+                      </button>
+                    </div>
+
+                    <Select
+                      label="Select Specific Course Batch"
+                      value={regCourseId}
+                      onChange={(e) => setRegCourseId(e.target.value)}
+                      options={allCourses.map((c) => ({
+                        value: c.id,
+                        label: `${c.title} (${c.level}) — ${c.price}`,
+                      }))}
+                    />
+
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      className="w-full rounded-full py-3.5 font-semibold cursor-pointer"
+                      onClick={() => setRegStep(2)}
                     >
-                      <TrendingUp className="w-6 h-6 text-[#38B6FF] mb-3" />
-                      <h4 className="font-bold text-black text-base">{t.register.directionSMM}</h4>
-                      <span className="text-xs text-[#38B6FF] font-semibold mt-1 block">Pro →</span>
-                    </button>
+                      Continue to Personal Info
+                    </Button>
                   </div>
+                )}
 
-                  <Select
-                    label={t.register.selectSpecific}
-                    value={regCourseId}
-                    onChange={(e) => setRegCourseId(e.target.value)}
-                    options={allCourses.map((c) => ({
-                      value: c.id,
-                      label: `${c.title} — ${c.price}`,
-                    }))}
-                  />
+                {regStep === 2 && (
+                  <div className="space-y-6 pt-6">
+                    <h3 className="font-heading text-xl font-bold text-[#222222]">
+                      Step 2: Student Details
+                    </h3>
 
-                  <Button variant="primary" size="lg" className="w-full font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none" onClick={() => setRegStep(2)}>
-                    {t.register.continuePersonalInfo}
-                  </Button>
-                </div>
-              )}
-
-              {regStep === 2 && (
-                <div className="space-y-6 pt-4">
-                  <h3 className="text-lg font-bold text-black">{t.register.step2}</h3>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input
-                      label={t.niceExchange.firstName}
-                      required
-                      value={regForm.firstName}
-                      onChange={(e) => setRegForm({ ...regForm, firstName: e.target.value })}
-                      error={regErrors.firstName}
-                    />
-                    <Input
-                      label={t.niceExchange.lastName}
-                      required
-                      value={regForm.lastName}
-                      onChange={(e) => setRegForm({ ...regForm, lastName: e.target.value })}
-                      error={regErrors.lastName}
-                    />
-                    <Input
-                      label={t.niceExchange.email}
-                      type="email"
-                      required
-                      value={regForm.email}
-                      onChange={(e) => setRegForm({ ...regForm, email: e.target.value })}
-                      error={regErrors.email}
-                    />
-                    <Input
-                      label={t.niceExchange.phone}
-                      type="tel"
-                      required
-                      value={regForm.phone}
-                      onChange={(e) => setRegForm({ ...regForm, phone: e.target.value })}
-                      error={regErrors.phone}
-                    />
-                    <Input
-                      label={t.niceExchange.age}
-                      type="number"
-                      required
-                      value={regForm.age}
-                      onChange={(e) => setRegForm({ ...regForm, age: e.target.value })}
-                      error={regErrors.age}
-                    />
-                    {parseInt(regForm.age, 10) < 18 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Input
-                        label={t.niceExchange.parentName}
+                        label="First Name"
                         required
-                        value={regForm.parentGuardianName}
-                        onChange={(e) => setRegForm({ ...regForm, parentGuardianName: e.target.value })}
-                        error={regErrors.parentGuardianName}
+                        value={regForm.firstName}
+                        onChange={(e) => setRegForm({ ...regForm, firstName: e.target.value })}
+                        error={regErrors.firstName}
                       />
-                    )}
-                  </div>
-
-                  <div className="flex justify-between space-x-4 pt-4 border-t border-gray-100">
-                    <Button variant="outline" onClick={() => setRegStep(1)}>
-                      {t.register.back}
-                    </Button>
-                    <Button variant="primary" size="lg" className="font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none" onClick={handleRegNextStep2}>
-                      {t.register.continuePayment}
-                    </Button>
-                  </div>
-                </div>
-              )}
-
-              {regStep === 3 && (
-                <form onSubmit={handleRegSubmit} className="space-y-6 pt-4">
-                  <h3 className="text-lg font-bold text-black">{t.register.step3}</h3>
-
-                  <div className="p-4 bg-gray-50 rounded-[8px] border border-gray-200 flex justify-between items-center">
-                    <div>
-                      <span className="text-xs text-gray-500 uppercase font-bold block">Selected Program</span>
-                      <span className="text-base font-bold text-black">{selectedRegCourse.title}</span>
-                    </div>
-                    <span className="text-xl font-bold text-black">{selectedRegCourse.price}</span>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setRegForm({ ...regForm, paymentMethod: 'card' })}
-                      className={`p-3 rounded-[6px] border text-left flex items-center space-x-2 transition ${
-                        regForm.paymentMethod === 'card'
-                          ? 'border-black bg-black/5 font-bold'
-                          : 'border-gray-200'
-                      }`}
-                    >
-                      <CreditCard className="w-4 h-4 text-black" />
-                      <span className="text-xs">{t.register.paymentCard}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setRegForm({ ...regForm, paymentMethod: 'bank_transfer' })}
-                      className={`p-3 rounded-[6px] border text-left flex items-center space-x-2 transition ${
-                        regForm.paymentMethod === 'bank_transfer'
-                          ? 'border-black bg-black/5 font-bold'
-                          : 'border-gray-200'
-                      }`}
-                    >
-                      <Landmark className="w-4 h-4 text-black" />
-                      <span className="text-xs">{t.register.paymentBank}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setRegForm({ ...regForm, paymentMethod: 'payment_plan' })}
-                      className={`p-3 rounded-[6px] border text-left flex items-center space-x-2 transition ${
-                        regForm.paymentMethod === 'payment_plan'
-                          ? 'border-black bg-black/5 font-bold'
-                          : 'border-gray-200'
-                      }`}
-                    >
-                      <PhoneCall className="w-4 h-4 text-black" />
-                      <span className="text-xs">{t.register.paymentPlan}</span>
-                    </button>
-                  </div>
-
-                  {regForm.paymentMethod === 'card' && (
-                    <div className="p-4 rounded-[6px] border border-gray-200 bg-gray-50 space-y-4">
                       <Input
-                        label={t.register.cardNumber}
-                        placeholder="4000 0000 0000 0000"
-                        value={regForm.cardNumber}
-                        onChange={(e) => setRegForm({ ...regForm, cardNumber: e.target.value })}
-                        error={regErrors.cardNumber}
+                        label="Last Name"
+                        required
+                        value={regForm.lastName}
+                        onChange={(e) => setRegForm({ ...regForm, lastName: e.target.value })}
+                        error={regErrors.lastName}
                       />
-                      <div className="grid grid-cols-2 gap-4">
+                      <Input
+                        label="Email Address"
+                        type="email"
+                        required
+                        value={regForm.email}
+                        onChange={(e) => setRegForm({ ...regForm, email: e.target.value })}
+                        error={regErrors.email}
+                      />
+                      <Input
+                        label="Phone Number"
+                        type="tel"
+                        required
+                        value={regForm.phone}
+                        onChange={(e) => setRegForm({ ...regForm, phone: e.target.value })}
+                        error={regErrors.phone}
+                      />
+                      <Input
+                        label="Age"
+                        type="number"
+                        required
+                        value={regForm.age}
+                        onChange={(e) => setRegForm({ ...regForm, age: e.target.value })}
+                        error={regErrors.age}
+                      />
+                      {parseInt(regForm.age, 10) < 18 && (
                         <Input
-                          label={t.register.cardExpiry}
-                          placeholder="MM/YY"
-                          value={regForm.cardExpiry}
-                          onChange={(e) => setRegForm({ ...regForm, cardExpiry: e.target.value })}
-                          error={regErrors.cardExpiry}
+                          label="Parent / Guardian Full Name"
+                          required
+                          value={regForm.parentGuardianName}
+                          onChange={(e) => setRegForm({ ...regForm, parentGuardianName: e.target.value })}
+                          error={regErrors.parentGuardianName}
                         />
-                        <Input
-                          label={t.register.cardCvc}
-                          placeholder="123"
-                          type="password"
-                          maxLength={4}
-                          value={regForm.cardCvc}
-                          onChange={(e) => setRegForm({ ...regForm, cardCvc: e.target.value })}
-                          error={regErrors.cardCvc}
-                        />
-                      </div>
+                      )}
                     </div>
-                  )}
 
-                  <div className="pt-2">
-                    <label className="flex items-start space-x-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={regForm.acceptedTerms}
-                        onChange={(e) => setRegForm({ ...regForm, acceptedTerms: e.target.checked })}
-                        className="mt-1 w-4 h-4 text-black focus:ring-black rounded"
-                      />
-                      <span className="text-xs text-gray-700">
-                        {t.register.acceptTerms}
-                      </span>
-                    </label>
-                    {regErrors.acceptedTerms && (
-                      <p className="mt-1 text-xs text-red-600 font-medium">{regErrors.acceptedTerms}</p>
+                    <div className="flex justify-between items-center space-x-4 pt-4 border-t border-[#4aabb8]/15">
+                      <Button variant="outline" onClick={() => setRegStep(1)} className="rounded-full">
+                        Back
+                      </Button>
+                      <Button
+                        variant="primary"
+                        size="lg"
+                        className="rounded-full px-8 py-3.5 font-semibold cursor-pointer"
+                        onClick={handleRegNextStep2}
+                      >
+                        Continue to Payment
+                      </Button>
+                    </div>
+                  </div>
+                )}
+
+                {regStep === 3 && (
+                  <form onSubmit={handleRegSubmit} className="space-y-6 pt-6">
+                    <h3 className="font-heading text-xl font-bold text-[#222222]">
+                      Step 3: Summary & Payment
+                    </h3>
+
+                    <div className="p-5 bg-[#f3f6f7] rounded-[1rem] border border-[#4aabb8]/20 flex justify-between items-center">
+                      <div>
+                        <span className="text-[11px] text-[#4aabb8] uppercase font-bold tracking-wider block">
+                          Selected Program
+                        </span>
+                        <span className="font-heading text-xl font-bold text-[#222222]">{selectedRegCourse.title}</span>
+                      </div>
+                      <span className="text-2xl font-bold text-[#222222]">{selectedRegCourse.price}</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setRegForm({ ...regForm, paymentMethod: 'card' })}
+                        className={`p-4 rounded-[0.75rem] border text-left flex items-center space-x-2 transition cursor-pointer ${
+                          regForm.paymentMethod === 'card'
+                            ? 'border-[#4aabb8] bg-[#4aabb8]/10 font-bold text-[#2b7a85]'
+                            : 'border-[#4aabb8]/15'
+                        }`}
+                      >
+                        <CreditCard className="w-4 h-4 text-[#4aabb8]" />
+                        <span className="text-xs">Credit Card</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setRegForm({ ...regForm, paymentMethod: 'bank_transfer' })}
+                        className={`p-4 rounded-[0.75rem] border text-left flex items-center space-x-2 transition cursor-pointer ${
+                          regForm.paymentMethod === 'bank_transfer'
+                            ? 'border-[#4aabb8] bg-[#4aabb8]/10 font-bold text-[#2b7a85]'
+                            : 'border-[#4aabb8]/15'
+                        }`}
+                      >
+                        <Landmark className="w-4 h-4 text-[#4aabb8]" />
+                        <span className="text-xs">Bank Transfer</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setRegForm({ ...regForm, paymentMethod: 'payment_plan' })}
+                        className={`p-4 rounded-[0.75rem] border text-left flex items-center space-x-2 transition cursor-pointer ${
+                          regForm.paymentMethod === 'payment_plan'
+                            ? 'border-[#4aabb8] bg-[#4aabb8]/10 font-bold text-[#2b7a85]'
+                            : 'border-[#4aabb8]/15'
+                        }`}
+                      >
+                        <PhoneCall className="w-4 h-4 text-[#4aabb8]" />
+                        <span className="text-xs">Payment Plan</span>
+                      </button>
+                    </div>
+
+                    {regForm.paymentMethod === 'card' && (
+                      <div className="p-5 rounded-[1rem] border border-[#4aabb8]/20 bg-[#f3f6f7]/50 space-y-4">
+                        <Input
+                          label="Card Number"
+                          placeholder="4000 0000 0000 0000"
+                          value={regForm.cardNumber}
+                          onChange={(e) => setRegForm({ ...regForm, cardNumber: e.target.value })}
+                          error={regErrors.cardNumber}
+                        />
+                        <div className="grid grid-cols-2 gap-4">
+                          <Input
+                            label="Expiry Date"
+                            placeholder="MM/YY"
+                            value={regForm.cardExpiry}
+                            onChange={(e) => setRegForm({ ...regForm, cardExpiry: e.target.value })}
+                            error={regErrors.cardExpiry}
+                          />
+                          <Input
+                            label="CVC"
+                            placeholder="123"
+                            type="password"
+                            maxLength={4}
+                            value={regForm.cardCvc}
+                            onChange={(e) => setRegForm({ ...regForm, cardCvc: e.target.value })}
+                            error={regErrors.cardCvc}
+                          />
+                        </div>
+                      </div>
                     )}
-                  </div>
 
-                  <div className="flex justify-between space-x-4 pt-4 border-t border-gray-100">
-                    <Button type="button" variant="outline" onClick={() => setRegStep(2)}>
-                      {t.register.back}
-                    </Button>
-                    <Button type="submit" variant="accent" size="lg" className="font-bold bg-[#38B6FF] hover:bg-[#2AA0E6] text-white border-none" disabled={regLoading}>
-                      {regLoading ? t.register.processing : t.register.completeRegistration}
-                    </Button>
-                  </div>
-                </form>
-              )}
-            </div>
-          )}
+                    <div className="pt-2">
+                      <label className="flex items-start space-x-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={regForm.acceptedTerms}
+                          onChange={(e) => setRegForm({ ...regForm, acceptedTerms: e.target.checked })}
+                          className="mt-1 w-4 h-4 text-[#4aabb8] focus:ring-[#4aabb8] rounded"
+                        />
+                        <span className="text-xs text-[#222222]/80">
+                          I agree to the enrollment terms and conditions.
+                        </span>
+                      </label>
+                      {regErrors.acceptedTerms && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{regErrors.acceptedTerms}</p>
+                      )}
+                    </div>
+
+                    <div className="flex justify-between space-x-4 pt-4 border-t border-[#4aabb8]/15">
+                      <Button type="button" variant="outline" onClick={() => setRegStep(2)} className="rounded-full">
+                        Back
+                      </Button>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        size="lg"
+                        className="rounded-full px-8 py-3.5 font-semibold cursor-pointer"
+                        disabled={regLoading}
+                      >
+                        {regLoading ? 'Processing Enrollment...' : 'Complete Registration'}
+                      </Button>
+                    </div>
+                  </form>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      </SectionWrapper>
+      </section>
 
-      {/* 7. FAQ SECTION */}
-      <SectionWrapper id="faq" bg="gray" className="py-20">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-            {t.faq.badge}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-serif text-black">
-            {t.faq.title}
-          </h2>
-          <p className="text-sm md:text-base text-gray-600">
-            {t.faq.subtitle}
-          </p>
-        </div>
+      {/* 9. FAQ ACCORDION SECTION */}
+      <section id="faq" className="py-20 sm:py-28 bg-[#f3f6f7]/40">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">
+              FREQUENTLY ASKED QUESTIONS
+            </span>
+            <h2
+              className="mt-3 font-heading font-medium text-[#222222] text-balance"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+            >
+              Questions & Answers
+            </h2>
+          </div>
 
-        <div className="max-w-3xl mx-auto">
           <FAQAccordion items={generalFaqs} />
         </div>
-      </SectionWrapper>
+      </section>
     </div>
   );
 };
