@@ -29,10 +29,8 @@ export const CourseOverviewCard: React.FC<CourseOverviewCardProps> = ({ course }
           <p className="text-sm md:text-base text-gray-600 mt-2">{course.subtitle}</p>
         </div>
 
-        <div className="bg-[rgba(0,0,0,0.02)] p-4 rounded-[6px] border border-[rgba(0,0,0,0.05)] text-center shrink-0 min-w-[180px]">
-          <span className="text-xs text-gray-500 uppercase font-bold block mb-1">Course Tuition</span>
-          <span className="text-3xl font-black text-black block">{course.price}</span>
-          <Link to={`/register?course=${course.id}`} className="block mt-3">
+        <div className="bg-[rgba(0,0,0,0.02)] p-4 rounded-[6px] border border-[rgba(0,0,0,0.05)] text-center shrink-0 min-w-[180px] flex items-center">
+          <Link to={`/register?course=${course.id}`} className="block w-full">
             <Button variant="primary" className="w-full" size="sm">
               Enroll Now
             </Button>

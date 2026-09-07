@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { FAQAccordion } from '../components/ui/FAQAccordion';
@@ -9,6 +9,12 @@ import { Select } from '../components/ui/Select';
 import { Textarea } from '../components/ui/Textarea';
 import { RegistrationStepper } from '../components/ui/RegistrationStepper';
 import { LANGUAGE_COURSES, SMM_COURSES, TESTIMONIALS, FAQS } from '../data/mockData';
+import { isValidEmail, isValidPhone, parseAge } from '../lib/validation';
+import {
+  createEmptyNiceExchangeForm,
+  submitNiceExchangeApplication,
+  validateNiceExchangeForm,
+} from '../lib/niceExchange';
 import {
   Globe,
   TrendingUp,
@@ -28,82 +34,32 @@ export const HomePage: React.FC = () => {
   const [courseFilter, setCourseFilter] = useState<'all' | 'language' | 'smm'>('all');
 
   // Nice Exchange Embedded Application state
-  const [niceForm, setNiceForm] = useState({
-    firstName: '',
-    lastName: '',
-    parentGuardianName: '',
-    age: '',
-    school: '',
-    email: '',
-    phone: '',
-    country: '',
-    frenchLevel: 'A1',
-    preferredDate: '',
-    duration: '2_weeks',
-    accommodation: 'host_family',
-    essay: '',
-    dietaryRestrictions: '',
-    emergencyContact: '',
-    acceptedTerms: false,
-  });
+  const [niceForm, setNiceForm] = useState(createEmptyNiceExchangeForm);
   const [niceErrors, setNiceErrors] = useState<Record<string, string>>({});
   const [niceSubmitted, setNiceSubmitted] = useState(false);
   const [niceLoading, setNiceLoading] = useState(false);
+  const niceSubmissionInProgress = useRef(false);
 
-  const handleNiceSubmit = (e: React.FormEvent) => {
+  const handleNiceSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const errs: Record<string, string> = {};
-    if (!niceForm.firstName.trim()) errs.firstName = 'First name is required';
-    if (!niceForm.lastName.trim()) errs.lastName = 'Last name is required';
+    if (niceSubmissionInProgress.current) return;
 
-    const ageNum = parseInt(niceForm.age, 10);
-    if (!niceForm.age || isNaN(ageNum) || ageNum < 14 || ageNum > 99) {
-      errs.age = 'Age must be between 14 and 99';
-    }
-    if (ageNum < 18 && !niceForm.parentGuardianName.trim()) {
-      errs.parentGuardianName = 'Parent or guardian full name is required for applicants under 18';
-    }
-    if (!niceForm.school.trim()) errs.school = 'School or university name is required';
+    const validationErrors = validateNiceExchangeForm(niceForm);
+    setNiceErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0) return;
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!niceForm.email.trim() || !emailRegex.test(niceForm.email)) {
-      errs.email = 'Valid email address is required';
-    }
-    if (!niceForm.phone.trim() || niceForm.phone.length < 7) {
-      errs.phone = 'Valid phone number is required';
-    }
-    if (!niceForm.country.trim()) errs.country = 'Country of residence is required';
+    niceSubmissionInProgress.current = true;
+    setNiceLoading(true);
 
-    if (!niceForm.preferredDate) {
-      errs.preferredDate = 'Preferred start date is required';
-    } else {
-      const selected = new Date(niceForm.preferredDate);
-      const minDate = new Date();
-      minDate.setDate(minDate.getDate() + 14);
-      if (selected < minDate) {
-        errs.preferredDate = 'Start date must be at least 2 weeks in the future';
-      }
-    }
-
-    const wordCount = niceForm.essay.trim().split(/\s+/).filter(Boolean).length;
-    if (wordCount < 300 || wordCount > 500) {
-      errs.essay = `Essay must be between 300 and 500 words (Current word count: ${wordCount})`;
-    }
-
-    if (!niceForm.emergencyContact.trim()) {
-      errs.emergencyContact = 'Emergency contact details are required';
-    }
-    if (!niceForm.acceptedTerms) {
-      errs.acceptedTerms = 'You must accept the terms and conditions';
-    }
-
-    setNiceErrors(errs);
-    if (Object.keys(errs).length === 0) {
-      setNiceLoading(true);
-      setTimeout(() => {
-        setNiceLoading(false);
-        setNiceSubmitted(true);
-      }, 1000);
+    try {
+      await submitNiceExchangeApplication(niceForm);
+      setNiceSubmitted(true);
+    } catch (error) {
+      console.error('Nice Exchange application submission failed', error);
+      setNiceErrors({ form: 'Your application could not be submitted. Please check your connection and try again.' });
+    } finally {
+      setNiceLoading(false);
+      niceSubmissionInProgress.current = false;
     }
   };
 
@@ -135,19 +91,18 @@ export const HomePage: React.FC = () => {
     if (!regForm.firstName.trim()) errs.firstName = 'First name is required';
     if (!regForm.lastName.trim()) errs.lastName = 'Last name is required';
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regForm.email.trim() || !emailRegex.test(regForm.email)) {
+    if (!regForm.email.trim() || !isValidEmail(regForm.email)) {
       errs.email = 'Valid email is required';
     }
-    if (!regForm.phone.trim() || regForm.phone.length < 7) {
+    if (!regForm.phone.trim() || !isValidPhone(regForm.phone)) {
       errs.phone = 'Valid phone number is required';
     }
 
-    const ageNum = parseInt(regForm.age, 10);
-    if (!regForm.age || isNaN(ageNum) || ageNum < 12 || ageNum > 99) {
+    const ageNum = parseAge(regForm.age);
+    if (!regForm.age || ageNum === null || ageNum < 12 || ageNum > 99) {
       errs.age = 'Age must be between 12 and 99';
     }
-    if (ageNum < 18 && !regForm.parentGuardianName.trim()) {
+    if (ageNum !== null && ageNum < 18 && !regForm.parentGuardianName.trim()) {
       errs.parentGuardianName = 'Parent/guardian name is required for under-18 students';
     }
 
@@ -200,9 +155,9 @@ export const HomePage: React.FC = () => {
       : SMM_COURSES;
 
   return (
-    <div className="bg-white text-[#222222]">
+    <div className="flex flex-col bg-white text-[#222222]">
       {/* 1. HERO SECTION (#top) */}
-      <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden">
+      <section id="top" className="order-1 relative pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden">
         {/* Background Ambient Glows */}
         <div className="absolute inset-0 -z-10 pointer-events-none">
           <div className="absolute top-0 right-0 w-[40rem] h-[40rem] rounded-full bg-[#4aabb8]/10 blur-3xl"></div>
@@ -291,7 +246,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 2. MARQUEE TICKER BAR */}
-      <section className="py-6 border-y border-[#4aabb8]/10 bg-white overflow-hidden">
+      <section className="order-2 py-6 border-y border-[#4aabb8]/10 bg-white overflow-hidden">
         <div className="relative flex">
           <div className="flex shrink-0 animate-marquee items-center gap-12 pr-12">
             <span className="font-heading text-lg sm:text-xl text-[#222222]/60 whitespace-nowrap">
@@ -331,7 +286,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 3. COURSES SECTION (#courses) */}
-      <section id="courses" className="py-20 sm:py-28">
+      <section id="courses" className="order-5 py-20 sm:py-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="max-w-2xl mb-12">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">
@@ -387,7 +342,6 @@ export const HomePage: React.FC = () => {
               <CourseCard
                 key={course.id}
                 course={course}
-                onSelect={(id) => setRegCourseId(id)}
               />
             ))}
           </div>
@@ -395,7 +349,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 4. NICE EXCHANGE PROGRAM SHOWCASE (#nice) */}
-      <section id="nice" className="py-20 sm:py-28">
+      <section id="nice" className="order-3 py-20 sm:py-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="relative overflow-hidden rounded-[2rem] shadow-card group">
             <span className="inline-block relative w-full aspect-[16/9] sm:aspect-[21/9] transition-transform duration-700 group-hover:scale-105">
@@ -429,7 +383,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 5. NICE PROGRAM APPLICATION FORM (#nice-register) */}
-      <section id="nice-register" className="py-20 sm:py-28 bg-[#f3f6f7]/50">
+      <section id="nice-register" className="order-4 py-20 sm:py-28 bg-[#f3f6f7]/50">
         <div className="max-w-5xl mx-auto px-5 sm:px-8">
           <div className="relative overflow-hidden rounded-[2rem] border border-[#4aabb8]/20 bg-white p-8 sm:p-12 shadow-card">
             <div className="text-center max-w-xl mx-auto mb-10">
@@ -440,7 +394,7 @@ export const HomePage: React.FC = () => {
                 Apply for the French Riviera Cultural Immersion
               </h2>
               <p className="mt-2 text-sm text-[#222222]/70 font-sans">
-                Submit your application. Start dates must be scheduled at least 2 weeks in advance.
+                Submit your application for review by our exchange coordination committee.
               </p>
             </div>
 
@@ -455,7 +409,15 @@ export const HomePage: React.FC = () => {
                 <p className="text-sm text-[#222222]/70 max-w-lg mx-auto">
                   Thank you for applying to the CELAVIE Nice Exchange Program. Our exchange coordination committee will review your application and contact you via email within 48 hours.
                 </p>
-                <Button variant="outline" onClick={() => setNiceSubmitted(false)} className="rounded-full">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setNiceSubmitted(false);
+                    setNiceForm(createEmptyNiceExchangeForm());
+                    setNiceErrors({});
+                  }}
+                  className="rounded-full"
+                >
                   Submit Another Application
                 </Button>
               </div>
@@ -487,11 +449,11 @@ export const HomePage: React.FC = () => {
                   />
                   {parseInt(niceForm.age, 10) < 18 && (
                     <Input
-                      label="Parent / Guardian Full Name"
+                      label="Parent Name"
                       required
-                      value={niceForm.parentGuardianName}
-                      onChange={(e) => setNiceForm({ ...niceForm, parentGuardianName: e.target.value })}
-                      error={niceErrors.parentGuardianName}
+                      value={niceForm.parentName}
+                      onChange={(e) => setNiceForm({ ...niceForm, parentName: e.target.value })}
+                      error={niceErrors.parentName}
                       helperText="Required for under-18 applicants"
                     />
                   )}
@@ -527,11 +489,13 @@ export const HomePage: React.FC = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-5">
                   <Select
-                    label="Current French Level"
-                    value={niceForm.frenchLevel}
-                    onChange={(e) => setNiceForm({ ...niceForm, frenchLevel: e.target.value })}
+                    label="Current French/English Level"
+                    value={niceForm.currentLanguageLevel}
+                    onChange={(e) => setNiceForm({ ...niceForm, currentLanguageLevel: e.target.value })}
+                    error={niceErrors.currentLanguageLevel}
+                    required
                     options={[
                       { value: 'A1', label: 'A1 Beginner' },
                       { value: 'A2', label: 'A2 Elementary' },
@@ -540,37 +504,21 @@ export const HomePage: React.FC = () => {
                       { value: 'C1', label: 'C1 Advanced' },
                     ]}
                   />
+                </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <Input
-                    label="Preferred Start Date"
-                    type="date"
+                    label="Parent Name"
+                    value={niceForm.parentName}
+                    onChange={(e) => setNiceForm({ ...niceForm, parentName: e.target.value })}
+                    error={niceErrors.parentName}
+                  />
+                  <Input
+                    label="Parent Phone Number"
                     required
-                    value={niceForm.preferredDate}
-                    onChange={(e) => setNiceForm({ ...niceForm, preferredDate: e.target.value })}
-                    error={niceErrors.preferredDate}
-                    helperText="Must be at least 2 weeks in advance"
-                  />
-
-                  <Select
-                    label="Duration"
-                    value={niceForm.duration}
-                    onChange={(e) => setNiceForm({ ...niceForm, duration: e.target.value })}
-                    options={[
-                      { value: '2_weeks', label: '2 Weeks Immersion' },
-                      { value: '4_weeks', label: '4 Weeks Immersion' },
-                      { value: '8_weeks', label: '8 Weeks Full Season' },
-                    ]}
-                  />
-
-                  <Select
-                    label="Accommodation Preference"
-                    value={niceForm.accommodation}
-                    onChange={(e) => setNiceForm({ ...niceForm, accommodation: e.target.value })}
-                    options={[
-                      { value: 'host_family', label: 'French Host Family (Meals Included)' },
-                      { value: 'student_residence', label: 'Student Residence Apartment' },
-                      { value: 'self_arranged', label: 'Self-Arranged Housing' },
-                    ]}
+                    value={niceForm.parentPhone}
+                    onChange={(e) => setNiceForm({ ...niceForm, parentPhone: e.target.value })}
+                    error={niceErrors.parentPhone}
                   />
                 </div>
 
@@ -578,26 +526,13 @@ export const HomePage: React.FC = () => {
                   label="Motivation Essay (300 - 500 words)"
                   required
                   rows={5}
-                  value={niceForm.essay}
-                  onChange={(e) => setNiceForm({ ...niceForm, essay: e.target.value })}
-                  error={niceErrors.essay}
+                  value={niceForm.motivationEssay}
+                  onChange={(e) => setNiceForm({ ...niceForm, motivationEssay: e.target.value })}
+                  error={niceErrors.motivationEssay}
                   helperText="Describe why you want to participate in the Nice Exchange program."
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <Input
-                    label="Dietary Restrictions / Allergies (Optional)"
-                    value={niceForm.dietaryRestrictions}
-                    onChange={(e) => setNiceForm({ ...niceForm, dietaryRestrictions: e.target.value })}
-                  />
-                  <Input
-                    label="Emergency Contact (Name & Phone)"
-                    required
-                    value={niceForm.emergencyContact}
-                    onChange={(e) => setNiceForm({ ...niceForm, emergencyContact: e.target.value })}
-                    error={niceErrors.emergencyContact}
-                  />
-                </div>
+                {niceErrors.form && <p className="text-sm text-red-600 font-medium">{niceErrors.form}</p>}
 
                 <div className="pt-2">
                   <label className="flex items-start space-x-3 cursor-pointer">
@@ -631,7 +566,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 6. WHY CHOOSE US BENEFITS SECTION (#why) */}
-      <section id="why" className="py-20 sm:py-28 bg-[#f3f6f7]/40">
+      <section id="why" className="order-6 py-20 sm:py-28 bg-[#f3f6f7]/40">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="max-w-2xl mb-12">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">
@@ -693,7 +628,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 7. TESTIMONIALS SECTION */}
-      <section className="py-20 sm:py-28">
+      <section className="order-7 py-20 sm:py-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="max-w-2xl mb-12">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85] flex items-center space-x-1">
@@ -720,7 +655,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 8. COURSE REGISTRATION SECTION (#register) */}
-      <section id="register" className="py-20 sm:py-28 bg-white">
+      <section id="register" className="order-8 py-20 sm:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-5 sm:px-8">
           <div className="text-center max-w-xl mx-auto mb-10">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">
@@ -817,7 +752,7 @@ export const HomePage: React.FC = () => {
                       onChange={(e) => setRegCourseId(e.target.value)}
                       options={allCourses.map((c) => ({
                         value: c.id,
-                        label: `${c.title} (${c.level}) — ${c.price}`,
+                        label: `${c.title} (${c.level})`,
                       }))}
                     />
 
@@ -910,14 +845,11 @@ export const HomePage: React.FC = () => {
                       Step 3: Summary & Payment
                     </h3>
 
-                    <div className="p-5 bg-[#f3f6f7] rounded-[1rem] border border-[#4aabb8]/20 flex justify-between items-center">
-                      <div>
-                        <span className="text-[11px] text-[#4aabb8] uppercase font-bold tracking-wider block">
-                          Selected Program
-                        </span>
-                        <span className="font-heading text-xl font-bold text-[#222222]">{selectedRegCourse.title}</span>
-                      </div>
-                      <span className="text-2xl font-bold text-[#222222]">{selectedRegCourse.price}</span>
+                    <div className="p-5 bg-[#f3f6f7] rounded-[1rem] border border-[#4aabb8]/20">
+                      <span className="text-[11px] text-[#4aabb8] uppercase font-bold tracking-wider block">
+                        Selected Program
+                      </span>
+                      <span className="font-heading text-xl font-bold text-[#222222]">{selectedRegCourse.title}</span>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -1031,7 +963,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 9. FAQ ACCORDION SECTION */}
-      <section id="faq" className="py-20 sm:py-28 bg-[#f3f6f7]/40">
+      <section id="faq" className="order-9 py-20 sm:py-28 bg-[#f3f6f7]/40">
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
           <div className="text-center max-w-xl mx-auto mb-12">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#2b7a85]">

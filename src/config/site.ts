@@ -42,6 +42,6 @@ export const siteConfig: SiteConfig = {
   },
   pricingPlaceholders: {
     currencySymbol: "€",
-    startingPrice: "[PRICE]",
+    startingPrice: "",
   },
 };

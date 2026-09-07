@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { SectionWrapper } from '../components/ui/SectionWrapper';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Badge } from '../components/ui/Badge';
@@ -7,31 +7,20 @@ import { Input } from '../components/ui/Input';
 import { Select } from '../components/ui/Select';
 import { Textarea } from '../components/ui/Textarea';
 import { ImageGallery } from '../components/ui/ImageGallery';
+import {
+  createEmptyNiceExchangeForm,
+  submitNiceExchangeApplication,
+  validateNiceExchangeForm,
+} from '../lib/niceExchange';
 import { Sparkles, CheckCircle2, Calendar, Home, Award, HeartHandshake } from 'lucide-react';
 
 export const NiceExchangePage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    parentGuardianName: '',
-    age: '',
-    school: '',
-    email: '',
-    phone: '',
-    country: '',
-    frenchLevel: 'A1',
-    preferredDate: '',
-    duration: '2_weeks',
-    accommodation: 'host_family',
-    essay: '',
-    dietaryRestrictions: '',
-    emergencyContact: '',
-    acceptedTerms: false,
-  });
+  const [formData, setFormData] = useState(createEmptyNiceExchangeForm);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const submissionInProgress = useRef(false);
 
   const niceGalleryImages = [
     {
@@ -51,72 +40,27 @@ export const NiceExchangePage: React.FC = () => {
     },
   ];
 
-  const validateForm = () => {
-    const errs: Record<string, string> = {};
-
-    if (!formData.firstName.trim()) errs.firstName = 'First name is required';
-    if (!formData.lastName.trim()) errs.lastName = 'Last name is required';
-
-    const ageNum = parseInt(formData.age, 10);
-    if (!formData.age || isNaN(ageNum) || ageNum < 14 || ageNum > 99) {
-      errs.age = 'Age must be between 14 and 99';
-    }
-
-    if (ageNum < 18 && !formData.parentGuardianName.trim()) {
-      errs.parentGuardianName = 'Parent or guardian full name is required for applicants under 18';
-    }
-
-    if (!formData.school.trim()) errs.school = 'School or university name is required';
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim() || !emailRegex.test(formData.email)) {
-      errs.email = 'Valid email address is required';
-    }
-
-    if (!formData.phone.trim() || formData.phone.length < 7) {
-      errs.phone = 'Valid phone number is required';
-    }
-
-    if (!formData.country.trim()) errs.country = 'Country of residence is required';
-
-    if (!formData.preferredDate) {
-      errs.preferredDate = 'Preferred start date is required';
-    } else {
-      const selected = new Date(formData.preferredDate);
-      const minDate = new Date();
-      minDate.setDate(minDate.getDate() + 14); // Min 2 weeks in future
-      if (selected < minDate) {
-        errs.preferredDate = 'Start date must be at least 2 weeks in the future';
-      }
-    }
-
-    const wordCount = formData.essay.trim().split(/\s+/).filter(Boolean).length;
-    if (wordCount < 300 || wordCount > 500) {
-      errs.essay = `Essay must be between 300 and 500 words (Current word count: ${wordCount})`;
-    }
-
-    if (!formData.emergencyContact.trim()) {
-      errs.emergencyContact = 'Emergency contact details are required';
-    }
-
-    if (!formData.acceptedTerms) {
-      errs.acceptedTerms = 'You must accept the terms and conditions';
-    }
-
-    setErrors(errs);
-    return Object.keys(errs).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (submissionInProgress.current) return;
 
+    const validationErrors = validateNiceExchangeForm(formData);
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0) return;
+
+    submissionInProgress.current = true;
     setLoading(true);
-    // Simulate database application submission
-    setTimeout(() => {
-      setLoading(false);
+
+    try {
+      await submitNiceExchangeApplication(formData);
       setSubmitted(true);
-    }, 1000);
+    } catch (error) {
+      console.error('Nice Exchange application submission failed', error);
+      setErrors({ form: 'Your application could not be submitted. Please check your connection and try again.' });
+    } finally {
+      setLoading(false);
+      submissionInProgress.current = false;
+    }
   };
 
   return (
@@ -199,7 +143,7 @@ export const NiceExchangePage: React.FC = () => {
               Apply for Nice Exchange
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-xl mx-auto">
-              Please complete all required fields. Dates must be at least 2 weeks in advance. Applicants under 18 require parent or guardian authorization.
+              Please complete all required fields. Applicants under 18 require parent or guardian authorization.
             </p>
           </div>
 
@@ -215,31 +159,13 @@ export const NiceExchangePage: React.FC = () => {
                 </p>
                 <div className="p-4 bg-gray-50 rounded-[6px] border border-gray-200 max-w-md mx-auto text-xs text-gray-600 space-y-1">
                   <p><strong>Applicant Email:</strong> {formData.email}</p>
-                  <p><strong>Preferred Start Date:</strong> {formData.preferredDate}</p>
-                  <p><strong>Duration:</strong> {formData.duration.replace('_', ' ')}</p>
                 </div>
                 <Button
                   variant="outline"
                   onClick={() => {
                     setSubmitted(false);
-                    setFormData({
-                      firstName: '',
-                      lastName: '',
-                      parentGuardianName: '',
-                      age: '',
-                      school: '',
-                      email: '',
-                      phone: '',
-                      country: '',
-                      frenchLevel: 'A1',
-                      preferredDate: '',
-                      duration: '2_weeks',
-                      accommodation: 'host_family',
-                      essay: '',
-                      dietaryRestrictions: '',
-                      emergencyContact: '',
-                      acceptedTerms: false,
-                    });
+                    setFormData(createEmptyNiceExchangeForm());
+                    setErrors({});
                   }}
                 >
                   Submit Another Application
@@ -278,11 +204,11 @@ export const NiceExchangePage: React.FC = () => {
                     />
                     {parseInt(formData.age, 10) < 18 && (
                       <Input
-                        label="Parent / Guardian Full Name"
+                        label="Parent Name"
                         required
-                        value={formData.parentGuardianName}
-                        onChange={(e) => setFormData({ ...formData, parentGuardianName: e.target.value })}
-                        error={errors.parentGuardianName}
+                        value={formData.parentName}
+                        onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
+                        error={errors.parentName}
                         helperText="Required for applicants under 18"
                       />
                     )}
@@ -324,11 +250,13 @@ export const NiceExchangePage: React.FC = () => {
                   <h3 className="text-lg font-bold text-black border-b border-gray-200 pb-2 mb-4">
                     2. Program Preferences
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                     <Select
-                      label="Current French Level"
-                      value={formData.frenchLevel}
-                      onChange={(e) => setFormData({ ...formData, frenchLevel: e.target.value })}
+                      label="Current French/English Level"
+                      value={formData.currentLanguageLevel}
+                      onChange={(e) => setFormData({ ...formData, currentLanguageLevel: e.target.value })}
+                      error={errors.currentLanguageLevel}
+                      required
                       options={[
                         { value: 'A1', label: 'A1 Beginner' },
                         { value: 'A2', label: 'A2 Elementary' },
@@ -337,75 +265,46 @@ export const NiceExchangePage: React.FC = () => {
                         { value: 'C1', label: 'C1 Advanced' },
                       ]}
                     />
-
-                    <Input
-                      label="Preferred Start Date"
-                      type="date"
-                      required
-                      value={formData.preferredDate}
-                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                      error={errors.preferredDate}
-                      helperText="Must be at least 2 weeks in advance"
-                    />
-
-                    <Select
-                      label="Duration"
-                      value={formData.duration}
-                      onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                      options={[
-                        { value: '2_weeks', label: '2 Weeks Immersion' },
-                        { value: '4_weeks', label: '4 Weeks Immersion' },
-                        { value: '8_weeks', label: '8 Weeks Full Season' },
-                      ]}
-                    />
-
-                    <Select
-                      label="Accommodation Preference"
-                      value={formData.accommodation}
-                      onChange={(e) => setFormData({ ...formData, accommodation: e.target.value })}
-                      options={[
-                        { value: 'host_family', label: 'French Host Family (Meals Included)' },
-                        { value: 'student_residence', label: 'Student Residence Apartment' },
-                        { value: 'self_arranged', label: 'Self-Arranged Housing' },
-                      ]}
-                    />
                   </div>
                 </div>
 
-                {/* Essay & Health/Emergency */}
+                {/* Parent Information & Motivation Essay */}
                 <div>
                   <h3 className="text-lg font-bold text-black border-b border-gray-200 pb-2 mb-4">
-                    3. Motivation Essay & Emergency Info
+                    3. Parent Information & Motivation Essay
                   </h3>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <Input
+                      label="Parent Name"
+                      value={formData.parentName}
+                      onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
+                      error={errors.parentName}
+                      placeholder="e.g. Jane Doe"
+                    />
+
+                    <Input
+                      label="Parent Phone Number"
+                      required
+                      value={formData.parentPhone}
+                      onChange={(e) => setFormData({ ...formData, parentPhone: e.target.value })}
+                      error={errors.parentPhone}
+                      placeholder="e.g. +33 6 00 00 00 00"
+                    />
+                  </div>
 
                   <Textarea
                     label="Motivation Essay (300 - 500 words)"
                     required
                     rows={8}
-                    value={formData.essay}
-                    onChange={(e) => setFormData({ ...formData, essay: e.target.value })}
-                    error={errors.essay}
+                    value={formData.motivationEssay}
+                    onChange={(e) => setFormData({ ...formData, motivationEssay: e.target.value })}
+                    error={errors.motivationEssay}
                     helperText="Explain why you wish to participate in the Nice Exchange program and what goals you hope to achieve."
                   />
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                    <Input
-                      label="Dietary Restrictions / Allergies (Optional)"
-                      value={formData.dietaryRestrictions}
-                      onChange={(e) => setFormData({ ...formData, dietaryRestrictions: e.target.value })}
-                      placeholder="e.g. Vegetarian, Gluten-free, Peanut allergy"
-                    />
-
-                    <Input
-                      label="Emergency Contact (Name & Phone)"
-                      required
-                      value={formData.emergencyContact}
-                      onChange={(e) => setFormData({ ...formData, emergencyContact: e.target.value })}
-                      error={errors.emergencyContact}
-                      placeholder="e.g. Jane Doe (+33 6 00 00 00 00)"
-                    />
-                  </div>
                 </div>
+
+                {errors.form && <p className="text-sm text-red-600 font-medium">{errors.form}</p>}
 
                 {/* Terms Acceptance */}
                 <div className="pt-4 border-t border-gray-200">

@@ -9,8 +9,6 @@ export interface BaseCourse {
   category: CourseCategory;
   level: string;
   duration: string;
-  price: string;
-  originalPrice?: string;
   image: string;
   features: string[];
   schedule: string[];
