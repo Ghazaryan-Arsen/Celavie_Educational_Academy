@@ -49,21 +49,21 @@ CREATE TABLE IF NOT EXISTS public.nice_exchange_applications (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    parent_guardian_name VARCHAR(255),
-    age INT NOT NULL,
+    age INT NOT NULL CHECK (age >= 14 AND age <= 99),
     school VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(50) NOT NULL,
     country VARCHAR(100) NOT NULL,
-    french_level VARCHAR(50) NOT NULL,
-    preferred_date DATE NOT NULL,
-    duration VARCHAR(50) NOT NULL,
-    accommodation VARCHAR(100) NOT NULL,
-    essay TEXT NOT NULL,
-    dietary_restrictions TEXT,
-    emergency_contact VARCHAR(255) NOT NULL,
+    language_level VARCHAR(50) NOT NULL CHECK (language_level IN ('A1', 'A2', 'B1', 'B2', 'C1')),
+    motivation_essay TEXT NOT NULL CHECK (array_length(regexp_split_to_array(btrim(motivation_essay), '\s+'), 1) BETWEEN 300 AND 500),
+    parent_name VARCHAR(255),
+    parent_phone VARCHAR(50) NOT NULL CHECK (parent_phone ~ '^[0-9+() -]{7,50}$'),
+    terms_accepted BOOLEAN NOT NULL DEFAULT FALSE CHECK (terms_accepted = TRUE),
     status VARCHAR(50) NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT nice_exchange_email_format CHECK (email ~* '^[^\s@]+@[^\s@]+\.[^\s@]+$'),
+    CONSTRAINT nice_exchange_phone_format CHECK (phone ~ '^[0-9+() -]{7,50}$')
 );
 
 -- 5. TESTIMONIALS TABLE
@@ -104,5 +104,57 @@ CREATE POLICY "Public faqs read access" ON public.faqs FOR SELECT USING (true);
 CREATE POLICY "Public approved testimonials read access" ON public.testimonials FOR SELECT USING (status = 'approved');
 
 -- Application & Enrollment Submission Policies (Public/Students can insert)
-CREATE POLICY "Public enrollment insert" ON public.enrollments FOR INSERT WITH CHECK (true);
-CREATE POLICY "Public nice exchange insert" ON public.nice_exchange_applications FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public enrollment insert"
+ON public.enrollments
+FOR INSERT
+TO anon, authenticated
+WITH CHECK (true);
+
+CREATE OR REPLACE FUNCTION public.is_admin()
+RETURNS BOOLEAN
+LANGUAGE SQL
+STABLE
+SECURITY DEFINER
+SET search_path = public
+AS $$
+    SELECT EXISTS (
+        SELECT 1
+        FROM public.users
+        WHERE public.users.id = auth.uid()
+          AND public.users.role = 'admin'
+    );
+$$;
+
+REVOKE ALL ON FUNCTION public.is_admin() FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.is_admin() TO authenticated;
+
+DROP POLICY IF EXISTS "Public nice exchange insert" ON public.nice_exchange_applications;
+DROP POLICY IF EXISTS "Public nice exchange read access" ON public.nice_exchange_applications;
+DROP POLICY IF EXISTS "Admin nice exchange read access" ON public.nice_exchange_applications;
+DROP POLICY IF EXISTS "Admin nice exchange update access" ON public.nice_exchange_applications;
+DROP POLICY IF EXISTS "Admin nice exchange delete access" ON public.nice_exchange_applications;
+
+CREATE POLICY "Public nice exchange insert"
+ON public.nice_exchange_applications
+FOR INSERT
+TO anon, authenticated
+WITH CHECK (status = 'pending' AND terms_accepted = TRUE);
+
+CREATE POLICY "Admin nice exchange read access"
+ON public.nice_exchange_applications
+FOR SELECT
+TO authenticated
+USING (public.is_admin());
+
+CREATE POLICY "Admin nice exchange update access"
+ON public.nice_exchange_applications
+FOR UPDATE
+TO authenticated
+USING (public.is_admin())
+WITH CHECK (status IN ('pending', 'approved', 'rejected'));
+
+CREATE POLICY "Admin nice exchange delete access"
+ON public.nice_exchange_applications
+FOR DELETE
+TO authenticated
+USING (public.is_admin());

@@ -5,6 +5,8 @@ import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { isSupabaseConfigured } from '../lib/supabase';
+import { supabase } from '../lib/supabase';
+import type { NiceExchangeApplicationRow, NiceExchangeApplicationStatus } from '../types/niceExchange';
 import { CheckCircle, XCircle, Lock, LogOut } from 'lucide-react';
 
 export const AdminPage: React.FC = () => {
@@ -14,29 +16,73 @@ export const AdminPage: React.FC = () => {
   const [loginError, setLoginError] = useState('');
   const [activeTab, setActiveTab] = useState<'enrollments' | 'nice_exchange'>('enrollments');
 
-  // Mock Admin Data
+  const [niceApps, setNiceApps] = useState<NiceExchangeApplicationRow[]>([]);
+  const [niceLoading, setNiceLoading] = useState(false);
+  const [niceError, setNiceError] = useState('');
   const [mockEnrollments] = useState([
     { id: 'en-1', name: 'Marie Curie', email: 'marie@example.com', course: 'French Language Mastery', payment: 'Card', status: 'completed', date: '2025-01-15' },
     { id: 'en-2', name: 'John Doe', email: 'john@example.com', course: 'SMM Pro: Growth & Paid Advertising', payment: 'Bank Transfer', status: 'pending', date: '2025-01-16' },
   ]);
 
-  const [mockNiceApps, setMockNiceApps] = useState([
-    { id: 'na-1', name: 'Sophie Laurent', email: 'sophie@example.com', age: 17, level: 'A2', date: '2025-06-10', status: 'pending' },
-    { id: 'na-2', name: 'Lucas Martin', email: 'lucas@example.com', age: 21, level: 'B1', date: '2025-07-01', status: 'approved' },
-  ]);
+  const loadNiceApps = async () => {
+    if (!supabase) return;
 
-  const handleLogin = (e: React.FormEvent) => {
+    setNiceLoading(true);
+    setNiceError('');
+    const { data, error } = await supabase
+      .from('nice_exchange_applications')
+      .select('id, first_name, last_name, age, school, email, phone, country, language_level, motivation_essay, parent_name, parent_phone, status, created_at')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Nice Exchange applications could not be loaded', error);
+      setNiceError('Applications could not be loaded. Please try again.');
+    } else {
+      setNiceApps((data || []) as NiceExchangeApplicationRow[]);
+    }
+    setNiceLoading(false);
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'admin123') {
+    if (!supabase) {
+      setLoginError('The admin database is not configured.');
+      return;
+    }
+
+    const { error } = await supabase.auth.signInWithPassword({ email: username.trim(), password });
+    if (!error) {
       setIsAuthenticated(true);
       setLoginError('');
+      void loadNiceApps();
     } else {
-      setLoginError('Invalid admin credentials (Use admin / admin123 for demo access)');
+      console.error('Admin sign-in failed', error);
+      setLoginError('Invalid admin credentials.');
     }
   };
 
-  const toggleNiceAppStatus = (id: string, newStatus: string) => {
-    setMockNiceApps(mockNiceApps.map(a => a.id === id ? { ...a, status: newStatus } : a));
+  const toggleNiceAppStatus = async (id: string, newStatus: NiceExchangeApplicationStatus) => {
+    if (!supabase) return;
+    const { error } = await supabase
+      .from('nice_exchange_applications')
+      .update({ status: newStatus })
+      .eq('id', id);
+
+    if (error) {
+      console.error('Nice Exchange application status update failed', error);
+      setNiceError('Application status could not be updated. Please try again.');
+      return;
+    }
+
+    setNiceApps((applications) => applications.map((application) => (
+      application.id === id ? { ...application, status: newStatus } : application
+    )));
+  };
+
+  const handleLogout = async () => {
+    if (supabase) await supabase.auth.signOut();
+    setIsAuthenticated(false);
+    setNiceApps([]);
   };
 
   return (
@@ -61,7 +107,7 @@ export const AdminPage: React.FC = () => {
 
               {!isSupabaseConfigured && (
                 <div className="p-3 bg-amber-50 border border-amber-200 rounded text-xs text-amber-900 mb-4">
-                  Note: Supabase credentials not set in env. Running in demo management mode.
+                  Supabase credentials are not set. Admin access is unavailable.
                 </div>
               )}
 
@@ -74,10 +120,11 @@ export const AdminPage: React.FC = () => {
               <form onSubmit={handleLogin} className="space-y-4">
                 <Input
                   id="username"
-                  label="Username"
+                  label="Admin Email"
+                  type="email"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="admin"
+                  placeholder="admin@example.com"
                 />
                 <Input
                   id="password"
@@ -99,7 +146,7 @@ export const AdminPage: React.FC = () => {
                   <h1 className="text-2xl font-extrabold text-black">CELAVIE Admin Management</h1>
                   <p className="text-xs text-gray-500">Overview of student registrations and exchange applications</p>
                 </div>
-                <Button variant="outline" size="sm" onClick={() => setIsAuthenticated(false)}>
+                <Button variant="outline" size="sm" onClick={() => void handleLogout()}>
                   <LogOut className="w-4 h-4 mr-1.5" /> Log Out
                 </Button>
               </div>
@@ -124,7 +171,7 @@ export const AdminPage: React.FC = () => {
                       : 'border-transparent text-gray-500 hover:text-black'
                   }`}
                 >
-                  Nice Exchange Queue ({mockNiceApps.length})
+                  Nice Exchange Queue ({niceApps.length})
                 </button>
               </div>
 
@@ -162,29 +209,39 @@ export const AdminPage: React.FC = () => {
 
               {activeTab === 'nice_exchange' && (
                 <div className="bg-white rounded border border-gray-200 overflow-x-auto">
+                  {niceError && <p className="p-3 text-xs text-red-700 bg-red-50 border-b border-red-200">{niceError}</p>}
+                  {niceLoading && <p className="p-3 text-xs text-gray-500">Loading applications...</p>}
                   <table className="w-full text-left text-xs md:text-sm">
                     <thead className="bg-gray-50 text-gray-600 uppercase font-bold border-b border-gray-200">
                       <tr>
                         <th className="p-3">Applicant</th>
                         <th className="p-3">Age</th>
+                        <th className="p-3">School</th>
+                        <th className="p-3">Contact</th>
                         <th className="p-3">Level</th>
-                        <th className="p-3">Preferred Start</th>
+                        <th className="p-3">Parent</th>
+                        <th className="p-3">Motivation Essay</th>
                         <th className="p-3">Status</th>
+                        <th className="p-3">Date</th>
                         <th className="p-3">Action</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
-                      {mockNiceApps.map((item) => (
+                      {niceApps.map((item) => (
                         <tr key={item.id} className="hover:bg-gray-50">
-                          <td className="p-3 font-semibold text-black">{item.name}<br/><span className="text-xs font-normal text-gray-500">{item.email}</span></td>
+                          <td className="p-3 font-semibold text-black">{item.first_name} {item.last_name}<br/><span className="text-xs font-normal text-gray-500">{item.email}</span></td>
                           <td className="p-3 text-gray-700">{item.age}</td>
-                          <td className="p-3 text-gray-600">{item.level}</td>
-                          <td className="p-3 text-gray-500">{item.date}</td>
+                          <td className="p-3 text-gray-700">{item.school}</td>
+                          <td className="p-3 text-gray-600">{item.phone}<br />{item.country}</td>
+                          <td className="p-3 text-gray-600">{item.language_level}</td>
+                          <td className="p-3 text-gray-600">{item.parent_name || 'Not provided'}<br />{item.parent_phone}</td>
+                          <td className="p-3 text-gray-600 min-w-[20rem]">{item.motivation_essay}</td>
                           <td className="p-3">
                             <Badge variant={item.status === 'approved' ? 'success' : 'secondary'}>
                               {item.status}
                             </Badge>
                           </td>
+                          <td className="p-3 text-gray-500">{new Date(item.created_at).toLocaleDateString()}</td>
                           <td className="p-3 flex space-x-1">
                             <button
                               onClick={() => toggleNiceAppStatus(item.id, 'approved')}

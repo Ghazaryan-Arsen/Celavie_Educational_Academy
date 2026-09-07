@@ -8,6 +8,7 @@ import { Input } from '../components/ui/Input';
 import { Select } from '../components/ui/Select';
 import { RegistrationStepper } from '../components/ui/RegistrationStepper';
 import { LANGUAGE_COURSES, SMM_COURSES } from '../data/mockData';
+import { isValidEmail, isValidPhone, parseAge } from '../lib/validation';
 import { CheckCircle2, CreditCard, Landmark, PhoneCall } from 'lucide-react';
 
 export const RegisterPage: React.FC = () => {
@@ -62,21 +63,20 @@ export const RegisterPage: React.FC = () => {
     if (!formData.firstName.trim()) errs.firstName = 'First name is required';
     if (!formData.lastName.trim()) errs.lastName = 'Last name is required';
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim() || !emailRegex.test(formData.email)) {
+    if (!formData.email.trim() || !isValidEmail(formData.email)) {
       errs.email = 'Valid email is required';
     }
 
-    if (!formData.phone.trim() || formData.phone.length < 7) {
+    if (!formData.phone.trim() || !isValidPhone(formData.phone)) {
       errs.phone = 'Valid phone number is required';
     }
 
-    const ageNum = parseInt(formData.age, 10);
-    if (!formData.age || isNaN(ageNum) || ageNum < 12 || ageNum > 99) {
+    const ageNum = parseAge(formData.age);
+    if (!formData.age || ageNum === null || ageNum < 12 || ageNum > 99) {
       errs.age = 'Age must be between 12 and 99';
     }
 
-    if (ageNum < 18 && !formData.parentGuardianName.trim()) {
+    if (ageNum !== null && ageNum < 18 && !formData.parentGuardianName.trim()) {
       errs.parentGuardianName = 'Parent or guardian name is required for under-18 students';
     }
 
@@ -180,7 +180,7 @@ export const RegisterPage: React.FC = () => {
                       onChange={(e) => setSelectedCourseId(e.target.value)}
                       options={allCourses.map((c) => ({
                         value: c.id,
-                        label: `${c.title} — ${c.price}`,
+                        label: c.title,
                       }))}
                     />
 
@@ -194,9 +194,6 @@ export const RegisterPage: React.FC = () => {
                         <Badge variant="primary" className="mb-1">{selectedCourse.category}</Badge>
                         <h4 className="text-base font-bold text-black">{selectedCourse.title}</h4>
                         <p className="text-xs text-gray-600 line-clamp-2">{selectedCourse.description}</p>
-                        <span className="text-sm font-extrabold text-black block mt-2">
-                          Tuition: {selectedCourse.price}
-                        </span>
                       </div>
                     </div>
 
@@ -285,12 +282,9 @@ export const RegisterPage: React.FC = () => {
                   <form onSubmit={handleSubmitRegistration} className="space-y-6">
                     <h3 className="text-lg font-bold text-black">Step 3: Tuition Payment & Order Summary</h3>
 
-                    <div className="p-4 bg-gray-50 rounded-[6px] border border-[rgba(0,0,0,0.08)] flex justify-between items-center">
-                      <div>
-                        <span className="text-xs text-gray-500 uppercase font-bold block">Selected Program</span>
-                        <span className="text-base font-bold text-black">{selectedCourse.title}</span>
-                      </div>
-                      <span className="text-2xl font-black text-black">{selectedCourse.price}</span>
+                    <div className="p-4 bg-gray-50 rounded-[6px] border border-[rgba(0,0,0,0.08)]">
+                      <span className="text-xs text-gray-500 uppercase font-bold block">Selected Program</span>
+                      <span className="text-base font-bold text-black">{selectedCourse.title}</span>
                     </div>
 
                     {/* Payment Method Selection */}
