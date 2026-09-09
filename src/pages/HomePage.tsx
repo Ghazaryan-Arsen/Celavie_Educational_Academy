@@ -15,13 +15,12 @@ import {
   submitNiceExchangeApplication,
   validateNiceExchangeForm,
 } from '../lib/niceExchange';
+import { submitRegistration } from '../lib/registration';
+import type { RegistrationFormData } from '../types/registration';
 import {
   Globe,
   TrendingUp,
   CheckCircle2,
-  CreditCard,
-  Landmark,
-  PhoneCall,
   ArrowRight,
   Users,
   Target,
@@ -74,11 +73,7 @@ export const HomePage: React.FC = () => {
     phone: '',
     age: '',
     parentGuardianName: '',
-    paymentMethod: 'card' as 'card' | 'bank_transfer' | 'payment_plan',
     acceptedTerms: false,
-    cardNumber: '',
-    cardExpiry: '',
-    cardCvc: '',
   });
   const [regErrors, setRegErrors] = useState<Record<string, string>>({});
   const [regSubmitted, setRegSubmitted] = useState(false);
@@ -112,27 +107,44 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  const handleRegSubmit = (e: React.FormEvent) => {
+  const handleRegSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs: Record<string, string> = {};
     if (!regForm.acceptedTerms) {
       errs.acceptedTerms = 'You must accept the enrollment terms and conditions';
     }
-    if (regForm.paymentMethod === 'card') {
-      if (!regForm.cardNumber.trim() || regForm.cardNumber.replaceAll(' ', '').length < 15) {
-        errs.cardNumber = 'Valid 16-digit card number required';
-      }
-      if (!regForm.cardExpiry.trim()) errs.cardExpiry = 'Expiry date required (MM/YY)';
-      if (!regForm.cardCvc.trim() || regForm.cardCvc.length < 3) errs.cardCvc = 'Valid CVC required';
-    }
 
     setRegErrors(errs);
-    if (Object.keys(errs).length === 0) {
-      setRegLoading(true);
-      setTimeout(() => {
-        setRegLoading(false);
-        setRegSubmitted(true);
-      }, 1000);
+    if (Object.keys(errs).length > 0) return;
+
+    setRegLoading(true);
+
+    try {
+      const course = allCourses.find((c) => c.id === regCourseId);
+      if (!course) throw new Error('Please select a valid course.');
+
+      const registrationData: RegistrationFormData = {
+        fullName: `${regForm.firstName.trim()} ${regForm.lastName.trim()}`,
+        phone: regForm.phone.trim(),
+        email: regForm.email.trim(),
+        message: '',
+        ...(course.category === 'smm'
+          ? { smmProgram: course.id }
+          : { language: course.language, level: course.level }),
+      };
+      await submitRegistration(course.category, registrationData);
+
+
+      setRegLoading(false);
+      setRegSubmitted(true);
+    } catch (error) {
+      setRegLoading(false);
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'An error occurred during registration. Please try again.';
+      setRegErrors({ form: errorMessage });
+      console.error('Registration submission failed:', error);
     }
   };
 
@@ -675,7 +687,7 @@ export const HomePage: React.FC = () => {
           <div className="p-8 sm:p-12 rounded-[2rem] border border-[#4aabb8]/20 bg-white shadow-card">
             {!regSubmitted && (
               <RegistrationStepper
-                steps={['Select Program', 'Student Info', 'Payment & Complete']}
+                steps={['Select Program', 'Student Info', 'Review & Submit']}
                 currentStep={regStep}
               />
             )}
@@ -689,7 +701,7 @@ export const HomePage: React.FC = () => {
                   Registration Completed!
                 </h3>
                 <p className="text-sm text-[#222222]/70 max-w-md mx-auto">
-                  Your enrollment confirmation and schedule details have been sent to <strong>{regForm.email}</strong>.
+                  Your registration has been received. We will follow up with course and schedule details at <strong>{regForm.email}</strong>.
                 </p>
                 <Button
                   variant="primary"
@@ -833,7 +845,7 @@ export const HomePage: React.FC = () => {
                         className="rounded-full px-8 py-3.5 font-semibold cursor-pointer"
                         onClick={handleRegNextStep2}
                       >
-                        Continue to Payment
+                        Continue to Review
                       </Button>
                     </div>
                   </div>
@@ -842,8 +854,12 @@ export const HomePage: React.FC = () => {
                 {regStep === 3 && (
                   <form onSubmit={handleRegSubmit} className="space-y-6 pt-6">
                     <h3 className="font-heading text-xl font-bold text-[#222222]">
-                      Step 3: Summary & Payment
+                      Step 3: Review & Submit Registration
                     </h3>
+
+                    {regErrors.form && (
+                      <p role="alert" className="text-sm text-red-600">{regErrors.form}</p>
+                    )}
 
                     <div className="p-5 bg-[#f3f6f7] rounded-[1rem] border border-[#4aabb8]/20">
                       <span className="text-[11px] text-[#4aabb8] uppercase font-bold tracking-wider block">
@@ -852,76 +868,14 @@ export const HomePage: React.FC = () => {
                       <span className="font-heading text-xl font-bold text-[#222222]">{selectedRegCourse.title}</span>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                      <button
-                        type="button"
-                        onClick={() => setRegForm({ ...regForm, paymentMethod: 'card' })}
-                        className={`p-4 rounded-[0.75rem] border text-left flex items-center space-x-2 transition cursor-pointer ${
-                          regForm.paymentMethod === 'card'
-                            ? 'border-[#4aabb8] bg-[#4aabb8]/10 font-bold text-[#2b7a85]'
-                            : 'border-[#4aabb8]/15'
-                        }`}
-                      >
-                        <CreditCard className="w-4 h-4 text-[#4aabb8]" />
-                        <span className="text-xs">Credit Card</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setRegForm({ ...regForm, paymentMethod: 'bank_transfer' })}
-                        className={`p-4 rounded-[0.75rem] border text-left flex items-center space-x-2 transition cursor-pointer ${
-                          regForm.paymentMethod === 'bank_transfer'
-                            ? 'border-[#4aabb8] bg-[#4aabb8]/10 font-bold text-[#2b7a85]'
-                            : 'border-[#4aabb8]/15'
-                        }`}
-                      >
-                        <Landmark className="w-4 h-4 text-[#4aabb8]" />
-                        <span className="text-xs">Bank Transfer</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setRegForm({ ...regForm, paymentMethod: 'payment_plan' })}
-                        className={`p-4 rounded-[0.75rem] border text-left flex items-center space-x-2 transition cursor-pointer ${
-                          regForm.paymentMethod === 'payment_plan'
-                            ? 'border-[#4aabb8] bg-[#4aabb8]/10 font-bold text-[#2b7a85]'
-                            : 'border-[#4aabb8]/15'
-                        }`}
-                      >
-                        <PhoneCall className="w-4 h-4 text-[#4aabb8]" />
-                        <span className="text-xs">Payment Plan</span>
-                      </button>
+                    <div className="p-5 bg-[#f3f6f7] rounded-[1rem] border border-[#4aabb8]/20 space-y-2">
+                      <span className="text-[11px] text-[#4aabb8] uppercase font-bold tracking-wider block">
+                        Student Information
+                      </span>
+                      <p className="text-sm text-[#222222]"><strong>Name:</strong> {regForm.firstName} {regForm.lastName}</p>
+                      <p className="text-sm text-[#222222]"><strong>Email:</strong> {regForm.email}</p>
+                      <p className="text-sm text-[#222222]"><strong>Phone:</strong> {regForm.phone}</p>
                     </div>
-
-                    {regForm.paymentMethod === 'card' && (
-                      <div className="p-5 rounded-[1rem] border border-[#4aabb8]/20 bg-[#f3f6f7]/50 space-y-4">
-                        <Input
-                          label="Card Number"
-                          placeholder="4000 0000 0000 0000"
-                          value={regForm.cardNumber}
-                          onChange={(e) => setRegForm({ ...regForm, cardNumber: e.target.value })}
-                          error={regErrors.cardNumber}
-                        />
-                        <div className="grid grid-cols-2 gap-4">
-                          <Input
-                            label="Expiry Date"
-                            placeholder="MM/YY"
-                            value={regForm.cardExpiry}
-                            onChange={(e) => setRegForm({ ...regForm, cardExpiry: e.target.value })}
-                            error={regErrors.cardExpiry}
-                          />
-                          <Input
-                            label="CVC"
-                            placeholder="123"
-                            type="password"
-                            maxLength={4}
-                            value={regForm.cardCvc}
-                            onChange={(e) => setRegForm({ ...regForm, cardCvc: e.target.value })}
-                            error={regErrors.cardCvc}
-                          />
-                        </div>
-                      </div>
-                    )}
 
                     <div className="pt-2">
                       <label className="flex items-start space-x-3 cursor-pointer">
@@ -951,7 +905,7 @@ export const HomePage: React.FC = () => {
                         className="rounded-full px-8 py-3.5 font-semibold cursor-pointer"
                         disabled={regLoading}
                       >
-                        {regLoading ? 'Processing Enrollment...' : 'Complete Registration'}
+                        {regLoading ? 'Submitting Registration...' : 'Submit Registration'}
                       </Button>
                     </div>
                   </form>

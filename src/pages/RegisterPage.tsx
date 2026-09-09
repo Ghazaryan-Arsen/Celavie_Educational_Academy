@@ -9,7 +9,9 @@ import { Select } from '../components/ui/Select';
 import { RegistrationStepper } from '../components/ui/RegistrationStepper';
 import { LANGUAGE_COURSES, SMM_COURSES } from '../data/mockData';
 import { isValidEmail, isValidPhone, parseAge } from '../lib/validation';
-import { CheckCircle2, CreditCard, Landmark, PhoneCall } from 'lucide-react';
+import { submitRegistration } from '../lib/registration';
+import type { RegistrationFormData } from '../types/registration';
+import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const RegisterPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -27,11 +29,7 @@ export const RegisterPage: React.FC = () => {
     age: '',
     parentGuardianName: '',
     notes: '',
-    paymentMethod: 'card' as 'card' | 'bank_transfer' | 'payment_plan',
     acceptedTerms: false,
-    cardNumber: '',
-    cardExpiry: '',
-    cardCvc: '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -87,7 +85,7 @@ export const RegisterPage: React.FC = () => {
   };
 
   // Step 3 Submission
-  const handleSubmitRegistration = (e: React.FormEvent) => {
+  const handleSubmitRegistration = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs: Record<string, string> = {};
 
@@ -95,24 +93,38 @@ export const RegisterPage: React.FC = () => {
       errs.acceptedTerms = 'You must accept the enrollment terms and conditions';
     }
 
-    if (formData.paymentMethod === 'card') {
-      if (!formData.cardNumber.trim() || formData.cardNumber.replaceAll(' ', '').length < 15) {
-        errs.cardNumber = 'Valid 16-digit card number required';
-      }
-      if (!formData.cardExpiry.trim()) errs.cardExpiry = 'Expiry date required (MM/YY)';
-      if (!formData.cardCvc.trim() || formData.cardCvc.length < 3) errs.cardCvc = 'Valid CVC required';
-    }
-
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
     setLoading(true);
 
-    // Simulate database registration & payment processing
-    setTimeout(() => {
+    try {
+      const course = allCourses.find((c) => c.id === selectedCourseId);
+      if (!course) throw new Error('Please select a valid course.');
+
+      const registrationData: RegistrationFormData = {
+        fullName: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        message: formData.notes.trim(),
+        ...(course.category === 'smm'
+          ? { smmProgram: course.id }
+          : { language: course.language, level: course.level }),
+      };
+      await submitRegistration(course.category, registrationData);
+
+
       setLoading(false);
       setSubmitted(true);
-    }, 1200);
+    } catch (error) {
+      setLoading(false);
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'An error occurred during registration. Please try again.';
+      setErrors({ form: errorMessage });
+      console.error('Registration submission failed:', error);
+    }
   };
 
   return (
@@ -140,7 +152,7 @@ export const RegisterPage: React.FC = () => {
 
           {!submitted && (
             <RegistrationStepper
-              steps={['Select Course', 'Personal Details', 'Tuition & Confirmation']}
+              steps={['Select Program', 'Student Info', 'Review & Submit']}
               currentStep={step}
             />
           )}
@@ -153,13 +165,12 @@ export const RegisterPage: React.FC = () => {
                 </div>
                 <h2 className="text-3xl font-extrabold text-black">Registration Successful!</h2>
                 <p className="text-sm md:text-base text-gray-600 max-w-md mx-auto">
-                  Welcome to CELAVIE Educational Academy. A confirmation email with course access details and schedule details has been sent to <strong>{formData.email}</strong>.
+                  Your registration has been received by CELAVIE Educational Academy. We will follow up with course and schedule details at <strong>{formData.email}</strong>.
                 </p>
 
                 <div className="p-4 bg-gray-50 rounded-[6px] border border-gray-200 text-left text-xs text-gray-700 max-w-md mx-auto space-y-1.5">
                   <p><strong>Enrolled Course:</strong> {selectedCourse.title}</p>
                   <p><strong>Student Name:</strong> {formData.firstName} {formData.lastName}</p>
-                  <p><strong>Payment Status:</strong> Confirmed ({formData.paymentMethod.replace('_', ' ')})</p>
                 </div>
 
                 <div className="pt-4 flex justify-center space-x-4">
@@ -271,116 +282,39 @@ export const RegisterPage: React.FC = () => {
                         Back
                       </Button>
                       <Button variant="primary" size="lg" className="font-bold" onClick={handleNextStep2}>
-                        Continue to Payment
+                        Continue to Review
                       </Button>
                     </div>
                   </div>
                 )}
 
-                {/* STEP 3: PAYMENT & CONFIRMATION */}
+                {/* STEP 3: REVIEW & SUBMIT */}
                 {step === 3 && (
                   <form onSubmit={handleSubmitRegistration} className="space-y-6">
-                    <h3 className="text-lg font-bold text-black">Step 3: Tuition Payment & Order Summary</h3>
+                    <h3 className="text-lg font-bold text-black">Step 3: Review & Submit Registration</h3>
+
+                    {/* Form-level error display */}
+                    {errors.form && (
+                      <div className="p-4 rounded-[6px] bg-red-50 border border-red-200 flex items-start space-x-3">
+                        <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-sm font-semibold text-red-900">Registration Error</p>
+                          <p className="text-xs text-red-800 mt-1">{errors.form}</p>
+                        </div>
+                      </div>
+                    )}
 
                     <div className="p-4 bg-gray-50 rounded-[6px] border border-[rgba(0,0,0,0.08)]">
                       <span className="text-xs text-gray-500 uppercase font-bold block">Selected Program</span>
                       <span className="text-base font-bold text-black">{selectedCourse.title}</span>
                     </div>
 
-                    {/* Payment Method Selection */}
-                    <div>
-                      <label className="block text-sm font-semibold text-black mb-2">Select Payment Method</label>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <button
-                          type="button"
-                          onClick={() => setFormData({ ...formData, paymentMethod: 'card' })}
-                          className={`p-3 rounded-[6px] border text-left flex items-center space-x-2.5 transition ${
-                            formData.paymentMethod === 'card'
-                              ? 'border-black bg-black/5 ring-2 ring-black font-bold'
-                              : 'border-gray-200 hover:border-gray-400'
-                          }`}
-                        >
-                          <CreditCard className="w-5 h-5 text-black" />
-                          <span className="text-xs md:text-sm">Credit / Debit Card</span>
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() => setFormData({ ...formData, paymentMethod: 'bank_transfer' })}
-                          className={`p-3 rounded-[6px] border text-left flex items-center space-x-2.5 transition ${
-                            formData.paymentMethod === 'bank_transfer'
-                              ? 'border-black bg-black/5 ring-2 ring-black font-bold'
-                              : 'border-gray-200 hover:border-gray-400'
-                          }`}
-                        >
-                          <Landmark className="w-5 h-5 text-black" />
-                          <span className="text-xs md:text-sm">Bank Transfer</span>
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() => setFormData({ ...formData, paymentMethod: 'payment_plan' })}
-                          className={`p-3 rounded-[6px] border text-left flex items-center space-x-2.5 transition ${
-                            formData.paymentMethod === 'payment_plan'
-                              ? 'border-black bg-black/5 ring-2 ring-black font-bold'
-                              : 'border-gray-200 hover:border-gray-400'
-                          }`}
-                        >
-                          <PhoneCall className="w-5 h-5 text-black" />
-                          <span className="text-xs md:text-sm">Request Payment Plan</span>
-                        </button>
-                      </div>
+                    <div className="p-4 bg-gray-50 rounded-[6px] border border-[rgba(0,0,0,0.08)] space-y-2">
+                      <span className="text-xs text-gray-500 uppercase font-bold block">Student Information</span>
+                      <p className="text-sm text-black"><strong>Name:</strong> {formData.firstName} {formData.lastName}</p>
+                      <p className="text-sm text-black"><strong>Email:</strong> {formData.email}</p>
+                      <p className="text-sm text-black"><strong>Phone:</strong> {formData.phone}</p>
                     </div>
-
-                    {/* Card Fields */}
-                    {formData.paymentMethod === 'card' && (
-                      <div className="p-4 rounded-[6px] border border-gray-200 bg-gray-50/50 space-y-4">
-                        <Input
-                          label="Cardholder Number"
-                          placeholder="4000 0000 0000 0000"
-                          value={formData.cardNumber}
-                          onChange={(e) => setFormData({ ...formData, cardNumber: e.target.value })}
-                          error={errors.cardNumber}
-                        />
-                        <div className="grid grid-cols-2 gap-4">
-                          <Input
-                            label="Expiration Date"
-                            placeholder="MM/YY"
-                            value={formData.cardExpiry}
-                            onChange={(e) => setFormData({ ...formData, cardExpiry: e.target.value })}
-                            error={errors.cardExpiry}
-                          />
-                          <Input
-                            label="Security Code (CVC)"
-                            placeholder="123"
-                            type="password"
-                            maxLength={4}
-                            value={formData.cardCvc}
-                            onChange={(e) => setFormData({ ...formData, cardCvc: e.target.value })}
-                            error={errors.cardCvc}
-                          />
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Bank Transfer info */}
-                    {formData.paymentMethod === 'bank_transfer' && (
-                      <div className="p-4 rounded-[6px] bg-blue-50 border border-blue-100 text-xs text-blue-900 space-y-1">
-                        <p className="font-bold">Bank Transfer Wire Instructions:</p>
-                        <p>Bank Name: Crédit Agricole Riviera</p>
-                        <p>IBAN: [CONFIGURED_IBAN]</p>
-                        <p>BIC/SWIFT: [CONFIGURED_SWIFT]</p>
-                        <p className="text-gray-600 pt-1">Please reference your full name in the wire description.</p>
-                      </div>
-                    )}
-
-                    {/* Payment Plan info */}
-                    {formData.paymentMethod === 'payment_plan' && (
-                      <div className="p-4 rounded-[6px] bg-amber-50 border border-amber-100 text-xs text-amber-900 space-y-1">
-                        <p className="font-bold">Flexible Installment Payment Plan:</p>
-                        <p>Our financial office will contact you to set up 3 or 4 monthly installments without interest fees.</p>
-                      </div>
-                    )}
 
                     {/* Terms */}
                     <div className="pt-2">
@@ -409,7 +343,7 @@ export const RegisterPage: React.FC = () => {
                         Back
                       </Button>
                       <Button type="submit" variant="accent" size="lg" className="font-bold" disabled={loading}>
-                        {loading ? 'Processing Enrollment...' : 'Complete Registration'}
+                        {loading ? 'Submitting Registration...' : 'Submit Registration'}
                       </Button>
                     </div>
                   </form>

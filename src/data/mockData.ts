@@ -527,8 +527,8 @@ export const FAQS: FAQItem[] = [
   {
     id: 'faq-3',
     category: 'registration',
-    question: 'What payment options are available?',
-    answer: 'We support major credit/debit cards via Stripe, direct bank transfers, and flexible monthly payment plans upon request.'
+    question: 'How do I register for a course?',
+    answer: 'Select your program, enter your student information, then review and submit your registration. We will follow up with course and schedule details.'
   },
   {
     id: 'faq-4',
