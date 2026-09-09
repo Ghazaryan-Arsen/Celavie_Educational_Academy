@@ -1,9 +1,5 @@
-import { supabase } from './supabase';
 import { getWordCount, isValidEmail, isValidPhone, parseAge } from './validation';
-import type {
-  NiceExchangeApplicationInsert,
-  NiceExchangeFormData,
-} from '../types/niceExchange';
+import type { NiceExchangeFormData } from '../types/niceExchange';
 
 export const createEmptyNiceExchangeForm = (): NiceExchangeFormData => ({
   firstName: '',
@@ -45,50 +41,4 @@ export const validateNiceExchangeForm = (formData: NiceExchangeFormData): Record
   if (!formData.acceptedTerms) errors.acceptedTerms = 'You must accept the terms and conditions';
 
   return errors;
-};
-
-export const toNiceExchangeApplicationInsert = (
-  formData: NiceExchangeFormData
-): NiceExchangeApplicationInsert => {
-  const age = parseAge(formData.age);
-  if (age === null) throw new Error('Age must be numeric');
-
-  return {
-    first_name: formData.firstName.trim(),
-    last_name: formData.lastName.trim(),
-    age,
-    school: formData.school.trim(),
-    email: formData.email.trim(),
-    phone: formData.phone.trim(),
-    country: formData.country.trim(),
-    language_level: formData.currentLanguageLevel,
-    motivation_essay: formData.motivationEssay.trim(),
-    parent_name: formData.parentName.trim() || null,
-    parent_phone: formData.parentPhone.trim(),
-    terms_accepted: formData.acceptedTerms,
-    status: 'pending',
-  };
-};
-
-export const submitNiceExchangeApplication = async (
-  formData: NiceExchangeFormData
-): Promise<void> => {
-  if (!supabase) {
-    throw new Error('Supabase is not configured. The application was not submitted.');
-  }
-
-  let timeoutId: number | undefined;
-  try {
-    const submission = supabase
-      .from('nice_exchange_applications')
-      .insert(toNiceExchangeApplicationInsert(formData));
-    const timeout = new Promise<never>((_, reject) => {
-      timeoutId = window.setTimeout(() => reject(new Error('Nice Exchange submission timed out')), 20000);
-    });
-    const { error } = await Promise.race([submission, timeout]);
-
-    if (error) throw error;
-  } finally {
-    if (timeoutId !== undefined) window.clearTimeout(timeoutId);
-  }
 };

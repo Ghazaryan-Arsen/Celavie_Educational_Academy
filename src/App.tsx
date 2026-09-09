@@ -12,7 +12,6 @@ import { LanguageCourseDetailsPage } from './pages/LanguageCourseDetailsPage';
 import { SMMCourseDetailsPage } from './pages/SMMCourseDetailsPage';
 import { NiceExchangePage } from './pages/NiceExchangePage';
 import { RegisterPage } from './pages/RegisterPage';
-import { AdminPage } from './pages/AdminPage';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -38,7 +37,6 @@ export const App: React.FC = () => {
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/nice-exchange" element={<NiceExchangePage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/admin" element={<AdminPage />} />
 
             {/* Dynamic Course Routes */}
             <Route path="/courses/smm/:tier" element={<SMMCourseDetailsPage />} />

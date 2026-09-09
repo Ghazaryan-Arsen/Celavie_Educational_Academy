@@ -2,13 +2,12 @@
 
 ## Project Overview
 
-CELAVIE Educational Academy is a React/TypeScript/Vite educational platform with Supabase backend integration. The project includes:
+CELAVIE Educational Academy is a React/TypeScript/Vite educational platform with Make.com registration workflows. The project includes:
 
 - **Frontend**: React components, TypeScript, Tailwind CSS, Vite bundler
-- **Backend**: Supabase (PostgreSQL database, authentication, real-time)
-- **Integrations**: Make.com workflows, email systems, Google Sheets, NICE Exchange API
+- **Integrations**: Make.com workflows, email systems, Google Sheets
 - **Forms**: Course registration, lead generation
-- **Pages**: HomePage, ServicesPage, RegisterPage, LanguageCourseDetailsPage, AdminPage, and more
+- **Pages**: HomePage, ServicesPage, RegisterPage, LanguageCourseDetailsPage, NiceExchangePage, and more
 
 **Repository structure**: [See workspace folder organization](../../../)
 
@@ -43,13 +42,6 @@ Before modifying any code:
 - **Verify references**: Before removing code, confirm it's unused everywhere
 - **Validate builds**: Run `npm run build` to ensure TypeScript compilation succeeds
 
-### 5. Database Protection
-
-- **Schemas and data are immutable**: Never modify, delete, truncate, or reset database structures
-- **Migrations are audit trails**: Cannot be edited, deleted, or rolled back without approval
-- **Production safety**: No destructive operations without explicit authorization
-- See [.github/instructions/supabase-database.instructions.md](.github/instructions/supabase-database.instructions.md) for detailed rules
-
 ## Development Workflow
 
 ### Getting Started
@@ -59,19 +51,18 @@ npm install                 # Install dependencies
 npm run dev                 # Start development server (Vite)
 npm run build              # Build for production
 npm run preview            # Preview production build
-npm run lint               # Run ESLint
+npm run lint               # Run oxlint
 ```
 
 ### Project Structure
 
 - **src/pages/**: Route handlers and page components
-- **src/components/domain/**: Business logic components (CourseCard, PricingCard, etc.)
-- **src/components/ui/**: Reusable UI building blocks (Button, Input, Modal, etc.)
+- **src/components/domain/**: Business logic components (CourseCard, TestimonialCard, etc.)
+- **src/components/ui/**: Reusable UI building blocks (Button, Input, Select, etc.)
 - **src/components/layout/**: Page structure (Navigation, Footer)
 - **src/lib/**: Utilities, helpers, and integrations
 - **src/types/**: TypeScript type definitions
 - **src/data/**: Mock data and fixtures
-- **supabase/**: Database schema and migrations
 
 ### Important Configuration Files
 
@@ -97,20 +88,10 @@ npm run lint               # Run ESLint
 - **Validate compilation** — always run `npm run build` before completion
 - See [.github/instructions/typescript-code.instructions.md](.github/instructions/typescript-code.instructions.md)
 
-### Supabase Integration
-
-- **Database structures are protected** — cannot be modified without approval
-- **Migrations are final** — cannot be edited or rolled back
-- **Use typed queries** — leverage [src/types/database.ts](src/types/database.ts) for type safety
-- **No direct SQL** — review complex queries with the team
-- See [.github/instructions/supabase-database.instructions.md](.github/instructions/supabase-database.instructions.md)
-
 ## Prohibited Operations
 
 **NEVER do these without explicit approval:**
 
-- Delete, drop, truncate, or reset databases or tables
-- Modify database schemas or migrations
 - Redesign or significantly restructure existing UI components
 - Add authentication systems, dashboards, or payment systems
 - Install dependencies without justification
@@ -123,18 +104,18 @@ npm run lint               # Run ESLint
 ## Integration Points
 
 ### Make.com Workflows
-- Located in [src/lib/niceExchange.ts](src/lib/niceExchange.ts) and webhook handlers
-- Trigger registration flows, email sending, lead capture
+- Located in [src/lib/registration.ts](src/lib/registration.ts); uses VITE_MAKE_REGISTRATION_WEBHOOK_URL
+- Submit SMM, Language, and Nice registrations to Make.com; Make routes them to Google Sheets and applicant email
 - Do not modify webhook endpoints without reviewing all Make.com connections
 
 ### Email System
 - Integrated with registration and lead workflows
 - Verify email templates and content before changes
 
-### NICE Exchange API
-- Defined in [src/types/niceExchange.ts](src/types/niceExchange.ts)
-- Used for language exchange coordination
-- Do not modify API integration without understanding full flow
+### Nice Exchange Forms
+- Defaults and validation: [src/lib/niceExchange.ts](src/lib/niceExchange.ts)
+- Form types: [src/types/niceExchange.ts](src/types/niceExchange.ts)
+- Both public forms submit through the shared Make.com registration service.
 
 ### Google Sheets Integration
 - Part of lead capture and data export workflows
@@ -149,10 +130,6 @@ Use the existing component structure as template. Refer to [src/components/domai
 ### Modifying a Page
 
 Review the page in [src/pages/](src/pages/) for existing patterns. Maintain all existing routes, state management, and UI structure unless explicitly requested otherwise.
-
-### Database Queries
-
-Study [src/lib/supabase.ts](src/lib/supabase.ts) for existing patterns. Use types from [src/types/database.ts](src/types/database.ts). Never execute destructive queries.
 
 ### Form Validation
 

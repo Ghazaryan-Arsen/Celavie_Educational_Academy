@@ -17,8 +17,8 @@ applyTo: "**/*.tsx"
 
 Refer to existing domain components in [src/components/domain/](../../src/components/domain/) and UI components in [src/components/ui/](../../src/components/ui/) for established patterns:
 
-- **Domain Components** (CourseCard, PricingCard, TestimonialCard): Task-specific, styled business logic
-- **UI Components** (Button, Input, Modal): Reusable, unstyled building blocks
+- **Domain Components** (CourseCard, CourseOverviewCard, TestimonialCard): Task-specific, styled business logic
+- **UI Components** (Button, Input, Select): Reusable, unstyled building blocks
 - **Layout Components** (Navigation, Footer): Page structure and structure only
 
 When modifying any component, maintain its classification and responsibility.

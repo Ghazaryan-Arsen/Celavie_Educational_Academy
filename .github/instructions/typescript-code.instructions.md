@@ -15,9 +15,8 @@ applyTo: "**/*.ts"
 
 ## Type Sources
 
-- **Database types**: [src/types/database.ts](../../src/types/database.ts) — Supabase-generated types
 - **App types**: [src/types/index.ts](../../src/types/index.ts) — application domain types
-- **Domain types**: [src/types/niceExchange.ts](../../src/types/niceExchange.ts) — NICE Exchange API types
+- **Domain types**: [src/types/niceExchange.ts](../../src/types/niceExchange.ts) — Nice Exchange form types
 - When adding types, extend or add to the appropriate file, don't create isolated type files
 
 ## Code Removal Safety
@@ -46,7 +45,7 @@ Never assume code is unused without comprehensive search.
 ## Common Patterns in CELAVIE
 
 - Event handlers: `React.MouseEvent<HTMLElement>`, `React.ChangeEvent<HTMLInputElement>`
-- API responses: Use types from [src/types/database.ts](../../src/types/database.ts)
+- API responses: Use types from [src/types/registration.ts](../../src/types/registration.ts)
 - Form data: Check [src/lib/validation.ts](../../src/lib/validation.ts) for existing validation types
 
 ## When in Doubt
