@@ -1,4 +1,5 @@
-import type { RegistrationPayload, RegistrationFormData, RegistrationResponse } from '../types/registration';
+import { parseAge } from './validation';
+import type { RegistrationPayload, RegistrationSubmission, RegistrationResponse } from '../types/registration';
 
 /**
  * Generate a unique client-side registration ID using crypto.randomUUID()
@@ -17,11 +18,36 @@ export const generateRegistrationId = (): string => {
  * Build the registration payload for Make.com webhook
  */
 export const buildRegistrationPayload = (
-  registrationType: 'smm' | 'language' | 'nice',
-  formData: RegistrationFormData
+  ...[registrationType, formData]: RegistrationSubmission
 ): RegistrationPayload => {
   const registrationId = generateRegistrationId();
   const submittedAt = new Date().toISOString();
+
+  if (registrationType === 'nice') {
+    const age = parseAge(formData.age);
+    if (age === null) throw new Error('Age must be numeric');
+
+    return {
+      registrationType,
+      registrationId,
+      submittedAt,
+      data: {
+        firstName: formData.firstName.trim(),
+        lastName: formData.lastName.trim(),
+        age,
+        school: formData.school.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        country: formData.country.trim(),
+        currentLanguageLevel: formData.currentLanguageLevel,
+        motivationEssay: formData.motivationEssay.trim(),
+        parentName: formData.parentName.trim(),
+        parentPhone: formData.parentPhone.trim(),
+        acceptedTerms: formData.acceptedTerms,
+      },
+    };
+  }
+
 
   return {
     registrationType,
@@ -107,9 +133,8 @@ export const submitRegistrationToWebhook = async (
  * @throws Error with user-friendly message on failure
  */
 export const submitRegistration = async (
-  registrationType: 'smm' | 'language' | 'nice',
-  formData: RegistrationFormData
+  ...submission: RegistrationSubmission
 ): Promise<RegistrationResponse> => {
-  const payload = buildRegistrationPayload(registrationType, formData);
+  const payload = buildRegistrationPayload(...submission);
   return submitRegistrationToWebhook(payload);
 };

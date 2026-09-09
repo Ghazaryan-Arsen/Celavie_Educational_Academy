@@ -1,3 +1,5 @@
+import type { NiceExchangeFormData } from './niceExchange';
+
 /**
  * Registration service types for Make.com webhook integration
  */
@@ -33,12 +35,19 @@ export interface RegistrationData {
  * Complete payload structure for Make.com webhook
  * Matches target architecture specification
  */
-export interface RegistrationPayload {
-  registrationType: 'smm' | 'language' | 'nice';
-  registrationId: string; // UUID generated client-side
-  submittedAt: string; // ISO 8601 timestamp
-  data: RegistrationData;
-}
+export type NiceRegistrationData = Omit<NiceExchangeFormData, 'age'> & { age: number };
+
+export type RegistrationSubmission =
+  | [registrationType: 'smm' | 'language', formData: RegistrationFormData]
+  | [registrationType: 'nice', formData: NiceExchangeFormData];
+
+export type RegistrationPayload = {
+  registrationId: string;
+  submittedAt: string;
+} & (
+  | { registrationType: 'smm' | 'language'; data: RegistrationData }
+  | { registrationType: 'nice'; data: NiceRegistrationData }
+);
 
 /**
  * Response structure from Make.com webhook

@@ -1,3 +1,4 @@
+import { submitRegistration } from '../lib/registration';
 import React, { useRef, useState } from 'react';
 import { SectionWrapper } from '../components/ui/SectionWrapper';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
@@ -9,7 +10,6 @@ import { Textarea } from '../components/ui/Textarea';
 import { ImageGallery } from '../components/ui/ImageGallery';
 import {
   createEmptyNiceExchangeForm,
-  submitNiceExchangeApplication,
   validateNiceExchangeForm,
 } from '../lib/niceExchange';
 import { Sparkles, CheckCircle2, Calendar, Home, Award, HeartHandshake } from 'lucide-react';
@@ -52,7 +52,7 @@ export const NiceExchangePage: React.FC = () => {
     setLoading(true);
 
     try {
-      await submitNiceExchangeApplication(formData);
+      await submitRegistration('nice', formData);
       setSubmitted(true);
     } catch (error) {
       console.error('Nice Exchange application submission failed', error);

@@ -12,7 +12,6 @@ import { LANGUAGE_COURSES, SMM_COURSES, TESTIMONIALS, FAQS } from '../data/mockD
 import { isValidEmail, isValidPhone, parseAge } from '../lib/validation';
 import {
   createEmptyNiceExchangeForm,
-  submitNiceExchangeApplication,
   validateNiceExchangeForm,
 } from '../lib/niceExchange';
 import { submitRegistration } from '../lib/registration';
@@ -51,7 +50,7 @@ export const HomePage: React.FC = () => {
     setNiceLoading(true);
 
     try {
-      await submitNiceExchangeApplication(niceForm);
+      await submitRegistration('nice', niceForm);
       setNiceSubmitted(true);
     } catch (error) {
       console.error('Nice Exchange application submission failed', error);
