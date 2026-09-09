@@ -131,11 +131,11 @@ export const LanguageCourseDetailsPage: React.FC = () => {
 
       {/* Nice Exchange Add-on Spotlight (if French) */}
       {course.niceExchangeAddon && (
-        <SectionWrapper bg="accent" className="border-y border-[#FFD700]/40">
+        <SectionWrapper bg="accent" className="border-y border-[#4aabb8]/40">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-left">
             <div className="md:col-span-8 space-y-4">
               <Badge variant="primary" className="px-3 py-1">
-                <Sparkles className="w-3.5 h-3.5 mr-1 text-[#FFD700] inline" />
+                <Sparkles className="w-3.5 h-3.5 mr-1 text-[#4aabb8] inline" />
                 Exclusive French Immersion Add-on
               </Badge>
               <h2 className="text-2xl md:text-3xl font-black text-black">

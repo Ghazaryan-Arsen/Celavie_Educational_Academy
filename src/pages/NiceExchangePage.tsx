@@ -196,22 +196,14 @@ export const NiceExchangePage: React.FC = () => {
                     <Input
                       label="Age"
                       type="number"
+                        min={11}
+                        max={99}
                       required
                       value={formData.age}
                       onChange={(e) => setFormData({ ...formData, age: e.target.value })}
                       error={errors.age}
                       helperText="Must be 14 or older"
                     />
-                    {parseInt(formData.age, 10) < 18 && (
-                      <Input
-                        label="Parent Name"
-                        required
-                        value={formData.parentName}
-                        onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
-                        error={errors.parentName}
-                        helperText="Required for applicants under 18"
-                      />
-                    )}
                     <Input
                       label="School / University / Organization"
                       required
@@ -277,6 +269,7 @@ export const NiceExchangePage: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     <Input
                       label="Parent Name"
+                      required
                       value={formData.parentName}
                       onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
                       error={errors.parentName}
@@ -294,8 +287,7 @@ export const NiceExchangePage: React.FC = () => {
                   </div>
 
                   <Textarea
-                    label="Motivation Essay (300 - 500 words)"
-                    required
+                    label="Motivation Essay (300-500 words, Optional)"
                     rows={8}
                     value={formData.motivationEssay}
                     onChange={(e) => setFormData({ ...formData, motivationEssay: e.target.value })}

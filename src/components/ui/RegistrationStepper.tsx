@@ -27,7 +27,7 @@ export const RegistrationStepper: React.FC<RegistrationStepperProps> = ({ steps,
                   isCompleted
                     ? 'bg-black text-white border-black'
                     : isCurrent
-                    ? 'bg-[#FFD700] text-black border-black'
+                    ? 'bg-[#4aabb8] text-black border-black'
                     : 'bg-white text-gray-400 border-[rgba(0,0,0,0.2)]'
                 }`}
               >

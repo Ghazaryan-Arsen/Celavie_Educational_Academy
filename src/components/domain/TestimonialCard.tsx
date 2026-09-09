@@ -17,7 +17,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial })
             <Star
               key={i}
               className={`w-4 h-4 ${
-                i < testimonial.rating ? 'fill-[#FFD700] text-[#FFD700]' : 'text-gray-200'
+                i < testimonial.rating ? 'fill-[#4aabb8] text-[#4aabb8]' : 'text-gray-200'
               }`}
             />
           ))}

@@ -64,7 +64,7 @@ export const CourseOverviewCard: React.FC<CourseOverviewCardProps> = ({ course }
         </div>
 
         <div className="p-3 rounded-[6px] bg-[rgba(0,0,0,0.03)] flex items-center space-x-3">
-          <Sparkles className="w-5 h-5 text-[#FFD700] shrink-0" />
+          <Sparkles className="w-5 h-5 text-[#4aabb8] shrink-0" />
           <div>
             <span className="text-[10px] text-gray-500 uppercase font-bold block">Certificate</span>
             <span className="text-xs md:text-sm font-semibold text-black">Official Certificate</span>

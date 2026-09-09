@@ -9,7 +9,7 @@ import { Select } from '../components/ui/Select';
 import { Textarea } from '../components/ui/Textarea';
 import { RegistrationStepper } from '../components/ui/RegistrationStepper';
 import { LANGUAGE_COURSES, SMM_COURSES, TESTIMONIALS, FAQS } from '../data/mockData';
-import { isValidEmail, isValidPhone, parseAge } from '../lib/validation';
+import { validateCourseApplicant } from '../lib/validation';
 import {
   createEmptyNiceExchangeForm,
   validateNiceExchangeForm,
@@ -64,41 +64,26 @@ export const HomePage: React.FC = () => {
   // Inline Registration State
   const allCourses = [...LANGUAGE_COURSES, ...SMM_COURSES];
   const [regStep, setRegStep] = useState<number>(1);
-  const [regCourseId, setRegCourseId] = useState<string>(allCourses[0].id);
+  const [regCategory, setRegCategory] = useState('');
+  const [regCourseId, setRegCourseId] = useState<string>('');
   const [regForm, setRegForm] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     age: '',
-    parentGuardianName: '',
     acceptedTerms: false,
   });
   const [regErrors, setRegErrors] = useState<Record<string, string>>({});
   const [regSubmitted, setRegSubmitted] = useState(false);
   const [regLoading, setRegLoading] = useState(false);
 
-  const selectedRegCourse = allCourses.find((c) => c.id === regCourseId) || allCourses[0];
+  const selectedRegCourse = allCourses.find((c) => c.id === regCourseId && c.category === regCategory);
+
+  const courseSubmissionInProgress = useRef(false);
 
   const handleRegNextStep2 = () => {
-    const errs: Record<string, string> = {};
-    if (!regForm.firstName.trim()) errs.firstName = 'First name is required';
-    if (!regForm.lastName.trim()) errs.lastName = 'Last name is required';
-
-    if (!regForm.email.trim() || !isValidEmail(regForm.email)) {
-      errs.email = 'Valid email is required';
-    }
-    if (!regForm.phone.trim() || !isValidPhone(regForm.phone)) {
-      errs.phone = 'Valid phone number is required';
-    }
-
-    const ageNum = parseAge(regForm.age);
-    if (!regForm.age || ageNum === null || ageNum < 12 || ageNum > 99) {
-      errs.age = 'Age must be between 12 and 99';
-    }
-    if (ageNum !== null && ageNum < 18 && !regForm.parentGuardianName.trim()) {
-      errs.parentGuardianName = 'Parent/guardian name is required for under-18 students';
-    }
+    const errs = validateCourseApplicant(regForm);
 
     setRegErrors(errs);
     if (Object.keys(errs).length === 0) {
@@ -108,18 +93,26 @@ export const HomePage: React.FC = () => {
 
   const handleRegSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const errs: Record<string, string> = {};
-    if (!regForm.acceptedTerms) {
+    if (courseSubmissionInProgress.current) return;
+    const errs = validateCourseApplicant(regForm);
+    if (Object.keys(errs).length > 0) {
+      setRegErrors(errs);
+      setRegStep(2);
+      return;
+    }
+
+    if (regForm.acceptedTerms !== true) {
       errs.acceptedTerms = 'You must accept the enrollment terms and conditions';
     }
 
     setRegErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
+    courseSubmissionInProgress.current = true;
     setRegLoading(true);
 
     try {
-      const course = allCourses.find((c) => c.id === regCourseId);
+      const course = selectedRegCourse;
       if (!course) throw new Error('Please select a valid course.');
 
       const registrationData: RegistrationFormData = {
@@ -144,6 +137,8 @@ export const HomePage: React.FC = () => {
           : 'An error occurred during registration. Please try again.';
       setRegErrors({ form: errorMessage });
       console.error('Registration submission failed:', error);
+    } finally {
+      courseSubmissionInProgress.current = false;
     }
   };
 
@@ -452,22 +447,14 @@ export const HomePage: React.FC = () => {
                   <Input
                     label="Age"
                     type="number"
+                        min={11}
+                        max={99}
                     required
                     value={niceForm.age}
                     onChange={(e) => setNiceForm({ ...niceForm, age: e.target.value })}
                     error={niceErrors.age}
                     helperText="Must be 14 or older"
                   />
-                  {parseInt(niceForm.age, 10) < 18 && (
-                    <Input
-                      label="Parent Name"
-                      required
-                      value={niceForm.parentName}
-                      onChange={(e) => setNiceForm({ ...niceForm, parentName: e.target.value })}
-                      error={niceErrors.parentName}
-                      helperText="Required for under-18 applicants"
-                    />
-                  )}
                   <Input
                     label="School / University / Organization"
                     required
@@ -520,6 +507,7 @@ export const HomePage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <Input
                     label="Parent Name"
+                    required
                     value={niceForm.parentName}
                     onChange={(e) => setNiceForm({ ...niceForm, parentName: e.target.value })}
                     error={niceErrors.parentName}
@@ -534,8 +522,7 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 <Textarea
-                  label="Motivation Essay (300 - 500 words)"
-                  required
+                  label="Motivation Essay (300-500 words, Optional)"
                   rows={5}
                   value={niceForm.motivationEssay}
                   onChange={(e) => setNiceForm({ ...niceForm, motivationEssay: e.target.value })}
@@ -706,6 +693,18 @@ export const HomePage: React.FC = () => {
                   variant="primary"
                   onClick={() => {
                     setRegSubmitted(false);
+                    setRegForm({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    age: '',
+    acceptedTerms: false,
+  });
+                    setRegCategory('');
+                    setRegCourseId('');
+                    setRegErrors({});
+                    setRegLoading(false);
                     setRegStep(1);
                   }}
                   className="rounded-full px-8 py-3"
@@ -725,11 +724,11 @@ export const HomePage: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => {
-                          const langCourse = LANGUAGE_COURSES[0];
-                          setRegCourseId(langCourse.id);
+                          if (regCategory !== 'language') setRegCourseId('');
+                          setRegCategory('language');
                         }}
                         className={`p-6 rounded-[1.25rem] border text-left transition-all cursor-pointer ${
-                          LANGUAGE_COURSES.some((c) => c.id === regCourseId)
+                          regCategory === 'language'
                             ? 'border-[#4aabb8] bg-[#4aabb8]/5 ring-2 ring-[#4aabb8]'
                             : 'border-[#4aabb8]/15 hover:border-[#4aabb8]/40'
                         }`}
@@ -742,11 +741,11 @@ export const HomePage: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => {
-                          const smmCourse = SMM_COURSES[0];
-                          setRegCourseId(smmCourse.id);
+                          if (regCategory !== 'smm') setRegCourseId('');
+                          setRegCategory('smm');
                         }}
                         className={`p-6 rounded-[1.25rem] border text-left transition-all cursor-pointer ${
-                          SMM_COURSES.some((c) => c.id === regCourseId)
+                          regCategory === 'smm'
                             ? 'border-[#4aabb8] bg-[#4aabb8]/5 ring-2 ring-[#4aabb8]'
                             : 'border-[#4aabb8]/15 hover:border-[#4aabb8]/40'
                         }`}
@@ -760,8 +759,9 @@ export const HomePage: React.FC = () => {
                     <Select
                       label="Select Specific Course Batch"
                       value={regCourseId}
+                      error={regErrors.course}
                       onChange={(e) => setRegCourseId(e.target.value)}
-                      options={allCourses.map((c) => ({
+                      options={allCourses.filter((c) => c.category === regCategory).map((c) => ({
                         value: c.id,
                         label: `${c.title} (${c.level})`,
                       }))}
@@ -771,7 +771,7 @@ export const HomePage: React.FC = () => {
                       variant="primary"
                       size="lg"
                       className="w-full rounded-full py-3.5 font-semibold cursor-pointer"
-                      onClick={() => setRegStep(2)}
+                      onClick={() => { if (selectedRegCourse) { setRegErrors({}); setRegStep(2); } else setRegErrors({ course: 'Please select a course to proceed' }); }}
                     >
                       Continue to Personal Info
                     </Button>
@@ -818,20 +818,13 @@ export const HomePage: React.FC = () => {
                       <Input
                         label="Age"
                         type="number"
+                        min={11}
+                        max={99}
                         required
                         value={regForm.age}
                         onChange={(e) => setRegForm({ ...regForm, age: e.target.value })}
                         error={regErrors.age}
                       />
-                      {parseInt(regForm.age, 10) < 18 && (
-                        <Input
-                          label="Parent / Guardian Full Name"
-                          required
-                          value={regForm.parentGuardianName}
-                          onChange={(e) => setRegForm({ ...regForm, parentGuardianName: e.target.value })}
-                          error={regErrors.parentGuardianName}
-                        />
-                      )}
                     </div>
 
                     <div className="flex justify-between items-center space-x-4 pt-4 border-t border-[#4aabb8]/15">
@@ -864,7 +857,7 @@ export const HomePage: React.FC = () => {
                       <span className="text-[11px] text-[#4aabb8] uppercase font-bold tracking-wider block">
                         Selected Program
                       </span>
-                      <span className="font-heading text-xl font-bold text-[#222222]">{selectedRegCourse.title}</span>
+                      <span className="font-heading text-xl font-bold text-[#222222]">{selectedRegCourse?.title}</span>
                     </div>
 
                     <div className="p-5 bg-[#f3f6f7] rounded-[1rem] border border-[#4aabb8]/20 space-y-2">

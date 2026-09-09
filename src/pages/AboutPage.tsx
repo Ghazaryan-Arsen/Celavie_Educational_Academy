@@ -43,7 +43,7 @@ export const AboutPage: React.FC = () => {
           </div>
 
           <div className="bg-white p-8 rounded-[8px] border border-[rgba(0,0,0,0.08)] shadow-xs text-left space-y-3">
-            <div className="w-12 h-12 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold">
+            <div className="w-12 h-12 rounded-full bg-[#4aabb8] text-black flex items-center justify-center font-bold">
               <Globe className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-black">Our Vision</h3>
