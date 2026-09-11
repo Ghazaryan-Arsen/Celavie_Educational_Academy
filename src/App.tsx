@@ -1,3 +1,6 @@
+import { LanguageProvider } from './i18n/LanguageContext';
+import { PageMetadata } from './components/PageMetadata';
+import { NotFoundPage } from './pages/NotFoundPage';
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navigation } from './components/layout/Navigation';
@@ -14,20 +17,21 @@ import { NiceExchangePage } from './pages/NiceExchangePage';
 import { RegisterPage } from './pages/RegisterPage';
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (hash) { requestAnimationFrame(() => document.getElementById(hash.slice(1))?.scrollIntoView()); }
+    else window.scrollTo(0, 0);
+  }, [pathname, hash]);
   return null;
 };
 
 export const App: React.FC = () => {
   return (
-    <Router>
-      <ScrollToTop />
+    <LanguageProvider><Router>
+      <ScrollToTop /><PageMetadata />
       <div className="flex flex-col min-h-screen bg-white text-[rgb(38,38,38)] antialiased">
         <Navigation />
-        <main className="flex-1">
+        <main id="main-content" className="flex-1 pt-24">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -44,18 +48,13 @@ export const App: React.FC = () => {
 
             <Route
               path="*"
-              element={
-                <div className="py-24 text-center space-y-4">
-                  <h1 className="text-4xl font-extrabold text-black">404 - Page Not Found</h1>
-                  <p className="text-gray-600">The page you requested could not be located.</p>
-                </div>
-              }
+              element={<NotFoundPage />}
             />
           </Routes>
         </main>
         <Footer />
       </div>
-    </Router>
+    </Router></LanguageProvider>
   );
 };
 

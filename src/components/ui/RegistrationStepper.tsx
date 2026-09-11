@@ -1,3 +1,4 @@
+import { useT } from '../../i18n/useLanguage';
 import React from 'react';
 import { Check } from 'lucide-react';
 
@@ -7,6 +8,7 @@ interface RegistrationStepperProps {
 }
 
 export const RegistrationStepper: React.FC<RegistrationStepperProps> = ({ steps, currentStep }) => {
+  const t = useT();
   return (
     <div className="w-full py-4">
       <div className="flex items-center justify-between relative">
@@ -38,7 +40,7 @@ export const RegistrationStepper: React.FC<RegistrationStepperProps> = ({ steps,
                   isCurrent ? 'text-black font-bold' : 'text-gray-500'
                 }`}
               >
-                {label}
+                {t(label)}
               </span>
             </div>
           );

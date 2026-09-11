@@ -534,7 +534,7 @@ export const FAQS: FAQItem[] = [
     id: 'faq-4',
     category: 'nice-exchange',
     question: 'Who is eligible for the Nice Exchange program?',
-    answer: 'The program is open to students aged 14 and above. Applicants under 18 must provide parent or guardian consent during the application process.'
+    answer: 'The program is open to students aged 11 and above. Applicants under 18 must provide parent or guardian consent during the application process.'
   },
   {
     id: 'faq-5',

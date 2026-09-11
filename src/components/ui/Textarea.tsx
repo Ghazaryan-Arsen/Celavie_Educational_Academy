@@ -1,3 +1,4 @@
+import { useT } from '../../i18n/useLanguage';
 import React from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -10,16 +11,20 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, error, helperText, className, id, ...props }, ref) => {
-    const textareaId = id || label?.toLowerCase().replace(/\s+/g, '-');
+  const t = useT();
+    const generatedId = React.useId();
+    const textareaId = id || generatedId;
     return (
       <div className="w-full text-left">
         {label && (
           <label htmlFor={textareaId} className="block text-sm font-semibold text-[rgb(38,38,38)] mb-1.5">
-            {label} {props.required && <span className="text-red-500">*</span>}
+            {t(label)} {props.required && <span className="text-red-500">{t("*")}</span>}
           </label>
         )}
         <textarea
           id={textareaId}
+          aria-invalid={!!error}
+          aria-describedby={error ? textareaId + '-error' : helperText ? textareaId + '-help' : undefined}
           ref={ref}
           className={twMerge(
             clsx(
@@ -31,9 +36,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
         />
         {error ? (
-          <p className="mt-1 text-xs text-red-600 font-medium">{error}</p>
+          <p id={textareaId + '-error'} role="alert" className="mt-1 text-xs text-red-600 font-medium">{t(error)}</p>
         ) : helperText ? (
-          <p className="mt-1 text-xs text-gray-500">{helperText}</p>
+          <p id={textareaId + '-help'} className="mt-1 text-xs text-gray-500">{t(helperText)}</p>
         ) : null}
       </div>
     );

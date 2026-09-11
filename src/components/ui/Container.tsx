@@ -1,3 +1,4 @@
+import { useT } from '../../i18n/useLanguage';
 import React from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -8,12 +9,13 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Container: React.FC<ContainerProps> = ({ children, className, ...props }) => {
+  const t = useT();
   return (
     <div
       className={twMerge(clsx('max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full', className))}
       {...props}
     >
-      {children}
+      {t(children)}
     </div>
   );
 };

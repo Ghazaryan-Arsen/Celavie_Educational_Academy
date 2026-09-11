@@ -1,3 +1,4 @@
+import { useT } from '../../i18n/useLanguage';
 import React from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -9,6 +10,7 @@ interface BadgeProps {
 }
 
 export const Badge: React.FC<BadgeProps> = ({ children, variant = 'primary', className }) => {
+  const t = useT();
   const variants = {
     primary: 'bg-[#4aabb8]/10 text-[#2b7a85] border border-[#4aabb8]/20',
     secondary: 'bg-[#f3f6f7] text-[#222222]',
@@ -27,7 +29,7 @@ export const Badge: React.FC<BadgeProps> = ({ children, variant = 'primary', cla
         )
       )}
     >
-      {children}
+      {t(children)}
     </span>
   );
 };

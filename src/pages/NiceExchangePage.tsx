@@ -1,3 +1,4 @@
+import { useT } from '../i18n/useLanguage';
 import { submitRegistration } from '../lib/registration';
 import React, { useRef, useState } from 'react';
 import { SectionWrapper } from '../components/ui/SectionWrapper';
@@ -15,6 +16,7 @@ import {
 import { Sparkles, CheckCircle2, Calendar, Home, Award, HeartHandshake } from 'lucide-react';
 
 export const NiceExchangePage: React.FC = () => {
+  const t = useT();
   const [formData, setFormData] = useState(createEmptyNiceExchangeForm);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -77,34 +79,28 @@ export const NiceExchangePage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6 text-left">
             <Badge variant="accent" className="px-3 py-1 font-bold tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 mr-1 text-black inline" />
-              Summer Cultural Immersion 🇫🇷
-            </Badge>
+              <Sparkles className="w-3.5 h-3.5 mr-1 text-black inline" />{t("Summer Cultural Immersion 🇫🇷")}</Badge>
 
-            <h1 className="text-3xl md:text-5xl font-black text-black leading-tight">
-              The Nice Exchange Program in Nice, France
-            </h1>
+            <h1 className="text-3xl md:text-5xl font-black text-black leading-tight">{t("The Nice Exchange Program in Nice, France")}</h1>
 
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-              Combine intensive spoken French education with authentic Mediterranean living. Stay with welcoming French host families or private residences while enjoying guided cultural excursions across the French Riviera.
-            </p>
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed">{t("Combine intensive spoken French education with authentic Mediterranean living. Stay with welcoming French host families or private residences while enjoying guided cultural excursions across the French Riviera.")}</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="flex items-center space-x-3 p-3 rounded-[6px] bg-gray-50 border border-[rgba(0,0,0,0.06)]">
                 <Home className="w-5 h-5 text-black shrink-0" />
-                <span className="text-xs md:text-sm font-semibold text-gray-800">Verified Host Families & Housing</span>
+                <span className="text-xs md:text-sm font-semibold text-gray-800">{t("Verified Host Families & Housing")}</span>
               </div>
               <div className="flex items-center space-x-3 p-3 rounded-[6px] bg-gray-50 border border-[rgba(0,0,0,0.06)]">
                 <Calendar className="w-5 h-5 text-black shrink-0" />
-                <span className="text-xs md:text-sm font-semibold text-gray-800">2 to 8 Weeks Flexible Durations</span>
+                <span className="text-xs md:text-sm font-semibold text-gray-800">{t("2 to 8 Weeks Flexible Durations")}</span>
               </div>
               <div className="flex items-center space-x-3 p-3 rounded-[6px] bg-gray-50 border border-[rgba(0,0,0,0.06)]">
                 <Award className="w-5 h-5 text-black shrink-0" />
-                <span className="text-xs md:text-sm font-semibold text-gray-800">20 Hours/Week Intensive French</span>
+                <span className="text-xs md:text-sm font-semibold text-gray-800">{t("20 Hours/Week Intensive French")}</span>
               </div>
               <div className="flex items-center space-x-3 p-3 rounded-[6px] bg-gray-50 border border-[rgba(0,0,0,0.06)]">
                 <HeartHandshake className="w-5 h-5 text-black shrink-0" />
-                <span className="text-xs md:text-sm font-semibold text-gray-800">24/7 On-Site Support Staff</span>
+                <span className="text-xs md:text-sm font-semibold text-gray-800">{t("24/7 On-Site Support Staff")}</span>
               </div>
             </div>
           </div>
@@ -113,7 +109,7 @@ export const NiceExchangePage: React.FC = () => {
             <div className="rounded-[12px] overflow-hidden shadow-xl border-4 border-white bg-white">
               <img
                 src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=800"
-                alt="Nice France Promenade"
+                alt={t("Nice France Promenade")}
                 className="w-full h-[360px] object-cover"
               />
             </div>
@@ -124,10 +120,8 @@ export const NiceExchangePage: React.FC = () => {
       {/* Gallery */}
       <SectionWrapper bg="gray">
         <div className="text-left mb-8 space-y-2">
-          <Badge variant="secondary">Life in Nice</Badge>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-            Immersion Experience Gallery
-          </h2>
+          <Badge variant="secondary">{t("Life in Nice")}</Badge>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Immersion Experience Gallery")}</h2>
         </div>
         <ImageGallery images={niceGalleryImages} columns={3} />
       </SectionWrapper>
@@ -136,15 +130,9 @@ export const NiceExchangePage: React.FC = () => {
       <SectionWrapper bg="white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 space-y-3">
-            <Badge variant="accent" className="uppercase font-bold">
-              Official Application
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-black">
-              Apply for Nice Exchange
-            </h2>
-            <p className="text-sm md:text-base text-gray-600 max-w-xl mx-auto">
-              Please complete all required fields. Applicants under 18 require parent or guardian authorization.
-            </p>
+            <Badge variant="accent" className="uppercase font-bold">{t("Official Application")}</Badge>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-black">{t("Apply for Nice Exchange")}</h2>
+            <p className="text-sm md:text-base text-gray-600 max-w-xl mx-auto">{t("Please complete all required fields. Applicants under 18 require parent or guardian authorization.")}</p>
           </div>
 
           <div className="bg-white p-6 md:p-10 rounded-[8px] border border-[rgba(0,0,0,0.1)] shadow-sm text-left">
@@ -153,12 +141,10 @@ export const NiceExchangePage: React.FC = () => {
                 <div className="w-20 h-20 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h3 className="text-3xl font-black text-black">Application Submitted Successfully!</h3>
-                <p className="text-base text-gray-700 max-w-lg mx-auto leading-relaxed">
-                  Thank you for applying to the CELAVIE Nice Exchange Program. Our exchange coordination committee will review your application essay and contact you via email within 48 hours.
-                </p>
+                <h3 className="text-3xl font-black text-black">{t("Application Submitted Successfully!")}</h3>
+                <p className="text-base text-gray-700 max-w-lg mx-auto leading-relaxed">{t("Thank you for applying to the CELAVIE Nice Exchange Program. Our exchange coordination committee will review your application essay and contact you via email within 48 hours.")}</p>
                 <div className="p-4 bg-gray-50 rounded-[6px] border border-gray-200 max-w-md mx-auto text-xs text-gray-600 space-y-1">
-                  <p><strong>Applicant Email:</strong> {formData.email}</p>
+                  <p><strong>{t("Applicant Email:")}</strong> {formData.email}</p>
                 </div>
                 <Button
                   variant="outline"
@@ -167,87 +153,81 @@ export const NiceExchangePage: React.FC = () => {
                     setFormData(createEmptyNiceExchangeForm());
                     setErrors({});
                   }}
-                >
-                  Submit Another Application
-                </Button>
+                >{t("Submit Another Application")}</Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Personal Information */}
                 <div>
-                  <h3 className="text-lg font-bold text-black border-b border-gray-200 pb-2 mb-4">
-                    1. Applicant Information
-                  </h3>
+                  <h3 className="text-lg font-bold text-black border-b border-gray-200 pb-2 mb-4">{t("1. Applicant Information")}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Input
-                      label="First Name"
+                      label={t("First Name")}
                       required
                       value={formData.firstName}
                       onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      error={errors.firstName}
+                      error={t(errors.firstName)}
                     />
                     <Input
-                      label="Last Name"
+                      label={t("Last Name")}
                       required
                       value={formData.lastName}
                       onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                      error={errors.lastName}
+                      error={t(errors.lastName)}
                     />
                     <Input
-                      label="Age"
+                      label={t("Age")}
                       type="number"
                         min={11}
                         max={99}
                       required
                       value={formData.age}
                       onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                      error={errors.age}
-                      helperText="Must be 14 or older"
+                      error={t(errors.age)}
+                      helperText={t("Must be 11 or older")}
                     />
                     <Input
-                      label="School / University / Organization"
+                      label={t("School / University / Organization")}
                       required
                       value={formData.school}
                       onChange={(e) => setFormData({ ...formData, school: e.target.value })}
-                      error={errors.school}
+                      error={t(errors.school)}
                     />
                     <Input
-                      label="Email Address"
+                      label={t("Email Address")}
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      error={errors.email}
+                      error={t(errors.email)}
                     />
                     <Input
-                      label="Phone Number"
+                      label={t("Phone Number")}
                       type="tel"
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      error={errors.phone}
+                      error={t(errors.phone)}
                     />
                     <Input
-                      label="Country of Residence"
+                      label={t("Country of Residence")}
                       required
                       value={formData.country}
                       onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                      error={errors.country}
+                      error={t(errors.country)}
                     />
                   </div>
                 </div>
 
                 {/* Program Preferences */}
                 <div>
-                  <h3 className="text-lg font-bold text-black border-b border-gray-200 pb-2 mb-4">
-                    2. Program Preferences
-                  </h3>
+                  <h3 className="text-lg font-bold text-black border-b border-gray-200 pb-2 mb-4">{t("2. Program Preferences")}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                     <Select
-                      label="Current French/English Level"
+                      label={t("Current French/English Level")}
                       value={formData.currentLanguageLevel}
                       onChange={(e) => setFormData({ ...formData, currentLanguageLevel: e.target.value })}
-                      error={errors.currentLanguageLevel}
+                      error={t(errors.currentLanguageLevel)}
                       required
                       options={[
                         { value: 'A1', label: 'A1 Beginner' },
@@ -262,41 +242,39 @@ export const NiceExchangePage: React.FC = () => {
 
                 {/* Parent Information & Motivation Essay */}
                 <div>
-                  <h3 className="text-lg font-bold text-black border-b border-gray-200 pb-2 mb-4">
-                    3. Parent Information & Motivation Essay
-                  </h3>
+                  <h3 className="text-lg font-bold text-black border-b border-gray-200 pb-2 mb-4">{t("3. Parent Information & Motivation Essay")}</h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     <Input
-                      label="Parent Name"
+                      label={t("Parent Name")}
                       required
                       value={formData.parentName}
                       onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
-                      error={errors.parentName}
-                      placeholder="e.g. Jane Doe"
+                      error={t(errors.parentName)}
+                      placeholder={t("e.g. Jane Doe")}
                     />
 
                     <Input
-                      label="Parent Phone Number"
+                      label={t("Parent Phone Number")}
                       required
                       value={formData.parentPhone}
                       onChange={(e) => setFormData({ ...formData, parentPhone: e.target.value })}
-                      error={errors.parentPhone}
-                      placeholder="e.g. +33 6 00 00 00 00"
+                      error={t(errors.parentPhone)}
+                      placeholder={t("e.g. 095 123 456")}
                     />
                   </div>
 
                   <Textarea
-                    label="Motivation Essay (300-500 words, Optional)"
+                    label={t("Motivation Essay (300-500 words, Optional)")}
                     rows={8}
                     value={formData.motivationEssay}
                     onChange={(e) => setFormData({ ...formData, motivationEssay: e.target.value })}
-                    error={errors.motivationEssay}
-                    helperText="Explain why you wish to participate in the Nice Exchange program and what goals you hope to achieve."
+                    error={t(errors.motivationEssay)}
+                    helperText={t("Explain why you wish to participate in the Nice Exchange program and what goals you hope to achieve.")}
                   />
                 </div>
 
-                {errors.form && <p className="text-sm text-red-600 font-medium">{errors.form}</p>}
+                {errors.form && <p className="text-sm text-red-600 font-medium">{t(errors.form)}</p>}
 
                 {/* Terms Acceptance */}
                 <div className="pt-4 border-t border-gray-200">
@@ -307,21 +285,16 @@ export const NiceExchangePage: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, acceptedTerms: e.target.checked })}
                       className="mt-1 w-4 h-4 rounded border-gray-300 text-black focus:ring-black"
                     />
-                    <span className="text-xs md:text-sm text-gray-700">
-                      I certify that all information provided is accurate and I agree to the{' '}
-                      <a href="/terms" className="text-black font-bold underline" target="_blank">
-                        Terms of Service
-                      </a>{' '}
-                      and Exchange Conduct Code.
-                    </span>
+                    <span className="text-xs md:text-sm text-gray-700">{t("I certify that all information provided is accurate and I agree to the")}{t(' ')}
+                      <a href="/terms" className="text-black font-bold underline" target="_blank">{t("Terms of Service")}</a>{t(' ')}{t("and Exchange Conduct Code.")}</span>
                   </label>
                   {errors.acceptedTerms && (
-                    <p className="mt-1 text-xs text-red-600 font-medium">{errors.acceptedTerms}</p>
+                    <p className="mt-1 text-xs text-red-600 font-medium">{t(errors.acceptedTerms)}</p>
                   )}
                 </div>
 
                 <Button variant="accent" size="lg" className="w-full font-bold" disabled={loading}>
-                  {loading ? 'Submitting Application...' : 'Submit Official Application'}
+                  {t(loading ? 'Submitting Application...' : 'Submit Official Application')}
                 </Button>
               </form>
             )}

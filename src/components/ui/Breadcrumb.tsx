@@ -1,3 +1,4 @@
+import { useT } from '../../i18n/useLanguage';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Home } from 'lucide-react';
@@ -13,13 +14,14 @@ interface BreadcrumbProps {
 }
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' }) => {
+  const t = useT();
   return (
-    <nav aria-label="Breadcrumb" className={`flex items-center text-xs md:text-sm text-gray-500 py-3 ${className}`}>
+    <nav aria-label={t("Breadcrumb")} className={`flex items-center text-xs md:text-sm text-gray-500 py-3 ${className}`}>
       <ol className="flex items-center space-x-1 md:space-x-2 flex-wrap">
         <li>
           <Link to="/" className="flex items-center text-gray-500 hover:text-black transition-colors">
             <Home className="w-3.5 h-3.5 mr-1" />
-            <span>Home</span>
+            <span>{t("Home")}</span>
           </Link>
         </li>
         {items.map((item, index) => (
@@ -27,11 +29,11 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' })
             <ChevronRight className="w-3.5 h-3.5 mx-1 text-gray-400" />
             {item.href ? (
               <Link to={item.href} className="text-gray-500 hover:text-black transition-colors">
-                {item.label}
+                {t(item.label)}
               </Link>
             ) : (
               <span className="font-semibold text-black truncate max-w-[200px] md:max-w-none">
-                {item.label}
+                {t(item.label)}
               </span>
             )}
           </li>

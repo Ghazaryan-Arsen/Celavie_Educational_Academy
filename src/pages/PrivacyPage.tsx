@@ -1,8 +1,10 @@
+import { useT } from '../i18n/useLanguage';
 import React from 'react';
 import { SectionWrapper } from '../components/ui/SectionWrapper';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 
 export const PrivacyPage: React.FC = () => {
+  const t = useT();
   return (
     <div>
       <div className="bg-gray-50 border-b border-[rgba(0,0,0,0.06)]">
@@ -13,36 +15,28 @@ export const PrivacyPage: React.FC = () => {
 
       <SectionWrapper bg="white" className="py-12 md:py-16">
         <div className="max-w-3xl mx-auto text-left space-y-6">
-          <h1 className="text-3xl font-extrabold text-black">Privacy Policy</h1>
-          <p className="text-sm text-gray-500">Last updated: January 2025</p>
+          <h1 className="text-3xl font-extrabold text-black">{t("Privacy Policy")}</h1>
+          <p className="text-sm text-gray-500">{t("Last updated: January 2025")}</p>
 
           <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section className="space-y-2">
-              <h3 className="text-lg font-bold text-black">1. Information We Collect</h3>
-              <p>
-                CELAVIE Educational Academy collects personal information necessary to deliver educational courses and process program applications. This includes names, contact details, dates of birth, payment details (processed securely via external providers like Stripe), and application essays.
-              </p>
+              <h2 className="text-lg font-bold text-black">{t("1. Information We Collect")}</h2>
+              <p>{t("CELAVIE collects the information you enter in registration and application forms, including names, age, contact details, school, country, language level, parent details and optional messages or motivation essays.")}</p>
             </section>
 
             <section className="space-y-2">
-              <h3 className="text-lg font-bold text-black">2. Use of Information</h3>
-              <p>
-                We use collected information solely to process registrations, manage class rosters, facilitate student communication, process payments, and coordinate host family accommodations for the Nice Exchange program.
-              </p>
+              <h2 className="text-lg font-bold text-black">{t("2. Use of Information")}</h2>
+              <p>{t("We use the information you submit to process course registrations and Nice Exchange applications and to contact you about your chosen program.")}</p>
             </section>
 
             <section className="space-y-2">
-              <h3 className="text-lg font-bold text-black">3. Data Protection & Security</h3>
-              <p>
-                We implement strict security measures and Row Level Security (RLS) standards. Credit card details are never stored directly on our servers or databases.
-              </p>
+              <h2 className="text-lg font-bold text-black">{t("3. Data Protection & Security")}</h2>
+              <p>{t("Registration information is sent to our registration service for processing, stored in application spreadsheets and used for confirmation emails. This website does not collect payment card details.")}</p>
             </section>
 
             <section className="space-y-2">
-              <h3 className="text-lg font-bold text-black">4. Contact Us</h3>
-              <p>
-                If you have questions regarding your personal data or privacy rights, please contact our data protection officer at our official email address.
-              </p>
+              <h2 className="text-lg font-bold text-black">{t("4. Contact Us")}</h2>
+              <p>{t("For questions about your personal information, contact CELAVIE by phone at 095 400 288.")}</p>
             </section>
           </div>
         </div>

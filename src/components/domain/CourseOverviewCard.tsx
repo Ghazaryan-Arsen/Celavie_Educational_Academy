@@ -1,3 +1,4 @@
+import { useT } from '../../i18n/useLanguage';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
@@ -10,6 +11,7 @@ interface CourseOverviewCardProps {
 }
 
 export const CourseOverviewCard: React.FC<CourseOverviewCardProps> = ({ course }) => {
+  const t = useT();
   const isLanguage = course.category === 'language';
 
   return (
@@ -18,22 +20,20 @@ export const CourseOverviewCard: React.FC<CourseOverviewCardProps> = ({ course }
         <div>
           <div className="flex items-center space-x-2 mb-3">
             <Badge variant="secondary" className="uppercase">
-              {course.category}
+              {t(isLanguage ? 'Language Courses' : 'SMM')}
             </Badge>
-            {isLanguage && <Badge variant="primary">{course.language}</Badge>}
-            {'tier' in course && <Badge variant="accent" className="uppercase">{course.tier} Tier</Badge>}
+            {isLanguage && <Badge variant="primary">{t(course.language)}</Badge>}
+            {'tier' in course && <Badge variant="accent" className="uppercase">{t(course.tier)}{' '}{t("Tier")}</Badge>}
           </div>
           <h1 className="text-2xl md:text-3xl font-extrabold text-[rgb(38,38,38)]">
-            {course.title}
+            {t(course.title)}
           </h1>
-          <p className="text-sm md:text-base text-gray-600 mt-2">{course.subtitle}</p>
+          <p className="text-sm md:text-base text-gray-600 mt-2">{t(course.subtitle)}</p>
         </div>
 
         <div className="bg-[rgba(0,0,0,0.02)] p-4 rounded-[6px] border border-[rgba(0,0,0,0.05)] text-center shrink-0 min-w-[180px] flex items-center">
           <Link to={`/register?course=${course.id}`} className="block w-full">
-            <Button variant="primary" className="w-full" size="sm">
-              Enroll Now
-            </Button>
+            <Button variant="primary" className="w-full" size="sm">{t("Enroll Now")}</Button>
           </Link>
         </div>
       </div>
@@ -42,43 +42,43 @@ export const CourseOverviewCard: React.FC<CourseOverviewCardProps> = ({ course }
         <div className="p-3 rounded-[6px] bg-[rgba(0,0,0,0.03)] flex items-center space-x-3">
           <Clock className="w-5 h-5 text-black shrink-0" />
           <div>
-            <span className="text-[10px] text-gray-500 uppercase font-bold block">Duration</span>
-            <span className="text-xs md:text-sm font-semibold text-black">{course.duration}</span>
+            <span className="text-[10px] text-gray-500 uppercase font-bold block">{t("Duration")}</span>
+            <span className="text-xs md:text-sm font-semibold text-black">{t(course.duration)}</span>
           </div>
         </div>
 
         <div className="p-3 rounded-[6px] bg-[rgba(0,0,0,0.03)] flex items-center space-x-3">
           <Award className="w-5 h-5 text-black shrink-0" />
           <div>
-            <span className="text-[10px] text-gray-500 uppercase font-bold block">Level</span>
-            <span className="text-xs md:text-sm font-semibold text-black">{course.level}</span>
+            <span className="text-[10px] text-gray-500 uppercase font-bold block">{t("Level")}</span>
+            <span className="text-xs md:text-sm font-semibold text-black">{t(course.level)}</span>
           </div>
         </div>
 
         <div className="p-3 rounded-[6px] bg-[rgba(0,0,0,0.03)] flex items-center space-x-3">
           <Globe className="w-5 h-5 text-black shrink-0" />
           <div>
-            <span className="text-[10px] text-gray-500 uppercase font-bold block">Format</span>
-            <span className="text-xs md:text-sm font-semibold text-black">Live Online</span>
+            <span className="text-[10px] text-gray-500 uppercase font-bold block">{t("Format")}</span>
+            <span className="text-xs md:text-sm font-semibold text-black">{t("Live Online")}</span>
           </div>
         </div>
 
         <div className="p-3 rounded-[6px] bg-[rgba(0,0,0,0.03)] flex items-center space-x-3">
           <Sparkles className="w-5 h-5 text-[#4aabb8] shrink-0" />
           <div>
-            <span className="text-[10px] text-gray-500 uppercase font-bold block">Certificate</span>
-            <span className="text-xs md:text-sm font-semibold text-black">Official Certificate</span>
+            <span className="text-[10px] text-gray-500 uppercase font-bold block">{t("Certificate")}</span>
+            <span className="text-xs md:text-sm font-semibold text-black">{t("Official Certificate")}</span>
           </div>
         </div>
       </div>
 
       <div className="space-y-3">
-        <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">Key Features Included</h4>
+        <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">{t("Key Features Included")}</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {course.features.map((feat, idx) => (
             <div key={idx} className="flex items-center space-x-2 text-sm text-gray-700">
               <Check className="w-4 h-4 text-green-600 shrink-0" />
-              <span>{feat}</span>
+              <span>{t(feat)}</span>
             </div>
           ))}
         </div>

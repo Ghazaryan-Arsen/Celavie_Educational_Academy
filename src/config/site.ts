@@ -30,9 +30,9 @@ export const siteConfig: SiteConfig = {
   founderBiography:
     "[FOUNDER_BIOGRAPHY]",
   contact: {
-    email: "[EMAIL_ADDRESS]",
-    phone: "[PHONE_NUMBER]",
-    address: "Nice, France / Online Worldwide",
+    email: "",
+    phone: "095 400 288",
+    address: "Yerevan, Kentron, Kajaznuni 1",
   },
   metrics: {
     studentsEnrolled: "[METRIC]",
@@ -45,3 +45,7 @@ export const siteConfig: SiteConfig = {
     startingPrice: "",
   },
 };
+
+export const SITE_URL = "https://celavie-educational-academy.vercel.app";
+export const PHONE_HREF = "tel:+37495400288";
+export const LOGO_PATH = "/celavie-logo.png";

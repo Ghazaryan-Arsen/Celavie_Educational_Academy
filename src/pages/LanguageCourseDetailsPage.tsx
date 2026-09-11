@@ -1,5 +1,7 @@
+import { useT } from '../i18n/useLanguage';
+import { NotFoundPage } from './NotFoundPage';
 import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { SectionWrapper } from '../components/ui/SectionWrapper';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Badge } from '../components/ui/Badge';
@@ -13,11 +15,12 @@ import { LANGUAGE_COURSES, TESTIMONIALS } from '../data/mockData';
 import { CheckCircle2, Sparkles, Calendar, ArrowRight } from 'lucide-react';
 
 export const LanguageCourseDetailsPage: React.FC = () => {
+  const t = useT();
   const { slug } = useParams<{ slug: string }>();
   const course = LANGUAGE_COURSES.find((c) => c.slug === slug?.toLowerCase());
 
   if (!course) {
-    return <Navigate to="/" replace />;
+    return <NotFoundPage />;
   }
 
   const relatedCourses = LANGUAGE_COURSES.filter((c) => c.id !== course.id).slice(0, 3);
@@ -31,7 +34,7 @@ export const LanguageCourseDetailsPage: React.FC = () => {
           <Breadcrumb
             items={[
               { label: 'Language Courses', href: '/services' },
-              { label: `${course.language} Course` },
+              { label: `${t(course.language)} — ${t("Course")}` },
             ]}
           />
         </div>
@@ -46,9 +49,8 @@ export const LanguageCourseDetailsPage: React.FC = () => {
       <SectionWrapper bg="gray">
         <div className="max-w-4xl text-left space-y-6">
           <div className="space-y-2">
-            <Badge variant="secondary">Curriculum Objectives</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[rgb(38,38,38)]">
-              What You'll Learn in {course.language}
+            <Badge variant="secondary">{t("Curriculum Objectives")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[rgb(38,38,38)]">{t("What You'll Learn in")}{' '}{t(course.language)}
             </h2>
           </div>
 
@@ -60,7 +62,7 @@ export const LanguageCourseDetailsPage: React.FC = () => {
               >
                 <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
                 <span className="text-sm md:text-base font-medium text-gray-800 leading-relaxed">
-                  {item}
+                  {t(item)}
                 </span>
               </div>
             ))}
@@ -72,19 +74,15 @@ export const LanguageCourseDetailsPage: React.FC = () => {
       <SectionWrapper bg="white">
         <div className="text-left max-w-4xl space-y-6">
           <div className="space-y-2">
-            <Badge variant="secondary">CEFR Standard</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              Standardized Proficiency Levels Covered
-            </h2>
-            <p className="text-sm md:text-base text-gray-600">
-              Our curriculum strictly follows the Common European Framework of Reference for Languages.
-            </p>
+            <Badge variant="secondary">{t("CEFR Standard")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Standardized Proficiency Levels Covered")}</h2>
+            <p className="text-sm md:text-base text-gray-600">{t("Our curriculum strictly follows the Common European Framework of Reference for Languages.")}</p>
           </div>
 
           <div className="flex flex-wrap gap-2.5">
             {course.cefrLevels.map((lvl, idx) => (
               <Badge key={idx} variant="primary" className="px-4 py-2 text-sm font-semibold">
-                {lvl}
+                {t(lvl)}
               </Badge>
             ))}
           </div>
@@ -95,10 +93,8 @@ export const LanguageCourseDetailsPage: React.FC = () => {
       <SectionWrapper bg="gray">
         <div className="max-w-4xl text-left space-y-6">
           <div className="space-y-2">
-            <Badge variant="secondary">Step-by-Step Progress</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              Your Learning Path
-            </h2>
+            <Badge variant="secondary">{t("Step-by-Step Progress")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Your Learning Path")}</h2>
           </div>
 
           <Timeline steps={course.learningPath} />
@@ -109,10 +105,8 @@ export const LanguageCourseDetailsPage: React.FC = () => {
       <SectionWrapper bg="white">
         <div className="max-w-4xl text-left space-y-6">
           <div className="space-y-2">
-            <Badge variant="secondary">Class Batches</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              Upcoming Live Class Schedules
-            </h2>
+            <Badge variant="secondary">{t("Class Batches")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Upcoming Live Class Schedules")}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -120,8 +114,8 @@ export const LanguageCourseDetailsPage: React.FC = () => {
               <div key={idx} className="p-5 rounded-[8px] border border-[rgba(0,0,0,0.1)] bg-gray-50 flex items-center space-x-3">
                 <Calendar className="w-6 h-6 text-black shrink-0" />
                 <div>
-                  <span className="text-xs text-gray-400 font-bold uppercase block">Batch {idx + 1}</span>
-                  <span className="text-sm font-bold text-gray-800">{sch}</span>
+                  <span className="text-xs text-gray-400 font-bold uppercase block">{t("Batch")}{' '}{t(idx + 1)}</span>
+                  <span className="text-sm font-bold text-gray-800">{t(sch)}</span>
                 </div>
               </div>
             ))}
@@ -135,20 +129,13 @@ export const LanguageCourseDetailsPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-left">
             <div className="md:col-span-8 space-y-4">
               <Badge variant="primary" className="px-3 py-1">
-                <Sparkles className="w-3.5 h-3.5 mr-1 text-[#4aabb8] inline" />
-                Exclusive French Immersion Add-on
-              </Badge>
-              <h2 className="text-2xl md:text-3xl font-black text-black">
-                Combine with the Nice Summer Exchange Program 🇫🇷
-              </h2>
-              <p className="text-sm md:text-base text-gray-800 leading-relaxed">
-                As a student in our French Language course, you qualify for direct priority placement in our summer immersion program on the French Riviera in Nice. Practice real spoken French with local host families.
-              </p>
+                <Sparkles className="w-3.5 h-3.5 mr-1 text-[#4aabb8] inline" />{t("Exclusive French Immersion Add-on")}</Badge>
+              <h2 className="text-2xl md:text-3xl font-black text-black">{t("Combine with the Nice Summer Exchange Program 🇫🇷")}</h2>
+              <p className="text-sm md:text-base text-gray-800 leading-relaxed">{t("As a student in our French Language course, you qualify for direct priority placement in our summer immersion program on the French Riviera in Nice. Practice real spoken French with local host families.")}</p>
             </div>
             <div className="md:col-span-4 text-right">
               <Link to="/nice-exchange">
-                <Button variant="primary" size="lg" className="w-full font-bold">
-                  Apply for Nice Exchange <ArrowRight className="w-4 h-4 ml-2" />
+                <Button variant="primary" size="lg" className="w-full font-bold">{t("Apply for Nice Exchange")}<ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
             </div>
@@ -159,10 +146,8 @@ export const LanguageCourseDetailsPage: React.FC = () => {
       {/* Testimonials */}
       <SectionWrapper bg="white">
         <div className="text-left space-y-2 mb-8">
-          <Badge variant="secondary">Student Reviews</Badge>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-            What Graduates Say About Our Language Program
-          </h2>
+          <Badge variant="secondary">{t("Student Reviews")}</Badge>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("What Graduates Say About Our Language Program")}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {relevantTestimonials.map((t) => (
@@ -175,10 +160,8 @@ export const LanguageCourseDetailsPage: React.FC = () => {
       {course.faq.length > 0 && (
         <SectionWrapper bg="gray">
           <div className="text-left space-y-2 mb-8 max-w-3xl">
-            <Badge variant="secondary">Course FAQ</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              Frequently Asked Questions
-            </h2>
+            <Badge variant="secondary">{t("Course FAQ")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Frequently Asked Questions")}</h2>
           </div>
           <div className="max-w-3xl">
             <FAQAccordion items={course.faq} />
@@ -189,10 +172,8 @@ export const LanguageCourseDetailsPage: React.FC = () => {
       {/* Related Courses */}
       <SectionWrapper bg="white">
         <div className="text-left space-y-2 mb-8">
-          <Badge variant="secondary">Explore More</Badge>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-            Other Popular Languages
-          </h2>
+          <Badge variant="secondary">{t("Explore More")}</Badge>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Other Popular Languages")}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {relatedCourses.map((c) => (
@@ -204,16 +185,10 @@ export const LanguageCourseDetailsPage: React.FC = () => {
       {/* Bottom CTA */}
       <SectionWrapper bg="dark" className="text-center py-14">
         <div className="max-w-2xl mx-auto space-y-4">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-white">
-            Start Learning {course.language} Today
-          </h2>
-          <p className="text-sm md:text-base text-gray-300">
-            Join our next cohort and gain authentic language confidence.
-          </p>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white">{t("Start Learning")}{' '}{t(course.language)}{' '}{t("Today")}</h2>
+          <p className="text-sm md:text-base text-gray-300">{t("Join our next cohort and gain authentic language confidence.")}</p>
           <Link to={`/register?course=${course.id}`} className="inline-block pt-2">
-            <Button variant="accent" size="lg" className="font-bold">
-              Enroll in {course.language} Course
-            </Button>
+            <Button variant="accent" size="lg" className="font-bold">{t("Enroll in")}{' '}{t(course.language)}{' '}{t("Course")}</Button>
           </Link>
         </div>
       </SectionWrapper>

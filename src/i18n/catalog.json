@@ -1,0 +1,3517 @@
+{
+  "Home": [
+    "Գլխավոր",
+    "Главная",
+    "Accueil"
+  ],
+  "Courses": [
+    "Դասընթացներ",
+    "Курсы",
+    "Cours"
+  ],
+  "Nice Program": [
+    "Նիսի ծրագիր",
+    "Программа в Ницце",
+    "Programme à Nice"
+  ],
+  "Why Us": [
+    "Ինչու մենք",
+    "Почему мы",
+    "Pourquoi nous choisir"
+  ],
+  "Contact": [
+    "Կապ",
+    "Контакты",
+    "Contact"
+  ],
+  "Register Now": [
+    "Գրանցվել",
+    "Зарегистрироваться",
+    "S’inscrire"
+  ],
+  "Language / Լեզու": [
+    "Լեզու",
+    "Язык",
+    "Langue"
+  ],
+  "Language": [
+    "Լեզու",
+    "Язык",
+    "Langue"
+  ],
+  "Select Language Desktop": [
+    "Ընտրել լեզուն",
+    "Выбрать язык",
+    "Choisir la langue"
+  ],
+  "Select Language Mobile": [
+    "Ընտրել լեզուն",
+    "Выбрать язык",
+    "Choisir la langue"
+  ],
+  "Toggle menu": [
+    "Բացել կամ փակել ընտրացանկը",
+    "Открыть или закрыть меню",
+    "Ouvrir ou fermer le menu"
+  ],
+  "Quick Navigation": [
+    "Արագ հղումներ",
+    "Быстрые ссылки",
+    "Liens rapides"
+  ],
+  "Courses & Programs": [
+    "Դասընթացներ և ծրագրեր",
+    "Курсы и программы",
+    "Cours et programmes"
+  ],
+  "Nice Exchange Program": [
+    "Նիսի փոխանակման ծրագիր",
+    "Программа обмена в Ницце",
+    "Programme d’échange à Nice"
+  ],
+  "Why CELAVIE": [
+    "Ինչու CELAVIE",
+    "Почему CELAVIE",
+    "Pourquoi CELAVIE"
+  ],
+  "Course Registration": [
+    "Դասընթացի գրանցում",
+    "Регистрация на курс",
+    "Inscription à un cours"
+  ],
+  "FAQ & Support": [
+    "Հարցեր և աջակցություն",
+    "Вопросы и поддержка",
+    "Questions et assistance"
+  ],
+  "Academic Focus": [
+    "Ուսումնական ուղղություններ",
+    "Направления обучения",
+    "Domaines d’enseignement"
+  ],
+  "Register For a Batch Now": [
+    "Գրանցվել խմբում",
+    "Записаться в группу",
+    "S’inscrire à une session"
+  ],
+  "CELAVIE Educational Academy. All rights reserved.": [
+    "CELAVIE կրթական ակադեմիա։ Բոլոր իրավունքները պաշտպանված են։",
+    "Образовательная академия CELAVIE. Все права защищены.",
+    "Académie éducative CELAVIE. Tous droits réservés."
+  ],
+  "Back to top": [
+    "Դեպի վերև",
+    "Наверх",
+    "Retour en haut"
+  ],
+  "About Us": [
+    "Մեր մասին",
+    "О нас",
+    "À propos"
+  ],
+  "Services": [
+    "Ծառայություններ",
+    "Услуги",
+    "Services"
+  ],
+  "Privacy Policy": [
+    "Գաղտնիության քաղաքականություն",
+    "Политика конфиденциальности",
+    "Politique de confidentialité"
+  ],
+  "Terms of Service": [
+    "Օգտագործման պայմաններ",
+    "Условия использования",
+    "Conditions d’utilisation"
+  ],
+  "Page not found": [
+    "Էջը չի գտնվել",
+    "Страница не найдена",
+    "Page introuvable"
+  ],
+  "The page you requested could not be located.": [
+    "Ձեր փնտրած էջը չի գտնվել։",
+    "Запрошенная страница не найдена.",
+    "La page demandée est introuvable."
+  ],
+  "Back to Home": [
+    "Վերադառնալ գլխավոր էջ",
+    "На главную",
+    "Retour à l’accueil"
+  ],
+  "Yerevan, Kentron, Kajaznuni 1": [
+    "Ք. Երևան, Կենտրոն, Քաջազնունի 1",
+    "Ереван, Кентрон, ул. Каджазнуни, 1",
+    "1, rue Kajaznuni, Kentron, Erevan"
+  ],
+  "CELAVIE Educational Academy": [
+    "CELAVIE կրթական ակադեմիա",
+    "Образовательная академия CELAVIE",
+    "Académie éducative CELAVIE"
+  ],
+  "Contact Us": [
+    "Կապ մեզ հետ",
+    "Связаться с нами",
+    "Nous contacter"
+  ],
+  "Contact CELAVIE Academy": [
+    "Կապ CELAVIE ակադեմիայի հետ",
+    "Связаться с академией CELAVIE",
+    "Contacter l’académie CELAVIE"
+  ],
+  "Have questions about our language courses, SMM academy, or Nice Exchange program? Our admissions team is here to assist you.": [
+    "Հարցե՞ր ունեք լեզուների, SMM դասընթացների կամ Նիսի փոխանակման ծրագրի վերաբերյալ։ Մեր ընդունելության թիմը պատրաստ է օգնել ձեզ։",
+    "Есть вопросы о языковых курсах, SMM или программе обмена в Ницце? Наша приёмная команда готова помочь.",
+    "Vous avez des questions sur nos cours de langues, de SMM ou notre programme d’échange à Nice ? Notre équipe des admissions est à votre écoute."
+  ],
+  "For questions, please call the academy. To apply for a program, use our registration form.": [
+    "Հարցերի դեպքում զանգահարեք ակադեմիա։ Ծրագրին դիմելու համար լրացրեք գրանցման ձևը։",
+    "По вопросам звоните в академию. Чтобы подать заявку на программу, заполните форму регистрации.",
+    "Pour toute question, appelez l’académie. Pour postuler à un programme, remplissez notre formulaire d’inscription."
+  ],
+  "First Name": [
+    "Անուն",
+    "Имя",
+    "Prénom"
+  ],
+  "Last Name": [
+    "Ազգանուն",
+    "Фамилия",
+    "Nom"
+  ],
+  "Full Name": [
+    "Անուն, ազգանուն",
+    "Полное имя",
+    "Nom complet"
+  ],
+  "Age": [
+    "Տարիք",
+    "Возраст",
+    "Âge"
+  ],
+  "Age: 11–99": [
+    "Տարիք՝ 11–99",
+    "Возраст: 11–99",
+    "Âge : 11–99 ans"
+  ],
+  "Email Address": [
+    "Էլեկտրոնային հասցե",
+    "Электронная почта",
+    "Adresse e-mail"
+  ],
+  "Phone Number": [
+    "Հեռախոսահամար",
+    "Номер телефона",
+    "Numéro de téléphone"
+  ],
+  "Parent Name": [
+    "Ծնողի անուն, ազգանուն",
+    "Имя и фамилия родителя",
+    "Nom complet du parent"
+  ],
+  "Parent Phone Number": [
+    "Ծնողի հեռախոսահամար",
+    "Телефон родителя",
+    "Téléphone du parent"
+  ],
+  "School / University / Organization": [
+    "Դպրոց / համալսարան / կազմակերպություն",
+    "Школа / университет / организация",
+    "École / université / organisme"
+  ],
+  "Country of Residence": [
+    "Բնակության երկիր",
+    "Страна проживания",
+    "Pays de résidence"
+  ],
+  "Current French/English Level": [
+    "Ֆրանսերենի/անգլերենի ներկայիս մակարդակ",
+    "Текущий уровень французского/английского",
+    "Niveau actuel de français/d’anglais"
+  ],
+  "Motivation Essay (300-500 words, Optional)": [
+    "Մոտիվացիոն նամակ (300–500 բառ, ոչ պարտադիր)",
+    "Мотивационное эссе (300–500 слов, необязательно)",
+    "Lettre de motivation (300 à 500 mots, facultative)"
+  ],
+  "Describe why you want to participate in the Nice Exchange program.": [
+    "Նկարագրեք, թե ինչու եք ցանկանում մասնակցել Նիսի փոխանակման ծրագրին։",
+    "Расскажите, почему вы хотите участвовать в программе обмена в Ницце.",
+    "Expliquez pourquoi vous souhaitez participer au programme d’échange à Nice."
+  ],
+  "Enter a valid first name without digits.": [
+    "Մուտքագրեք վավեր անուն՝ առանց թվերի։",
+    "Введите корректное имя без цифр.",
+    "Saisissez un prénom valide, sans chiffres."
+  ],
+  "Enter a valid last name without digits.": [
+    "Մուտքագրեք վավեր ազգանուն՝ առանց թվերի։",
+    "Введите корректную фамилию без цифр.",
+    "Saisissez un nom valide, sans chiffres."
+  ],
+  "Enter a valid parent name without digits.": [
+    "Մուտքագրեք ծնողի վավեր անունը՝ առանց թվերի։",
+    "Введите корректное имя родителя без цифр.",
+    "Saisissez un nom de parent valide, sans chiffres."
+  ],
+  "Age must be a whole number between 11 and 99.": [
+    "Տարիքը պետք է լինի 11-ից 99 ամբողջ թիվ։",
+    "Возраст должен быть целым числом от 11 до 99.",
+    "L’âge doit être un nombre entier compris entre 11 et 99."
+  ],
+  "Enter a valid email address (maximum 254 characters).": [
+    "Մուտքագրեք վավեր էլեկտրոնային հասցե (առավելագույնը՝ 254 նիշ)։",
+    "Введите корректный адрес электронной почты (не более 254 символов).",
+    "Saisissez une adresse e-mail valide (254 caractères maximum)."
+  ],
+  "Please enter a valid Armenian phone number.": [
+    "Մուտքագրեք վավեր հայկական հեռախոսահամար։",
+    "Введите корректный армянский номер телефона.",
+    "Saisissez un numéro de téléphone arménien valide."
+  ],
+  "Message must be 1000 characters or fewer.": [
+    "Հաղորդագրությունը պետք է լինի առավելագույնը 1000 նիշ։",
+    "Сообщение должно содержать не более 1000 символов.",
+    "Le message ne doit pas dépasser 1 000 caractères."
+  ],
+  "School is required and must be 150 characters or fewer": [
+    "Ուսումնական հաստատության անվանումը պարտադիր է և պետք է լինի առավելագույնը 150 նիշ։",
+    "Укажите учебное заведение (не более 150 символов).",
+    "Indiquez l’établissement (150 caractères maximum)."
+  ],
+  "Valid email address is required": [
+    "Վավեր էլեկտրոնային հասցեն պարտադիր է։",
+    "Укажите корректный адрес электронной почты.",
+    "Une adresse e-mail valide est obligatoire."
+  ],
+  "Country of residence is required": [
+    "Բնակության երկիրը պարտադիր է։",
+    "Укажите страну проживания.",
+    "Indiquez votre pays de résidence."
+  ],
+  "Language level is required": [
+    "Լեզվի մակարդակը պարտադիր է։",
+    "Выберите уровень языка.",
+    "Choisissez votre niveau de langue."
+  ],
+  "You must accept the terms and conditions": [
+    "Պետք է ընդունեք պայմանները։",
+    "Необходимо принять условия.",
+    "Vous devez accepter les conditions."
+  ],
+  "You must accept the enrollment terms and conditions": [
+    "Պետք է ընդունեք գրանցման պայմանները։",
+    "Необходимо принять условия зачисления.",
+    "Vous devez accepter les conditions d’inscription."
+  ],
+  "Please select a course to proceed": [
+    "Շարունակելու համար ընտրեք դասընթաց։",
+    "Выберите курс, чтобы продолжить.",
+    "Choisissez un cours pour continuer."
+  ],
+  "Please select a valid course.": [
+    "Ընտրեք վավեր դասընթաց։",
+    "Выберите доступный курс.",
+    "Choisissez un cours valide."
+  ],
+  "Select an option": [
+    "Ընտրեք տարբերակ",
+    "Выберите вариант",
+    "Choisissez une option"
+  ],
+  "Your registration could not be submitted. Please check your connection and try again.": [
+    "Գրանցումը չհաջողվեց ուղարկել։ Ստուգեք կապը և փորձեք կրկին։",
+    "Не удалось отправить регистрацию. Проверьте соединение и попробуйте снова.",
+    "L’inscription n’a pas pu être envoyée. Vérifiez votre connexion et réessayez."
+  ],
+  "Your application could not be submitted. Please check your connection and try again.": [
+    "Դիմումը չհաջողվեց ուղարկել։ Ստուգեք կապը և փորձեք կրկին։",
+    "Не удалось отправить заявку. Проверьте соединение и попробуйте снова.",
+    "La candidature n’a pas pu être envoyée. Vérifiez votre connexion et réessayez."
+  ],
+  "Application Submitted Successfully!": [
+    "Դիմումը հաջողությամբ ուղարկված է։",
+    "Заявка успешно отправлена!",
+    "Candidature envoyée avec succès !"
+  ],
+  "Submit Another Application": [
+    "Ուղարկել նոր դիմում",
+    "Отправить ещё одну заявку",
+    "Envoyer une autre candidature"
+  ],
+  "Submitting Application...": [
+    "Դիմումն ուղարկվում է…",
+    "Отправка заявки…",
+    "Envoi de la candidature…"
+  ],
+  "Submit Nice Application": [
+    "Ուղարկել Նիսի դիմումը",
+    "Отправить заявку в Ниццу",
+    "Envoyer la candidature pour Nice"
+  ],
+  "I agree to the Exchange Terms of Service & Code of Conduct.": [
+    "Համաձայն եմ փոխանակման ծրագրի պայմաններին և վարքականոնին։",
+    "Я принимаю условия программы обмена и правила поведения.",
+    "J’accepte les conditions du programme d’échange et le code de conduite."
+  ],
+  "I agree to the enrollment terms and conditions.": [
+    "Համաձայն եմ գրանցման պայմաններին։",
+    "Я принимаю условия зачисления.",
+    "J’accepte les conditions d’inscription."
+  ],
+  "Select Program": [
+    "Ընտրել ծրագիր",
+    "Выбор программы",
+    "Choix du programme"
+  ],
+  "Student Info": [
+    "Դիմորդի տվյալներ",
+    "Данные учащегося",
+    "Informations personnelles"
+  ],
+  "Review & Submit": [
+    "Ստուգել և ուղարկել",
+    "Проверка и отправка",
+    "Vérification et envoi"
+  ],
+  "Registration Completed!": [
+    "Գրանցումն ավարտված է։",
+    "Регистрация завершена!",
+    "Inscription terminée !"
+  ],
+  "Your registration has been received. We will follow up with course and schedule details at": [
+    "Ձեր գրանցումն ստացվել է։ Դասընթացի և ժամանակացույցի մանրամասները կուղարկենք այս հասցեին՝",
+    "Ваша регистрация получена. Подробности курса и расписание отправим на",
+    "Votre inscription a été reçue. Les détails du cours et les horaires seront envoyés à"
+  ],
+  "Register Another Student": [
+    "Գրանցել այլ դիմորդի",
+    "Зарегистрировать другого учащегося",
+    "Inscrire une autre personne"
+  ],
+  "Step 1: Choose Your Course Category": [
+    "Քայլ 1․ Ընտրեք դասընթացի ուղղությունը",
+    "Шаг 1: Выберите направление",
+    "Étape 1 : Choisissez un domaine"
+  ],
+  "Foreign Languages": [
+    "Օտար լեզուներ",
+    "Иностранные языки",
+    "Langues étrangères"
+  ],
+  "10+ Available →": [
+    "10+ տարբերակ →",
+    "Более 10 вариантов →",
+    "Plus de 10 langues →"
+  ],
+  "SMM Academy": [
+    "SMM ակադեմիա",
+    "Академия SMM",
+    "Académie SMM"
+  ],
+  "3 Professional Tiers →": [
+    "3 մասնագիտական մակարդակ →",
+    "3 профессиональных уровня →",
+    "3 niveaux professionnels →"
+  ],
+  "Select Specific Course Batch": [
+    "Ընտրեք դասընթացի խումբը",
+    "Выберите группу курса",
+    "Choisissez une session de cours"
+  ],
+  "Continue to Personal Info": [
+    "Անցնել անձնական տվյալներին",
+    "Перейти к личным данным",
+    "Passer aux informations personnelles"
+  ],
+  "Continue to Personal Information": [
+    "Անցնել անձնական տվյալներին",
+    "Перейти к личным данным",
+    "Passer aux informations personnelles"
+  ],
+  "Step 2: Student Details": [
+    "Քայլ 2․ Դիմորդի տվյալները",
+    "Шаг 2: Данные учащегося",
+    "Étape 2 : Informations personnelles"
+  ],
+  "Back": [
+    "Հետ",
+    "Назад",
+    "Retour"
+  ],
+  "Continue to Review": [
+    "Անցնել ստուգմանը",
+    "Перейти к проверке",
+    "Passer à la vérification"
+  ],
+  "Step 3: Review & Submit Registration": [
+    "Քայլ 3․ Ստուգեք և ուղարկեք գրանցումը",
+    "Шаг 3: Проверьте и отправьте регистрацию",
+    "Étape 3 : Vérifiez et envoyez l’inscription"
+  ],
+  "Selected Program": [
+    "Ընտրված ծրագիր",
+    "Выбранная программа",
+    "Programme choisi"
+  ],
+  "Student Information": [
+    "Դիմորդի տվյալներ",
+    "Данные учащегося",
+    "Informations personnelles"
+  ],
+  "Name:": [
+    "Անուն՝",
+    "Имя:",
+    "Nom :"
+  ],
+  "Email:": [
+    "Էլ․ հասցե՝",
+    "Эл. почта:",
+    "E-mail :"
+  ],
+  "Phone:": [
+    "Հեռախոս՝",
+    "Телефон:",
+    "Téléphone :"
+  ],
+  "Submitting Registration...": [
+    "Գրանցումն ուղարկվում է…",
+    "Отправка регистрации…",
+    "Envoi de l’inscription…"
+  ],
+  "Submit Registration": [
+    "Ուղարկել գրանցումը",
+    "Отправить регистрацию",
+    "Envoyer l’inscription"
+  ],
+  "Enrollment Form": [
+    "Գրանցման ձև",
+    "Форма регистрации",
+    "Formulaire d’inscription"
+  ],
+  "Register for Your Course": [
+    "Գրանցվեք ձեր դասընթացին",
+    "Зарегистрируйтесь на курс",
+    "Inscrivez-vous à votre cours"
+  ],
+  "Complete your enrollment in 3 simple steps.": [
+    "Ավարտեք գրանցումը 3 պարզ քայլով։",
+    "Завершите регистрацию за 3 простых шага.",
+    "Inscrivez-vous en 3 étapes simples."
+  ],
+  "Breadcrumb": [
+    "Էջի ուղի",
+    "Навигационная цепочка",
+    "Fil d’Ariane"
+  ],
+  "Close lightbox": [
+    "Փակել պատկերների դիտումը",
+    "Закрыть просмотр изображений",
+    "Fermer la visionneuse"
+  ],
+  "Previous image": [
+    "Նախորդ պատկերը",
+    "Предыдущее изображение",
+    "Image précédente"
+  ],
+  "Next image": [
+    "Հաջորդ պատկերը",
+    "Следующее изображение",
+    "Image suivante"
+  ],
+  "French": [
+    "Ֆրանսերեն",
+    "Французский",
+    "Français"
+  ],
+  "English": [
+    "Անգլերեն",
+    "Английский",
+    "Anglais"
+  ],
+  "German": [
+    "Գերմաներեն",
+    "Немецкий",
+    "Allemand"
+  ],
+  "Spanish": [
+    "Իսպաներեն",
+    "Испанский",
+    "Espagnol"
+  ],
+  "Italian": [
+    "Իտալերեն",
+    "Итальянский",
+    "Italien"
+  ],
+  "Russian": [
+    "Ռուսերեն",
+    "Русский",
+    "Russe"
+  ],
+  "Armenian": [
+    "Հայերեն",
+    "Армянский",
+    "Arménien"
+  ],
+  "Korean": [
+    "Կորեերեն",
+    "Корейский",
+    "Coréen"
+  ],
+  "Chinese": [
+    "Չինարեն",
+    "Китайский",
+    "Chinois"
+  ],
+  "Japanese": [
+    "Ճապոներեն",
+    "Японский",
+    "Japonais"
+  ],
+  "Beginner": [
+    "Սկսնակ",
+    "Начальный",
+    "Débutant"
+  ],
+  "Intermediate": [
+    "Միջին",
+    "Средний",
+    "Intermédiaire"
+  ],
+  "Advanced": [
+    "Առաջադեմ",
+    "Продвинутый",
+    "Avancé"
+  ],
+  "A1 Beginner": [
+    "A1 Սկսնակ",
+    "A1 Начальный",
+    "A1 Débutant"
+  ],
+  "A2 Elementary": [
+    "A2 Տարրական",
+    "A2 Базовый",
+    "A2 Élémentaire"
+  ],
+  "B1 Intermediate": [
+    "B1 Միջին",
+    "B1 Средний",
+    "B1 Intermédiaire"
+  ],
+  "B2 Upper Intermediate": [
+    "B2 Միջինից բարձր",
+    "B2 Выше среднего",
+    "B2 Intermédiaire supérieur"
+  ],
+  "C1 Advanced": [
+    "C1 Առաջադեմ",
+    "C1 Продвинутый",
+    "C1 Avancé"
+  ],
+  "C2 Proficiency": [
+    "C2 Կատարյալ տիրապետում",
+    "C2 Свободное владение",
+    "C2 Maîtrise"
+  ],
+  "All Levels (A1-C2)": [
+    "Բոլոր մակարդակները (A1–C2)",
+    "Все уровни (A1–C2)",
+    "Tous niveaux (A1–C2)"
+  ],
+  "4 Weeks": [
+    "4 շաբաթ",
+    "4 недели",
+    "4 semaines"
+  ],
+  "8 Weeks": [
+    "8 շաբաթ",
+    "8 недель",
+    "8 semaines"
+  ],
+  "10 Weeks": [
+    "10 շաբաթ",
+    "10 недель",
+    "10 semaines"
+  ],
+  "12 Weeks": [
+    "12 շաբաթ",
+    "12 недель",
+    "12 semaines"
+  ],
+  "12 Weeks per Level": [
+    "12 շաբաթ յուրաքանչյուր մակարդակի համար",
+    "12 недель на уровень",
+    "12 semaines par niveau"
+  ],
+  "French Language Mastery": [
+    "Ֆրանսերենի խորացված ուսուցում",
+    "Глубокое изучение французского",
+    "Maîtrise du français"
+  ],
+  "English Global Communication": [
+    "Անգլերեն՝ միջազգային հաղորդակցության համար",
+    "Английский для международного общения",
+    "Anglais pour la communication internationale"
+  ],
+  "German Academic & Professional": [
+    "Գերմաներեն՝ ուսման և աշխատանքի համար",
+    "Немецкий для учёбы и работы",
+    "Allemand académique et professionnel"
+  ],
+  "Spanish Conversational & Business": [
+    "Խոսակցական և գործարար իսպաներեն",
+    "Разговорный и деловой испанский",
+    "Espagnol conversationnel et professionnel"
+  ],
+  "Italian Language & Culture": [
+    "Իտալերեն և մշակույթ",
+    "Итальянский язык и культура",
+    "Langue et culture italiennes"
+  ],
+  "Russian Language Program": [
+    "Ռուսերենի ուսուցման ծրագիր",
+    "Программа русского языка",
+    "Programme de russe"
+  ],
+  "Armenian Language & Heritage": [
+    "Հայերեն և մշակութային ժառանգություն",
+    "Армянский язык и наследие",
+    "Langue et patrimoine arméniens"
+  ],
+  "Korean Language & Modern Culture": [
+    "Կորեերեն և ժամանակակից մշակույթ",
+    "Корейский язык и современная культура",
+    "Langue coréenne et culture contemporaine"
+  ],
+  "Mandarin Chinese Excellence": [
+    "Չինարենի՝ մանդարինի խորացված ուսուցում",
+    "Углублённое изучение китайского",
+    "Maîtrise du chinois mandarin"
+  ],
+  "Japanese Mastery & JLPT": [
+    "Ճապոներենի ուսուցում և JLPT",
+    "Японский язык и подготовка к JLPT",
+    "Maîtrise du japonais et JLPT"
+  ],
+  "SMM Starter: Social Media Foundations": [
+    "SMM Starter․ Սոցիալական մեդիայի հիմունքներ",
+    "SMM Starter: Основы социальных сетей",
+    "SMM Starter : Les bases des réseaux sociaux"
+  ],
+  "SMM Pro: Growth & Paid Advertising": [
+    "SMM Pro․ Աճ և վճարովի գովազդ",
+    "SMM Pro: Рост и платная реклама",
+    "SMM Pro : Croissance et publicité payante"
+  ],
+  "SMM Expert: Agency & CMO Mastery": [
+    "SMM Expert․ Գործակալության և մարքեթինգի ղեկավարում",
+    "SMM Expert: Управление агентством и компетенции CMO",
+    "SMM Expert : Gestion d’agence et expertise CMO"
+  ],
+  "SMM Expert: Agency Mastery": [
+    "SMM Expert․ Գործակալության ղեկավարում",
+    "SMM Expert: Управление агентством",
+    "SMM Expert : Maîtrise de la gestion d’agence"
+  ],
+  "Immerse yourself in French language and culture from A1 to C2.": [
+    "Խորացրեք ֆրանսերենի և մշակույթի իմացությունը՝ A1-ից C2։",
+    "Погрузитесь во французский язык и культуру от A1 до C2.",
+    "Plongez dans la langue et la culture françaises, de A1 à C2."
+  ],
+  "Master French with native-speaking certified tutors. Structured curriculum covering grammar, vocabulary, pronunciation, and practical conversational fluency.": [
+    "Տիրապետեք ֆրանսերենին հավաստագրված լեզվակիր դասավանդողների հետ։ Կառուցվածքային ծրագիր՝ քերականություն, բառապաշար, արտասանություն և գործնական խոսակցական հմտություններ։",
+    "Осваивайте французский с сертифицированными преподавателями-носителями. Структурированная программа охватывает грамматику, лексику, произношение и разговорную практику.",
+    "Maîtrisez le français avec des enseignants natifs certifiés. Un programme structuré couvrant grammaire, vocabulaire, prononciation et aisance à l’oral."
+  ],
+  "Achieve global professional and academic English fluency.": [
+    "Հասեք ազատ անգլերենի՝ միջազգային մասնագիտական և ակադեմիական միջավայրում։",
+    "Свободно общайтесь на английском в международной профессиональной и академической среде.",
+    "Maîtrisez l’anglais dans les milieux professionnels et universitaires internationaux."
+  ],
+  "Accelerate your career and academic opportunities with comprehensive English language courses focused on business communication, academic writing, and TOEFL/IELTS preparation.": [
+    "Ընդլայնեք կարիերայի և ուսման հնարավորությունները անգլերենի համապարփակ դասընթացներով՝ գործարար հաղորդակցություն, ակադեմիական գրավոր խոսք և TOEFL/IELTS պատրաստություն։",
+    "Расширяйте карьерные и учебные возможности на комплексных курсах английского: деловое общение, академическое письмо и подготовка к TOEFL/IELTS.",
+    "Développez vos perspectives professionnelles et universitaires grâce à des cours complets d’anglais axés sur la communication d’affaires, l’écriture académique et la préparation au TOEFL/IELTS."
+  ],
+  "Precision language learning for study, work, and life in DACH region.": [
+    "Նպատակային լեզվական ուսուցում՝ գերմանախոս երկրներում սովորելու, աշխատելու և ապրելու համար։",
+    "Целенаправленное изучение языка для учёбы, работы и жизни в немецкоязычных странах.",
+    "Un apprentissage précis pour étudier, travailler et vivre dans les pays germanophones."
+  ],
+  "Structured, logical approach to mastering German. Ideal for engineers, university applicants, and international professionals.": [
+    "Գերմաներենի ուսուցման կառուցվածքային և տրամաբանական մոտեցում։ Հարմար է ինժեներների, համալսարան դիմողների և միջազգային մասնագետների համար։",
+    "Структурированный, логичный подход к немецкому. Подходит инженерам, абитуриентам и международным специалистам.",
+    "Une approche structurée et logique de l’allemand, idéale pour les ingénieurs, les candidats à l’université et les professionnels internationaux."
+  ],
+  "Connect with over 500 million Spanish speakers worldwide.": [
+    "Հաղորդակցվեք աշխարհի ավելի քան 500 միլիոն իսպանախոսների հետ։",
+    "Общайтесь с более чем 500 миллионами испаноговорящих по всему миру.",
+    "Communiquez avec plus de 500 millions d’hispanophones dans le monde."
+  ],
+  "Dynamic Spanish language training tailored for students, travelers, and professionals looking to excel in Hispanic markets.": [
+    "Իսպաներենի դինամիկ ուսուցում՝ ուսանողների, ճանապարհորդների և իսպանախոս շուկաներում հաջողության ձգտող մասնագետների համար։",
+    "Динамичный курс испанского для студентов, путешественников и специалистов, стремящихся к успеху на испаноязычных рынках.",
+    "Une formation dynamique en espagnol pour les étudiants, les voyageurs et les professionnels souhaitant réussir sur les marchés hispanophones."
+  ],
+  "Discover the beauty of Italian literature, art, and conversation.": [
+    "Բացահայտեք իտալական գրականության, արվեստի և հաղորդակցության գեղեցկությունը։",
+    "Откройте красоту итальянской литературы, искусства и общения.",
+    "Découvrez la beauté de la littérature, de l’art et de la conversation en italien."
+  ],
+  "Learn Italian with native experts. Experience the rich culture, history, and expressive nature of Italian language learning.": [
+    "Սովորեք իտալերեն լեզվակիր մասնագետների հետ։ Բացահայտեք հարուստ մշակույթը, պատմությունը և իտալերենի արտահայտչականությունը։",
+    "Учите итальянский с носителями-экспертами. Познакомьтесь с богатой культурой, историей и выразительностью языка.",
+    "Apprenez l’italien avec des experts natifs et découvrez la richesse culturelle, historique et expressive de cette langue."
+  ],
+  "Unlock Cyrillic script and rich literary traditions.": [
+    "Բացահայտեք կիրիլյան գիրը և հարուստ գրական ավանդույթները։",
+    "Освойте кириллицу и богатые литературные традиции.",
+    "Découvrez l’écriture cyrillique et de riches traditions littéraires."
+  ],
+  "Clear, step-by-step guidance to mastering Russian reading, writing, and speaking for beginners and advanced learners alike.": [
+    "Հստակ քայլերով ռուսերենի ընթերցանության, գրավոր և բանավոր խոսքի ուսուցում՝ սկսնակների և առաջադեմ սովորողների համար։",
+    "Понятное пошаговое освоение чтения, письма и устной речи на русском для начинающих и продолжающих.",
+    "Un accompagnement clair et progressif en lecture, écriture et expression orale russes, du niveau débutant au niveau avancé."
+  ],
+  "Learn Eastern and Western Armenian with cultural depth.": [
+    "Սովորեք արևելահայերեն և արևմտահայերեն՝ խորանալով մշակույթի մեջ։",
+    "Изучайте восточный и западный армянский с погружением в культуру.",
+    "Apprenez l’arménien oriental et occidental en explorant leur culture."
+  ],
+  "Immersive Armenian course covering reading, writing, phonetics, and conversation. Ideal for heritage learners, expats, and enthusiasts.": [
+    "Հայերենի խորացված դասընթաց՝ ընթերցանություն, գրավոր խոսք, հնչյունաբանություն և զրույց։ Հարմար է ժառանգական լեզուն սովորողների, արտերկրից տեղափոխվածների և հետաքրքրվողների համար։",
+    "Курс армянского с погружением: чтение, письмо, фонетика и разговорная практика. Для изучающих язык предков, экспатов и всех увлечённых.",
+    "Un cours d’arménien en immersion couvrant lecture, écriture, phonétique et conversation. Idéal pour renouer avec ses origines, s’expatrier ou découvrir la langue."
+  ],
+  "Master Hangul and natural Korean conversation.": [
+    "Տիրապետեք հանգըլին և բնական կորեերեն խոսքին։",
+    "Освойте хангыль и естественную корейскую речь.",
+    "Maîtrisez le hangeul et la conversation naturelle en coréen."
+  ],
+  "Learn Korean systematically from Hangul basics to TOPIK exam preparation with engaging, real-world cultural context.": [
+    "Սովորեք կորեերեն համակարգված՝ հանգըլի հիմունքներից մինչև TOPIK քննության պատրաստություն՝ իրական մշակութային համատեքստում։",
+    "Изучайте корейский системно: от основ хангыля до подготовки к TOPIK в увлекательном культурном контексте.",
+    "Apprenez le coréen de façon progressive, des bases du hangeul au TOPIK, dans un contexte culturel vivant."
+  ],
+  "Master Pinyin, Hanzi, and conversational Mandarin for business and travel.": [
+    "Տիրապետեք փինյինին, հանձիին և խոսակցական մանդարինին՝ աշխատանքի ու ճանապարհորդության համար։",
+    "Освойте пиньинь, иероглифы и разговорный китайский для бизнеса и путешествий.",
+    "Maîtrisez le pinyin, les hanzi et le mandarin oral pour les affaires et les voyages."
+  ],
+  "Comprehensive Mandarin course with focus on tones, essential Chinese characters, daily conversation, and HSK test preparation.": [
+    "Մանդարինի համապարփակ դասընթաց՝ տոներ, հիմնական հիերոգլիֆներ, առօրյա հաղորդակցություն և HSK քննության պատրաստություն։",
+    "Комплексный курс китайского с акцентом на тоны, основные иероглифы, повседневное общение и подготовку к HSK.",
+    "Un cours complet de mandarin axé sur les tons, les caractères essentiels, la conversation quotidienne et la préparation au HSK."
+  ],
+  "Master Hiragana, Katakana, Kanji, and authentic spoken Japanese.": [
+    "Տիրապետեք հիրագանային, կատականային, կանջիին և բնական խոսակցական ճապոներենին։",
+    "Освойте хирагану, катакану, кандзи и живой разговорный японский.",
+    "Maîtrisez les hiragana, les katakana, les kanji et le japonais oral authentique."
+  ],
+  "Structured Japanese program taking you step-by-step from writing systems to natural conversational fluency and JLPT exam readiness.": [
+    "Ճապոներենի կառուցվածքային ծրագիր՝ քայլ առ քայլ գրային համակարգերից մինչև բնական խոսակցական հմտություններ և JLPT պատրաստություն։",
+    "Структурированная программа японского: от письменности до свободной разговорной речи и готовности к JLPT.",
+    "Un programme structuré de japonais, des systèmes d’écriture à l’aisance orale et à la préparation au JLPT."
+  ],
+  "Build a solid foundation in digital marketing and content creation.": [
+    "Ստեղծեք ամուր հիմք թվային մարքեթինգում և բովանդակության ստեղծման մեջ։",
+    "Заложите прочную основу в цифровом маркетинге и создании контента.",
+    "Acquérez de solides bases en marketing numérique et en création de contenu."
+  ],
+  "Perfect for beginners, small business owners, and aspiring social media managers looking to establish an impactful online presence.": [
+    "Հարմար է սկսնակների, փոքր բիզնեսի սեփականատերերի և ապագա SMM մասնագետների համար, որոնք ցանկանում են ազդեցիկ առցանց ներկայություն ստեղծել։",
+    "Для начинающих, владельцев малого бизнеса и будущих SMM-менеджеров, стремящихся создать заметное присутствие в интернете.",
+    "Idéal pour les débutants, les petites entreprises et les futurs gestionnaires de réseaux sociaux souhaitant établir une présence en ligne efficace."
+  ],
+  "Scale brand reach with targeted Meta Ads, content strategy, and analytics.": [
+    "Ընդլայնեք բրենդի հասանելիությունը թիրախային Meta Ads-ի, բովանդակության ռազմավարության և վերլուծության միջոցով։",
+    "Расширяйте охват бренда с помощью Meta Ads, контент-стратегии и аналитики.",
+    "Développez la portée de votre marque grâce à Meta Ads, à une stratégie de contenu et à l’analyse des résultats."
+  ],
+  "For intermediate marketers wanting to master Meta Business Suite, paid advertising campaigns, influencer outreach, and community growth.": [
+    "Միջին մակարդակի մարքեթոլոգների համար՝ Meta Business Suite, վճարովի արշավներ, ինֆլուենսերների հետ համագործակցություն և համայնքի աճ։",
+    "Для маркетологов среднего уровня, желающих освоить Meta Business Suite, платную рекламу, работу с блогерами и развитие сообщества.",
+    "Pour les professionnels intermédiaires souhaitant maîtriser Meta Business Suite, la publicité payante, les partenariats avec les créateurs et la croissance communautaire."
+  ],
+  "Build a full-scale SMM agency, automate operations, and lead enterprise campaigns.": [
+    "Ստեղծեք լիարժեք SMM գործակալություն, ավտոմատացրեք աշխատանքը և ղեկավարեք խոշոր արշավներ։",
+    "Создайте полноценное SMM-агентство, автоматизируйте процессы и руководите крупными кампаниями.",
+    "Créez une agence SMM complète, automatisez vos opérations et pilotez des campagnes d’entreprise."
+  ],
+  "The ultimate blueprint for ambitious marketers, agency founders, and senior managers seeking to master high-ticket client acquisition, team delegation, and multi-channel strategies.": [
+    "Համապարփակ ուղեցույց հավակնոտ մարքեթոլոգների, գործակալությունների հիմնադիրների և ղեկավարների համար՝ բարձրարժեք հաճախորդների ներգրավում, թիմային պատվիրակում և բազմաալիք ռազմավարություններ։",
+    "Комплексная программа для амбициозных маркетологов, основателей агентств и руководителей: привлечение крупных клиентов, делегирование и многоканальные стратегии.",
+    "Un programme complet pour les professionnels ambitieux, fondateurs d’agence et cadres souhaitant maîtriser l’acquisition de clients à forte valeur, la délégation et les stratégies multicanales."
+  ],
+  "Language Academy": [
+    "Լեզուների ակադեմիա",
+    "Языковая академия",
+    "Académie de langues"
+  ],
+  "Immersive language education across 10 global languages with native-speaking certified tutors.": [
+    "10 միջազգային լեզվի ուսուցում՝ հավաստագրված լեզվակիր դասավանդողների հետ։",
+    "Обучение 10 мировым языкам с сертифицированными преподавателями-носителями.",
+    "Un enseignement immersif de 10 langues avec des enseignants natifs certifiés."
+  ],
+  "SMM & Digital Marketing": [
+    "SMM և թվային մարքեթինգ",
+    "SMM и цифровой маркетинг",
+    "SMM et marketing numérique"
+  ],
+  "Practical training for social media creators, growth managers, and digital agency founders.": [
+    "Գործնական ուսուցում սոցիալական մեդիայի ստեղծողների, աճի ղեկավարների և թվային գործակալությունների հիմնադիրների համար։",
+    "Практическая подготовка создателей контента, менеджеров по росту и основателей цифровых агентств.",
+    "Formation pratique pour les créateurs de contenu, responsables de croissance et fondateurs d’agences numériques."
+  ],
+  "Nice Exchange Immersion": [
+    "Նիսի փոխանակման մշակութային ծրագիր",
+    "Погружение по обмену в Ницце",
+    "Immersion d’échange à Nice"
+  ],
+  "A transformative summer cultural & language exchange program hosted in Nice, France.": [
+    "Ամառային մշակութային և լեզվական փոխանակման ծրագիր Ֆրանսիայի Նիս քաղաքում։",
+    "Летняя программа культурного и языкового обмена в Ницце, Франция.",
+    "Un programme estival enrichissant d’échange culturel et linguistique à Nice, en France."
+  ],
+  "Corporate Language & Digital Training": [
+    "Կորպորատիվ լեզվական և թվային ուսուցում",
+    "Корпоративное языковое и цифровое обучение",
+    "Formation linguistique et numérique en entreprise"
+  ],
+  "Customized B2B language and marketing programs designed for international corporate teams.": [
+    "Անհատականացված B2B լեզվական և մարքեթինգային ծրագրեր՝ միջազգային կորպորատիվ թիմերի համար։",
+    "Индивидуальные B2B-программы языкового и маркетингового обучения для международных команд.",
+    "Des programmes B2B de langues et de marketing sur mesure pour les équipes internationales."
+  ],
+  "Academic argument, nuance, and official certification.": [
+    "Ակադեմիական փաստարկում, նրբերանգներ և պաշտոնական հավաստագրում։",
+    "Академическая аргументация, нюансы и официальная сертификация.",
+    "Argumentation académique, nuances et certification officielle."
+  ],
+  "Accurate pronunciation with 4 main tones and neutral tone": [
+    "Ճիշտ արտասանություն՝ 4 հիմնական և չեզոք տոներով",
+    "Точное произношение четырёх основных и нейтрального тонов",
+    "Prononciation précise des quatre tons principaux et du ton neutre"
+  ],
+  "Advanced French grammar, syntax, and nuanced vocabulary": [
+    "Ֆրանսերենի առաջադեմ քերականություն, շարահյուսություն և բառապաշարի նրբերանգներ",
+    "Продвинутая французская грамматика, синтаксис и нюансы лексики",
+    "Grammaire française avancée, syntaxe et nuances lexicales"
+  ],
+  "Advanced academic writing and official test mock exams.": [
+    "Առաջադեմ ակադեմիական գրավոր խոսք և պաշտոնական քննությունների փորձնական թեստեր։",
+    "Продвинутое академическое письмо и пробные официальные экзамены.",
+    "Écriture académique avancée et examens blancs officiels."
+  ],
+  "Advanced debate, literature review, and exam prep.": [
+    "Առաջադեմ բանավեճ, գրականության քննարկում և քննության պատրաստություն։",
+    "Дискуссии продвинутого уровня, обзор литературы и подготовка к экзаменам.",
+    "Débats avancés, analyse littéraire et préparation aux examens."
+  ],
+  "Advanced literature, negotiation, and DELE exam strategy.": [
+    "Առաջադեմ գրականություն, բանակցություններ և DELE քննության ռազմավարություն։",
+    "Литература продвинутого уровня, переговоры и стратегия экзамена DELE.",
+    "Littérature avancée, négociation et stratégie pour le DELE."
+  ],
+  "Advanced reading, writing essays, and mock testing.": [
+    "Առաջադեմ ընթերցանություն, էսսեների գրում և փորձնական թեստեր։",
+    "Продвинутое чтение, написание эссе и пробное тестирование.",
+    "Lecture avancée, rédaction de dissertations et examens blancs."
+  ],
+  "Alphabet, simple phrases, and basic present tense.": [
+    "Այբուբեն, պարզ արտահայտություններ և ներկա ժամանակի հիմունքներ։",
+    "Алфавит, простые фразы и основы настоящего времени.",
+    "Alphabet, phrases simples et bases du présent."
+  ],
+  "Aspects of verbs, Genitive and Instrumental cases.": [
+    "Բայի կերպեր, սեռական և գործիական հոլովներ։",
+    "Виды глаголов, родительный и творительный падежи.",
+    "Aspects verbaux, génitif et instrumental."
+  ],
+  "Basic Kanji, verb conjugations (Te-form), and daily routines.": [
+    "Հիմնական կանջի, բայերի խոնարհում (Te ձև) և առօրյա գործողություններ։",
+    "Основные кандзи, спряжения глаголов (форма тэ) и повседневные дела.",
+    "Kanji de base, conjugaison des verbes (forme en te) et routines quotidiennes."
+  ],
+  "Basic expressions, alphabet, and fundamental verb conjugations.": [
+    "Հիմնական արտահայտություններ, այբուբեն և բայերի հիմնական խոնարհումներ։",
+    "Основные выражения, алфавит и базовые спряжения глаголов.",
+    "Expressions courantes, alphabet et conjugaisons fondamentales."
+  ],
+  "Basics, articles, present tense, and simple sentences.": [
+    "Հիմունքներ, հոդեր, ներկա ժամանակ և պարզ նախադասություններ։",
+    "Основы, артикли, настоящее время и простые предложения.",
+    "Bases, articles, présent et phrases simples."
+  ],
+  "Build vocabulary for travel, dining, and daily interactions.": [
+    "Զարգացրեք բառապաշարը ճանապարհորդության, սնվելու և առօրյա շփումների համար։",
+    "Расширяйте словарь для путешествий, питания и повседневного общения.",
+    "Enrichissez votre vocabulaire pour les voyages, les repas et les échanges quotidiens."
+  ],
+  "Clear understanding of German cases, word order, and syntax": [
+    "Գերմաներենի հոլովների, բառերի դասավորության և շարահյուսության հստակ ըմբռնում",
+    "Чёткое понимание немецких падежей, порядка слов и синтаксиса",
+    "Compréhension claire des cas, de l’ordre des mots et de la syntaxe allemands"
+  ],
+  "Complex sentence structures, business conversations, and stroke rules.": [
+    "Բարդ նախադասություններ, գործարար զրույցներ և գծագրության կանոններ։",
+    "Сложные предложения, деловые разговоры и правила написания черт.",
+    "Phrases complexes, conversations d’affaires et règles de tracé."
+  ],
+  "Comprehensive grasp of Spanish grammar and conjugation": [
+    "Իսպաներենի քերականության և խոնարհման համապարփակ իմացություն",
+    "Всестороннее понимание испанской грамматики и спряжения",
+    "Compréhension complète de la grammaire et de la conjugaison espagnoles"
+  ],
+  "Confidence in professional and social settings": [
+    "Վստահություն մասնագիտական և սոցիալական միջավայրում",
+    "Уверенность в профессиональном и повседневном общении",
+    "Confiance dans les contextes professionnels et sociaux"
+  ],
+  "Confidential and fluent spoken French in everyday and professional scenarios": [
+    "Վստահ և սահուն ֆրանսերեն՝ առօրյա և մասնագիտական իրավիճակներում",
+    "Уверенная и свободная французская речь в повседневных и профессиональных ситуациях",
+    "Un français oral assuré et fluide au quotidien et au travail"
+  ],
+  "Conversational skills for everyday business and social interactions": [
+    "Խոսակցական հմտություններ՝ առօրյա գործարար և սոցիալական շփումների համար",
+    "Разговорные навыки для делового и повседневного общения",
+    "Compétences orales pour les échanges professionnels et sociaux quotidiens"
+  ],
+  "Conversational skills for everyday situations": [
+    "Խոսակցական հմտություններ առօրյա իրավիճակների համար",
+    "Разговорные навыки для повседневных ситуаций",
+    "Compétences orales pour les situations quotidiennes"
+  ],
+  "Conversational skills for living, working, or visiting Japan": [
+    "Խոսակցական հմտություններ՝ Ճապոնիայում ապրելու, աշխատելու կամ այցելելու համար",
+    "Разговорные навыки для жизни, работы или поездок в Японию",
+    "Compétences orales pour vivre, travailler ou voyager au Japon"
+  ],
+  "Conversational vocabulary for family, business, and travel": [
+    "Խոսակցական բառապաշար՝ ընտանիքի, աշխատանքի և ճանապարհորդության համար",
+    "Разговорная лексика для семьи, работы и путешествий",
+    "Vocabulaire courant pour la famille, les affaires et les voyages"
+  ],
+  "Corporate presentations, negotiations, and technical vocabulary.": [
+    "Կորպորատիվ ներկայացումներ, բանակցություններ և տեխնիկական բառապաշար։",
+    "Корпоративные презентации, переговоры и техническая лексика.",
+    "Présentations professionnelles, négociations et vocabulaire technique."
+  ],
+  "Cyrillic mastery, greetings, and basic noun genders.": [
+    "Կիրիլյան գրի տիրապետում, ողջույններ և գոյականի սեռի հիմունքներ։",
+    "Освоение кириллицы, приветствия и основы рода существительных.",
+    "Maîtrise du cyrillique, salutations et bases du genre des noms."
+  ],
+  "Debates, cinema analysis, and advanced literature.": [
+    "Բանավեճեր, ֆիլմերի վերլուծություն և առաջադեմ գրականություն։",
+    "Дискуссии, анализ кино и литература продвинутого уровня.",
+    "Débats, analyse cinématographique et littérature avancée."
+  ],
+  "Deep insights into Armenian culture, history, and traditions": [
+    "Հայկական մշակույթի, պատմության և ավանդույթների խոր իմացություն",
+    "Глубокое понимание армянской культуры, истории и традиций",
+    "Compréhension approfondie de la culture, de l’histoire et des traditions arméniennes"
+  ],
+  "Dive deep into tenses, complex clauses, and formal writing.": [
+    "Խորացրեք ժամանակաձևերի, բարդ նախադասությունների և պաշտոնական գրավոր խոսքի իմացությունը։",
+    "Углубитесь во времена, сложные предложения и официальное письмо.",
+    "Approfondissez les temps, les propositions complexes et l’écriture formelle."
+  ],
+  "Essential characters, daily shopping, and directions.": [
+    "Հիմնական հիերոգլիֆներ, առօրյա գնումներ և ուղղություններ։",
+    "Основные иероглифы, повседневные покупки и ориентирование.",
+    "Caractères essentiels, achats quotidiens et indications d’itinéraire."
+  ],
+  "Essential communication, grammar basics, and essential vocabulary.": [
+    "Հիմնական հաղորդակցություն, քերականության հիմունքներ և հիմնական բառապաշար։",
+    "Базовое общение, основы грамматики и необходимая лексика.",
+    "Communication essentielle, bases grammaticales et vocabulaire fondamental."
+  ],
+  "Expressing nuance, conditionality, and reading short stories.": [
+    "Նրբերանգների և պայմանականության արտահայտում, պատմվածքների ընթերցում։",
+    "Выражение нюансов и условий, чтение рассказов.",
+    "Expression des nuances et des conditions, lecture de nouvelles."
+  ],
+  "Expressing opinions, travel scenarios, and past tenses.": [
+    "Կարծիքի արտահայտում, ճանապարհորդական իրավիճակներ և անցյալ ժամանակաձևեր։",
+    "Выражение мнений, ситуации в путешествиях и прошедшие времена.",
+    "Expression d’opinions, situations de voyage et temps du passé."
+  ],
+  "Family, dining, travel, and social interactions.": [
+    "Ընտանիք, սնվել, ճանապարհորդություն և սոցիալական շփումներ։",
+    "Семья, питание, путешествия и общение.",
+    "Famille, repas, voyages et échanges sociaux."
+  ],
+  "Flawless pronunciation and accent softening techniques": [
+    "Հստակ արտասանություն և առոգանության մեղմացման տեխնիկաներ",
+    "Чёткое произношение и техники смягчения акцента",
+    "Prononciation soignée et techniques d’atténuation de l’accent"
+  ],
+  "Fluency in academic, technical, and everyday discussions": [
+    "Սահուն խոսք ակադեմիական, տեխնիկական և առօրյա քննարկումներում",
+    "Свободная речь в академических, технических и повседневных обсуждениях",
+    "Aisance dans les discussions académiques, techniques et quotidiennes"
+  ],
+  "Fluency in both Peninsular and Latin American Spanish variations": [
+    "Ազատ հաղորդակցություն իսպաներենի իսպանական և լատինաամերիկյան տարբերակներով",
+    "Свободное владение испанским и латиноамериканскими вариантами языка",
+    "Aisance dans les variantes espagnoles et latino-américaines"
+  ],
+  "Fluency in reading and writing the 39-letter Armenian alphabet": [
+    "Հայերենի 39-տառանոց այբուբենով սահուն ընթերցանություն և գրություն",
+    "Свободное чтение и письмо на армянском алфавите из 39 букв",
+    "Lecture et écriture fluides de l’alphabet arménien de 39 lettres"
+  ],
+  "Formality levels, indirect speech, and complex verbs.": [
+    "Պաշտոնականության մակարդակներ, անուղղակի խոսք և բարդ բայեր։",
+    "Уровни формальности, косвенная речь и сложные глаголы.",
+    "Niveaux de formalité, discours indirect et verbes complexes."
+  ],
+  "Grammatical structures and verb tenses": [
+    "Քերականական կառուցվածքներ և բայի ժամանակաձևեր",
+    "Грамматические структуры и времена глаголов",
+    "Structures grammaticales et temps verbaux"
+  ],
+  "Grasping the Russian case system intuitively": [
+    "Ռուսերենի հոլովների համակարգի բնական ըմբռնում",
+    "Интуитивное понимание русской системы падежей",
+    "Compréhension intuitive du système des cas russes"
+  ],
+  "High-level business Chinese, news reading, and essay writing.": [
+    "Բարձր մակարդակի գործարար չինարեն, նորությունների ընթերցում և էսսեների գրում։",
+    "Деловой китайский высокого уровня, чтение новостей и написание эссе.",
+    "Chinois des affaires avancé, lecture de l’actualité et rédaction d’essais."
+  ],
+  "Hiragana, Katakana, basic greetings, and simple particle usage.": [
+    "Հիրագանա, կատականա, հիմնական ողջույններ և պարզ մասնիկների կիրառում։",
+    "Хирагана, катакана, основные приветствия и простые частицы.",
+    "Hiragana, katakana, salutations de base et particules simples."
+  ],
+  "Italian art, cuisine, and business culture insights": [
+    "Իտալական արվեստի, խոհանոցի և գործարար մշակույթի իմացություն",
+    "Знакомство с итальянским искусством, кухней и деловой культурой",
+    "Découverte de l’art, de la cuisine et de la culture professionnelle italiens"
+  ],
+  "Italian grammar fundamentals and idiomatic expressions": [
+    "Իտալերենի քերականության հիմունքներ և դարձվածքներ",
+    "Основы итальянской грамматики и идиомы",
+    "Bases de la grammaire italienne et expressions idiomatiques"
+  ],
+  "JLPT preparation from N5 through N1": [
+    "JLPT պատրաստություն՝ N5-ից N1",
+    "Подготовка к JLPT от N5 до N1",
+    "Préparation au JLPT de N5 à N1"
+  ],
+  "Keigo fluency, news commentary, and professional business Japanese.": [
+    "Կեյգոյի ազատ կիրառում, նորությունների մեկնաբանություն և գործարար ճապոներեն։",
+    "Свободное владение кэйго, обсуждение новостей и деловой японский.",
+    "Maîtrise du keigo, commentaire de l’actualité et japonais professionnel."
+  ],
+  "Listening comprehension for native accents and colloquialisms": [
+    "Լեզվակիրների առոգանության և խոսակցական արտահայտությունների լսողական ըմբռնում",
+    "Понимание на слух акцентов носителей и разговорных выражений",
+    "Compréhension des accents natifs et des expressions familières"
+  ],
+  "Listening comprehension with authentic Italian media": [
+    "Լսողական ըմբռնում՝ իտալական բնօրինակ մեդիայի միջոցով",
+    "Понимание на слух с итальянскими медиаматериалами",
+    "Compréhension orale à partir de médias italiens authentiques"
+  ],
+  "Literature, media, and advanced discussion.": [
+    "Գրականություն, մեդիա և խորացված քննարկում։",
+    "Литература, медиа и дискуссии продвинутого уровня.",
+    "Littérature, médias et discussions avancées."
+  ],
+  "Master conversational Italian for travel, study, or living in Italy": [
+    "Տիրապետեք խոսակցական իտալերենին՝ Իտալիայում ճանապարհորդելու, սովորելու կամ ապրելու համար",
+    "Освойте разговорный итальянский для путешествий, учёбы или жизни в Италии",
+    "Maîtrisez l’italien oral pour voyager, étudier ou vivre en Italie"
+  ],
+  "Master honorific levels and polite conversation": [
+    "Տիրապետեք հարգալից խոսքի մակարդակներին և քաղաքավարի զրույցին",
+    "Освойте уровни вежливости и учтивую речь",
+    "Maîtrisez les niveaux honorifiques et la conversation polie"
+  ],
+  "Master pronunciation, basic greetings, and core sentence structures.": [
+    "Տիրապետեք արտասանությանը, հիմնական ողջույններին և նախադասության կառուցվածքներին։",
+    "Освойте произношение, основные приветствия и базовые структуры предложений.",
+    "Maîtrisez la prononciation, les salutations et les structures de phrases essentielles."
+  ],
+  "Mastering unique letters and phonetic patterns.": [
+    "Յուրահատուկ տառերի և հնչյունական օրինաչափությունների տիրապետում։",
+    "Освоение уникальных букв и фонетических закономерностей.",
+    "Maîtrise des lettres particulières et des schémas phonétiques."
+  ],
+  "Natural conversational fluency and idiom usage": [
+    "Բնական սահուն խոսք և դարձվածքների կիրառում",
+    "Естественная беглость речи и использование идиом",
+    "Aisance naturelle à l’oral et emploi d’expressions idiomatiques"
+  ],
+  "Navigating polite (Keigo) vs casual registers correctly": [
+    "Հարգալից (կեյգո) և առօրյա ոճերի ճիշտ կիրառում",
+    "Правильный выбор между вежливым (кэйго) и неформальным регистрами",
+    "Emploi adapté des registres poli (keigo) et familier"
+  ],
+  "Nominative, Prepositional, and Accusative cases in context.": [
+    "Ուղղական, նախդրային և հայցական հոլովների կիրառում համատեքստում։",
+    "Именительный, предложный и винительный падежи в контексте.",
+    "Nominatif, prépositionnel et accusatif en contexte."
+  ],
+  "Ordering food, navigating cities, and casual dialogue.": [
+    "Սննդի պատվիրում, քաղաքում կողմնորոշում և առօրյա զրույց։",
+    "Заказ еды, ориентирование в городе и непринуждённый диалог.",
+    "Commander un repas, se repérer en ville et converser au quotidien."
+  ],
+  "Past tenses, subjunctive mood, and formal letters.": [
+    "Անցյալ ժամանակաձևեր, ստորադասական եղանակ և պաշտոնական նամակներ։",
+    "Прошедшие времена, сослагательное наклонение и официальные письма.",
+    "Temps du passé, subjonctif et lettres formelles."
+  ],
+  "Phonetic mastery, basic numbers, and greetings.": [
+    "Հնչյունաբանության տիրապետում, հիմնական թվեր և ողջույններ։",
+    "Освоение фонетики, основные числа и приветствия.",
+    "Maîtrise phonétique, nombres de base et salutations."
+  ],
+  "Preparation for official DELE certification": [
+    "Պաշտոնական DELE հավաստագրման պատրաստություն",
+    "Подготовка к официальной сертификации DELE",
+    "Préparation à la certification officielle DELE"
+  ],
+  "Preparation for official HSK 1 - HSK 6 exams": [
+    "Պաշտոնական HSK 1–HSK 6 քննությունների պատրաստություն",
+    "Подготовка к официальным экзаменам HSK 1–HSK 6",
+    "Préparation aux examens officiels HSK 1 à HSK 6"
+  ],
+  "Prepare for official TOPIK certification": [
+    "Պատրաստվեք պաշտոնական TOPIK հավաստագրմանը",
+    "Подготовьтесь к официальной сертификации TOPIK",
+    "Préparez la certification officielle TOPIK"
+  ],
+  "Professional email writing, presentations, and negotiations": [
+    "Մասնագիտական նամակագրություն, ներկայացումներ և բանակցություններ",
+    "Деловая переписка, презентации и переговоры",
+    "Rédaction d’e-mails professionnels, présentations et négociations"
+  ],
+  "Read and write Hangul effortlessly": [
+    "Հեշտությամբ կարդացեք և գրեք հանգըլով",
+    "Легко читайте и пишите на хангыле",
+    "Lisez et écrivez le hangeul avec aisance"
+  ],
+  "Reading Hangul, basic greetings, and self-introductions.": [
+    "Հանգըլի ընթերցանություն, հիմնական ողջույններ և ինքնաներկայացում։",
+    "Чтение хангыля, основные приветствия и рассказ о себе.",
+    "Lecture du hangeul, salutations de base et présentation de soi."
+  ],
+  "Reading and writing fluently in Cyrillic": [
+    "Սահուն ընթերցանություն և գրություն կիրիլյան գրով",
+    "Свободное чтение и письмо кириллицей",
+    "Lecture et écriture fluides en cyrillique"
+  ],
+  "Reading and writing fundamental Chinese characters (Hanzi)": [
+    "Հիմնական չինական հիերոգլիֆների (հանձի) ընթերցանություն և գրություն",
+    "Чтение и написание основных китайских иероглифов (ханьцзы)",
+    "Lecture et écriture des caractères chinois fondamentaux (hanzi)"
+  ],
+  "Real-world dialogue, news discussion, and practical grammar.": [
+    "Իրական երկխոսություններ, նորությունների քննարկում և գործնական քերականություն։",
+    "Реальные диалоги, обсуждение новостей и практическая грамматика.",
+    "Dialogues réels, discussion de l’actualité et grammaire pratique."
+  ],
+  "Spoken confidence, news reading, and formal correspondence.": [
+    "Վստահ խոսք, նորությունների ընթերցում և պաշտոնական նամակագրություն։",
+    "Уверенная речь, чтение новостей и официальная переписка.",
+    "Confiance à l’oral, lecture de l’actualité et correspondance formelle."
+  ],
+  "Standardized test strategies for IELTS and TOEFL": [
+    "IELTS և TOEFL ստանդարտացված քննությունների ռազմավարություններ",
+    "Стратегии сдачи стандартизированных экзаменов IELTS и TOEFL",
+    "Stratégies pour les examens standardisés IELTS et TOEFL"
+  ],
+  "Strategies for passing Goethe and TestDaF exams": [
+    "Goethe և TestDaF քննությունների հանձնման ռազմավարություններ",
+    "Стратегии сдачи экзаменов Goethe и TestDaF",
+    "Stratégies pour réussir les examens Goethe et TestDaF"
+  ],
+  "Subjunctive II, passive voice, and technical reading.": [
+    "Konjunktiv II, կրավորական սեռ և տեխնիկական ընթերցանություն։",
+    "Konjunktiv II, пассивный залог и техническое чтение.",
+    "Subjonctif II, voix passive et lecture technique."
+  ],
+  "Subjunctive, business communication, and formal writing.": [
+    "Ստորադասական եղանակ, գործարար հաղորդակցություն և պաշտոնական գրավոր խոսք։",
+    "Сослагательное наклонение, деловое общение и официальное письмо.",
+    "Subjonctif, communication d’affaires et écriture formelle."
+  ],
+  "Understand drama dialogues, modern media, and news": [
+    "Հասկացեք սերիալների երկխոսությունները, ժամանակակից մեդիան և նորությունները",
+    "Понимайте диалоги сериалов, современные медиа и новости",
+    "Comprenez les dialogues de séries, les médias contemporains et l’actualité"
+  ],
+  "Understanding contemporary media and literature": [
+    "Ժամանակակից մեդիայի և գրականության ըմբռնում",
+    "Понимание современных медиа и литературы",
+    "Compréhension des médias et de la littérature contemporains"
+  ],
+  "Verb conjugations, declensions, and sentence building.": [
+    "Բայի խոնարհումներ, հոլովումներ և նախադասությունների կազմում։",
+    "Спряжения, склонения и построение предложений.",
+    "Conjugaisons, déclinaisons et construction de phrases."
+  ],
+  "Workplace etiquette and professional correspondence": [
+    "Աշխատավայրի էթիկետ և մասնագիտական նամակագրություն",
+    "Рабочий этикет и деловая переписка",
+    "Étiquette au travail et correspondance professionnelle"
+  ],
+  "Writing and reading Hiragana, Katakana, and core Kanji": [
+    "Հիրագանայի, կատականայի և հիմնական կանջիի գրություն և ընթերցում",
+    "Чтение и письмо хираганы, катаканы и основных кандзи",
+    "Lecture et écriture des hiragana, katakana et kanji essentiels"
+  ],
+  "Preparation for official DELF/DALF certification exams": [
+    "Պաշտոնական DELF/DALF հավաստագրման քննությունների պատրաստություն",
+    "Подготовка к официальным экзаменам DELF/DALF",
+    "Préparation aux examens officiels DELF/DALF"
+  ],
+  "Dative/Accusative cases, modal verbs, and daily routine.": [
+    "Տրական և հայցական հոլովներ, եղանակավորող բայեր և առօրյա գործողություններ։",
+    "Дательный и винительный падежи, модальные глаголы и распорядок дня.",
+    "Datif et accusatif, verbes modaux et routine quotidienne."
+  ],
+  "Subject-Object-Verb order, particles, and present/past tenses.": [
+    "Ենթակա–խնդիր–ստորոգյալ դասավորություն, մասնիկներ և ներկա/անցյալ ժամանակաձևեր։",
+    "Порядок «подлежащее — дополнение — сказуемое», частицы и настоящее/прошедшее время.",
+    "Ordre sujet–objet–verbe, particules et temps présent/passé."
+  ],
+  "Are classes held online or in-person?": [
+    "Դասերն առցա՞նց են, թե՞ առկա։",
+    "Занятия проходят онлайн или очно?",
+    "Les cours ont-ils lieu en ligne ou en présentiel ?"
+  ],
+  "Our standard language and SMM courses are delivered via interactive live online sessions with recorded access. The Nice Exchange program includes an immersive in-person experience in Nice, France.": [
+    "Մեր սովորական լեզվական և SMM դասընթացներն անցկացվում են կենդանի ինտերակտիվ առցանց դասերով՝ ձայնագրությունների հասանելիությամբ։ Նիսի փոխանակման ծրագիրը ներառում է առկա ուսուցում Նիսում, Ֆրանսիա։",
+    "Стандартные языковые курсы и SMM проходят онлайн в интерактивном формате с доступом к записям. Программа обмена предусматривает очное погружение в Ницце, Франция.",
+    "Nos cours de langues et de SMM se déroulent en ligne, en direct et de façon interactive, avec accès aux enregistrements. Le programme d’échange comprend une immersion en présentiel à Nice, en France."
+  ],
+  "Will I receive a certificate upon completion?": [
+    "Ավարտելուց հետո հավաստագիր կստանա՞մ։",
+    "Получу ли я сертификат по окончании?",
+    "Recevrai-je un certificat à la fin ?"
+  ],
+  "Yes! All students who successfully complete their course requirements, assignments, and attendance receive an official CELAVIE Educational Academy Certificate of Completion.": [
+    "Այո՛։ Դասընթացի պահանջները, առաջադրանքներն ու հաճախումների պայմանները հաջողությամբ կատարած բոլոր ուսանողները ստանում են CELAVIE կրթական ակադեմիայի պաշտոնական ավարտական հավաստագիր։",
+    "Да! Все учащиеся, успешно выполнившие требования курса, задания и нормы посещаемости, получают официальный сертификат академии CELAVIE.",
+    "Oui ! Tous les élèves ayant satisfait aux exigences du cours, aux travaux et à l’assiduité reçoivent un certificat officiel de fin de formation de l’académie CELAVIE."
+  ],
+  "How do I register for a course?": [
+    "Ինչպե՞ս գրանցվել դասընթացին։",
+    "Как записаться на курс?",
+    "Comment m’inscrire à un cours ?"
+  ],
+  "Select your program, enter your student information, then review and submit your registration. We will follow up with course and schedule details.": [
+    "Ընտրեք ծրագիրը, լրացրեք ձեր տվյալները, ապա ստուգեք և ուղարկեք գրանցումը։ Մենք կկապվենք դասընթացի և ժամանակացույցի մանրամասներով։",
+    "Выберите программу, введите данные, проверьте и отправьте регистрацию. Мы сообщим подробности курса и расписания.",
+    "Choisissez votre programme, saisissez vos informations, puis vérifiez et envoyez votre inscription. Nous vous communiquerons les détails du cours et les horaires."
+  ],
+  "Who is eligible for the Nice Exchange program?": [
+    "Ո՞վ կարող է մասնակցել Նիսի փոխանակման ծրագրին։",
+    "Кто может участвовать в программе обмена в Ницце?",
+    "Qui peut participer au programme d’échange à Nice ?"
+  ],
+  "The program is open to students aged 11 and above. Applicants under 18 must provide parent or guardian consent during the application process.": [
+    "Ծրագիրը նախատեսված է 11 և ավելի տարեկան ուսանողների համար։ Մինչև 18 տարեկան դիմորդները դիմելիս պետք է ներկայացնեն ծնողի կամ խնամակալի համաձայնությունը։",
+    "Программа открыта учащимся от 11 лет. Заявителям младше 18 лет необходимо согласие родителя или опекуна при подаче заявки.",
+    "Le programme est ouvert aux élèves de 11 ans et plus. Les candidats mineurs doivent fournir l’accord d’un parent ou tuteur lors de leur candidature."
+  ],
+  "Can I upgrade my SMM course tier later?": [
+    "Կարո՞ղ եմ հետագայում անցնել SMM-ի ավելի բարձր մակարդակի։",
+    "Можно ли позже перейти на более высокий уровень SMM?",
+    "Puis-je passer à un niveau SMM supérieur plus tard ?"
+  ],
+  "Absolutely. You can start with SMM Starter and upgrade to Pro or Expert at any time by paying the price difference.": [
+    "Այո։ Կարող եք սկսել SMM Starter-ից և ցանկացած պահի անցնել Pro կամ Expert՝ վճարելով արժեքների տարբերությունը։",
+    "Да. Можно начать с SMM Starter и в любое время перейти на Pro или Expert, доплатив разницу.",
+    "Oui. Vous pouvez commencer par SMM Starter puis passer à Pro ou Expert à tout moment en réglant la différence de prix."
+  ],
+  "Is prior French knowledge required?": [
+    "Ֆրանսերենի նախնական իմացություն պահանջվո՞ւմ է։",
+    "Нужны ли начальные знания французского?",
+    "Faut-il déjà connaître le français ?"
+  ],
+  "No, we offer absolute beginner courses starting at level A1.": [
+    "Ոչ, առաջարկում ենք դասընթացներ սկսնակների համար՝ A1 մակարդակից։",
+    "Нет, у нас есть курсы с нуля, начиная с A1.",
+    "Non, nous proposons des cours pour débutants complets dès le niveau A1."
+  ],
+  "How is the Nice Exchange program related to this course?": [
+    "Ինչպե՞ս է Նիսի փոխանակման ծրագիրը կապված այս դասընթացի հետ։",
+    "Как программа обмена в Ницце связана с этим курсом?",
+    "Quel est le lien entre l’échange à Nice et ce cours ?"
+  ],
+  "Students enrolled in French courses get priority access to our summer immersion exchange in Nice, France.": [
+    "Ֆրանսերենի դասընթացների ուսանողներն առաջնահերթ մասնակցության հնարավորություն ունեն Նիսի ամառային փոխանակման ծրագրին։",
+    "Учащиеся курсов французского получают приоритетный доступ к нашему летнему обмену в Ницце, Франция.",
+    "Les élèves inscrits en français bénéficient d’un accès prioritaire à notre immersion estivale à Nice, en France."
+  ],
+  "Do you offer IELTS test preparation?": [
+    "Առաջարկո՞ւմ եք IELTS քննության պատրաստություն։",
+    "Есть ли подготовка к IELTS?",
+    "Proposez-vous une préparation à l’IELTS ?"
+  ],
+  "Yes, our B2-C1 courses include targeted IELTS and TOEFL preparation modules.": [
+    "Այո, մեր B2–C1 դասընթացները ներառում են IELTS և TOEFL նպատակային պատրաստության մոդուլներ։",
+    "Да, наши курсы B2–C1 включают целевую подготовку к IELTS и TOEFL.",
+    "Oui, nos cours B2–C1 comprennent des modules ciblés de préparation à l’IELTS et au TOEFL."
+  ],
+  "Do you prepare for TestDaF?": [
+    "Պատրաստո՞ւմ եք TestDaF քննությանը։",
+    "Готовите ли вы к TestDaF?",
+    "Préparez-vous au TestDaF ?"
+  ],
+  "Yes, our B2-C1 courses are specifically aligned with TestDaF and Goethe standards.": [
+    "Այո, մեր B2–C1 դասընթացները համապատասխանում են TestDaF և Goethe չափանիշներին։",
+    "Да, наши курсы B2–C1 соответствуют стандартам TestDaF и Goethe.",
+    "Oui, nos cours B2–C1 sont alignés sur les exigences du TestDaF et du Goethe."
+  ],
+  "Do you teach Latin American or European Spanish?": [
+    "Դասավանդո՞ւմ եք լատինաամերիկյան, թե՞ եվրոպական իսպաներեն։",
+    "Вы преподаёте латиноамериканский или европейский испанский?",
+    "Enseignez-vous l’espagnol latino-américain ou européen ?"
+  ],
+  "We cover both standard Castilian and key Latin American variants.": [
+    "Ներառում ենք և՛ ստանդարտ կաստիլիական, և՛ հիմնական լատինաամերիկյան տարբերակները։",
+    "Мы изучаем стандартный кастильский и основные латиноамериканские варианты.",
+    "Nous abordons le castillan standard et les principales variantes latino-américaines."
+  ],
+  "Can I take Italian online?": [
+    "Կարո՞ղ եմ իտալերեն սովորել առցանց։",
+    "Можно ли изучать итальянский онлайн?",
+    "Puis-je suivre l’italien en ligne ?"
+  ],
+  "Yes, all our standard language courses are offered live online.": [
+    "Այո, մեր բոլոր սովորական լեզվական դասընթացներն անցկացվում են ուղիղ առցանց ձևաչափով։",
+    "Да, все стандартные языковые курсы проходят онлайн в прямом эфире.",
+    "Oui, tous nos cours de langues standard sont proposés en ligne et en direct."
+  ],
+  "Is the Cyrillic alphabet hard to learn?": [
+    "Դժվա՞ր է սովորել կիրիլյան այբուբենը։",
+    "Сложно ли выучить кириллицу?",
+    "L’alphabet cyrillique est-il difficile à apprendre ?"
+  ],
+  "Our students typically master reading Cyrillic within the first 2 weeks.": [
+    "Մեր ուսանողները սովորաբար կիրիլյան ընթերցանությունը յուրացնում են առաջին 2 շաբաթում։",
+    "Наши учащиеся обычно осваивают чтение кириллицы за первые две недели.",
+    "Nos élèves maîtrisent généralement la lecture du cyrillique au cours des deux premières semaines."
+  ],
+  "Do you teach Eastern or Western Armenian?": [
+    "Դասավանդո՞ւմ եք արևելահայերեն, թե՞ արևմտահայերեն։",
+    "Вы преподаёте восточный или западный армянский?",
+    "Enseignez-vous l’arménien oriental ou occidental ?"
+  ],
+  "We offer specialized tracks for both Eastern (Republic of Armenia) and Western Armenian.": [
+    "Առաջարկում ենք առանձին ուղղություններ՝ արևելահայերենի (Հայաստանի Հանրապետություն) և արևմտահայերենի համար։",
+    "У нас есть отдельные направления восточного (Республика Армения) и западного армянского.",
+    "Nous proposons des parcours distincts en arménien oriental (République d’Arménie) et occidental."
+  ],
+  "How quickly can I learn Hangul?": [
+    "Որքա՞ն արագ կարող եմ սովորել հանգըլը։",
+    "Как быстро можно выучить хангыль?",
+    "En combien de temps puis-je apprendre le hangeul ?"
+  ],
+  "Hangul is very logical! Most students read Hangul within the first 3 lessons.": [
+    "Հանգըլը շատ տրամաբանական է։ Ուսանողների մեծ մասը սկսում է կարդալ առաջին 3 դասի ընթացքում։",
+    "Хангыль очень логичен! Большинство учащихся начинают читать за первые три занятия.",
+    "Le hangeul est très logique ! La plupart des élèves le lisent dès les trois premières leçons."
+  ],
+  "Do you teach Simplified or Traditional characters?": [
+    "Դասավանդո՞ւմ եք պարզեցված, թե՞ ավանդական հիերոգլիֆներ։",
+    "Вы учите упрощённым или традиционным иероглифам?",
+    "Enseignez-vous les caractères simplifiés ou traditionnels ?"
+  ],
+  "We primary teach Simplified characters with optional exposure to Traditional characters.": [
+    "Հիմնականում դասավանդում ենք պարզեցված հիերոգլիֆներ՝ ավանդականներին ծանոթանալու ընտրովի հնարավորությամբ։",
+    "В основном изучаем упрощённые иероглифы с возможностью знакомства с традиционными.",
+    "Nous enseignons principalement les caractères simplifiés, avec une initiation facultative aux caractères traditionnels."
+  ],
+  "Which JLPT levels do you cover?": [
+    "JLPT-ի ո՞ր մակարդակներն եք ներառում։",
+    "Какие уровни JLPT вы охватываете?",
+    "Quels niveaux du JLPT proposez-vous ?"
+  ],
+  "We offer classes ranging from JLPT N5 (beginner) to JLPT N1 (advanced).": [
+    "Առաջարկում ենք դասեր JLPT N5-ից (սկսնակ) մինչև JLPT N1 (առաջադեմ)։",
+    "Мы предлагаем занятия от JLPT N5 (начальный) до JLPT N1 (продвинутый).",
+    "Nous proposons des cours du JLPT N5 (débutant) au JLPT N1 (avancé)."
+  ],
+  "Do I need marketing experience?": [
+    "Մարքեթինգային փորձ պե՞տք է։",
+    "Нужен ли опыт в маркетинге?",
+    "Faut-il de l’expérience en marketing ?"
+  ],
+  "No, this course starts from absolute fundamentals.": [
+    "Ոչ, դասընթացը սկսվում է ամենասկզբնական հիմունքներից։",
+    "Нет, курс начинается с самых основ.",
+    "Non, ce cours commence par les bases."
+  ],
+  "Is ad spend budget provided during the course?": [
+    "Դասընթացի ընթացքում գովազդային բյուջե տրամադրվո՞ւմ է։",
+    "Предоставляется ли рекламный бюджет во время курса?",
+    "Un budget publicitaire est-il fourni pendant le cours ?"
+  ],
+  "We guide you through setting up test budgets, and practice environments are provided.": [
+    "Օգնում ենք սահմանել փորձնական բյուջեներ և տրամադրում ենք գործնական միջավայրեր։",
+    "Мы помогаем настроить тестовые бюджеты и предоставляем учебные среды.",
+    "Nous vous accompagnons dans la définition de budgets de test et fournissons des environnements de pratique."
+  ],
+  "Will I get mentorship from agency owners?": [
+    "Գործակալությունների ղեկավարների մենթորություն կստանա՞մ։",
+    "Будет ли наставничество от владельцев агентств?",
+    "Bénéficierai-je du mentorat de dirigeants d’agence ?"
+  ],
+  "Yes, this tier includes weekly direct group mentorship and 1-on-1 feedback.": [
+    "Այո, այս մակարդակը ներառում է շաբաթական խմբային մենթորություն և անհատական արձագանք։",
+    "Да, этот уровень включает еженедельное групповое наставничество и индивидуальную обратную связь.",
+    "Oui, ce niveau inclut un mentorat de groupe hebdomadaire et des retours individuels."
+  ],
+  "1-on-1 Feedback": [
+    "Անհատական արձագանք",
+    "Индивидуальная обратная связь",
+    "Retours individuels"
+  ],
+  "1-on-1 Mentorship": [
+    "Անհատական մենթորություն",
+    "Индивидуальное наставничество",
+    "Mentorat individuel"
+  ],
+  "10 Global Languages": [
+    "10 միջազգային լեզու",
+    "10 мировых языков",
+    "10 langues internationales"
+  ],
+  "3 Flexible Tiers": [
+    "3 ճկուն մակարդակ",
+    "3 гибких уровня",
+    "3 niveaux flexibles"
+  ],
+  "Agency Blueprint": [
+    "Գործակալության ստեղծման ուղեցույց",
+    "План создания агентства",
+    "Plan de création d’agence"
+  ],
+  "Agency Operations Blueprint": [
+    "Գործակալության աշխատանքի ուղեցույց",
+    "План работы агентства",
+    "Plan opérationnel d’agence"
+  ],
+  "Alphabet & Phonetics": [
+    "Այբուբեն և հնչյունաբանություն",
+    "Алфавит и фонетика",
+    "Alphabet et phonétique"
+  ],
+  "Alphabet & Sounds": [
+    "Այբուբեն և հնչյուններ",
+    "Алфавит и звуки",
+    "Alphabet et sons"
+  ],
+  "Audit Proposals": [
+    "Աուդիտի առաջարկներ",
+    "Предложения по аудиту",
+    "Propositions d’audit"
+  ],
+  "Basic Analytics": [
+    "Վերլուծության հիմունքներ",
+    "Основы аналитики",
+    "Bases de l’analyse"
+  ],
+  "Basic Fluency": [
+    "Հիմնական խոսակցական հմտություններ",
+    "Базовая разговорная речь",
+    "Aisance de base"
+  ],
+  "Basic Graphic Design": [
+    "Գրաֆիկական դիզայնի հիմունքներ",
+    "Основы графического дизайна",
+    "Bases du graphisme"
+  ],
+  "Brand Equity & PR": [
+    "Բրենդի արժեք և հանրային կապեր",
+    "Капитал бренда и PR",
+    "Capital de marque et relations publiques"
+  ],
+  "Brand Identity Setup": [
+    "Բրենդի ինքնության ձևավորում",
+    "Создание идентичности бренда",
+    "Création de l’identité de marque"
+  ],
+  "Business English Focus": [
+    "Գործարար անգլերենի ուղղվածություն",
+    "Акцент на деловом английском",
+    "Orientation anglais des affaires"
+  ],
+  "Business Etiquette": [
+    "Գործարար էթիկետ",
+    "Деловой этикет",
+    "Étiquette professionnelle"
+  ],
+  "CEFR Standardized Alignment": [
+    "Համապատասխանություն CEFR-ին",
+    "Соответствие CEFR",
+    "Alignement sur le CECR"
+  ],
+  "CILS Exam Guidance": [
+    "CILS քննության ուղղորդում",
+    "Подготовка к экзамену CILS",
+    "Accompagnement à l’examen CILS"
+  ],
+  "Call-to-Action Strategies": [
+    "Գործողության կոչի ռազմավարություններ",
+    "Стратегии призывов к действию",
+    "Stratégies d’appel à l’action"
+  ],
+  "Campaign Budgets (CBO vs ABO)": [
+    "Արշավի բյուջեներ (CBO և ABO)",
+    "Бюджеты кампаний (CBO и ABO)",
+    "Budgets de campagne (CBO et ABO)"
+  ],
+  "Canva Mastery": [
+    "Canva-ի խորացված կիրառում",
+    "Уверенное владение Canva",
+    "Maîtrise de Canva"
+  ],
+  "Case System Essentials": [
+    "Հոլովների համակարգի հիմունքներ",
+    "Основы системы падежей",
+    "Bases du système des cas"
+  ],
+  "Castilian & Latin American Dialects": [
+    "Կաստիլիական և լատինաամերիկյան տարբերակներ",
+    "Кастильский и латиноамериканские варианты",
+    "Variantes castillanes et latino-américaines"
+  ],
+  "Certificate of Completion": [
+    "Ավարտական հավաստագիր",
+    "Сертификат об окончании",
+    "Certificat de fin de formation"
+  ],
+  "Character Stroke Training": [
+    "Հիերոգլիֆների գծագրության վարժություններ",
+    "Практика написания черт иероглифов",
+    "Pratique des traits des caractères"
+  ],
+  "Client Dashboard Reports": [
+    "Հաճախորդի հաշվետվություններ",
+    "Отчёты для клиентов",
+    "Tableaux de bord clients"
+  ],
+  "Client Onboarding Automation": [
+    "Հաճախորդի ներգրավման ավտոմատացում",
+    "Автоматизация подключения клиентов",
+    "Automatisation de l’accueil client"
+  ],
+  "Closing Calls & Contracts": [
+    "Գործարքի եզրափակիչ զանգեր և պայմանագրեր",
+    "Переговоры и заключение договоров",
+    "Entretiens de vente et contrats"
+  ],
+  "Cold Email Systems": [
+    "Սառը նամակագրության համակարգեր",
+    "Системы холодных рассылок",
+    "Systèmes de prospection par e-mail"
+  ],
+  "Content Calendars": [
+    "Բովանդակության օրացույցներ",
+    "Контент-календари",
+    "Calendriers éditoriaux"
+  ],
+  "Content Scheduling": [
+    "Հրապարակումների պլանավորում",
+    "Планирование публикаций",
+    "Planification des publications"
+  ],
+  "Conversational Confidence": [
+    "Վստահ հաղորդակցություն",
+    "Уверенность в разговоре",
+    "Confiance à l’oral"
+  ],
+  "Cultural & History Modules": [
+    "Մշակույթի և պատմության մոդուլներ",
+    "Модули культуры и истории",
+    "Modules de culture et d’histoire"
+  ],
+  "Cultural Context": [
+    "Մշակութային համատեքստ",
+    "Культурный контекст",
+    "Contexte culturel"
+  ],
+  "Cultural Immersion": [
+    "Մշակութային միջավայրի բացահայտում",
+    "Культурное погружение",
+    "Immersion culturelle"
+  ],
+  "Cultural Immersion Workshops": [
+    "Մշակութային գործնական պարապմունքներ",
+    "Мастерские культурного погружения",
+    "Ateliers d’immersion culturelle"
+  ],
+  "Cultural Seminars": [
+    "Մշակութային սեմինարներ",
+    "Культурные семинары",
+    "Séminaires culturels"
+  ],
+  "Cyrillic Script Immersion": [
+    "Կիրիլյան գրի ուսուցում",
+    "Погружение в кириллицу",
+    "Immersion dans le cyrillique"
+  ],
+  "DELE Preparation": [
+    "DELE պատրաստություն",
+    "Подготовка к DELE",
+    "Préparation au DELE"
+  ],
+  "DELF/DALF Exam Prep": [
+    "DELF/DALF քննությունների պատրաստություն",
+    "Подготовка к DELF/DALF",
+    "Préparation au DELF/DALF"
+  ],
+  "Daily Conversation": [
+    "Առօրյա հաղորդակցություն",
+    "Повседневное общение",
+    "Conversation quotidienne"
+  ],
+  "Data-Driven Scaling": [
+    "Տվյալահեն ընդլայնում",
+    "Масштабирование на основе данных",
+    "Croissance fondée sur les données"
+  ],
+  "Dedicated Account Manager": [
+    "Անհատական հաճախորդների կառավարիչ",
+    "Персональный менеджер",
+    "Responsable de compte dédié"
+  ],
+  "Eastern & Western Options": [
+    "Արևելահայերեն և արևմտահայերեն",
+    "Восточный и западный варианты",
+    "Variantes orientale et occidentale"
+  ],
+  "Employee Progress Tracking": [
+    "Աշխատակիցների առաջընթացի հետևում",
+    "Отслеживание прогресса сотрудников",
+    "Suivi des progrès des salariés"
+  ],
+  "Enterprise Scaling": [
+    "Ձեռնարկության ընդլայնում",
+    "Масштабирование бизнеса",
+    "Développement à l’échelle de l’entreprise"
+  ],
+  "Everyday Dialogues": [
+    "Առօրյա երկխոսություններ",
+    "Повседневные диалоги",
+    "Dialogues quotidiens"
+  ],
+  "Family & Student Housing": [
+    "Ընտանեկան և ուսանողական կացարաններ",
+    "Проживание в семьях и студенческих резиденциях",
+    "Hébergement familial et étudiant"
+  ],
+  "Finding Creators": [
+    "Բովանդակություն ստեղծողների որոնում",
+    "Поиск авторов контента",
+    "Recherche de créateurs"
+  ],
+  "Flexible Scheduling": [
+    "Ճկուն ժամանակացույց",
+    "Гибкое расписание",
+    "Horaires flexibles"
+  ],
+  "Fluency": [
+    "Սահուն խոսք",
+    "Свободная речь",
+    "Aisance linguistique"
+  ],
+  "Fluency & Certification": [
+    "Սահուն խոսք և հավաստագրում",
+    "Свободная речь и сертификация",
+    "Aisance et certification"
+  ],
+  "Fluency & Nuance": [
+    "Սահուն խոսք և նրբերանգներ",
+    "Свободная речь и нюансы",
+    "Aisance et nuances"
+  ],
+  "Foundations & Phonics": [
+    "Հիմունքներ և հնչյունաբանություն",
+    "Основы и фонетика",
+    "Bases et phonétique"
+  ],
+  "Goethe-Zertifikat Prep": [
+    "Goethe-Zertifikat պատրաստություն",
+    "Подготовка к Goethe-Zertifikat",
+    "Préparation au Goethe-Zertifikat"
+  ],
+  "Grammar & Structure": [
+    "Քերականություն և կառուցվածք",
+    "Грамматика и структура",
+    "Grammaire et structure"
+  ],
+  "Grammar & Writing": [
+    "Քերականություն և գրավոր խոսք",
+    "Грамматика и письмо",
+    "Grammaire et expression écrite"
+  ],
+  "Graphic Design Principles": [
+    "Գրաֆիկական դիզայնի սկզբունքներ",
+    "Принципы графического дизайна",
+    "Principes du graphisme"
+  ],
+  "Growth Analytics": [
+    "Աճի վերլուծություն",
+    "Аналитика роста",
+    "Analyse de la croissance"
+  ],
+  "Grundstufe 1": [
+    "Սկզբնական մակարդակ 1",
+    "Начальный уровень 1",
+    "Niveau élémentaire 1"
+  ],
+  "Grundstufe 2": [
+    "Սկզբնական մակարդակ 2",
+    "Начальный уровень 2",
+    "Niveau élémentaire 2"
+  ],
+  "Guided Cultural Excursions": [
+    "Մշակութային էքսկուրսիաներ ուղեկցությամբ",
+    "Культурные экскурсии с гидом",
+    "Excursions culturelles guidées"
+  ],
+  "HSK 1-2 Level": [
+    "HSK 1–2 մակարդակ",
+    "Уровень HSK 1–2",
+    "Niveau HSK 1–2"
+  ],
+  "HSK 3-4 Level": [
+    "HSK 3–4 մակարդակ",
+    "Уровень HSK 3–4",
+    "Niveau HSK 3–4"
+  ],
+  "HSK Exam Prep": [
+    "HSK քննության պատրաստություն",
+    "Подготовка к HSK",
+    "Préparation au HSK"
+  ],
+  "Hangul & Basics": [
+    "Հանգըլ և հիմունքներ",
+    "Хангыль и основы",
+    "Hangeul et bases"
+  ],
+  "Hangul in 1 Week": [
+    "Հանգըլ՝ 1 շաբաթում",
+    "Хангыль за неделю",
+    "Le hangeul en une semaine"
+  ],
+  "Hashtag SEO": [
+    "Հեշթեգների SEO",
+    "SEO хештегов",
+    "SEO des hashtags"
+  ],
+  "High-Ticket Sales Training": [
+    "Բարձրարժեք վաճառքի ուսուցում",
+    "Обучение продажам с высоким чеком",
+    "Formation à la vente à forte valeur"
+  ],
+  "Honorifics & Casual Speech": [
+    "Հարգալից և առօրյա խոսք",
+    "Вежливая и неформальная речь",
+    "Registres honorifique et familier"
+  ],
+  "Honorifics & Expressions": [
+    "Հարգալից ձևեր և արտահայտություններ",
+    "Вежливые формы и выражения",
+    "Formes honorifiques et expressions"
+  ],
+  "Hook Writing": [
+    "Ուշադրություն գրավող տեքստերի գրում",
+    "Написание цепляющих вступлений",
+    "Rédaction d’accroches"
+  ],
+  "Hosted in Nice, France": [
+    "Անցկացվում է Նիսում, Ֆրանսիա",
+    "Проводится в Ницце, Франция",
+    "Organisé à Nice, en France"
+  ],
+  "IELTS & TOEFL Prep": [
+    "IELTS և TOEFL պատրաստություն",
+    "Подготовка к IELTS и TOEFL",
+    "Préparation à l’IELTS et au TOEFL"
+  ],
+  "Influencer Outreach Systems": [
+    "Ինֆլուենսերների ներգրավման համակարգեր",
+    "Системы работы с блогерами",
+    "Systèmes de contact avec les influenceurs"
+  ],
+  "Intensive Grammar Drill": [
+    "Քերականության ինտենսիվ վարժություններ",
+    "Интенсивная грамматическая практика",
+    "Entraînement intensif en grammaire"
+  ],
+  "Intensive Spoken French": [
+    "Ինտենսիվ խոսակցական ֆրանսերեն",
+    "Интенсивный разговорный французский",
+    "Français oral intensif"
+  ],
+  "Interactive Media": [
+    "Ինտերակտիվ մեդիա",
+    "Интерактивные медиа",
+    "Médias interactifs"
+  ],
+  "Interactive Roleplay": [
+    "Ինտերակտիվ դերախաղեր",
+    "Интерактивные ролевые игры",
+    "Jeux de rôle interactifs"
+  ],
+  "Intermediate Immersion": [
+    "Միջին մակարդակի լեզվական միջավայր",
+    "Погружение на среднем уровне",
+    "Immersion intermédiaire"
+  ],
+  "Intermediate Skills": [
+    "Միջին մակարդակի հմտություններ",
+    "Навыки среднего уровня",
+    "Compétences intermédiaires"
+  ],
+  "JLPT Focused Prep": [
+    "Նպատակային JLPT պատրաստություն",
+    "Целевая подготовка к JLPT",
+    "Préparation ciblée au JLPT"
+  ],
+  "K-Culture Immersion": [
+    "Կորեական մշակույթի բացահայտում",
+    "Погружение в корейскую культуру",
+    "Immersion dans la culture coréenne"
+  ],
+  "Kana & Kanji Training": [
+    "Կանա և կանջի ուսուցում",
+    "Изучение каны и кандзи",
+    "Apprentissage des kana et kanji"
+  ],
+  "Kana Mastery": [
+    "Կանայի տիրապետում",
+    "Освоение каны",
+    "Maîtrise des kana"
+  ],
+  "Keigo (Polite Speech)": [
+    "Կեյգո (հարգալից խոսք)",
+    "Кэйго (вежливая речь)",
+    "Keigo (langage poli)"
+  ],
+  "Key Features Included": [
+    "Ներառված հիմնական հնարավորություններ",
+    "Основные включённые возможности",
+    "Principales prestations incluses"
+  ],
+  "LinkedIn B2B Authority": [
+    "Մասնագիտական հեղինակություն LinkedIn B2B-ում",
+    "Экспертность в LinkedIn B2B",
+    "Autorité B2B sur LinkedIn"
+  ],
+  "Live Interactive Sessions": [
+    "Կենդանի ինտերակտիվ դասեր",
+    "Живые интерактивные занятия",
+    "Séances interactives en direct"
+  ],
+  "Live Portfolio Reviews": [
+    "Պորտֆոլիոյի կենդանի քննարկումներ",
+    "Разбор портфолио в прямом эфире",
+    "Analyse de portfolios en direct"
+  ],
+  "Managing Teams": [
+    "Թիմերի կառավարում",
+    "Управление командами",
+    "Gestion d’équipes"
+  ],
+  "Mastery & Testing": [
+    "Խորացված ուսուցում և քննություններ",
+    "Углублённое обучение и тестирование",
+    "Maîtrise et évaluation"
+  ],
+  "Meta Ads Manager Training": [
+    "Meta Ads Manager-ի ուսուցում",
+    "Обучение Meta Ads Manager",
+    "Formation à Meta Ads Manager"
+  ],
+  "Meta Ads Setup": [
+    "Meta Ads-ի կարգավորում",
+    "Настройка Meta Ads",
+    "Configuration de Meta Ads"
+  ],
+  "Mittelstufe": [
+    "Միջին մակարդակ",
+    "Средний уровень",
+    "Niveau intermédiaire"
+  ],
+  "N2-N1 Advanced": [
+    "N2–N1 Առաջադեմ",
+    "N2–N1 Продвинутый",
+    "N2–N1 Avancé"
+  ],
+  "N3 Intermediate": [
+    "N3 Միջին",
+    "N3 Средний",
+    "N3 Intermédiaire"
+  ],
+  "N5-N4 Foundations": [
+    "N5–N4 Հիմունքներ",
+    "N5–N4 Основы",
+    "N5–N4 Bases"
+  ],
+  "Native Instructors": [
+    "Լեզվակիր դասավանդողներ",
+    "Преподаватели — носители языка",
+    "Enseignants natifs"
+  ],
+  "Native Italian Tutors": [
+    "Իտալախոս դասավանդողներ",
+    "Преподаватели — носители итальянского",
+    "Enseignants italiens natifs"
+  ],
+  "Negotiation & Contracts": [
+    "Բանակցություններ և պայմանագրեր",
+    "Переговоры и договоры",
+    "Négociation et contrats"
+  ],
+  "Oberstufe": [
+    "Բարձր մակարդակ",
+    "Продвинутый уровень",
+    "Niveau avancé"
+  ],
+  "Omnichannel Strategy": [
+    "Բոլոր ալիքների միասնական ռազմավարություն",
+    "Омниканальная стратегия",
+    "Stratégie omnicanale"
+  ],
+  "Pinyin & Tone Drills": [
+    "Փինյինի և տոների վարժություններ",
+    "Упражнения на пиньинь и тоны",
+    "Exercices de pinyin et de tons"
+  ],
+  "Pinyin & Tones": [
+    "Փինյին և տոներ",
+    "Пиньинь и тоны",
+    "Pinyin et tons"
+  ],
+  "Platform Algorithms 101": [
+    "Հարթակների ալգորիթմների հիմունքներ",
+    "Основы алгоритмов платформ",
+    "Bases des algorithmes des plateformes"
+  ],
+  "Professional English": [
+    "Մասնագիտական անգլերեն",
+    "Профессиональный английский",
+    "Anglais professionnel"
+  ],
+  "Profile Optimization": [
+    "Պրոֆիլի բարելավում",
+    "Оптимизация профиля",
+    "Optimisation du profil"
+  ],
+  "Public Speaking Practice": [
+    "Հանրային ելույթի վարժանք",
+    "Практика публичных выступлений",
+    "Pratique de la prise de parole"
+  ],
+  "Real-world Ad Campaigns": [
+    "Իրական գովազդային արշավներ",
+    "Реальные рекламные кампании",
+    "Campagnes publicitaires réelles"
+  ],
+  "Reels & TikTok Short Form Video": [
+    "Reels և TikTok կարճ տեսանյութեր",
+    "Короткие видео Reels и TikTok",
+    "Vidéos courtes Reels et TikTok"
+  ],
+  "Retargeting Strategies": [
+    "Վերաթիրախավորման ռազմավարություններ",
+    "Стратегии ретаргетинга",
+    "Stratégies de reciblage"
+  ],
+  "SOP Creation": [
+    "Ստանդարտ ընթացակարգերի ստեղծում",
+    "Создание стандартных процедур",
+    "Création de procédures opérationnelles"
+  ],
+  "Scheduling Tools (Buffer/Later)": [
+    "Պլանավորման գործիքներ (Buffer/Later)",
+    "Инструменты планирования (Buffer/Later)",
+    "Outils de planification (Buffer/Later)"
+  ],
+  "Sentence Structures": [
+    "Նախադասության կառուցվածքներ",
+    "Структуры предложений",
+    "Structures de phrases"
+  ],
+  "Small Class Sizes": [
+    "Փոքր ուսումնական խմբեր",
+    "Небольшие группы",
+    "Petits groupes"
+  ],
+  "Small Group Practice": [
+    "Փոքր խմբերով գործնական աշխատանք",
+    "Практика в малых группах",
+    "Pratique en petits groupes"
+  ],
+  "Speaking Clubs": [
+    "Խոսակցական ակումբներ",
+    "Разговорные клубы",
+    "Clubs de conversation"
+  ],
+  "Storytelling Systems": [
+    "Պատմապատման համակարգեր",
+    "Системы сторителлинга",
+    "Méthodes de narration"
+  ],
+  "TOFU, MOFU, BOFU Content": [
+    "TOFU, MOFU, BOFU բովանդակություն",
+    "Контент TOFU, MOFU, BOFU",
+    "Contenus TOFU, MOFU, BOFU"
+  ],
+  "TOPIK Preparation": [
+    "TOPIK պատրաստություն",
+    "Подготовка к TOPIK",
+    "Préparation au TOPIK"
+  ],
+  "TOPIK Test Alignment": [
+    "Համապատասխանություն TOPIK-ին",
+    "Соответствие TOPIK",
+    "Alignement sur le TOPIK"
+  ],
+  "TORFL Exam Alignment": [
+    "Համապատասխանություն TORFL-ին",
+    "Соответствие ТРКИ",
+    "Alignement sur le TORFL"
+  ],
+  "Tailored Business Modules": [
+    "Հարմարեցված գործարար մոդուլներ",
+    "Индивидуальные бизнес-модули",
+    "Modules professionnels sur mesure"
+  ],
+  "Target Audience Research": [
+    "Թիրախային լսարանի հետազոտություն",
+    "Исследование целевой аудитории",
+    "Étude du public cible"
+  ],
+  "Technical & Business Vocabulary": [
+    "Տեխնիկական և գործարար բառապաշար",
+    "Техническая и деловая лексика",
+    "Vocabulaire technique et professionnel"
+  ],
+  "TikTok Shop Ecosystem": [
+    "TikTok Shop-ի էկոհամակարգ",
+    "Экосистема TikTok Shop",
+    "Écosystème TikTok Shop"
+  ],
+  "Tracking ROI": [
+    "Ներդրման վերադարձի հետևում",
+    "Отслеживание ROI",
+    "Suivi du retour sur investissement"
+  ],
+  "Unique Alphabet Training": [
+    "Յուրահատուկ այբուբենի ուսուցում",
+    "Изучение уникального алфавита",
+    "Apprentissage d’un alphabet unique"
+  ],
+  "Verbs of Motion & Complex Grammar": [
+    "Շարժման բայեր և բարդ քերականություն",
+    "Глаголы движения и сложная грамматика",
+    "Verbes de mouvement et grammaire complexe"
+  ],
+  "Viral Mechanics": [
+    "Վիրուսային տարածման մեխանիզմներ",
+    "Механика вирусного распространения",
+    "Mécanismes de viralité"
+  ],
+  "YouTube SEO & Long-Form": [
+    "YouTube SEO և երկար տեսանյութեր",
+    "YouTube SEO и длинные видео",
+    "SEO YouTube et formats longs"
+  ],
+  "Advanced Fluency": [
+    "Առաջադեմ խոսակցական հմտություններ",
+    "Продвинутая беглость речи",
+    "Aisance avancée"
+  ],
+  "Inicio": [
+    "Սկիզբ",
+    "Начало",
+    "Premiers pas"
+  ],
+  "Comunicación": [
+    "Հաղորդակցություն",
+    "Общение",
+    "Communication"
+  ],
+  "Dominio": [
+    "Տիրապետում",
+    "Владение",
+    "Maîtrise"
+  ],
+  "Perfeccionamiento": [
+    "Կատարելագործում",
+    "Совершенствование",
+    "Perfectionnement"
+  ],
+  "Primer": [
+    "Սկզբնական ուսուցում",
+    "Начальное обучение",
+    "Initiation"
+  ],
+  "CELAVIE Academy Interactive Classroom": [
+    "CELAVIE ակադեմիայի ինտերակտիվ դասարան",
+    "Интерактивный класс академии CELAVIE",
+    "Classe interactive de l’académie CELAVIE"
+  ],
+  "Certification & Graduation Event": [
+    "Հավաստագրման և ավարտական միջոցառում",
+    "Вручение сертификатов и выпускной",
+    "Remise des certificats et cérémonie de fin de formation"
+  ],
+  "Charming pastel streets and open-air markets": [
+    "Գեղեցիկ պաստելային փողոցներ և բացօթյա շուկաներ",
+    "Очаровательные пастельные улицы и открытые рынки",
+    "Rues aux teintes pastel et marchés en plein air"
+  ],
+  "Exploring historical sites in Old Town Nice": [
+    "Նիսի հին քաղաքի պատմական վայրերի բացահայտում",
+    "Знакомство с историческими местами Старой Ниццы",
+    "Découverte des sites historiques du Vieux-Nice"
+  ],
+  "French Language Workshop": [
+    "Ֆրանսերենի գործնական պարապմունք",
+    "Практическое занятие по французскому",
+    "Atelier de français"
+  ],
+  "Graduation celebration for language tracks": [
+    "Լեզվական դասընթացների ավարտի տոնակատարություն",
+    "Праздник окончания языковых курсов",
+    "Célébration de fin des parcours linguistiques"
+  ],
+  "Interactive language learning session": [
+    "Լեզվի ինտերակտիվ դաս",
+    "Интерактивное языковое занятие",
+    "Séance interactive d’apprentissage des langues"
+  ],
+  "Native tutor speaking club meeting": [
+    "Խոսակցական ակումբի հանդիպում լեզվակիր դասավանդողի հետ",
+    "Встреча разговорного клуба с преподавателем-носителем",
+    "Rencontre du club de conversation avec un enseignant natif"
+  ],
+  "Nice Exchange French Riviera Excursion": [
+    "Նիսի ծրագրի էքսկուրսիա Լազուրե ափով",
+    "Экскурсия программы обмена по Лазурному Берегу",
+    "Excursion sur la Côte d’Azur dans le cadre de l’échange à Nice"
+  ],
+  "Old Town Nice (Vieux Nice)": [
+    "Նիսի հին քաղաք (Vieux Nice)",
+    "Старая Ницца (Vieux Nice)",
+    "Vieux-Nice"
+  ],
+  "SMM Academy team strategy workshop": [
+    "SMM ակադեմիայի թիմային ռազմավարության պարապմունք",
+    "Командный стратегический практикум академии SMM",
+    "Atelier de stratégie en équipe de l’académie SMM"
+  ],
+  "SMM Marketing Strategy Workshop": [
+    "SMM մարքեթինգային ռազմավարության պարապմունք",
+    "Практикум по маркетинговой стратегии SMM",
+    "Atelier de stratégie marketing SMM"
+  ],
+  "Small group interactive conversational workshops": [
+    "Ինտերակտիվ խոսակցական պարապմունքներ փոքր խմբերով",
+    "Интерактивные разговорные занятия в малых группах",
+    "Ateliers de conversation interactifs en petits groupes"
+  ],
+  "Strolling along the Mediterranean coast": [
+    "Զբոսանք Միջերկրական ծովի ափով",
+    "Прогулка вдоль Средиземного моря",
+    "Promenade le long de la Méditerranée"
+  ],
+  "Student Conversation Practice": [
+    "Ուսանողների խոսակցական վարժանք",
+    "Разговорная практика учащихся",
+    "Pratique de la conversation entre élèves"
+  ],
+  "Summer immersion trip on the French Riviera": [
+    "Ամառային ուսումնական ուղևորություն Լազուրե ափին",
+    "Летняя поездка с погружением на Лазурный Берег",
+    "Séjour estival en immersion sur la Côte d’Azur"
+  ],
+  "Vieux Nice Cultural Exploration": [
+    "Նիսի հին քաղաքի մշակութային բացահայտում",
+    "Культурное знакомство со Старой Ниццей",
+    "Découverte culturelle du Vieux-Nice"
+  ],
+  "Mon & Wed: 18:00 - 19:30 CET": [
+    "Երկ․ և չրք․՝ 18:00–19:30 CET",
+    "Пн и ср: 18:00–19:30 CET",
+    "Lun. et mer. : 18 h–19 h 30 CET"
+  ],
+  "Mon & Wed: 18:30 - 20:00 CET": [
+    "Երկ․ և չրք․՝ 18:30–20:00 CET",
+    "Пн и ср: 18:30–20:00 CET",
+    "Lun. et mer. : 18 h 30–20 h CET"
+  ],
+  "Mon & Wed: 19:00 - 20:30 CET": [
+    "Երկ․ և չրք․՝ 19:00–20:30 CET",
+    "Пн и ср: 19:00–20:30 CET",
+    "Lun. et mer. : 19 h–20 h 30 CET"
+  ],
+  "Tue & Thu: 18:00 - 19:30 CET": [
+    "Երք․ և հնգ․՝ 18:00–19:30 CET",
+    "Вт и чт: 18:00–19:30 CET",
+    "Mar. et jeu. : 18 h–19 h 30 CET"
+  ],
+  "Tue & Thu: 18:30 - 20:00 CET": [
+    "Երք․ և հնգ․՝ 18:30–20:00 CET",
+    "Вт и чт: 18:30–20:00 CET",
+    "Mar. et jeu. : 18 h 30–20 h CET"
+  ],
+  "Tue & Thu: 18:30 - 20:30 CET": [
+    "Երք․ և հնգ․՝ 18:30–20:30 CET",
+    "Вт и чт: 18:30–20:30 CET",
+    "Mar. et jeu. : 18 h 30–20 h 30 CET"
+  ],
+  "Tue & Thu: 19:00 - 20:30 CET": [
+    "Երք․ և հնգ․՝ 19:00–20:30 CET",
+    "Вт и чт: 19:00–20:30 CET",
+    "Mar. et jeu. : 19 h–20 h 30 CET"
+  ],
+  "Tuesdays: 18:00 - 20:00 CET": [
+    "Երեքշաբթի՝ 18:00–20:00 CET",
+    "Вторник: 18:00–20:00 CET",
+    "Mardi : 18 h–20 h CET"
+  ],
+  "Saturday Intensive: 10:00 - 13:00 CET": [
+    "Շաբաթօրյա ինտենսիվ՝ 10:00–13:00 CET",
+    "Субботний интенсив: 10:00–13:00 CET",
+    "Session intensive du samedi : 10 h–13 h CET"
+  ],
+  "Agency Founder": [
+    "Գործակալության հիմնադիր",
+    "Основатель агентства",
+    "Fondateur d’agence"
+  ],
+  "Marketing Manager": [
+    "Մարքեթինգի ղեկավար",
+    "Менеджер по маркетингу",
+    "Responsable marketing"
+  ],
+  "SMM Freelancer": [
+    "Անկախ SMM մասնագետ",
+    "Независимый SMM-специалист",
+    "Spécialiste SMM indépendant"
+  ],
+  "Student, Nice Exchange Program": [
+    "Նիսի փոխանակման ծրագրի ուսանող",
+    "Участница программы обмена в Ницце",
+    "Élève du programme d’échange à Nice"
+  ],
+  "The Nice Exchange program transformed my confidence completely. Learning French in classrooms is one thing, but practicing on the French Riviera while staying with a host family was unforgettable!": [
+    "Նիսի փոխանակման ծրագիրն ամբողջովին փոխեց իմ ինքնավստահությունը։ Դասարանում ֆրանսերեն սովորելը մի բան է, իսկ Լազուրե ափին հյուրընկալ ընտանիքի հետ ապրելով այն կիրառելն անմոռանալի էր։",
+    "Программа обмена в Ницце полностью изменила мою уверенность. Учить французский в классе — одно, а практиковать на Лазурном Берегу, живя в семье, было незабываемо!",
+    "Le programme d’échange à Nice a complètement transformé ma confiance. Apprendre le français en classe est une chose, mais le pratiquer sur la Côte d’Azur en famille d’accueil était inoubliable !"
+  ],
+  "CELAVIE Academy's SMM Pro course gave me the exact tools I needed to start taking on paid ad clients. Within 2 months of graduation, I landed three monthly retainers!": [
+    "CELAVIE-ի SMM Pro դասընթացն ինձ տվեց վճարովի գովազդի հաճախորդներ ներգրավելու անհրաժեշտ գործիքները։ Ավարտելուց հետո 2 ամսում ստացա երեք ամսական սպասարկման պայմանագիր։",
+    "Курс SMM Pro в CELAVIE дал мне нужные инструменты для работы с клиентами по платной рекламе. За два месяца после выпуска я получил три ежемесячных контракта!",
+    "Le cours SMM Pro de CELAVIE m’a donné les outils pour travailler avec des clients en publicité payante. Dans les deux mois suivant la formation, j’ai obtenu trois contrats mensuels !"
+  ],
+  "The focus on business English and executive presentation skills was top-tier. I passed my IELTS with 8.0 and earned a promotion at work.": [
+    "Գործարար անգլերենի և ղեկավարների ներկայացման հմտությունների շեշտադրումը բարձրակարգ էր։ IELTS-ը հանձնեցի 8.0 միավորով և առաջխաղացում ստացա աշխատանքում։",
+    "Деловой английский и навыки презентаций преподавались на высшем уровне. Я сдала IELTS на 8.0 и получила повышение!",
+    "L’accent mis sur l’anglais des affaires et les présentations professionnelles était excellent. J’ai obtenu 8.0 à l’IELTS et une promotion au travail."
+  ],
+  "The framework taught in the SMM Expert tier saved me years of trial and error. The SOPs and client acquisition blueprints are worth ten times the price.": [
+    "SMM Expert-ում սովորած համակարգը խնայեց փորձարկումների տարիներ։ Ստանդարտ ընթացակարգերն ու հաճախորդների ներգրավման ուղեցույցները վճարածից տասնապատիկ արժեք ունեն։",
+    "Методика SMM Expert сэкономила мне годы проб и ошибок. Процедуры и планы привлечения клиентов стоят в десять раз дороже своей цены.",
+    "La méthode enseignée en SMM Expert m’a épargné des années d’essais et d’erreurs. Les procédures et plans d’acquisition valent dix fois le prix payé."
+  ],
+  "Nice Option": [
+    "Նիսի ծրագրի հնարավորություն",
+    "Возможность поездки в Ниццу",
+    "Option Nice"
+  ],
+  "Duration": [
+    "Տևողություն",
+    "Продолжительность",
+    "Durée"
+  ],
+  "Level": [
+    "Մակարդակ",
+    "Уровень",
+    "Niveau"
+  ],
+  "Format": [
+    "Ձևաչափ",
+    "Формат",
+    "Format"
+  ],
+  "Live Online": [
+    "Ուղիղ առցանց",
+    "Онлайн в прямом эфире",
+    "En ligne en direct"
+  ],
+  "Certificate": [
+    "Հավաստագիր",
+    "Сертификат",
+    "Certificat"
+  ],
+  "Official Certificate": [
+    "Պաշտոնական հավաստագիր",
+    "Официальный сертификат",
+    "Certificat officiel"
+  ],
+  "Enroll Now": [
+    "Գրանցվել հիմա",
+    "Записаться сейчас",
+    "S’inscrire maintenant"
+  ],
+  "Enroll in": [
+    "Գրանցվել՝",
+    "Записаться на",
+    "S’inscrire à"
+  ],
+  "Enroll in SMM": [
+    "Գրանցվել SMM-ին",
+    "Записаться на SMM",
+    "S’inscrire au SMM"
+  ],
+  "Course": [
+    "Դասընթաց",
+    "Курс",
+    "Cours"
+  ],
+  "Language Courses": [
+    "Լեզվի դասընթացներ",
+    "Языковые курсы",
+    "Cours de langues"
+  ],
+  "Languages": [
+    "Լեզուներ",
+    "Языки",
+    "Langues"
+  ],
+  "Curriculum Objectives": [
+    "Ուսումնական ծրագրի նպատակներ",
+    "Цели учебной программы",
+    "Objectifs pédagogiques"
+  ],
+  "What You'll Learn in": [
+    "Ինչ կսովորեք՝",
+    "Чему вы научитесь:",
+    "Ce que vous apprendrez en"
+  ],
+  "Your Learning Path": [
+    "Ձեր ուսումնական ուղին",
+    "Ваш учебный путь",
+    "Votre parcours d’apprentissage"
+  ],
+  "Step-by-Step Progress": [
+    "Քայլ առ քայլ առաջընթաց",
+    "Пошаговый прогресс",
+    "Une progression étape par étape"
+  ],
+  "CEFR Standard": [
+    "CEFR չափանիշ",
+    "Стандарт CEFR",
+    "Norme CECR"
+  ],
+  "Standardized Proficiency Levels Covered": [
+    "Ներառված լեզվական մակարդակներ",
+    "Предусмотренные уровни владения",
+    "Niveaux de compétence proposés"
+  ],
+  "Our curriculum strictly follows the Common European Framework of Reference for Languages.": [
+    "Մեր ուսումնական ծրագիրը հետևում է Լեզուների իմացության համաեվրոպական համակարգին։",
+    "Наша программа строго следует Общеевропейской системе уровней владения иностранным языком.",
+    "Notre programme suit rigoureusement le Cadre européen commun de référence pour les langues."
+  ],
+  "Class Batches": [
+    "Ուսումնական խմբեր",
+    "Учебные группы",
+    "Sessions de cours"
+  ],
+  "Upcoming Live Class Schedules": [
+    "Առաջիկա կենդանի դասերի ժամանակացույց",
+    "Расписание предстоящих занятий",
+    "Horaires des prochains cours en direct"
+  ],
+  "Batch": [
+    "Խումբ",
+    "Группа",
+    "Session"
+  ],
+  "Exclusive French Immersion Add-on": [
+    "Ֆրանսիական միջավայրում ուսուցման հավելյալ ծրագիր",
+    "Дополнительная программа погружения во французский",
+    "Option exclusive d’immersion en français"
+  ],
+  "Combine with the Nice Summer Exchange Program 🇫🇷": [
+    "Համադրեք Նիսի ամառային փոխանակման ծրագրի հետ 🇫🇷",
+    "Дополните летней программой обмена в Ницце 🇫🇷",
+    "Associez ce cours à l’échange estival à Nice 🇫🇷"
+  ],
+  "As a student in our French Language course, you qualify for direct priority placement in our summer immersion program on the French Riviera in Nice. Practice real spoken French with local host families.": [
+    "Որպես մեր ֆրանսերենի դասընթացի ուսանող՝ դուք առաջնահերթ մասնակցության հնարավորություն ունեք Նիսի ամառային ծրագրին։ Զարգացրեք խոսակցական ֆրանսերենը տեղական հյուրընկալ ընտանիքների հետ։",
+    "Учащиеся нашего курса французского получают приоритет при зачислении на летнюю программу в Ницце. Практикуйте живой французский с местными принимающими семьями.",
+    "En tant qu’élève de notre cours de français, vous bénéficiez d’un accès prioritaire à notre immersion estivale à Nice. Pratiquez le français auprès de familles d’accueil locales."
+  ],
+  "Apply for Nice Exchange": [
+    "Դիմել Նիսի փոխանակմանը",
+    "Подать заявку на обмен в Ницце",
+    "Postuler à l’échange à Nice"
+  ],
+  "Course FAQ": [
+    "Դասընթացի հաճախ տրվող հարցեր",
+    "Вопросы о курсе",
+    "Questions sur le cours"
+  ],
+  "Student Reviews": [
+    "Ուսանողների կարծիքներ",
+    "Отзывы учащихся",
+    "Avis des élèves"
+  ],
+  "What Graduates Say About Our Language Program": [
+    "Ինչ են ասում շրջանավարտները մեր լեզվական ծրագրի մասին",
+    "Что говорят выпускники о нашей языковой программе",
+    "L’avis de nos diplômés sur notre programme linguistique"
+  ],
+  "Other Popular Languages": [
+    "Այլ հայտնի լեզուներ",
+    "Другие популярные языки",
+    "Autres langues populaires"
+  ],
+  "Explore More": [
+    "Բացահայտել ավելին",
+    "Узнать больше",
+    "En savoir plus"
+  ],
+  "Today": [
+    "Այսօր",
+    "Сегодня",
+    "Aujourd’hui"
+  ],
+  "Join our next cohort and gain authentic language confidence.": [
+    "Միացեք մեր հաջորդ խմբին և ձեռք բերեք լեզվական վստահություն։",
+    "Присоединяйтесь к следующей группе и обретите уверенность в языке.",
+    "Rejoignez notre prochaine session et gagnez en confiance dans la langue."
+  ],
+  "Core Competencies": [
+    "Հիմնական հմտություններ",
+    "Основные компетенции",
+    "Compétences clés"
+  ],
+  "What You'll Master in SMM": [
+    "Ինչին կտիրապետեք SMM-ում՝",
+    "Что вы освоите в SMM",
+    "Ce que vous maîtriserez en SMM"
+  ],
+  "Module Breakdown": [
+    "Մոդուլների նկարագրություն",
+    "Содержание модулей",
+    "Détail des modules"
+  ],
+  "Comprehensive Curriculum": [
+    "Համապարփակ ուսումնական ծրագիր",
+    "Комплексная учебная программа",
+    "Programme complet"
+  ],
+  "Hands-on Experience": [
+    "Գործնական փորձ",
+    "Практический опыт",
+    "Expérience pratique"
+  ],
+  "Real-World Projects & Portfolio Building": [
+    "Իրական նախագծեր և պորտֆոլիոյի ստեղծում",
+    "Реальные проекты и создание портфолио",
+    "Projets réels et création de portfolio"
+  ],
+  "You won't just learn theory. You will build tangible client assets during the program.": [
+    "Ծրագրի ընթացքում տեսությունից բացի կստեղծեք գործնական նյութեր հաճախորդների համար։",
+    "В ходе программы вы не только изучите теорию, но и создадите реальные материалы для клиентов.",
+    "Pendant le programme, vous étudierez la théorie et réaliserez des supports concrets pour des clients."
+  ],
+  "Project #": [
+    "Նախագիծ №",
+    "Проект №",
+    "Projet n°"
+  ],
+  "Career Advancement": [
+    "Կարիերային առաջընթաց",
+    "Карьерный рост",
+    "Évolution professionnelle"
+  ],
+  "Target Career Outcomes": [
+    "Կարիերայի նպատակային արդյունքներ",
+    "Карьерные перспективы",
+    "Débouchés professionnels visés"
+  ],
+  "Tier FAQ": [
+    "Մակարդակի մասին հարցեր",
+    "Вопросы об уровне",
+    "Questions sur ce niveau"
+  ],
+  "Student Feedback": [
+    "Ուսանողների արձագանքներ",
+    "Отзывы учащихся",
+    "Retours des élèves"
+  ],
+  "What SMM Graduates Achieved": [
+    "SMM շրջանավարտների ձեռքբերումները",
+    "Достижения выпускников SMM",
+    "Les réussites des diplômés SMM"
+  ],
+  "Compare Tiers": [
+    "Համեմատել մակարդակները",
+    "Сравнить уровни",
+    "Comparer les niveaux"
+  ],
+  "Other SMM Tiers": [
+    "SMM-ի այլ մակարդակներ",
+    "Другие уровни SMM",
+    "Autres niveaux de SMM"
+  ],
+  "Ready to Master SMM": [
+    "Պատրա՞ստ եք տիրապետել SMM-ին",
+    "Готовы освоить SMM",
+    "Prêt à maîtriser le SMM"
+  ],
+  "Enroll today and gain high-demand digital marketing skills.": [
+    "Գրանցվեք այսօր և ձեռք բերեք պահանջված թվային մարքեթինգի հմտություններ։",
+    "Запишитесь сегодня и приобретите востребованные навыки цифрового маркетинга.",
+    "Inscrivez-vous aujourd’hui et acquérez des compétences recherchées en marketing numérique."
+  ],
+  "Tier": [
+    "Մակարդակ",
+    "Уровень",
+    "Niveau"
+  ],
+  "Summer Cultural Immersion 🇫🇷": [
+    "Ամառային մշակութային ծրագիր 🇫🇷",
+    "Летнее культурное погружение 🇫🇷",
+    "Immersion culturelle estivale 🇫🇷"
+  ],
+  "The Nice Exchange Program in Nice, France": [
+    "Նիսի փոխանակման ծրագիրը Ֆրանսիայի Նիս քաղաքում",
+    "Программа обмена в Ницце, Франция",
+    "Le programme d’échange à Nice, en France"
+  ],
+  "Combine intensive spoken French education with authentic Mediterranean living. Stay with welcoming French host families or private residences while enjoying guided cultural excursions across the French Riviera.": [
+    "Համադրեք ինտենսիվ խոսակցական ֆրանսերենը միջերկրածովյան առօրյայի հետ։ Բնակվեք ֆրանսիական հյուրընկալ ընտանիքներում կամ առանձին կացարաններում և մասնակցեք Լազուրե ափի մշակութային էքսկուրսիաներին։",
+    "Совместите интенсивный разговорный французский со средиземноморской жизнью. Живите в принимающих французских семьях или частных резиденциях и посещайте культурные экскурсии по Лазурному Берегу.",
+    "Associez un apprentissage intensif du français oral à la vie méditerranéenne. Séjournez en famille d’accueil ou en résidence privée et profitez d’excursions culturelles guidées sur la Côte d’Azur."
+  ],
+  "Verified Host Families & Housing": [
+    "Ստուգված հյուրընկալ ընտանիքներ և կացարաններ",
+    "Проверенные принимающие семьи и жильё",
+    "Familles d’accueil et hébergements vérifiés"
+  ],
+  "2 to 8 Weeks Flexible Durations": [
+    "Ճկուն տևողություն՝ 2–8 շաբաթ",
+    "Гибкая длительность: от 2 до 8 недель",
+    "Durées flexibles de 2 à 8 semaines"
+  ],
+  "20 Hours/Week Intensive French": [
+    "Ինտենսիվ ֆրանսերեն՝ շաբաթական 20 ժամ",
+    "Интенсивный французский: 20 часов в неделю",
+    "Français intensif : 20 heures par semaine"
+  ],
+  "24/7 On-Site Support Staff": [
+    "Տեղում աջակցություն՝ շուրջօրյա",
+    "Поддержка на месте круглосуточно",
+    "Assistance sur place 24 h/24, 7 j/7"
+  ],
+  "Nice France Promenade": [
+    "Նիսի զբոսավայր, Ֆրանսիա",
+    "Набережная Ниццы, Франция",
+    "Promenade à Nice, en France"
+  ],
+  "Life in Nice": [
+    "Կյանքը Նիսում",
+    "Жизнь в Ницце",
+    "La vie à Nice"
+  ],
+  "Immersion Experience Gallery": [
+    "Ծրագրի պատկերասրահ",
+    "Галерея программы погружения",
+    "Galerie de l’immersion"
+  ],
+  "Official Application": [
+    "Պաշտոնական դիմում",
+    "Официальная заявка",
+    "Candidature officielle"
+  ],
+  "Please complete all required fields. Applicants under 18 require parent or guardian authorization.": [
+    "Լրացրեք բոլոր պարտադիր դաշտերը։ Մինչև 18 տարեկան դիմորդների համար պահանջվում է ծնողի կամ խնամակալի թույլտվություն։",
+    "Заполните все обязательные поля. Заявителям младше 18 лет требуется разрешение родителя или опекуна.",
+    "Remplissez tous les champs obligatoires. Les candidats mineurs doivent obtenir l’autorisation d’un parent ou tuteur."
+  ],
+  "1. Applicant Information": [
+    "1․ Դիմորդի տվյալները",
+    "1. Данные заявителя",
+    "1. Informations sur le candidat"
+  ],
+  "2. Program Preferences": [
+    "2․ Ծրագրի նախընտրություններ",
+    "2. Предпочтения по программе",
+    "2. Préférences du programme"
+  ],
+  "3. Parent Information & Motivation Essay": [
+    "3․ Ծնողի տվյալներ և մոտիվացիոն նամակ",
+    "3. Данные родителя и мотивационное эссе",
+    "3. Informations parentales et lettre de motivation"
+  ],
+  "Must be 11 or older": [
+    "Պետք է լինի 11 կամ ավելի տարեկան",
+    "Возраст от 11 лет",
+    "À partir de 11 ans"
+  ],
+  "Explain why you wish to participate in the Nice Exchange program and what goals you hope to achieve.": [
+    "Բացատրեք՝ ինչու եք ցանկանում մասնակցել Նիսի ծրագրին և ինչ նպատակների եք ձգտում հասնել։",
+    "Объясните, почему вы хотите участвовать в программе в Ницце и каких целей надеетесь достичь.",
+    "Expliquez pourquoi vous souhaitez participer au programme à Nice et quels objectifs vous espérez atteindre."
+  ],
+  "I certify that all information provided is accurate and I agree to the": [
+    "Հաստատում եմ տրամադրված տեղեկությունների ճշգրտությունը և համաձայն եմ",
+    "Я подтверждаю достоверность всех данных и принимаю",
+    "Je certifie l’exactitude des informations fournies et j’accepte les"
+  ],
+  "and Exchange Conduct Code.": [
+    "և փոխանակման ծրագրի վարքականոնին։",
+    "и правила поведения программы обмена.",
+    "et le code de conduite du programme d’échange."
+  ],
+  "Submit Official Application": [
+    "Ուղարկել պաշտոնական դիմումը",
+    "Отправить официальную заявку",
+    "Envoyer la candidature officielle"
+  ],
+  "Applicant Email:": [
+    "Դիմորդի էլ․ հասցե՝",
+    "Эл. почта заявителя:",
+    "E-mail du candidat :"
+  ],
+  "Thank you for applying to the CELAVIE Nice Exchange Program. Our exchange coordination committee will review your application essay and contact you via email within 48 hours.": [
+    "Շնորհակալություն CELAVIE-ի Նիսի ծրագրին դիմելու համար։ Մեր համակարգող հանձնաժողովը կքննարկի ձեր մոտիվացիոն նամակը և 48 ժամվա ընթացքում կկապվի էլեկտրոնային փոստով։",
+    "Спасибо за заявку на программу CELAVIE в Ницце. Комиссия рассмотрит ваше эссе и свяжется по электронной почте в течение 48 часов.",
+    "Merci d’avoir postulé au programme CELAVIE à Nice. Notre comité examinera votre lettre et vous contactera par e-mail sous 48 heures."
+  ],
+  "Registration Successful!": [
+    "Գրանցումը հաջողված է։",
+    "Регистрация прошла успешно!",
+    "Inscription réussie !"
+  ],
+  "Your registration has been received by CELAVIE Educational Academy. We will follow up with course and schedule details at": [
+    "CELAVIE կրթական ակադեմիան ստացել է ձեր գրանցումը։ Դասընթացի և ժամանակացույցի մանրամասները կուղարկենք՝",
+    "Академия CELAVIE получила вашу регистрацию. Подробности курса и расписание отправим на",
+    "L’académie CELAVIE a reçu votre inscription. Les détails du cours et les horaires seront envoyés à"
+  ],
+  "Student Name:": [
+    "Դիմորդի անուն՝",
+    "Имя учащегося:",
+    "Nom de l’élève :"
+  ],
+  "Enrolled Course:": [
+    "Ընտրված դասընթաց՝",
+    "Выбранный курс:",
+    "Cours choisi :"
+  ],
+  "Return to Home": [
+    "Վերադառնալ գլխավոր էջ",
+    "Вернуться на главную",
+    "Retour à l’accueil"
+  ],
+  "Step 1: Choose Your Program": [
+    "Քայլ 1․ Ընտրեք ծրագիրը",
+    "Шаг 1: Выберите программу",
+    "Étape 1 : Choisissez votre programme"
+  ],
+  "Program Category": [
+    "Ծրագրի ուղղություն",
+    "Направление программы",
+    "Domaine du programme"
+  ],
+  "Select Course": [
+    "Ընտրեք դասընթաց",
+    "Выберите курс",
+    "Choisissez un cours"
+  ],
+  "Additional Notes / Preferred Batch Time (Optional)": [
+    "Լրացուցիչ նշումներ / նախընտրելի ժամ (ոչ պարտադիր)",
+    "Дополнительные пожелания / удобное время (необязательно)",
+    "Remarques / horaire souhaité (facultatif)"
+  ],
+  "Student Age": [
+    "Դիմորդի տարիքը",
+    "Возраст учащегося",
+    "Âge de l’élève"
+  ],
+  "Registration Error": [
+    "Գրանցման սխալ",
+    "Ошибка регистрации",
+    "Erreur d’inscription"
+  ],
+  "I agree to CELAVIE Academy's": [
+    "Համաձայն եմ CELAVIE ակադեմիայի",
+    "Я принимаю положения академии CELAVIE:",
+    "J’accepte les dispositions de l’académie CELAVIE :"
+  ],
+  "and enrollment policies.": [
+    "և գրանցման կանոններին։",
+    "и правила зачисления.",
+    "et les règles d’inscription."
+  ],
+  "e.g. Jane Doe": [
+    "Օր․՝ Անի Պետրոսյան",
+    "Например: Анна Иванова",
+    "Ex. : Marie Dupont"
+  ],
+  "e.g. Prefer evening classes": [
+    "Օր․՝ նախընտրում եմ երեկոյան դասեր",
+    "Например: предпочитаю вечерние занятия",
+    "Ex. : de préférence le soir"
+  ],
+  "1. Course Enrollment & Attendance": [
+    "1․ Գրանցում և հաճախում",
+    "1. Зачисление и посещаемость",
+    "1. Inscription et assiduité"
+  ],
+  "2. Nice Exchange Program Conditions": [
+    "2․ Նիսի փոխանակման ծրագրի պայմաններ",
+    "2. Условия программы обмена в Ницце",
+    "2. Conditions du programme d’échange à Nice"
+  ],
+  "3. Tuition & Refund Policy": [
+    "3․ Ուսման վարձ և վերադարձի քաղաքականություն",
+    "3. Оплата обучения и возврат средств",
+    "3. Frais de formation et remboursement"
+  ],
+  "4. Intellectual Property": [
+    "4․ Մտավոր սեփականություն",
+    "4. Интеллектуальная собственность",
+    "4. Propriété intellectuelle"
+  ],
+  "1. Information We Collect": [
+    "1․ Հավաքագրվող տեղեկություններ",
+    "1. Собираемые сведения",
+    "1. Informations recueillies"
+  ],
+  "2. Use of Information": [
+    "2․ Տեղեկությունների օգտագործում",
+    "2. Использование сведений",
+    "2. Utilisation des informations"
+  ],
+  "3. Data Protection & Security": [
+    "3․ Տվյալների պաշտպանություն և անվտանգություն",
+    "3. Защита и безопасность данных",
+    "3. Protection et sécurité des données"
+  ],
+  "4. Contact Us": [
+    "4․ Կապ մեզ հետ",
+    "4. Связь с нами",
+    "4. Nous contacter"
+  ],
+  "Last updated: January 2025": [
+    "Վերջին թարմացում՝ հունվար 2025",
+    "Последнее обновление: январь 2025",
+    "Dernière mise à jour : janvier 2025"
+  ],
+  "By enrolling in a language or SMM course at CELAVIE Educational Academy, students agree to adhere to attendance schedules, complete assigned coursework, and follow code-of-conduct guidelines.": [
+    "Գրանցվելով CELAVIE կրթական ակադեմիայի լեզվական կամ SMM դասընթացին՝ ուսանողները համաձայնում են պահպանել հաճախումների ժամանակացույցը, կատարել առաջադրանքները և հետևել վարքականոնին։",
+    "Записываясь на языковой курс или SMM в академии CELAVIE, учащиеся соглашаются соблюдать расписание, выполнять задания и следовать правилам поведения.",
+    "En s’inscrivant à un cours de langues ou de SMM à l’académie CELAVIE, les élèves s’engagent à respecter les horaires, à effectuer les travaux demandés et à suivre le code de conduite."
+  ],
+  "Applicants under the age of 18 must provide written parent or guardian consent. Program dates must be booked at least 2 weeks in advance. Full terms regarding housing, emergency contacts, and code of conduct apply.": [
+    "Մինչև 18 տարեկան դիմորդները պետք է ներկայացնեն ծնողի կամ խնամակալի գրավոր համաձայնությունը։ Ծրագրի ամսաթվերը պետք է ամրագրել առնվազն 2 շաբաթ առաջ։ Գործում են կացարանի, արտակարգ կապերի և վարքականոնի ամբողջական պայմանները։",
+    "Заявители младше 18 лет должны предоставить письменное согласие родителя или опекуна. Даты программы бронируются минимум за две недели. Действуют полные условия проживания, экстренной связи и поведения.",
+    "Les candidats mineurs doivent fournir l’accord écrit d’un parent ou tuteur. Les dates du programme doivent être réservées au moins deux semaines à l’avance. Les conditions complètes relatives à l’hébergement, aux contacts d’urgence et au code de conduite s’appliquent."
+  ],
+  "Tuition fees are due prior to course start dates unless a installment payment plan is approved. Refunds are governed by our standard 14-day cancellation policy prior to the start of classes.": [
+    "Ուսման վարձը վճարվում է դասընթացի մեկնարկից առաջ, եթե ապառիկ վճարման պլան չի հաստատվել։ Գումարի վերադարձը կարգավորվում է դասերի մեկնարկից առաջ 14-օրյա չեղարկման մեր ստանդարտ քաղաքականությամբ։",
+    "Обучение оплачивается до начала курса, если не согласована рассрочка. Возврат средств регулируется стандартной политикой отмены за 14 дней до начала занятий.",
+    "Les frais sont dus avant le début du cours, sauf accord sur un paiement échelonné. Les remboursements sont régis par notre politique standard d’annulation de 14 jours avant le début des cours."
+  ],
+  "All course materials, video lectures, workbooks, and SMM frameworks remain the sole intellectual property of CELAVIE Educational Academy.": [
+    "Դասընթացի բոլոր նյութերը, տեսադասերը, աշխատանքային տետրերը և SMM մեթոդաբանությունները մնում են CELAVIE կրթական ակադեմիայի բացառիկ մտավոր սեփականությունը։",
+    "Все учебные материалы, видеолекции, рабочие тетради и SMM-методики остаются исключительной интеллектуальной собственностью академии CELAVIE.",
+    "Tous les supports de cours, vidéos, cahiers d’exercices et méthodes SMM demeurent la propriété intellectuelle exclusive de l’académie CELAVIE."
+  ],
+  "CELAVIE collects the information you enter in registration and application forms, including names, age, contact details, school, country, language level, parent details and optional messages or motivation essays.": [
+    "CELAVIE-ն հավաքագրում է գրանցման և դիմումի ձևերում ձեր մուտքագրած տեղեկությունները՝ անուններ, տարիք, կապի տվյալներ, ուսումնական հաստատություն, երկիր, լեզվի մակարդակ, ծնողի տվյալներ և ոչ պարտադիր հաղորդագրություններ կամ մոտիվացիոն նամակներ։",
+    "CELAVIE собирает сведения, введённые в формы: имена, возраст, контакты, учебное заведение, страну, уровень языка, данные родителей и необязательные сообщения или мотивационные эссе.",
+    "CELAVIE recueille les informations saisies dans les formulaires : noms, âge, coordonnées, établissement, pays, niveau linguistique, informations parentales et messages ou lettres de motivation facultatifs."
+  ],
+  "We use the information you submit to process course registrations and Nice Exchange applications and to contact you about your chosen program.": [
+    "Ձեր տրամադրած տեղեկություններն օգտագործում ենք դասընթացների գրանցումները և Նիսի ծրագրի դիմումները մշակելու ու ընտրված ծրագրի վերաբերյալ ձեզ հետ կապվելու համար։",
+    "Мы используем предоставленные сведения для обработки регистраций на курсы и заявок в Ниццу, а также для связи с вами по выбранной программе.",
+    "Nous utilisons vos informations pour traiter les inscriptions aux cours et les candidatures à l’échange à Nice, et pour vous contacter au sujet du programme choisi."
+  ],
+  "Registration information is sent to our registration service for processing, stored in application spreadsheets and used for confirmation emails. This website does not collect payment card details.": [
+    "Գրանցման տեղեկություններն ուղարկվում են մշակման, պահվում են դիմումների աղյուսակներում և օգտագործվում հաստատման նամակների համար։ Այս կայքը չի հավաքագրում վճարային քարտերի տվյալներ։",
+    "Регистрационные сведения передаются на обработку, сохраняются в таблицах заявок и используются для писем-подтверждений. Сайт не собирает данные платёжных карт.",
+    "Les informations d’inscription sont transmises pour traitement, conservées dans des tableaux de candidatures et utilisées pour les e-mails de confirmation. Ce site ne recueille pas de données de carte bancaire."
+  ],
+  "For questions about your personal information, contact CELAVIE by phone at 095 400 288.": [
+    "Անձնական տվյալների վերաբերյալ հարցերով զանգահարեք CELAVIE՝ 095 400 288։",
+    "По вопросам о персональных данных звоните в CELAVIE: 095 400 288.",
+    "Pour toute question sur vos données personnelles, appelez CELAVIE au 095 400 288."
+  ],
+  "Motivation essay must contain 300-500 words, or be left empty. Current word count: {count}": [
+    "Մոտիվացիոն նամակը պետք է պարունակի 300–500 բառ կամ մնա դատարկ։ Բառերի ներկայիս քանակը՝ {count}",
+    "Мотивационное эссе должно содержать 300–500 слов или оставаться пустым. Сейчас слов: {count}",
+    "La lettre doit contenir 300 à 500 mots ou rester vide. Nombre de mots actuel : {count}"
+  ],
+  "Languages, SMM & International Programs": [
+    "Լեզուներ, SMM և միջազգային ծրագրեր",
+    "Языки, SMM и международные программы",
+    "Langues, SMM et programmes internationaux"
+  ],
+  "Explore language courses, SMM training and the Nice Exchange program at CELAVIE Educational Academy in Yerevan.": [
+    "Ծանոթացեք Երևանի CELAVIE կրթական ակադեմիայի լեզվական դասընթացներին, SMM ուսուցմանը և Նիսի փոխանակման ծրագրին։",
+    "Откройте языковые курсы, SMM-обучение и программу обмена в Ницце в академии CELAVIE в Ереване.",
+    "Découvrez les cours de langues, le SMM et le programme d’échange à Nice de l’académie CELAVIE à Erevan."
+  ],
+  "Discover CELAVIE Educational Academy and its approach to language learning, digital skills and cultural exchange.": [
+    "Բացահայտեք CELAVIE կրթական ակադեմիան և լեզուների, թվային հմտությունների ու մշակութային փոխանակման մեր մոտեցումը։",
+    "Узнайте об академии CELAVIE и её подходе к языкам, цифровым навыкам и культурному обмену.",
+    "Découvrez l’académie CELAVIE et son approche des langues, des compétences numériques et des échanges culturels."
+  ],
+  "Contact CELAVIE in Yerevan, Kentron, Kajaznuni 1. Call 095 400 288 for course and application enquiries.": [
+    "Կապ CELAVIE-ի հետ՝ ք․ Երևան, Կենտրոն, Քաջազնունի 1։ Դասընթացների և դիմումների հարցերով զանգահարեք 095 400 288։",
+    "CELAVIE: Ереван, Кентрон, Каджазнуни 1. По вопросам курсов и заявок звоните 095 400 288.",
+    "Contactez CELAVIE au 1, rue Kajaznuni, Kentron, Erevan. Renseignements sur les cours et candidatures : 095 400 288."
+  ],
+  "Read how CELAVIE uses information provided through course registrations and Nice Exchange applications.": [
+    "Իմացեք՝ ինչպես է CELAVIE-ն օգտագործում դասընթացների գրանցումների և Նիսի դիմումների տվյալները։",
+    "Узнайте, как CELAVIE использует сведения из регистраций на курсы и заявок в Ниццу.",
+    "Découvrez comment CELAVIE utilise les informations des inscriptions aux cours et des candidatures à Nice."
+  ],
+  "Read the conditions for course enrollment and participation in the CELAVIE Nice Exchange program.": [
+    "Ծանոթացեք դասընթացների գրանցման և CELAVIE-ի Նիսի ծրագրին մասնակցության պայմաններին։",
+    "Ознакомьтесь с условиями зачисления на курсы и участия в программе CELAVIE в Ницце.",
+    "Consultez les conditions d’inscription aux cours et de participation au programme CELAVIE à Nice."
+  ],
+  "Discover the CELAVIE Nice Exchange program in France and submit your application.": [
+    "Բացահայտեք CELAVIE-ի Նիսի փոխանակման ծրագիրը Ֆրանսիայում և ուղարկեք ձեր դիմումը։",
+    "Откройте программу обмена CELAVIE в Ницце, Франция, и подайте заявку.",
+    "Découvrez le programme d’échange CELAVIE à Nice, en France, et envoyez votre candidature."
+  ],
+  "Choose a CELAVIE language or SMM course, enter your details and submit your registration.": [
+    "Ընտրեք CELAVIE-ի լեզվական կամ SMM դասընթացը, լրացրեք տվյալները և ուղարկեք գրանցումը։",
+    "Выберите языковой курс или SMM в CELAVIE, введите данные и отправьте регистрацию.",
+    "Choisissez un cours de langues ou de SMM chez CELAVIE, saisissez vos informations et envoyez votre inscription."
+  ],
+  "International Standard Education with CELAVIE": [
+    "Միջազգային չափանիշներով կրթություն CELAVIE-ի հետ",
+    "Образование международного уровня с CELAVIE",
+    "Une éducation de niveau international avec CELAVIE"
+  ],
+  "CELAVIE EDUCATIONAL ACADEMY » @CELAVIE_ACADEMY": [
+    "CELAVIE ԿՐԹԱԿԱՆ ԱԿԱԴԵՄԻԱ » @CELAVIE_ACADEMY",
+    "ОБРАЗОВАТЕЛЬНАЯ АКАДЕМИЯ CELAVIE » @CELAVIE_ACADEMY",
+    "ACADÉMIE ÉDUCATIVE CELAVIE » @CELAVIE_ACADEMY"
+  ],
+  "Master 10+ foreign languages and high-converting SMM marketing strategies. Join our exclusive exchange programs in Nice, France and elevate your career.": [
+    "Սովորեք ավելի քան 10 օտար լեզու և արդյունավետ SMM ռազմավարություններ։ Մասնակցեք Ֆրանսիայի Նիս քաղաքում մեր փոխանակման ծրագրերին և զարգացրեք ձեր կարիերան։",
+    "Изучайте более 10 иностранных языков и эффективные стратегии SMM. Участвуйте в наших программах обмена в Ницце, Франция, и развивайте карьеру.",
+    "Apprenez plus de 10 langues étrangères et des stratégies SMM efficaces. Participez à nos programmes d’échange à Nice, en France, et faites progresser votre carrière."
+  ],
+  "Start Learning Now": [
+    "Սկսել սովորել",
+    "Начать обучение",
+    "Commencer à apprendre"
+  ],
+  "Start Learning": [
+    "Սկսել ուսումը",
+    "Начать обучение",
+    "Commencer l’apprentissage"
+  ],
+  "Explore Programs": [
+    "Ծանոթանալ ծրագրերին",
+    "Посмотреть программы",
+    "Découvrir les programmes"
+  ],
+  "Native Tutors": [
+    "Լեզվակիր դասավանդողներ",
+    "Преподаватели — носители языка",
+    "Enseignants natifs"
+  ],
+  "Nice, FR": [
+    "Նիս, Ֆրանսիա",
+    "Ницца, Франция",
+    "Nice, France"
+  ],
+  "Summer Exchange": [
+    "Ամառային փոխանակում",
+    "Летний обмен",
+    "Échange estival"
+  ],
+  "CELAVIE Educational Academy Students": [
+    "CELAVIE կրթական ակադեմիայի ուսանողներ",
+    "Учащиеся образовательной академии CELAVIE",
+    "Élèves de l’académie éducative CELAVIE"
+  ],
+  "CELAVIE Language & SMM Center": [
+    "CELAVIE լեզուների և SMM կենտրոն",
+    "Центр языков и SMM CELAVIE",
+    "Centre de langues et de SMM CELAVIE"
+  ],
+  "Enrollments open for upcoming trimester": [
+    "Առաջիկա եռամսյակի գրանցումները բաց են",
+    "Открыта запись на следующий триместр",
+    "Inscriptions ouvertes pour le prochain trimestre"
+  ],
+  "• 10+ Foreign Languages": [
+    "• 10-ից ավելի օտար լեզուներ",
+    "• Более 10 иностранных языков",
+    "• Plus de 10 langues étrangères"
+  ],
+  "• SMM Professional Academy": [
+    "• SMM մասնագիտական ակադեմիա",
+    "• Профессиональная академия SMM",
+    "• Académie professionnelle de SMM"
+  ],
+  "• Summer Exchange in Nice, France": [
+    "• Ամառային փոխանակում Նիսում, Ֆրանսիա",
+    "• Летний обмен в Ницце, Франция",
+    "• Échange estival à Nice, en France"
+  ],
+  "• Certified Tutors & Native Speakers": [
+    "• Հավաստագրված և լեզվակիր դասավանդողներ",
+    "• Сертифицированные преподаватели и носители языка",
+    "• Enseignants certifiés et natifs"
+  ],
+  "• Interactive Speaking Clubs": [
+    "• Ինտերակտիվ խոսակցական ակումբներ",
+    "• Интерактивные разговорные клубы",
+    "• Clubs de conversation interactifs"
+  ],
+  "OUR COURSES": [
+    "ՄԵՐ ԴԱՍԸՆԹԱՑՆԵՐԸ",
+    "НАШИ КУРСЫ",
+    "NOS COURS"
+  ],
+  "Choose Your Academic Path": [
+    "Ընտրեք ձեր ուսումնական ուղին",
+    "Выберите свой путь обучения",
+    "Choisissez votre parcours"
+  ],
+  "From beginner conversational foreign languages to advanced digital social media strategies, choose a program tailored to your personal goals.": [
+    "Օտար լեզուների սկզբնական խոսակցական հմտություններից մինչև սոցիալական մեդիայի առաջադեմ ռազմավարություններ՝ ընտրեք ձեր նպատակներին համապատասխան ծրագիր։",
+    "От начальных разговорных курсов до продвинутых стратегий социальных сетей — выберите программу под свои цели.",
+    "Des premières conversations en langue étrangère aux stratégies avancées de réseaux sociaux, choisissez un programme adapté à vos objectifs."
+  ],
+  "All Courses (": [
+    "Բոլոր դասընթացները (",
+    "Все курсы (",
+    "Tous les cours ("
+  ],
+  "Foreign Languages (": [
+    "Օտար լեզուներ (",
+    "Иностранные языки (",
+    "Langues étrangères ("
+  ],
+  "SMM Academy (": [
+    "SMM ակադեմիա (",
+    "Академия SMM (",
+    "Académie SMM ("
+  ],
+  "Nice Promenade des Anglais": [
+    "Նիսի Անգլիական զբոսավայր",
+    "Английская набережная в Ницце",
+    "Promenade des Anglais à Nice"
+  ],
+  "Exclusive Program 🇫🇷": [
+    "Բացառիկ ծրագիր 🇫🇷",
+    "Особая программа 🇫🇷",
+    "Programme exclusif 🇫🇷"
+  ],
+  "Discover Nice, France": [
+    "Բացահայտեք Նիսը, Ֆրանսիա",
+    "Откройте для себя Ниццу, Франция",
+    "Découvrez Nice, en France"
+  ],
+  "Immerse yourself in authentic French culture along the Côte d'Azur. Practice French daily with welcoming host families while exploring Nice.": [
+    "Ծանոթացեք ֆրանսիական մշակույթին Լազուրե ափին։ Բացահայտեք Նիսը և ամեն օր խոսեք ֆրանսերեն հյուրընկալ ընտանիքների հետ։",
+    "Погрузитесь во французскую культуру на Лазурном Берегу. Исследуйте Ниццу и ежедневно практикуйте французский с принимающими семьями.",
+    "Plongez dans la culture française sur la Côte d’Azur. Découvrez Nice et pratiquez le français chaque jour auprès de familles d’accueil chaleureuses."
+  ],
+  "Apply for Nice Program": [
+    "Դիմել Նիսի ծրագրին",
+    "Подать заявку на программу в Ницце",
+    "Postuler au programme à Nice"
+  ],
+  "NICE EXCHANGE PROGRAM": [
+    "ՆԻՍԻ ՓՈԽԱՆԱԿՄԱՆ ԾՐԱԳԻՐ",
+    "ПРОГРАММА ОБМЕНА В НИЦЦЕ",
+    "PROGRAMME D’ÉCHANGE À NICE"
+  ],
+  "Apply for the French Riviera Cultural Immersion": [
+    "Դիմեք Լազուրե ափի մշակութային ծրագրին",
+    "Подайте заявку на культурную программу на Лазурном Берегу",
+    "Postulez à l’immersion culturelle sur la Côte d’Azur"
+  ],
+  "Submit your application for review by our exchange coordination committee.": [
+    "Ուղարկեք ձեր դիմումը՝ փոխանակման համակարգող հանձնաժողովի քննարկմանը։",
+    "Отправьте заявку на рассмотрение координационной комиссии программы обмена.",
+    "Soumettez votre candidature à notre comité de coordination des échanges."
+  ],
+  "Thank you for applying to the CELAVIE Nice Exchange Program. Our exchange coordination committee will review your application and contact you via email within 48 hours.": [
+    "Շնորհակալություն CELAVIE-ի Նիսի փոխանակման ծրագրին դիմելու համար։ Մեր համակարգող հանձնաժողովը կքննարկի ձեր դիմումը և 48 ժամվա ընթացքում կկապվի ձեզ հետ էլեկտրոնային փոստով։",
+    "Спасибо за заявку на программу обмена CELAVIE в Ницце. Координационная комиссия рассмотрит её и свяжется с вами по электронной почте в течение 48 часов.",
+    "Merci d’avoir postulé au programme d’échange CELAVIE à Nice. Notre comité examinera votre candidature et vous contactera par e-mail sous 48 heures."
+  ],
+  "WHY CELAVIE": [
+    "ԻՆՉՈՒ CELAVIE",
+    "ПОЧЕМУ CELAVIE",
+    "POURQUOI CELAVIE"
+  ],
+  "Why Study With Us": [
+    "Ինչու սովորել մեզ մոտ",
+    "Почему стоит учиться у нас",
+    "Pourquoi étudier avec nous"
+  ],
+  "We provide immersive learning methodologies, certified native instructors, and guaranteed career advancement.": [
+    "Մենք առաջարկում ենք լեզվական միջավայրում ուսուցման մեթոդներ, հավաստագրված լեզվակիր դասավանդողներ և երաշխավորված կարիերային առաջընթաց։",
+    "Мы предлагаем обучение с погружением, сертифицированных преподавателей — носителей языка и гарантированный карьерный рост.",
+    "Nous proposons des méthodes d’immersion, des enseignants natifs certifiés et une progression de carrière garantie."
+  ],
+  "International Standards": [
+    "Միջազգային չափանիշներ",
+    "Международные стандарты",
+    "Normes internationales"
+  ],
+  "Curriculum mapped to CEFR European frameworks and international social media standards.": [
+    "Ուսումնական ծրագիրը համապատասխանում է եվրոպական CEFR համակարգին և սոցիալական մեդիայի միջազգային չափանիշներին։",
+    "Программа соответствует европейской системе CEFR и международным стандартам социальных медиа.",
+    "Un programme aligné sur le CECR et les normes internationales des réseaux sociaux."
+  ],
+  "Certified Native Team": [
+    "Հավաստագրված լեզվակիր թիմ",
+    "Сертифицированные носители языка",
+    "Une équipe native certifiée"
+  ],
+  "Learn directly from experienced native linguists and active digital marketing managers.": [
+    "Սովորեք փորձառու լեզվակիր մասնագետներից և գործող թվային մարքեթինգի ղեկավարներից։",
+    "Учитесь у опытных лингвистов — носителей языка и действующих руководителей цифрового маркетинга.",
+    "Apprenez auprès de linguistes natifs expérimentés et de responsables du marketing numérique en activité."
+  ],
+  "Practical Focus": [
+    "Գործնական ուղղվածություն",
+    "Практическая направленность",
+    "Priorité à la pratique"
+  ],
+  "Over 80% practical speaking exercises, real brand campaigns, and interactive speaking clubs.": [
+    "Ավելի քան 80% գործնական խոսակցական վարժություններ, իրական բրենդների արշավներ և ինտերակտիվ խոսակցական ակումբներ։",
+    "Более 80% практики: разговорные упражнения, кампании реальных брендов и интерактивные разговорные клубы.",
+    "Plus de 80 % de pratique : exercices oraux, campagnes de marques réelles et clubs de conversation interactifs."
+  ],
+  "Direct summer immersion programs on the French Riviera with host family accommodations.": [
+    "Ամառային ծրագրեր Լազուրե ափին՝ հյուրընկալ ընտանիքներում բնակությամբ։",
+    "Летние программы погружения на Лазурном Берегу с проживанием в принимающих семьях.",
+    "Des séjours d’immersion estivale sur la Côte d’Azur avec hébergement en famille d’accueil."
+  ],
+  "Stories from Our Graduates": [
+    "Մեր շրջանավարտների պատմությունները",
+    "Истории наших выпускников",
+    "Témoignages de nos diplômés"
+  ],
+  "COURSE ENROLLMENT": [
+    "ԴԱՍԸՆԹԱՑԻ ԳՐԱՆՑՈՒՄ",
+    "ЗАПИСЬ НА КУРС",
+    "INSCRIPTION AUX COURS"
+  ],
+  "Register For a Course": [
+    "Գրանցվել դասընթացին",
+    "Записаться на курс",
+    "S’inscrire à un cours"
+  ],
+  "Select your course and complete registration in 3 simple steps.": [
+    "Ընտրեք դասընթացը և գրանցվեք 3 պարզ քայլով։",
+    "Выберите курс и зарегистрируйтесь за 3 простых шага.",
+    "Choisissez votre cours et inscrivez-vous en 3 étapes simples."
+  ],
+  "FREQUENTLY ASKED QUESTIONS": [
+    "ՀԱՃԱԽ ՏՐՎՈՂ ՀԱՐՑԵՐ",
+    "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ",
+    "QUESTIONS FRÉQUENTES"
+  ],
+  "Questions & Answers": [
+    "Հարցեր և պատասխաններ",
+    "Вопросы и ответы",
+    "Questions et réponses"
+  ],
+  "Frequently Asked Questions": [
+    "Հաճախ տրվող հարցեր",
+    "Часто задаваемые вопросы",
+    "Questions fréquentes"
+  ],
+  "Specialized conversational training in 10+ foreign languages (French, English, German, Spanish, Italian, Russian, Armenian, Korean, Chinese, Japanese) and 3 tiers of Social Media Marketing.": [
+    "Մասնագիտացված խոսակցական ուսուցում 10-ից ավելի լեզուներով (ֆրանսերեն, անգլերեն, գերմաներեն, իսպաներեն, իտալերեն, ռուսերեն, հայերեն, կորեերեն, չինարեն, ճապոներեն) և SMM-ի 3 մակարդակ։",
+    "Разговорное обучение более чем 10 языкам (французский, английский, немецкий, испанский, итальянский, русский, армянский, корейский, китайский, японский) и 3 уровня SMM.",
+    "Formation à la conversation dans plus de 10 langues (français, anglais, allemand, espagnol, italien, russe, arménien, coréen, chinois, japonais) et 3 niveaux de SMM."
+  ],
+  "CELAVIE Educational Academy offers premium language courses and expert Social Media Marketing (SMM) training, featuring our unique Nice Exchange program in Nice, France.": [
+    "CELAVIE կրթական ակադեմիան առաջարկում է բարձրորակ լեզվի դասընթացներ, սոցիալական մեդիայի մարքեթինգի (SMM) մասնագիտական ուսուցում և Նիսի փոխանակման յուրահատուկ ծրագիր Ֆրանսիայում։",
+    "Академия CELAVIE предлагает качественные языковые курсы, профессиональное обучение SMM и уникальную программу обмена в Ницце, Франция.",
+    "L’académie éducative CELAVIE propose des cours de langues de qualité, une formation spécialisée en marketing des réseaux sociaux (SMM) et un programme d’échange unique à Nice, en France."
+  ],
+  "About CELAVIE Educational Academy": [
+    "CELAVIE կրթական ակադեմիայի մասին",
+    "Об образовательной академии CELAVIE",
+    "À propos de l’académie éducative CELAVIE"
+  ],
+  "Empowering Global Minds Through Language & Digital Excellence": [
+    "Նոր հնարավորություններ՝ լեզուների և թվային հմտությունների միջոցով",
+    "Новые возможности через языки и цифровые навыки",
+    "Ouvrir de nouveaux horizons grâce aux langues et au numérique"
+  ],
+  "Empowering Minds Through Language & Digital Excellence": [
+    "Զարգացում՝ լեզուների և թվային հմտությունների միջոցով",
+    "Развитие через языки и цифровые навыки",
+    "Développer les compétences par les langues et le numérique"
+  ],
+  "Founded with a passion for cross-cultural communication and digital empowerment, CELAVIE Educational Academy provides premier language education, specialized SMM courses, and immersive cultural exchange programs.": [
+    "Ստեղծված միջմշակութային հաղորդակցության և թվային զարգացման ոգով՝ CELAVIE կրթական ակադեմիան առաջարկում է բարձրորակ լեզվական կրթություն, մասնագիտացված SMM դասընթացներ և մշակութային փոխանակման ծրագրեր։",
+    "Созданная с увлечением межкультурным общением и цифровым развитием, академия CELAVIE предлагает качественное языковое образование, специализированные курсы SMM и программы культурного обмена.",
+    "Animée par la communication interculturelle et le développement numérique, l’académie CELAVIE propose un enseignement linguistique de qualité, des cours spécialisés de SMM et des programmes d’échange culturel en immersion."
+  ],
+  "Our Mission": [
+    "Մեր առաքելությունը",
+    "Наша миссия",
+    "Notre mission"
+  ],
+  "Our Vision": [
+    "Մեր տեսլականը",
+    "Наше видение",
+    "Notre vision"
+  ],
+  "To break down language and cultural barriers through accessible, high-impact educational programs that combine practical fluency, digital skills, and real-world immersion opportunities.": [
+    "Հաղթահարել լեզվական և մշակութային խոչընդոտները մատչելի, արդյունավետ կրթական ծրագրերով, որոնք համադրում են խոսակցական հմտությունները, թվային գիտելիքները և իրական միջավայրում ուսուցումը։",
+    "Преодолевать языковые и культурные барьеры через доступные и эффективные программы, объединяющие разговорную практику, цифровые навыки и погружение в реальную среду.",
+    "Dépasser les barrières linguistiques et culturelles grâce à des programmes accessibles et efficaces associant aisance orale, compétences numériques et immersion réelle."
+  ],
+  "To be the premier international academy bridging specialized online education with unforgettable real-world cultural immersion in Nice, France and beyond.": [
+    "Դառնալ առաջատար միջազգային ակադեմիա՝ համադրելով մասնագիտացված առցանց կրթությունն անմոռանալի մշակութային փորձառության հետ Նիսում և այլ վայրերում։",
+    "Стать ведущей международной академией, соединяющей специализированное онлайн-образование с незабываемым культурным погружением в Ницце и за её пределами.",
+    "Devenir une académie internationale de référence, reliant l’enseignement spécialisé en ligne à une immersion culturelle inoubliable à Nice et ailleurs."
+  ],
+  "Academy Founder": [
+    "Ակադեմիայի հիմնադիր",
+    "Основатель академии",
+    "Fondatrice de l’académie"
+  ],
+  "Founder & Leadership": [
+    "Հիմնադիր և ղեկավարություն",
+    "Основатель и руководство",
+    "Fondation et direction"
+  ],
+  "Built on Excellence & Integrity": [
+    "Որակի և ազնվության հիմքի վրա",
+    "На основе качества и честности",
+    "Fondée sur l’excellence et l’intégrité"
+  ],
+  "Established in": [
+    "Հիմնադրվել է",
+    "Основана в",
+    "Fondée en"
+  ],
+  ", CELAVIE Educational Academy has grown into a vibrant global learning community connecting thousands of students from over 30 countries.": [
+    ", CELAVIE կրթական ակադեմիան դարձել է աշխույժ միջազգային ուսումնական համայնք՝ միավորելով հազարավոր ուսանողների ավելի քան 30 երկրից։",
+    ", академия CELAVIE выросла в активное международное учебное сообщество, объединяющее тысячи учащихся более чем из 30 стран.",
+    ", l’académie CELAVIE est devenue une communauté éducative internationale dynamique réunissant des milliers d’élèves de plus de 30 pays."
+  ],
+  "Certified Educators": [
+    "Հավաստագրված դասավանդողներ",
+    "Сертифицированные преподаватели",
+    "Enseignants certifiés"
+  ],
+  "Native language tutors and active marketing agency veterans.": [
+    "Լեզվակիր դասավանդողներ և մարքեթինգային գործակալությունների փորձառու մասնագետներ։",
+    "Преподаватели — носители языка и опытные практики маркетинговых агентств.",
+    "Des enseignants natifs et des professionnels expérimentés d’agences de marketing."
+  ],
+  "CEFR Aligned": [
+    "Համապատասխան CEFR-ին",
+    "Соответствие CEFR",
+    "Alignement sur le CECR"
+  ],
+  "Standardized language curriculum following international CEFR levels.": [
+    "Ստանդարտացված լեզվական ծրագիր՝ ըստ միջազգային CEFR մակարդակների։",
+    "Стандартизированная языковая программа по международным уровням CEFR.",
+    "Un programme linguistique structuré selon les niveaux internationaux du CECR."
+  ],
+  "What Drives Us": [
+    "Մեր շարժիչ ուժը",
+    "Что нами движет",
+    "Ce qui nous anime"
+  ],
+  "Our Core Values": [
+    "Մեր հիմնական արժեքները",
+    "Наши основные ценности",
+    "Nos valeurs fondamentales"
+  ],
+  "Student-Centric Care": [
+    "Ուշադրություն յուրաքանչյուր ուսանողին",
+    "Забота об учащихся",
+    "L’élève au centre de nos préoccupations"
+  ],
+  "Personalized feedback, small cohort sizes, and genuine mentorship for every student.": [
+    "Անհատական արձագանք, փոքր խմբեր և հետևողական աջակցություն յուրաքանչյուր ուսանողի համար։",
+    "Индивидуальная обратная связь, небольшие группы и внимательное наставничество для каждого учащегося.",
+    "Des retours personnalisés, de petits groupes et un accompagnement attentif pour chaque élève."
+  ],
+  "Cultural Respect": [
+    "Հարգանք մշակույթների հանդեպ",
+    "Уважение к культурам",
+    "Respect des cultures"
+  ],
+  "Fostering deep intercultural understanding and authentic language immersion experiences.": [
+    "Միջմշակութային խոր ըմբռնում և լեզվական միջավայրում իրական փորձառություն։",
+    "Развитие глубокого межкультурного понимания и подлинного языкового погружения.",
+    "Développer une compréhension interculturelle approfondie et une immersion linguistique authentique."
+  ],
+  "Practical Outcomes": [
+    "Գործնական արդյունքներ",
+    "Практические результаты",
+    "Résultats concrets"
+  ],
+  "Focusing on real-world spoken fluency, job-ready SMM portfolios, and official exam results.": [
+    "Կենտրոնացում իրական խոսակցական հմտությունների, աշխատանքին պատրաստ SMM պորտֆոլիոյի և պաշտոնական քննությունների արդյունքների վրա։",
+    "Акцент на свободной речи в реальных ситуациях, профессиональном SMM-портфолио и результатах официальных экзаменов.",
+    "Priorité à l’aisance orale en situation réelle, aux portfolios SMM professionnels et aux résultats aux examens officiels."
+  ],
+  "Comprehensive Offerings": [
+    "Համապարփակ առաջարկներ",
+    "Комплексные предложения",
+    "Une offre complète"
+  ],
+  "Our Educational & Cultural Services": [
+    "Մեր կրթական և մշակութային ծառայությունները",
+    "Наши образовательные и культурные услуги",
+    "Nos services éducatifs et culturels"
+  ],
+  "CELAVIE Educational Academy provides structured language training, Social Media Marketing academies, summer immersion programs in France, and customized corporate training solutions.": [
+    "CELAVIE կրթական ակադեմիան առաջարկում է կառուցվածքային լեզվական ուսուցում, SMM ծրագրեր, ամառային ծրագրեր Ֆրանսիայում և անհատականացված կորպորատիվ վերապատրաստում։",
+    "Академия CELAVIE предлагает структурированное языковое обучение, программы SMM, летнее погружение во Франции и индивидуальные корпоративные тренинги.",
+    "L’académie CELAVIE propose des formations linguistiques structurées, des programmes de SMM, des immersions estivales en France et des formations sur mesure pour les entreprises."
+  ],
+  "Key Features": [
+    "Հիմնական առանձնահատկություններ",
+    "Основные особенности",
+    "Points clés"
+  ],
+  "Explore Nice Exchange": [
+    "Ծանոթանալ Նիսի ծրագրին",
+    "Узнать о программе в Ницце",
+    "Découvrir l’échange à Nice"
+  ],
+  "Explore SMM Tiers": [
+    "Ծանոթանալ SMM մակարդակներին",
+    "Посмотреть уровни SMM",
+    "Découvrir les niveaux de SMM"
+  ],
+  "Register Interest": [
+    "Հայտնել հետաքրքրություն",
+    "Оставить заявку",
+    "Manifester son intérêt"
+  ],
+  "Building a 30-day content calendar for any brand": [
+    "Ցանկացած բրենդի համար 30-օրյա բովանդակության օրացույցի կազմում",
+    "Создание контент-календаря на 30 дней для любого бренда",
+    "Création d’un calendrier éditorial de 30 jours pour toute marque"
+  ],
+  "Cold outreach and sales closing techniques for B2B client acquisition": [
+    "B2B հաճախորդների ներգրավման սառը կապերի և վաճառքի ավարտման տեխնիկաներ",
+    "Холодные обращения и техники закрытия продаж для привлечения B2B-клиентов",
+    "Prospection à froid et techniques de conclusion de vente pour acquérir des clients B2B"
+  ],
+  "Complete Brand Profile Audit & Overhaul": [
+    "Բրենդի պրոֆիլի ամբողջական աուդիտ և բարելավում",
+    "Полный аудит и обновление профиля бренда",
+    "Audit et refonte complète du profil de marque"
+  ],
+  "Construct an end-to-end Influencer Acquisition Funnel": [
+    "Ինֆլուենսերների ներգրավման ամբողջական շղթայի կառուցում",
+    "Создание полной воронки привлечения блогеров",
+    "Création d’un parcours complet d’acquisition d’influenceurs"
+  ],
+  "Crafting compelling copy and strategic hashtag research": [
+    "Համոզիչ տեքստերի կազմում և հեշթեգների ռազմավարական հետազոտություն",
+    "Создание убедительных текстов и стратегический подбор хештегов",
+    "Rédaction de textes convaincants et recherche stratégique de hashtags"
+  ],
+  "Creating engaging graphics using Canva and modern AI tools": [
+    "Գրավիչ գրաֆիկայի ստեղծում Canva-ով և ժամանակակից AI գործիքներով",
+    "Создание привлекательной графики в Canva и современных ИИ-инструментах",
+    "Création de visuels attrayants avec Canva et les outils d’IA actuels"
+  ],
+  "Design a 30-Day Cross-Platform Content Plan": [
+    "Ստեղծեք 30-օրյա բազմահարթակ բովանդակության պլան",
+    "Разработайте контент-план на 30 дней для разных платформ",
+    "Concevez un plan de contenu multiplateforme sur 30 jours"
+  ],
+  "Designing high-converting ad creatives and copywriting": [
+    "Արդյունավետ գովազդային նյութերի և տեքստերի ստեղծում",
+    "Создание рекламных материалов и текстов с высокой конверсией",
+    "Création de visuels et de textes publicitaires à forte conversion"
+  ],
+  "Hiring, onboarding, and managing freelance creators & media buyers": [
+    "Անկախ ստեղծողների և գովազդային մասնագետների վարձում, ներգրավում և կառավարում",
+    "Найм, адаптация и управление внештатными авторами и медиабайерами",
+    "Recrutement, intégration et gestion de créateurs et d’acheteurs média indépendants"
+  ],
+  "Launch & Optimize a Live Meta Ad Campaign ($50 test budget included)": [
+    "Գործարկեք և օպտիմացրեք Meta-ի իրական գովազդային արշավ ($50 փորձնական բյուջեն ներառված է)",
+    "Запустите и оптимизируйте реальную кампанию Meta (тестовый бюджет $50 включён)",
+    "Lancez et optimisez une campagne Meta réelle (budget de test de 50 $ inclus)"
+  ],
+  "Launch and run a high-ticket Social Media Marketing Agency": [
+    "Ստեղծեք և ղեկավարեք բարձրարժեք ծառայություններ մատուցող SMM գործակալություն",
+    "Создайте и управляйте SMM-агентством с высоким чеком",
+    "Lancez et gérez une agence SMM à forte valeur ajoutée"
+  ],
+  "Manage personal or client social accounts with confidence": [
+    "Վստահ կառավարեք ձեր կամ հաճախորդների սոցիալական հաշիվները",
+    "Уверенно управляйте своими аккаунтами или аккаунтами клиентов",
+    "Gérez avec assurance vos comptes sociaux ou ceux de vos clients"
+  ],
+  "Managing influencer campaigns from outreach to ROI analysis": [
+    "Ինֆլուենսերների արշավների կառավարում՝ կապի հաստատումից մինչև ROI վերլուծություն",
+    "Управление кампаниями с блогерами от первого контакта до анализа ROI",
+    "Gestion des campagnes d’influence, de la prise de contact à l’analyse du ROI"
+  ],
+  "Module 1: Omnichannel Dominance": [
+    "Մոդուլ 1․ Բազմաալիք առաջատարություն",
+    "Модуль 1: Омниканальное лидерство",
+    "Module 1 : Maîtrise omnicanale"
+  ],
+  "Module 1: Social Media Foundations": [
+    "Մոդուլ 1․ Սոցիալական մեդիայի հիմունքներ",
+    "Модуль 1: Основы социальных сетей",
+    "Module 1 : Bases des réseaux sociaux"
+  ],
+  "Module 1: Strategic Content Funnels": [
+    "Մոդուլ 1․ Բովանդակության ռազմավարական շղթաներ",
+    "Модуль 1: Стратегические контент-воронки",
+    "Module 1 : Parcours stratégiques de contenu"
+  ],
+  "Module 2: Agency Operations & Systems": [
+    "Մոդուլ 2․ Գործակալության աշխատանք և համակարգեր",
+    "Модуль 2: Процессы и системы агентства",
+    "Module 2 : Opérations et systèmes d’agence"
+  ],
+  "Module 2: Paid Ads Mastery": [
+    "Մոդուլ 2․ Վճարովի գովազդի վարպետություն",
+    "Модуль 2: Мастерство платной рекламы",
+    "Module 2 : Maîtrise de la publicité payante"
+  ],
+  "Module 2: Visual Content Creation": [
+    "Մոդուլ 2․ Տեսողական բովանդակության ստեղծում",
+    "Модуль 2: Создание визуального контента",
+    "Module 2 : Création de contenu visuel"
+  ],
+  "Module 3: Copywriting & Captions": [
+    "Մոդուլ 3․ Գովազդային տեքստեր և գրառումներ",
+    "Модуль 3: Копирайтинг и подписи",
+    "Module 3 : Rédaction et légendes"
+  ],
+  "Module 3: High-Ticket Client Acquisition": [
+    "Մոդուլ 3․ Բարձրարժեք հաճախորդների ներգրավում",
+    "Модуль 3: Привлечение крупных клиентов",
+    "Module 3 : Acquisition de clients à forte valeur"
+  ],
+  "Module 3: Influencer & UGC Marketing": [
+    "Մոդուլ 3․ Ինֆլուենսեր և UGC մարքեթինգ",
+    "Модуль 3: Маркетинг влияния и UGC",
+    "Module 3 : Marketing d’influence et UGC"
+  ],
+  "Module 4: Advanced Analytics & Reporting": [
+    "Մոդուլ 4․ Առաջադեմ վերլուծություն և հաշվետվություններ",
+    "Модуль 4: Продвинутая аналитика и отчётность",
+    "Module 4 : Analyse avancée et rapports"
+  ],
+  "Module 4: Leadership & CMO Strategy": [
+    "Մոդուլ 4․ Առաջնորդություն և CMO ռազմավարություն",
+    "Модуль 4: Лидерство и стратегия CMO",
+    "Module 4 : Leadership et stratégie CMO"
+  ],
+  "Module 4: Publishing & Management": [
+    "Մոդուլ 4․ Հրապարակում և կառավարում",
+    "Модуль 4: Публикация и управление",
+    "Module 4 : Publication et gestion"
+  ],
+  "Omnichannel marketing across YouTube, TikTok, LinkedIn, and Meta": [
+    "Միասնական մարքեթինգ YouTube-ում, TikTok-ում, LinkedIn-ում և Meta-ում",
+    "Омниканальный маркетинг в YouTube, TikTok, LinkedIn и Meta",
+    "Marketing omnicanal sur YouTube, TikTok, LinkedIn et Meta"
+  ],
+  "Optimizing Instagram, TikTok, Facebook, and LinkedIn profiles": [
+    "Instagram-ի, TikTok-ի, Facebook-ի և LinkedIn-ի պրոֆիլների օպտիմացում",
+    "Оптимизация профилей Instagram, TikTok, Facebook и LinkedIn",
+    "Optimisation des profils Instagram, TikTok, Facebook et LinkedIn"
+  ],
+  "Pitch and onboard a real prospective client using academy proposal templates": [
+    "Ներկայացրեք առաջարկ և ներգրավեք իրական հավանական հաճախորդի՝ ակադեմիայի ձևանմուշներով",
+    "Подготовьте предложение и подключите реального потенциального клиента с помощью шаблонов академии",
+    "Présentez une offre et intégrez un véritable prospect à l’aide des modèles de l’académie"
+  ],
+  "Qualify for Junior Social Media Assistant roles": [
+    "Պատրաստվեք սոցիալական մեդիայի կրտսեր օգնականի աշխատանքին",
+    "Подготовьтесь к работе младшим SMM-ассистентом",
+    "Préparez-vous aux postes d’assistant junior en réseaux sociaux"
+  ],
+  "Setting up Meta Pixel, Conversions API, and custom audiences": [
+    "Meta Pixel-ի, Conversions API-ի և անհատական լսարանների կարգավորում",
+    "Настройка Meta Pixel, Conversions API и индивидуальных аудиторий",
+    "Configuration de Meta Pixel, de Conversions API et des audiences personnalisées"
+  ],
+  "Step into Senior CMO or Head of Growth roles at tech companies": [
+    "Ստանձնեք ավագ CMO կամ աճի ղեկավարի դեր տեխնոլոգիական ընկերություններում",
+    "Перейдите на позиции CMO или руководителя роста в технологических компаниях",
+    "Accédez aux fonctions de CMO ou de responsable de croissance dans les entreprises technologiques"
+  ],
+  "Take on paid ad management for e-commerce and local businesses": [
+    "Կառավարեք վճարովի գովազդը առցանց առևտրի և տեղական բիզնեսների համար",
+    "Управляйте платной рекламой для интернет-магазинов и местного бизнеса",
+    "Gérez la publicité payante pour le commerce en ligne et les entreprises locales"
+  ],
+  "Work as a freelance Social Media Specialist charging premium rates": [
+    "Աշխատեք որպես անկախ SMM մասնագետ՝ բարձր սակագներով",
+    "Работайте независимым SMM-специалистом с высокими ставками",
+    "Travaillez en indépendant comme spécialiste des réseaux sociaux à des tarifs élevés"
+  ],
+  "A/B testing ad variations to minimize Cost Per Acquisition (CPA)": [
+    "Գովազդի տարբերակների A/B թեստավորում՝ ներգրավման արժեքը (CPA) նվազեցնելու համար",
+    "A/B-тестирование рекламы для снижения стоимости привлечения (CPA)",
+    "Tests A/B des publicités pour réduire le coût d’acquisition (CPA)"
+  ],
+  "Structuring retainer packages from $2,000/mo to $10,000/mo": [
+    "Ամսական $2,000-ից $10,000 սպասարկման փաթեթների ձևավորում",
+    "Создание пакетов ежемесячного обслуживания от $2 000 до $10 000",
+    "Création de forfaits mensuels de 2 000 à 10 000 $"
+  ],
+  "Notion/Asana Workflows": [
+    "Notion/Asana աշխատանքային գործընթացներ",
+    "Рабочие процессы Notion/Asana",
+    "Flux de travail Notion/Asana"
+  ],
+  "Build a complete SMM Agency Operational System in Notion/Asana": [
+    "Ստեղծեք SMM գործակալության ամբողջական աշխատանքային համակարգ Notion/Asana-ում",
+    "Создайте полную операционную систему SMM-агентства в Notion/Asana",
+    "Créez un système opérationnel complet d’agence SMM dans Notion/Asana"
+  ],
+  "e.g. 095 123 456": [
+    "Օր․՝ 095 123 456",
+    "Например: 095 123 456",
+    "Ex. : 095 123 456"
+  ]
+}

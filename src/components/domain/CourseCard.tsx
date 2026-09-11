@@ -1,3 +1,5 @@
+import { useT } from '../../i18n/useLanguage';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { Clock, Award, Sparkles } from 'lucide-react';
 import { Badge } from '../ui/Badge';
@@ -8,6 +10,7 @@ interface CourseCardProps {
 }
 
 export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
+  const t = useT();
   const isLanguage = course.category === 'language';
 
   return (
@@ -16,7 +19,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
       <div className="relative h-52 overflow-hidden bg-muted">
         <img
           src={course.image}
-          alt={course.title}
+          alt={t(course.title)}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
@@ -26,12 +29,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
         <div className="absolute top-4 left-4 flex items-center space-x-2">
           {isLanguage ? (
             <Badge variant="accent" className="bg-[#4aabb8] text-white border-none shadow-sm">
-              <span className="mr-1.5 font-normal">{course.flagEmoji}</span>
-              {course.language}
+              <span className="mr-1.5 font-normal">{t(course.flagEmoji)}</span>
+              {t(course.language)}
             </Badge>
           ) : (
-            <Badge variant="accent" className="bg-[#4aabb8] text-white border-none uppercase shadow-sm">
-              SMM {course.tier}
+            <Badge variant="accent" className="bg-[#4aabb8] text-white border-none uppercase shadow-sm">{t("SMM")}{' '}{t(course.tier)}
             </Badge>
           )}
         </div>
@@ -40,7 +42,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           <div className="absolute top-4 right-4">
             <Badge className="bg-white/90 backdrop-blur-md text-[#2b7a85] border-none shadow-sm flex items-center space-x-1">
               <Sparkles className="w-3.5 h-3.5 text-[#4aabb8]" />
-              <span className="text-[11px] font-semibold">Nice Option</span>
+              <span className="text-[11px] font-semibold">{t("Nice Option")}</span>
             </Badge>
           </div>
         )}
@@ -52,21 +54,21 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           <div className="flex items-center space-x-4 text-xs font-medium text-[#222222]/60 mb-3">
             <span className="flex items-center">
               <Clock className="w-3.5 h-3.5 mr-1 text-[#4aabb8]" />
-              {course.duration}
+              {t(course.duration)}
             </span>
-            <span>•</span>
+            <span>{t("•")}</span>
             <span className="flex items-center">
               <Award className="w-3.5 h-3.5 mr-1 text-[#4aabb8]" />
-              {course.level}
+              {t(course.level)}
             </span>
           </div>
 
-          <h3 className="font-heading text-2xl font-bold text-[#222222] group-hover:text-[#4aabb8] transition-colors mb-2 line-clamp-1">
-            {course.title}
+          <h3 className="font-heading text-2xl font-bold text-[#222222] group-hover:text-[#4aabb8] transition-colors mb-2 break-words">
+            <Link to={isLanguage ? `/courses/${course.slug}` : `/courses/smm/${course.tier}`}>{t(course.title)}</Link>
           </h3>
 
           <p className="text-sm text-[#222222]/70 leading-relaxed mb-6 line-clamp-2">
-            {course.description}
+            {t(course.description)}
           </p>
         </div>
 

@@ -1,3 +1,4 @@
+import { useT } from '../../i18n/useLanguage';
 import React from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -19,6 +20,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
   bg = 'white',
   ...props
 }) => {
+  const t = useT();
   const bgClasses = {
     white: 'bg-white text-charcoal',
     gray: 'bg-[rgba(0,0,0,0.02)] border-y border-[rgba(0,0,0,0.05)] text-charcoal',
@@ -28,7 +30,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
 
   return (
     <section id={id} className={twMerge(clsx('py-12 md:py-16 lg:py-20', bgClasses[bg], className))} {...props}>
-      <Container className={containerClassName}>{children}</Container>
+      <Container className={containerClassName}>{t(children)}</Container>
     </section>
   );
 };

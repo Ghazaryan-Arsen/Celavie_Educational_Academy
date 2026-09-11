@@ -1,5 +1,7 @@
+import { useT } from '../i18n/useLanguage';
+import { NotFoundPage } from './NotFoundPage';
 import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { SectionWrapper } from '../components/ui/SectionWrapper';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Badge } from '../components/ui/Badge';
@@ -12,11 +14,12 @@ import { SMM_COURSES, TESTIMONIALS } from '../data/mockData';
 import { CheckCircle2, TrendingUp, Rocket, Briefcase, Layers } from 'lucide-react';
 
 export const SMMCourseDetailsPage: React.FC = () => {
+  const t = useT();
   const { tier } = useParams<{ tier: string }>();
   const course = SMM_COURSES.find((c) => c.tier === tier?.toLowerCase());
 
   if (!course) {
-    return <Navigate to="/" replace />;
+    return <NotFoundPage />;
   }
 
   const relatedCourses = SMM_COURSES.filter((c) => c.id !== course.id);
@@ -45,11 +48,8 @@ export const SMMCourseDetailsPage: React.FC = () => {
       <SectionWrapper bg="gray">
         <div className="max-w-4xl text-left space-y-6">
           <div className="space-y-2">
-            <Badge variant="accent" className="uppercase font-bold">
-              Core Competencies
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[rgb(38,38,38)]">
-              What You'll Master in SMM {course.tier.toUpperCase()}
+            <Badge variant="accent" className="uppercase font-bold">{t("Core Competencies")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[rgb(38,38,38)]">{t("What You'll Master in SMM")}{' '}{t(course.tier.toUpperCase())}
             </h2>
           </div>
 
@@ -61,7 +61,7 @@ export const SMMCourseDetailsPage: React.FC = () => {
               >
                 <TrendingUp className="w-5 h-5 text-black shrink-0 mt-0.5" />
                 <span className="text-sm md:text-base font-medium text-gray-800 leading-relaxed">
-                  {item}
+                  {t(item)}
                 </span>
               </div>
             ))}
@@ -73,10 +73,8 @@ export const SMMCourseDetailsPage: React.FC = () => {
       <SectionWrapper bg="white">
         <div className="max-w-4xl text-left space-y-6">
           <div className="space-y-2">
-            <Badge variant="secondary">Module Breakdown</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              Comprehensive Curriculum
-            </h2>
+            <Badge variant="secondary">{t("Module Breakdown")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Comprehensive Curriculum")}</h2>
           </div>
 
           <div className="space-y-4">
@@ -84,13 +82,13 @@ export const SMMCourseDetailsPage: React.FC = () => {
               <div key={idx} className="bg-gray-50 p-6 rounded-[8px] border border-[rgba(0,0,0,0.08)]">
                 <div className="flex items-center space-x-2 mb-3">
                   <Layers className="w-5 h-5 text-black" />
-                  <h3 className="text-lg font-bold text-black">{mod.module}</h3>
+                  <h3 className="text-lg font-bold text-black">{t(mod.module)}</h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-2 border-t border-[rgba(0,0,0,0.06)]">
                   {mod.topics.map((top, tidx) => (
                     <div key={tidx} className="flex items-center space-x-2 text-xs md:text-sm text-gray-700">
                       <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0" />
-                      <span>{top}</span>
+                      <span>{t(top)}</span>
                     </div>
                   ))}
                 </div>
@@ -104,13 +102,9 @@ export const SMMCourseDetailsPage: React.FC = () => {
       <SectionWrapper bg="gray">
         <div className="max-w-4xl text-left space-y-6">
           <div className="space-y-2">
-            <Badge variant="secondary">Hands-on Experience</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              Real-World Projects & Portfolio Building
-            </h2>
-            <p className="text-sm md:text-base text-gray-600">
-              You won't just learn theory. You will build tangible client assets during the program.
-            </p>
+            <Badge variant="secondary">{t("Hands-on Experience")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Real-World Projects & Portfolio Building")}</h2>
+            <p className="text-sm md:text-base text-gray-600">{t("You won't just learn theory. You will build tangible client assets during the program.")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -118,8 +112,8 @@ export const SMMCourseDetailsPage: React.FC = () => {
               <div key={idx} className="bg-white p-6 rounded-[8px] border border-[rgba(0,0,0,0.08)] flex items-start space-x-4">
                 <Rocket className="w-6 h-6 text-black shrink-0 mt-1" />
                 <div>
-                  <h4 className="text-sm font-bold text-black uppercase mb-1">Project #{idx + 1}</h4>
-                  <p className="text-sm md:text-base text-gray-700 font-medium">{proj}</p>
+                  <h4 className="text-sm font-bold text-black uppercase mb-1">{t("Project #")}{' '}{t(idx + 1)}</h4>
+                  <p className="text-sm md:text-base text-gray-700 font-medium">{t(proj)}</p>
                 </div>
               </div>
             ))}
@@ -131,17 +125,15 @@ export const SMMCourseDetailsPage: React.FC = () => {
       <SectionWrapper bg="white">
         <div className="max-w-4xl text-left space-y-6">
           <div className="space-y-2">
-            <Badge variant="secondary">Career Advancement</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              Target Career Outcomes
-            </h2>
+            <Badge variant="secondary">{t("Career Advancement")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Target Career Outcomes")}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {course.careerOutcomes.map((out, idx) => (
               <div key={idx} className="p-5 rounded-[8px] bg-emerald-50/50 border border-emerald-100 flex items-start space-x-3">
                 <Briefcase className="w-5 h-5 text-emerald-800 shrink-0 mt-0.5" />
-                <span className="text-sm md:text-base font-semibold text-emerald-950">{out}</span>
+                <span className="text-sm md:text-base font-semibold text-emerald-950">{t(out)}</span>
               </div>
             ))}
           </div>
@@ -152,10 +144,8 @@ export const SMMCourseDetailsPage: React.FC = () => {
       {relevantTestimonials.length > 0 && (
         <SectionWrapper bg="gray">
           <div className="text-left space-y-2 mb-8">
-            <Badge variant="secondary">Student Feedback</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              What SMM Graduates Achieved
-            </h2>
+            <Badge variant="secondary">{t("Student Feedback")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("What SMM Graduates Achieved")}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {relevantTestimonials.map((t) => (
@@ -169,10 +159,8 @@ export const SMMCourseDetailsPage: React.FC = () => {
       {course.faq.length > 0 && (
         <SectionWrapper bg="white">
           <div className="text-left space-y-2 mb-8 max-w-3xl">
-            <Badge variant="secondary">Tier FAQ</Badge>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-              Frequently Asked Questions
-            </h2>
+            <Badge variant="secondary">{t("Tier FAQ")}</Badge>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Frequently Asked Questions")}</h2>
           </div>
           <div className="max-w-3xl">
             <FAQAccordion items={course.faq} />
@@ -183,10 +171,8 @@ export const SMMCourseDetailsPage: React.FC = () => {
       {/* Related SMM Tiers */}
       <SectionWrapper bg="gray">
         <div className="text-left space-y-2 mb-8">
-          <Badge variant="secondary">Compare Tiers</Badge>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-            Other SMM Tiers
-          </h2>
+          <Badge variant="secondary">{t("Compare Tiers")}</Badge>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-black">{t("Other SMM Tiers")}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {relatedCourses.map((c) => (
@@ -198,15 +184,10 @@ export const SMMCourseDetailsPage: React.FC = () => {
       {/* Bottom CTA */}
       <SectionWrapper bg="dark" className="text-center py-14">
         <div className="max-w-2xl mx-auto space-y-4">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-white">
-            Ready to Master SMM {course.tier.toUpperCase()}?
-          </h2>
-          <p className="text-sm md:text-base text-gray-300">
-            Enroll today and gain high-demand digital marketing skills.
-          </p>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white">{t("Ready to Master SMM")}{' '}{t(course.tier.toUpperCase())}{t("?")}</h2>
+          <p className="text-sm md:text-base text-gray-300">{t("Enroll today and gain high-demand digital marketing skills.")}</p>
           <Link to={`/register?course=${course.id}`} className="inline-block pt-2">
-            <Button variant="accent" size="lg" className="font-bold">
-              Enroll in SMM {course.tier.toUpperCase()}
+            <Button variant="accent" size="lg" className="font-bold">{t("Enroll in SMM")}{' '}{t(course.tier.toUpperCase())}
             </Button>
           </Link>
         </div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://celavie-educational-academy.vercel.app/sitemap.xml

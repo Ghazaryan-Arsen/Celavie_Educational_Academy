@@ -1,3 +1,4 @@
+import { useT } from '../../i18n/useLanguage';
 import React, { useState } from 'react';
 import { Lightbox } from './Lightbox';
 
@@ -13,6 +14,7 @@ interface ImageGalleryProps {
 }
 
 export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, columns = 3 }) => {
+  const t = useT();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const gridCols = {
@@ -32,12 +34,12 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, columns = 3 
           >
             <img
               src={img.url}
-              alt={img.alt}
+              alt={t(img.alt)}
               loading="lazy"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-              <p className="text-white text-xs md:text-sm font-medium">{img.alt}</p>
+              <p className="text-white text-xs md:text-sm font-medium">{t(img.alt)}</p>
             </div>
           </div>
         ))}

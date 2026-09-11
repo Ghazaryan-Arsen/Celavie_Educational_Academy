@@ -1,3 +1,4 @@
+import { useT } from '../i18n/useLanguage';
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { SectionWrapper } from '../components/ui/SectionWrapper';
@@ -16,6 +17,7 @@ import { CheckCircle2, AlertCircle } from 'lucide-react';
 const allCourses = [...LANGUAGE_COURSES, ...SMM_COURSES];
 
 export const RegisterPage: React.FC = () => {
+  const t = useT();
   const [searchParams] = useSearchParams();
   const initialCourseId = searchParams.get('course') || '';
 
@@ -113,9 +115,7 @@ export const RegisterPage: React.FC = () => {
     } catch (error) {
       setLoading(false);
       const errorMessage =
-        error instanceof Error
-          ? error.message
-          : 'An error occurred during registration. Please try again.';
+        'Your registration could not be submitted. Please check your connection and try again.';
       setErrors({ form: errorMessage });
       console.error('Registration submission failed:', error);
     } finally {
@@ -135,15 +135,9 @@ export const RegisterPage: React.FC = () => {
       <SectionWrapper bg="white" className="py-10 md:py-16">
         <div className="max-w-3xl mx-auto text-left">
           <div className="text-center mb-8 space-y-2">
-            <Badge variant="secondary" className="uppercase font-bold">
-              Enrollment Form
-            </Badge>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-black">
-              Register for Your Course
-            </h1>
-            <p className="text-sm md:text-base text-gray-600">
-              Complete your enrollment in 3 simple steps.
-            </p>
+            <Badge variant="secondary" className="uppercase font-bold">{t("Enrollment Form")}</Badge>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-black">{t("Register for Your Course")}</h1>
+            <p className="text-sm md:text-base text-gray-600">{t("Complete your enrollment in 3 simple steps.")}</p>
           </div>
 
           {!submitted && (
@@ -159,19 +153,17 @@ export const RegisterPage: React.FC = () => {
                 <div className="w-16 h-16 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h2 className="text-3xl font-extrabold text-black">Registration Successful!</h2>
-                <p className="text-sm md:text-base text-gray-600 max-w-md mx-auto">
-                  Your registration has been received by CELAVIE Educational Academy. We will follow up with course and schedule details at <strong>{formData.email}</strong>.
-                </p>
+                <h2 className="text-3xl font-extrabold text-black">{t("Registration Successful!")}</h2>
+                <p className="text-sm md:text-base text-gray-600 max-w-md mx-auto">{t("Your registration has been received by CELAVIE Educational Academy. We will follow up with course and schedule details at")}<strong>{formData.email}</strong>{t(".")}</p>
 
                 <div className="p-4 bg-gray-50 rounded-[6px] border border-gray-200 text-left text-xs text-gray-700 max-w-md mx-auto space-y-1.5">
-                  <p><strong>Enrolled Course:</strong> {selectedCourse?.title}</p>
-                  <p><strong>Student Name:</strong> {formData.firstName} {formData.lastName}</p>
+                  <p><strong>{t("Enrolled Course:")}</strong> {t(selectedCourse?.title)}</p>
+                  <p><strong>{t("Student Name:")}</strong> {formData.firstName} {formData.lastName}</p>
                 </div>
 
                 <div className="pt-4 flex justify-center space-x-4">
                   <Link to="/">
-                    <Button variant="primary">Return to Home</Button>
+                    <Button variant="primary">{t("Return to Home")}</Button>
                   </Link>
                 </div>
               </div>
@@ -180,9 +172,9 @@ export const RegisterPage: React.FC = () => {
                 {/* STEP 1: COURSE SELECTION */}
                 {step === 1 && (
                   <div className="space-y-6">
-                    <h3 className="text-lg font-bold text-black">Step 1: Choose Your Program</h3>
+                    <h3 className="text-lg font-bold text-black">{t("Step 1: Choose Your Program")}</h3>
                     <Select
-                      label="Program Category"
+                      label={t("Program Category")}
                       value={category}
                       onChange={(e) => { setCategory(e.target.value); setSelectedCourseId(''); }}
                       options={[
@@ -191,13 +183,13 @@ export const RegisterPage: React.FC = () => {
                       ]}
                     />
                     <Select
-                      label="Select Course"
+                      label={t("Select Course")}
                       value={selectedCourseId}
-                      error={errors.course}
+                      error={t(errors.course)}
                       onChange={(e) => setSelectedCourseId(e.target.value)}
                       options={allCourses.filter((c) => c.category === category).map((c) => ({
                         value: c.id,
-                        label: `${c.title} (${c.level})`,
+                        label: `${t(c.title)} (${t(c.level)})`,
                       }))}
                     />
 
@@ -205,88 +197,82 @@ export const RegisterPage: React.FC = () => {
                     <div className="p-4 rounded-[6px] bg-gray-50 border border-[rgba(0,0,0,0.08)] flex items-start space-x-4">
                       <img
                         src={selectedCourse?.image}
-                        alt={selectedCourse?.title}
+                        alt={t(selectedCourse?.title)}
                         className="w-20 h-20 rounded object-cover shrink-0"
                       />
                       <div>
-                        <Badge variant="primary" className="mb-1">{selectedCourse?.category}</Badge>
-                        <h4 className="text-base font-bold text-black">{selectedCourse?.title}</h4>
-                        <p className="text-xs text-gray-600 line-clamp-2">{selectedCourse?.description}</p>
+                        <Badge variant="primary" className="mb-1">{t(selectedCourse.category === 'language' ? 'Language Courses' : 'SMM')}</Badge>
+                        <h4 className="text-base font-bold text-black">{t(selectedCourse?.title)}</h4>
+                        <p className="text-xs text-gray-600 line-clamp-2">{t(selectedCourse?.description)}</p>
                       </div>
                     </div>
 
                     )}
 
-                    <Button variant="primary" size="lg" className="w-full font-bold" onClick={handleNextStep1}>
-                      Continue to Personal Information
-                    </Button>
+                    <Button variant="primary" size="lg" className="w-full font-bold" onClick={handleNextStep1}>{t("Continue to Personal Information")}</Button>
                   </div>
                 )}
 
                 {/* STEP 2: PERSONAL INFORMATION */}
                 {step === 2 && (
                   <div className="space-y-6">
-                    <h3 className="text-lg font-bold text-black">Step 2: Student Details</h3>
+                    <h3 className="text-lg font-bold text-black">{t("Step 2: Student Details")}</h3>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Input
-                        label="First Name"
+                        label={t("First Name")}
                         required
                         value={formData.firstName}
                         onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                        error={errors.firstName}
+                        error={t(errors.firstName)}
                       />
                       <Input
-                        label="Last Name"
+                        label={t("Last Name")}
                         required
                         value={formData.lastName}
                         onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                        error={errors.lastName}
+                        error={t(errors.lastName)}
                       />
                       <Input
-                        label="Email Address"
+                        label={t("Email Address")}
                         type="email"
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        error={errors.email}
+                        error={t(errors.email)}
                       />
                       <Input
-                        label="Phone Number"
+                        label={t("Phone Number")}
                         type="tel"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        error={errors.phone}
+                        error={t(errors.phone)}
                       />
                       <Input
-                        label="Student Age"
+                        label={t("Student Age")}
                         type="number"
                         min={11}
                         max={99}
                         required
                         value={formData.age}
                         onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                        error={errors.age}
+                        error={t(errors.age)}
                       />
                     </div>
 
                     <Input
-                      label="Additional Notes / Preferred Batch Time (Optional)"
+                      label={t("Additional Notes / Preferred Batch Time (Optional)")}
                       value={formData.notes}
                       maxLength={1000}
-                      error={errors.notes}
+                      error={t(errors.notes)}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      placeholder="e.g. Prefer evening classes"
+                      placeholder={t("e.g. Prefer evening classes")}
                     />
 
                     <div className="flex justify-between space-x-4 pt-4 border-t border-gray-100">
-                      <Button variant="outline" onClick={() => setStep(1)}>
-                        Back
-                      </Button>
-                      <Button variant="primary" size="lg" className="font-bold" onClick={handleNextStep2}>
-                        Continue to Review
-                      </Button>
+                      <Button variant="outline" onClick={() => setStep(1)}>{t("Back")}</Button>
+                      <Button variant="primary" size="lg" className="font-bold" onClick={handleNextStep2}>{t("Continue to Review")}</Button>
                     </div>
                   </div>
                 )}
@@ -294,29 +280,29 @@ export const RegisterPage: React.FC = () => {
                 {/* STEP 3: REVIEW & SUBMIT */}
                 {step === 3 && (
                   <form onSubmit={handleSubmitRegistration} className="space-y-6">
-                    <h3 className="text-lg font-bold text-black">Step 3: Review & Submit Registration</h3>
+                    <h3 className="text-lg font-bold text-black">{t("Step 3: Review & Submit Registration")}</h3>
 
                     {/* Form-level error display */}
                     {errors.form && (
                       <div className="p-4 rounded-[6px] bg-red-50 border border-red-200 flex items-start space-x-3">
                         <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-sm font-semibold text-red-900">Registration Error</p>
-                          <p className="text-xs text-red-800 mt-1">{errors.form}</p>
+                          <p className="text-sm font-semibold text-red-900">{t("Registration Error")}</p>
+                          <p className="text-xs text-red-800 mt-1">{t(errors.form)}</p>
                         </div>
                       </div>
                     )}
 
                     <div className="p-4 bg-gray-50 rounded-[6px] border border-[rgba(0,0,0,0.08)]">
-                      <span className="text-xs text-gray-500 uppercase font-bold block">Selected Program</span>
-                      <span className="text-base font-bold text-black">{selectedCourse?.title}</span>
+                      <span className="text-xs text-gray-500 uppercase font-bold block">{t("Selected Program")}</span>
+                      <span className="text-base font-bold text-black">{t(selectedCourse?.title)}</span>
                     </div>
 
                     <div className="p-4 bg-gray-50 rounded-[6px] border border-[rgba(0,0,0,0.08)] space-y-2">
-                      <span className="text-xs text-gray-500 uppercase font-bold block">Student Information</span>
-                      <p className="text-sm text-black"><strong>Name:</strong> {formData.firstName} {formData.lastName}</p>
-                      <p className="text-sm text-black"><strong>Email:</strong> {formData.email}</p>
-                      <p className="text-sm text-black"><strong>Phone:</strong> {formData.phone}</p>
+                      <span className="text-xs text-gray-500 uppercase font-bold block">{t("Student Information")}</span>
+                      <p className="text-sm text-black"><strong>{t("Name:")}</strong> {formData.firstName} {formData.lastName}</p>
+                      <p className="text-sm text-black"><strong>{t("Email:")}</strong> {formData.email}</p>
+                      <p className="text-sm text-black"><strong>{t("Phone:")}</strong> {formData.phone}</p>
                     </div>
 
                     {/* Terms */}
@@ -328,25 +314,18 @@ export const RegisterPage: React.FC = () => {
                           onChange={(e) => setFormData({ ...formData, acceptedTerms: e.target.checked })}
                           className="mt-1 w-4 h-4 text-black focus:ring-black rounded"
                         />
-                        <span className="text-xs text-gray-700">
-                          I agree to CELAVIE Academy's{' '}
-                          <a href="/terms" target="_blank" className="font-bold underline text-black">
-                            Terms of Service
-                          </a>{' '}
-                          and enrollment policies.
-                        </span>
+                        <span className="text-xs text-gray-700">{t("I agree to CELAVIE Academy's")}{t(' ')}
+                          <a href="/terms" target="_blank" className="font-bold underline text-black">{t("Terms of Service")}</a>{t(' ')}{t("and enrollment policies.")}</span>
                       </label>
                       {errors.acceptedTerms && (
-                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.acceptedTerms}</p>
+                        <p className="mt-1 text-xs text-red-600 font-medium">{t(errors.acceptedTerms)}</p>
                       )}
                     </div>
 
                     <div className="flex justify-between space-x-4 pt-4 border-t border-gray-100">
-                      <Button type="button" variant="outline" onClick={() => setStep(2)}>
-                        Back
-                      </Button>
+                      <Button type="button" variant="outline" onClick={() => setStep(2)}>{t("Back")}</Button>
                       <Button type="submit" variant="accent" size="lg" className="font-bold" disabled={loading}>
-                        {loading ? 'Submitting Registration...' : 'Submit Registration'}
+                        {t(loading ? 'Submitting Registration...' : 'Submit Registration')}
                       </Button>
                     </div>
                   </form>
